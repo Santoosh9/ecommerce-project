@@ -4,56 +4,44 @@ import FooetRecently from '../layout/Foorerreseltly';
 import Footer from '../layout/Footer';
 
 const Forms = () => {
-  // const data = [
-  //   {
-  //     id: 1,
-  //     title: 'RBB 4th Level Full Course',
-  //     date: '2nd Dec 2023',
-  //     attempt: 'Attempt Now',
-  //   },
-  //   {
-  //     id: 2,
-  //     title: 'RBB 4th Level Full Course',
-  //     date: ' Attempt on 2nd Dec 2023',
-  //     attempt: 'Attempt Now',
-  //   },
-  //   {
-  //     id: 3,
-  //     title: 'RBB 4th Level Full Course',
-  //     date: '2nd Dec 2023',
-  //     attempt: 'Attempt Now',
-  //   },
-  //   {
-  //     id: 4,
-  //     title: 'RBB 4th Level Full Course',
-  //     date: '2nd Dec 2023',
-  //     attempt: 'Attempt Now',
-  //   },
-  //   {
-  //     id: 5,
-  //     title: 'RBB 4th Level Full Course',
-  //     date: '2nd Dec 2023',
-  //     attempt: 'Attempt Now',
-  //   },
-  //   {
-  //     id: 6,
-  //     title: 'RBB 4th Level Full Course',
-  //     date: '2nd Dec 2023',
-  //     attempt: 'Attempt Now',
-  //   },
-  //   {
-  //     id: 7,
-  //     title: 'RBB 4th Level Full Course',
-  //     date: '2nd Dec 2023',
-  //     attempt: 'Attempt Now',
-  //   },
-  //   {
-  //     id: 8,
-  //     title: 'RBB 4th Level Full Course',
-  //     date: '2nd Dec 2023',
-  //     attempt: 'Attempt Now',
-  //   },
-  // ];
+  const data = [
+    {
+      id: 1,
+      image: './images/Rectangle 24.png',
+      texttop1: 'Lok Sewa',
+      texttop2: 'RBB',
+      description:
+        'Pemrograman web atau web programming adalah istilah yang berkaitan erat dengan website dan internet. Mengapa begitu? Karena web programming adalah salah satu proses pembuatan website untuk keperluan internet yang biasanya disebut dengan istilah WWW atau world wide web. Istilah WWW banyak dikenal karena',
+      name: 'Santoosh',
+      views: '651324 Views',
+      cmt: '56 comments',
+      image2: './images/save.png',
+    },
+
+    // {
+    //   id: 2,
+    //   image: './images/Rectangle 24.png',
+    //   texttop1: 'Lok Sewa',
+    //   texttop2: 'RBB',
+    //   description:
+    //     'Pemrograman web atau web programming adalah istilah yang berkaitan erat dengan website dan internet. Mengapa begitu? Karena web programming adalah salah satu proses pembuatan website untuk keperluan internet yang biasanya disebut dengan istilah WWW atau world wide web. Istilah WWW banyak dikenal karena',
+    //   name: 'Santoosh',
+    //   views: '651324 Views',
+    //   cmt: '56 comments',
+    // },
+
+    // {
+    //   id: 3,
+    //   image: './images/Rectangle 24.png',
+    //   texttop1: 'Lok Sewa',
+    //   texttop2: 'RBB',
+    //   description:
+    //     'Pemrograman web atau web programming adalah istilah yang berkaitan erat dengan website dan internet. Mengapa begitu? Karena web programming adalah salah satu proses pembuatan website untuk keperluan internet yang biasanya disebut dengan istilah WWW atau world wide web. Istilah WWW banyak dikenal karena',
+    //   name: 'Santoosh',
+    //   views: '651324 Views',
+    //   cmt: '56 comments',
+    // },
+  ];
 
   return (
     <>
@@ -154,15 +142,43 @@ const Forms = () => {
         </div>
 
         <div className="flex flex-col   border ml-10 mt-10 w-[639px]">
-          <div className=" flex flex-row">
-            <div className='mt-5 ml-5'>
+          <div className=" border">
+            <div className="mt-5 ml-5 flex flex-row">
               <img
                 className="rounded-full w-[10%] h-[30%]"
                 src="./images/me.jpg"
               />
+
+              <input
+                className=" h-[44px] w-[534px] border-gray-300 mt-1 bg-gray-200 ml-2"
+                placeholder="Share what going on your mind"
+              />
             </div>
           </div>
-          <div className="">hii</div>
+          <div className=" flex flex-col flex-wrap w-[637px] h-[300] border mt-10">
+            {data.map((item) => (
+              <div key={item.id} className="flex flex-row mt-3 ml-3">
+                <div className="  mb-24">
+                  <img src={item.image} />
+                </div>
+                <div className="ml-3 flex flex-col">
+                  <div className="">
+                    <ul className="flex flex-row justify-between">
+                      <li className=" bg-slate-400">
+                        {item.texttop1}
+                        {item.texttop2}
+                      </li>
+                      <li className="">
+                        <img src={item.image2} />
+                      </li>
+                    </ul>
+                  </div>
+                  <div className=" flex flex-wrap"> </div>
+                  <div className=""> </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className=""></div>

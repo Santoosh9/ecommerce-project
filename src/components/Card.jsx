@@ -144,7 +144,7 @@ const Cards = () => {
             </div>
           </div>
           <div className="flex flex-row   w-[100%] ">
-            <div className="ml-24 flex flex-row flex-wrap ">
+            <div className=" ml-32 flex flex-row flex-wrap ">
               {data.map((item) => (
                 <Card key={item.id} className="mt-6 w-[282px] h-[381px] ml-6">
                   <CardHeader className="relative">
