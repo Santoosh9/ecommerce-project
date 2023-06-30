@@ -5,6 +5,7 @@ import Register from './components/layout/Register';
 import Mycourse from './components/dashboard/Mycourse';
 import Exams from './components/dashboard/Exams';
 import Forms from './components/dashboard/Forms';
+import Exam from './components/dashboard/Exam';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/mycourse" element={<Mycourse />} />
           <Route path="/exams" element={<Exams />} />
           <Route path="/forms" element={<Forms />} />
+         < Route path="/exam" element={<Exam />} />
         </Routes>
       </BrowserRouter>
     </>

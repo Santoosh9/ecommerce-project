@@ -2,10 +2,10 @@ import React from 'react';
 import { AiTwotoneEnvironment, AiFillPhone, AiFillMail } from 'react-icons/ai';
 const Footer = () => {
   return (
-    <div class=" w-[100%] ">
+    <div class=" w-[100%] bg-sky-100 ">
       <div class="flex flex-col">
-        <div className="flex flex-row justify-around">
-          <div className=" ml-16">
+        <div className="flex flex-row justify-around mt-4 mb-2">
+          <div className=" ml-16  ">
             <img src="./images/logo.png" alt="logo-img" />
 
             <p className=" mt-4 font-link">
