@@ -1,13 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@100;200;300;400;500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.font-link {
-  font-family: 'Poppins', sans-serif;
-}
-
 .btn {
-  @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4;
+  @apply bg-blue-500 hover:bg-blue-600 text-white  py-2 px-4;
 }
-
-

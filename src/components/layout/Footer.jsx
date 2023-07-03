@@ -2,13 +2,13 @@ import React from 'react';
 import { AiTwotoneEnvironment, AiFillPhone, AiFillMail } from 'react-icons/ai';
 const Footer = () => {
   return (
-    <div class=" w-[100%] bg-sky-100 ">
+    <div class=" w-[100%] bg-sky-100">
       <div class="flex flex-col">
         <div className="flex flex-row justify-around mt-4 mb-2">
           <div className=" ml-16  ">
             <img src="./images/logo.png" alt="logo-img" />
 
-            <p className=" mt-4 font-link">
+            <p className=" mt-4 font-link font-Poppins ">
               SmartGK is one of the oldest and most <br />
               successful learning platform which has <br /> provided classes to
               over 30 thousand students.
@@ -30,7 +30,7 @@ const Footer = () => {
                     clip-rule="evenodd"
                   />
                 </svg>
-                <span class="sr-only">Facebook page</span>
+                <span class="sr-only font-Poppins">Facebook page</span>
               </a>
               <a
                 href="#"
@@ -48,7 +48,7 @@ const Footer = () => {
                     clip-rule="evenodd"
                   />
                 </svg>
-                <span class="sr-only">Instagram page</span>
+                <span class="sr-only font-Poppins">Instagram page</span>
               </a>
               <a
                 href="#"
@@ -62,7 +62,7 @@ const Footer = () => {
                 >
                   <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
                 </svg>
-                <span class="sr-only">Twitter page</span>
+                <span class="sr-only font-Poppins">Twitter page</span>
               </a>
               <a
                 href="#"
@@ -80,13 +80,13 @@ const Footer = () => {
                     clip-rule="evenodd"
                   />
                 </svg>
-                <span class="sr-only">GitHub account</span>
+                <span class="sr-only font-Poppins">GitHub account</span>
               </a>
             </div>
           </div>
           <div className="ml-16">
-            <ul className="font-link">
-              <p className=" font-bold mt-2"> Support</p>
+            <ul className="font-link font-Poppins">
+              <p className=" font-bold mt-2 "> Support</p>
               <li class="mb-4 mt-3">
                 <a href="#">Disclaimer Privacy</a>
               </li>
@@ -104,7 +104,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <ul class="font-link">
+            <ul class="font-link font-Poppins">
               <p className=" font-bold mt-2"> Courses</p>
               <li class="mb-4 mt-3">
                 <a href="#" class="hover:underline">
@@ -124,7 +124,7 @@ const Footer = () => {
             </ul>
           </div>
           <div>
-            <ul class="font-link">
+            <ul class="font-link font-Poppins">
               <p className=" font-bold mt-2 "> Contact</p>
               <li class="mb-4  mt-3 ">
                 <a href="#" className="hover:underline flex flex-row">
@@ -150,7 +150,7 @@ const Footer = () => {
         </div>
       </div>
       <div class="px-4 py-6 bg-gray-100 dark:bg-blue-700    flex flex-col items-center  w-[100%]">
-        <span class=" text-white">© Copyright Smart GK 2023</span>
+        <span class=" text-white font-Poppins">© Copyright Smart GK 2023</span>
       </div>
     </div>
   );
