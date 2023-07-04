@@ -6,10 +6,14 @@ import Mycourse from './components/dashboard/Mycourse';
 import Exams from './components/dashboard/Exams';
 import Forms from './components/dashboard/Forms';
 import Exam from './components/dashboard/Exam';
+import PlayVideo from './CoursePages/PlayVideo';
+import Notes from './CoursePages/Notes';
+import MCQs from './CoursePages/Mcqs';
+import Complete from './CoursePages/Complete';
 
 function App() {
   return (
-    <>
+    <div className='font-[Poppins]'>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -18,10 +22,16 @@ function App() {
           <Route path="/mycourse" element={<Mycourse />} />
           <Route path="/exams" element={<Exams />} />
           <Route path="/forms" element={<Forms />} />
-         < Route path="/exam" element={<Exam />} />
+          <Route path="/exam" element={<Exam />} />
+          {/* <div className='font-[Poppins]'> */}
+          <Route path='/learning' element={<PlayVideo/>}></Route>
+          <Route path='/learning/notes' element={<Notes/>}></Route>
+          <Route path='/learning/mcqs' element={<MCQs/>}></Route>
+          <Route path='/learning/complete' element={<Complete/>}></Route>
+          {/* </div> */}
         </Routes>
       </BrowserRouter>
-    </>
+    </div>
   );
 }
 
