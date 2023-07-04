@@ -13,9 +13,52 @@ import HelpOutlinedIcon from '@mui/icons-material/HelpOutlined';
 
 const Window = (props) => {
 
+    const questions = [
+        {
+            id: 1,
+            question: "Which of the following might not lead to an increase in the demand for a product that can be stored?",
+            options: {
+                a: "Fall in the price of the component",
+                b: "Rise in the price of the component.",
+                c: "Decrease in the production of the component",
+                d: "Increase in the production of the component"
+            }
+        },
+        {
+            id: 1,
+            question: "Who is the President of the United States?",
+            options: {
+              a: "Joe Biden",
+              b: "Donald Trump",
+              c: "Barack Obama",
+              d: "George Washington"
+            }
+          },
+          {
+            id: 2,
+            question: "What is the capital of France?",
+            options: {
+              a: "Paris",
+              b: "London",
+              c: "Berlin",
+              d: "Rome"
+            }
+          },
+          {
+            id: 3,
+            question: "Which planet is known as the Red Planet?",
+            options: {
+              a: "Mars",
+              b: "Jupiter",
+              c: "Venus",
+              d: "Saturn"
+            }
+          }
+    ]
+
     const options = [ 'a', 'b', 'c', 'd']
     const [ selected, setSelected ] = useState(null)
-    const [question, setQuestion] = useState( 1 );
+    const [question, setQuestion] = useState( 0 );
     const [mcqDone, setMcqDone] = useState ( false );
 
     const hideSideNav = () => {
@@ -38,9 +81,10 @@ const Window = (props) => {
             }
             setSelected(null)
         } else {
-            if (question > 1 ) {
+            if (question > 0 ) {
                 setQuestion( question - 1)
                 setSelected(null)
+                setMcqDone(false)
             }
         }
     }
@@ -81,31 +125,28 @@ const Window = (props) => {
                     </div>
             </div> 
             }
-
             { props.openPage === "mcqs" &&
             <div className="w-full h-full mt-4 ml-4 mr-4 tablet:mt-9 tablet:ml-28 tablet:mr-28 gap-10">
-                <div className="w-full p-2 tablet:p-6 border gap-12 border-blue-200">
+                <div className="w:full laptop:w-[706px] laptop:max-h-[340px] overflow-y-scroll p-2 tablet:p-6 border gap-12 border-blue-200">
                     <div className="tablet:gap-16">
                         <div className="tablet:gap-8">
                             <div className="tablet:gap-12 h-26">
                                 <div className="flex justify-start w-40 gap-0.5">
                                     <div className="flex justify-center items-start w-10 h-10">
                                         <HelpOutlinedIcon className="text-blue-500"/>
-                                        {/* <HiMiniQuestionMarkCircle className="text-blue-500"/> */}
                                     </div>
-                                    <p className="flex items-center w-36 h-full text-lg font-medium leading-6 tracking-normal text-left text-blue-500">Question {question}</p>
+                                    <p className="flex items-center w-36 h-full text-lg font-medium leading-6 tracking-normal text-left text-blue-500">Question {question + 1}</p>
                                 </div>
-                                <p className="text-lg font-normal leading-6 tracking-normal text-left text-black">Which of the following might not lead to an increase in the demand for a product that can be stored?</p>
+                                <p className="text-lg font-normal leading-6 tracking-normal text-left text-black">{questions[question].question}</p>
                             </div>
                             <div>
                                 {options.map((oneoption, index) => (
                                     <div className={selected === oneoption ? "flex justify-start items-center w-full px-5 py-4 border gap-2 border-blue-200 bg-blue-200" : "flex justify-start items-center w-full px-5 py-4 border gap-2 border-blue-100  hover:bg-blue-200"}  onClick={() => handleSelect(oneoption)}>
                                     <div className="w-4 h-4 p-0.5">
-                                        {/* <img src= {selected === oneoption ? optionselect : option } alt="option"/> */}
                                         {selected === oneoption ? <FaRegCircleDot className="text-blue-500"/> : <FaRegCircle className="text-blue-300"/> }
                                     </div>
                                     <p className="w-full h-fit text-sm font-normal leading-5 tracking-normal text-left pl-2 text-gray-700">
-                                    {oneoption}. A fall in the price of a complement.
+                                    {oneoption}. {questions[question].options[oneoption]}
                                     </p>
                                     </div>
                                 ))}
@@ -136,7 +177,7 @@ const Window = (props) => {
                         </div>
                     </Link>  }
                 </div>
-                <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-sidenav mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block" : "flex justify-center items-center w-10 h-10 ml-[1233px] mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block"} onClick={hideSideNav}>
+                <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-sidenav mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block" : "flex justify-center items-center w-10 h-10 ml-sidenavplus mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block"} onClick={hideSideNav}>
                 <div className="flex justify-center items-center w-6 h-6">
                     <div className="flex justify-center items-center w-6 h-6">
                         {props.hideSideNav ? 
@@ -148,7 +189,7 @@ const Window = (props) => {
             }
 
             {props.openPage === "complete" &&
-            <div className="flex flex-col justify-center items-center h-full gap-10">
+            <div className="flex flex-col justify-center items-center w-full laptop:w-playwindow h-full gap-10">
                     <div className="w-full h-fit gap-2">
                         <div className="flex flex-col justify-center items-center w-full h-28 gap-4">
                             <p className=" w-full tablet:w-3/5 h-9 text-2xl font-medium leading-9 tracking-normal text-center text-blue-600 ">Congratulations!</p>
