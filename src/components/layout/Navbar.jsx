@@ -9,7 +9,7 @@ const Navbar = () => {
           <img className=" h-[60%]   " src="./images/logo.png" alt="logo-img" />
         </div>
         <div className="">
-          <ul className="flex flex-row justify-around   gap-[32px]  font-Poppins font-[400] ">
+          <ul className="flex flex-row justify-around   gap-[20px]  font-Poppins font-[400] ">
             <li className="flex flex-row ">
               लोकसेवा (संघ र प्रदेश‌‍‍‌)
               <svg
@@ -58,7 +58,7 @@ const Navbar = () => {
                 />
               </svg>
             </li>
-            <li className=" ml-10">Current Affairs</li>
+            <li className="  justify-between">Current Affairs</li>
           </ul>
         </div>
         <div className="mr-10">

@@ -22,3 +22,7 @@
 .card-img{
 @apply text-center text-2xl font-[500] font-Poppins mt-4 ; 
 }
+
+.sm-text{
+  @apply text-[rgba(141,141,141,1)]  font-[400] text-xs font-Poppins;
+}

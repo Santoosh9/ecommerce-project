@@ -47,24 +47,6 @@ const Forms = () => {
 
   return (
     <>
-      <UserNav />
-      <div className="flex flex-col mt-1">
-        <div className="bg-blue-500 h-[150px] ">
-          <div className="flex flex-col ml-32 mt-10">
-            <p className=" font-bold  text-white">Dashbord</p>
-            <p className="mt-2 text-white	">Welcome back!</p>
-          </div>
-        </div>
-
-        <div className="w-[600px] ml-28 mt-2">
-          <ul className=" flex  mt-5 font-link gap-12">
-            <li className=" underline  text-sky-400">My Course</li>
-            <li>Exams</li>
-            <li>Forums</li>
-          </ul>
-        </div>
-      </div>
-
       <div className="flex flex-row">
         <div className="flex flex-col">
           <div className="h-[220px] w-[248.5px]  flex flex-col  flex-wrap border ml-28 mt-10 ">
@@ -72,24 +54,30 @@ const Forms = () => {
               <img className="h-[50%] mt-3" src="./images/ic1.png" />
 
               <ul className="ml-3">
-                <p className=" text-lg "> ALL</p>
-                <li className=" text-sm">show all post</li>
+                <p className=" text-[rgba(63,67,84,1)] font[500]  font-Poppins  text-base">
+                  ALL
+                </p>
+                <li className=" sm-text">show all post</li>
               </ul>
             </div>
             <div className=" ml-3  mt-3 flex border">
               <img className="h-[50%] mt-3" src="./images/ic2.png" />
 
               <ul className="ml-3">
-                <p className=" text-lg "> Posted by me</p>
-                <li className=" text-sm">Show posts posted by me</li>
+                <p className=" text-[rgba(63,67,84,1)] font[500] font-Poppins text-base ">
+                  Posted by me
+                </p>
+                <li className=" sm-text">Show posts posted by me</li>
               </ul>
             </div>
             <div className=" ml-3  mt-3 flex flex-row">
               <img className="h-[50%] mt-3" src="./images/ic3.png" />
 
               <ul className="ml-3">
-                <p className=" text-lg ">Commented by me</p>
-                <li className=" text-sm"> Show posts posted by me</li>
+                <p className=" text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins ">
+                  Commented by me
+                </p>
+                <li className="sm-text ">Show posts posted by me</li>
               </ul>
             </div>
           </div>
@@ -99,43 +87,55 @@ const Forms = () => {
               <div className="flex flex-row flex-wrap my-2 ">
                 <div className="flex flex-col w-full">
                   <ul>
-                    <p className=" text-lg text-sky-700">RBB</p>
-                    <li className="text-sm">82645 Posted by this tag</li>
+                    <p className="text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins ">
+                      RBB
+                    </p>
+                    <li className="sm-text">82645 Posted by this tag</li>
                   </ul>
                 </div>
 
                 <div className="flex flex-col  w-full">
                   <ul>
-                    <p className=" text-lg text-sky-700">NEA</p>
-                    <li className="text-sm">65523 Posted Trending</li>
+                    <p className="text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins ">
+                      NEA
+                    </p>
+                    <li className="sm-text">65523 Posted Trending</li>
                   </ul>
                 </div>
 
                 <div className="flex flex-col  w-full">
                   <ul>
-                    <p className=" text-lg text-sky-700">Lok Sewa</p>
-                    <li className="text-sm">Trending</li>
+                    <p className="text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins ">
+                      Lok Sewa
+                    </p>
+                    <li className="sm-text">Trending</li>
                   </ul>
                 </div>
 
                 <div className="flex flex-col  w-full">
                   <ul>
-                    <p className=" text-lg text-sky-700">Entrance</p>
-                    <li className="text-sm">Trending</li>
+                    <p className="text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins ">
+                      Entrance
+                    </p>
+                    <li className="sm-text">Trending</li>
                   </ul>
                 </div>
 
                 <div className="flex flex-col  w-full">
                   <ul>
-                    <p className=" text-lg text-sky-700">RSB</p>
-                    <li className="text-sm">Posted by this tag</li>
+                    <p className="text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins ">
+                      RSB
+                    </p>
+                    <li className="sm-text">Posted by this tag</li>
                   </ul>
                 </div>
 
                 <div className="flex flex-col  w-full">
                   <ul>
-                    <p className=" text-lg text-sky-700">Nepal Telecom</p>
-                    <li className="text-sm">48029 Posted by this tag</li>
+                    <p className="text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins ">
+                      Nepal Telecom
+                    </p>
+                    <li className="sm-text">48029 Posted by this tag</li>
                   </ul>
                 </div>
               </div>
@@ -177,7 +177,7 @@ const Forms = () => {
                       </ul>
                     </div>
 
-                    <div className=" mr-3 w-[450px] h-[120px] flex-wrap">
+                    <div className=" mr-3 w-[450px] h-[120px] flex-wrap font-Poppins text-rgba[(44,39,36,0.75)] font-[400] text-xs">
                       {item.description}
                     </div>
 
@@ -207,55 +207,55 @@ const Forms = () => {
               <div className="flex flex-row flex-wrap my-2 ">
                 <div className="flex flex-col w-full mt-1">
                   <ul>
-                    <p className=" text-lg text-sky-700">
+                    <p className="text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins ">
                       RBB 4th Level Course
                     </p>
-                    <li className="text-sm">82645 Posted by this tag</li>
+                    <li className="sm-text">82645 Posted by this tag</li>
                   </ul>
                 </div>
 
                 <div className="flex flex-col  w-full mt-1">
                   <ul>
-                    <p className=" text-lg text-sky-700">
+                    <p className="text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins ">
                       RBB 4th Level Course
                     </p>
-                    <li className="text-sm">65523 Posted Trending</li>
+                    <li className="sm-text">65523 Posted Trending</li>
                   </ul>
                 </div>
 
                 <div className="flex flex-col  w-full mt-1">
                   <ul>
-                    <p className=" text-lg text-sky-700 ">
+                    <p className="text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins  ">
                       RBB 4th Level Course
                     </p>
-                    <li className="text-sm">Trending</li>
+                    <li className="sm-text">Trending</li>
                   </ul>
                 </div>
 
                 <div className="flex flex-col  w-full mt-1">
                   <ul>
-                    <p className=" text-lg text-sky-700">
+                    <p className="text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins ">
                       RBB 4th Level Course
                     </p>
-                    <li className="text-sm">Trending</li>
+                    <li className="sm-text">Trending</li>
                   </ul>
                 </div>
 
                 <div className="flex flex-col  w-full mt-1">
                   <ul>
-                    <p className=" text-lg text-sky-700">
+                    <p className="text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins ">
                       RBB 4th Level Course
                     </p>
-                    <li className="text-sm">Posted by this tag</li>
+                    <li className="sm-text">Posted by this tag</li>
                   </ul>
                 </div>
 
                 <div className="flex flex-col  w-full mt-1">
                   <ul>
-                    <p className=" text-lg text-sky-700">
+                    <p className="text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins ">
                       RBB 4th Level Course
                     </p>
-                    <li className="text-sm">48029 Posted by this tag</li>
+                    <li className="sm-text">48029 Posted by this tag</li>
                   </ul>
                 </div>
               </div>
@@ -264,7 +264,7 @@ const Forms = () => {
         </div>
       </div>
       <FooetRecently />
-      <  Footer />
+      <Footer />
     </>
   );
 };

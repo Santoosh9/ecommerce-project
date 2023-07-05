@@ -8,6 +8,7 @@ import Forms from './components/dashboard/Forms';
 import Exam from './components/dashboard/Exam';
 import LokSewa from './components/dashboard/LokSewa';
 import CurrentOffiars from './components/dashboard/CurrentOffiars';
+import Dashbord from './components/dashboard/Dashbord';
 
 
 function App() {
@@ -23,6 +24,8 @@ function App() {
           <Route path="/forms" element={<Forms />} />
           <Route path="/exam" element={<Exam />} />
           <Route path="/loksewa" element={<LokSewa />} />
+
+          <Route path="/dashbord" element={<Dashbord />} />
 
           <Route path="/currentoffiars" element={<CurrentOffiars />} />
         </Routes>

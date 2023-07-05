@@ -11,7 +11,7 @@ const UserNav = () => {
         />
       </div>
       <div className=" ">
-        <ul className="flex items-center mt-8 gap-9">
+        <ul className="flex flex-row justify-around   gap-[20px]  font-Poppins font-[400] mt-10">
           <li className="mr-7 flex justify-between font-link">
             लोकसेवा (संघ र प्रदेश‌‍‍‌)
             <svg
@@ -60,10 +60,10 @@ const UserNav = () => {
               />
             </svg>
           </li>
-          <li className="mr-7 font-link">Current Affairs</li>
+          <li className=" justify-between">Current Affairs</li>
         </ul>
       </div>
-      <div className="flex justify-between mr-32 gap-6">
+      <div className="flex justify-between mr-32 gap-6 font-Poppins font-[400]">
         <img
           className=" w-[50%] h-[50%]  mt-6"
           src="./images/Notification.png"
