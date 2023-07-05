@@ -4,16 +4,12 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   return (
     <>
-      <div className="flex flex-row h-[96px]  lg:-full   border-[1px]  justify-around font-Poppins">
-        <div className="">
-          <img
-            className=" h-[70%] mt-3  "
-            src="./images/logo.png"
-            alt="logo-img"
-          />
+      <div className="flex flex-row h-[96px]  w-full   border-[1px]  justify-around font-Poppins  items-center ">
+        <div className="ml-10">
+          <img className=" h-[60%]   " src="./images/logo.png" alt="logo-img" />
         </div>
         <div className="">
-          <ul className="flex flex-row justify-around   gap-16 mt-6  font-Poppins">
+          <ul className="flex flex-row justify-around   gap-[32px]  font-Poppins font-[400] ">
             <li className="flex flex-row ">
               लोकसेवा (संघ र प्रदेश‌‍‍‌)
               <svg
@@ -62,19 +58,18 @@ const Navbar = () => {
                 />
               </svg>
             </li>
-            <li>Current Affairs</li>
+            <li className=" ml-10">Current Affairs</li>
           </ul>
         </div>
-        <div className=" mr-6">
+        <div className="mr-10">
           <Link to="/login">
-            <button className=" text-blue-500   font-link mt-6 mr-10  font-Poppins ">
+            <button className=" font-[500] w-[107px]  mr-10   font-Poppins text-[rgba(0,110,185,1)] ">
               Login
             </button>
           </Link>
 
           <Link to="/register">
-            <button className="btn h-[40%] mt-6  font-Poppins">
-        
+            <button className=" text-white  h-[40px] font-[500]  w-[130px] font-Poppins  bg-[rgba(0,110,185,1)]">
               Register
             </button>
           </Link>
