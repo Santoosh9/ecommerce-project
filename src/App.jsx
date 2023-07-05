@@ -24,9 +24,8 @@ function App() {
           <Route path="/exams" element={<Exams />} />
           <Route path="/forms" element={<Forms />} />
           <Route path="/exam" element={<Exam />} />
-          {/* <div className='font-[Poppins]'> */}
-          <Route path='/learning' element={<PlayVideo/>}></Route>
-          <Route path='/learning/about' element={<About/>}></Route>
+          <Route path='/learning' element={<About/>}></Route>
+          <Route path='/learning/video' element={<PlayVideo/>}></Route>
           <Route path='/learning/notes' element={<Notes/>}></Route>
           <Route path='/learning/mcqs' element={<MCQs/>}></Route>
           <Route path='/learning/complete' element={<Complete/>}></Route>

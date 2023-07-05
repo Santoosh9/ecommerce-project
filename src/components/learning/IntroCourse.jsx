@@ -2,11 +2,12 @@ import React from "react";
 import { BsPlayCircle } from 'react-icons/bs'
 import { HiOutlineClock } from 'react-icons/hi2'
 import cover from "../../Assets/cover.png";
+import { Link } from "react-router-dom";
 
 
 const IntroCourse = () => {
     return (
-        <div className="flex flex-col-reverse laptop:flex-row w-full laptop:w-[1200px] h-[408px] mt-32 ml-6 tablet:mt-60 laptop:mt-40 tablet:ml-32 gap-6 laptop:gap-24">
+        <div className="flex flex-col-reverse laptop:flex-row w-full laptop:w-[1200px] h-[408px] mt-32 ml-6 tablet:mt-60 laptop:mt-40 tablet:ml-32 gap-6 laptop:gap-24 border-b border-b-[#E1ECF3]">
             <div className=" w-full laptop:w-[50%] h-full">
                 <div className="w-full h-[272px] gap:4 tablet:gap-16">
                     <div className="flex flex-col justify-between w-full h-[272px] gap-2 tablet:gap-6">
@@ -38,7 +39,9 @@ const IntroCourse = () => {
                             <p className="w-fit h-full font-medium text-xl leading-6 text-[#006EB9]">Rs. 4,500/-</p>
                         </div>
                         <div className="w-fit h-12 gap-4">
-                            <button className="w-fit h-12 px-8 py-4 bg-[#006EB9] text-white text-center">Enroll Now</button>
+                            <Link to="video">
+                                <button className="flex w-fit h-12 px-8 py-4 bg-[#006EB9] text-white text-center items-center">Enroll Now</button>
+                            </Link>
                         </div> 
                     </div>
                 </div>

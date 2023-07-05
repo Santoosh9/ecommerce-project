@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import docs from "../../Assets/doc.png";
-import done from "../../Assets/done.png"
-import remain from "../../Assets/remain.png"
 import ReactPlayer from "react-player"
 import { Link } from "react-router-dom";
 import { TfiAngleRight } from 'react-icons/tfi'
@@ -9,7 +7,8 @@ import { TfiAngleLeft } from 'react-icons/tfi'
 import { FaRegCircle } from 'react-icons/fa'
 import { FaRegCircleDot } from 'react-icons/fa6'
 import HelpOutlinedIcon from '@mui/icons-material/HelpOutlined';
-
+import LinearProgress from '@mui/joy/LinearProgress';
+import { progress } from "@material-tailwind/react";
 
 const Window = (props) => {
 
@@ -102,7 +101,7 @@ const Window = (props) => {
                 <div className="mobile:max-tablet:block tablet:hidden">
                     <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' controls playing width="320px" height="220px"/>
                 </div>
-                <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-sidenav mt-sidenavh p-2 border border-r-0 bg-black border-blue-100 absolute inset-0 mobile:hidden laptop:block" : "flex justify-center items-center w-10 h-10 ml-sidenavplus mt-sidenavh p-2 border border-r-0 bg-black border-blue-100 absolute inset-0 sm:hidden lg:block"} onClick={hideSideNav}>
+                <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-sidenav mt-sidenavh p-2 border border-r-0 bg-black border-blue-100 absolute inset-0 mobile:hidden laptop:block cursor-pointer" : "flex justify-center items-center w-10 h-10 ml-sidenavplus mt-sidenavh p-2 border border-r-0 bg-black border-blue-100 absolute inset-0 sm:hidden lg:block cursor-pointer"} onClick={hideSideNav}>
                 <div className="flex justify-center items-center w-6 h-6">
                     <div className="flex justify-center items-center w-6 h-6">
                         {props.hideSideNav ? 
@@ -115,7 +114,7 @@ const Window = (props) => {
             { props.openPage === "notes" &&
             <div className="flex justify-center w-playwindow h-playwindow">
                     <img src={docs} alt="docs" width="628px"/>
-                    <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-sidenav mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block " : "flex justify-center items-center w-10 h-10 ml-sidenavplus mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block "} onClick={hideSideNav}>
+                    <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-sidenav mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block cursor-pointer " : "flex justify-center items-center w-10 h-10 ml-sidenavplus mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block cursor-pointer "} onClick={hideSideNav}>
                         <div className="flex justify-center items-center w-6 h-6">
                             <div className="flex justify-center items-center w-6 h-6">
                                 {props.hideSideNav ? 
@@ -177,7 +176,7 @@ const Window = (props) => {
                         </div>
                     </Link>  }
                 </div>
-                <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-sidenav mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block" : "flex justify-center items-center w-10 h-10 ml-sidenavplus mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block"} onClick={hideSideNav}>
+                <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-sidenav mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block cursor-pointer" : "flex justify-center items-center w-10 h-10 ml-sidenavplus mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block cursor-pointer"} onClick={hideSideNav}>
                 <div className="flex justify-center items-center w-6 h-6">
                     <div className="flex justify-center items-center w-6 h-6">
                         {props.hideSideNav ? 
@@ -199,16 +198,13 @@ const Window = (props) => {
                             <div className="flex flex-col justify-center w-3/5 h-9 ml-0.5 gap-2 items-center">
                                 <p className="w-full h-5 text-sm font-normal mt-8 tablet:mt-0 leading-5 tracking-normal text-right text-blue-600">62/100</p>
                                 <div className=" flex w-full h-2 justify-center">
-                                    <div className=" flex justify-center relative">
-                                        <img src={done} alt="done" className="absolute inset-0" />
-                                        <img src={remain} alt="remain" />
-                                    </div>
+                                    <LinearProgress determinate value={62}/>
                                 </div>
                             </div>
                         </div>               
                     </div>
                     <button className="w-32 h-10 rounded-full mb-2 tablet:mb-0 tablet:w-40 tablet:h-12 py-2 px-4 bg-[#006EB9] ">Done</button>
-                    <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-sidenav mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block" : "flex justify-center items-center w-10 h-10 ml-sidenavplus mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block"} onClick={hideSideNav}>
+                    <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-sidenav mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block cursor-pointer" : "flex justify-center items-center w-10 h-10 ml-sidenavplus mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block cursor-pointer"} onClick={hideSideNav}>
                         <div className="flex justify-center items-center w-6 h-6">
                             <div className="flex justify-center items-center w-6 h-6">
                                 {props.hideSideNav ? 
