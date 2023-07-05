@@ -24,7 +24,7 @@ const Forms = () => {
       texttop1: 'Lok Sewa',
       texttop2: 'RBB',
       description:
-        'Pemrograman web atau web programming adalah istilah yang berkaitan erat dengan website dan internet. Mengapa begitu? Karena web programming adalah salah satu proses pembuatan website untuk keperluan internet yang biasanya disebut dengan istilah WWW atau world wide web. Istilah WWW banyak dikenal karena',
+        'Pemrograman web atau web programming adalah istilah yang berkaitan  dengan website dan internet. Mengapa begitu? Karena web programming adalah salah satu proses pembuatan website untuk keperluan internet yang biasanya disebut dengan istilah WWW atau world wide web. Istilah WWW banyak dikenal karena',
       name: 'Santoosh',
       views: '651324 Views',
       cmt: '56 comments',
