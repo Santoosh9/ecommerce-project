@@ -10,6 +10,7 @@ import PlayVideo from './CoursePages/PlayVideo';
 import Notes from './CoursePages/Notes';
 import MCQs from './CoursePages/Mcqs';
 import Complete from './CoursePages/Complete';
+import About from './CoursePages/About';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/exam" element={<Exam />} />
           {/* <div className='font-[Poppins]'> */}
           <Route path='/learning' element={<PlayVideo/>}></Route>
+          <Route path='/learning/about' element={<About/>}></Route>
           <Route path='/learning/notes' element={<Notes/>}></Route>
           <Route path='/learning/mcqs' element={<MCQs/>}></Route>
           <Route path='/learning/complete' element={<Complete/>}></Route>

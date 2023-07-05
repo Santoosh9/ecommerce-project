@@ -127,7 +127,7 @@ const Window = (props) => {
             }
             { props.openPage === "mcqs" &&
             <div className="w-full h-full mt-4 ml-4 mr-4 tablet:mt-9 tablet:ml-28 tablet:mr-28 gap-10">
-                <div className="w:full laptop:w-[706px] laptop:max-h-[340px] overflow-y-scroll p-2 tablet:p-6 border gap-12 border-blue-200">
+                <div className="w:full laptop:w-[706px] laptop:max-h-[340px] overflow-y-auto p-2 tablet:p-6 border gap-12 border-blue-200">
                     <div className="tablet:gap-16">
                         <div className="tablet:gap-8">
                             <div className="tablet:gap-12 h-26">
