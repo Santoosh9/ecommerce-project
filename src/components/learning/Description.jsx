@@ -12,7 +12,139 @@ import { RxDotFilled } from 'react-icons/rx'
 
 const Description = (props) => {
 
-    const chapters = ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5", "Chapter 6" ]
+    // const chapters = ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5", "Chapter 6" ]
+    const chapters = [
+        {
+            id: '1',
+            title: 'Foundation and Basics of Accounting',
+            video: '12',
+            notes: '7',
+            mcqs: '18',
+            subchapters: [
+                {
+                    id: '1',
+                    title: 'Foundation and Basics of Accounting',
+                },
+                {
+                    id: '2',
+                    title: 'Foundation and Basics of Accounting II',
+                },
+                {
+                    id: '3',
+                    title: 'Foundation and Basics of Accounting III',
+                },
+                {
+                    id: '4',
+                    title: 'Foundation and Basics of Accounting IV',
+                }
+            ]
+        },
+        {
+            id: '2',
+            title: 'Laws of Accounting',
+            video: '22',
+            notes: '12',
+            mcqs: '20',
+            subchapters: [
+                {
+                    id: '1',
+                    title: 'Laws of Accounting',
+                },
+                {
+                    id: '2',
+                    title: 'Laws of Accounting II',
+                },
+                {
+                    id: '3',
+                    title: 'Laws of Accounting III',
+                },
+                {
+                    id: '4',
+                    title: 'Laws of Accounting IV',
+                }
+            ]
+        },
+        {
+            id: '3',
+            title: 'Advanced Accounting',
+            video: '29',
+            notes: '72',
+            mcqs: '11',
+            subchapters: [
+                {
+                    id: '1',
+                    title: 'Advanced Accounting',
+                },
+                {
+                    id: '2',
+                    title: 'Advanced Accounting II',
+                },
+                {
+                    id: '3',
+                    title: 'Advanced Accounting III',
+                },
+            ]
+        },
+        {
+            id: '4',
+            title: 'Foundation and Basics of Accounting',
+            video: '12',
+            notes: '7',
+            mcqs: '18',
+            subchapters: [
+                {
+                    id: '1',
+                    title: 'Foundation and Basics of Accounting'
+                },
+                {
+                    id: '2',
+                    title: 'Foundation and Basics of Accounting II',
+                }
+            ]
+        },
+        {
+            id: '5',
+            title: 'Laws of Accounting',
+            video: '22',
+            notes: '12',
+            mcqs: '20',
+            subchapters: [
+                {
+                    id: '1',
+                    title: 'Laws of Accounting',
+                },
+                {
+                    id: '2',
+                    title: 'Laws of Accounting II',
+                },
+                {
+                    id: '3',
+                    title: 'Laws of Accounting III',
+                }
+            ]
+        },
+        {
+            id: '6',
+            title: 'Advanced Accounting',
+            video: '29',
+            notes: '72',
+            mcqs: '11',
+            subchapters: [
+                {
+                    id: '1',
+                    title: 'Advanced Accounting',
+                },
+                {
+                    id: '2',
+                    title: 'Advanced Accounting II',
+                },
+                {
+                    id: '3',
+                    title: 'Advanced Accounting III',
+                },
+            ]
+        }
+    ]
     const subchapters = ["1", "2", "3", "4"]
     const [toggle, setToggle] = useState([]);
 
@@ -148,26 +280,26 @@ const Description = (props) => {
                                     <FaAngleDown/>}
                                 </div>
                                 <div className="flex flex-col laptop:flex-row w-full h-fit">
-                                    <p className="w-fit laptop:w-full h-full font-medium text-lg leading-6">{chapter}. Foundation and Basics Accounting</p>
+                                    <p className="w-fit flex items-center laptop:w-full h-full font-medium text-lg leading-6">Chapter {chapter.id}. {chapter.title}</p>
                                     <div className="w-fit h-full gap-6">
                                         <div className="flex items-center w-fit h-5 gap-0 laptop:gap-4 py-4">
                                             <div className="flex items-center w-24 h-5 gap-0 tablet:gap-2">
                                                 <div className="w-5 h-5 flex items-center">
                                                     <IoVideocamOutline/>
                                                 </div>
-                                                <p className="w-fit h-full font-normal text-sm leading-5">12 Videos</p>
+                                                <p className="w-fit h-full font-normal text-sm leading-5">{chapter.video} Videos</p>
                                             </div>
                                             <div className="flex items-center w-24 h-5 gap-0 tablet:gap-2">
                                                 <div className="w-5 h-5 flex items-center">
                                                     <GrDocumentText/>
                                                 </div>
-                                                <p className="w-fit h-full font-normal text-sm leading-5">8 Notes</p>
+                                                <p className="w-fit h-full font-normal text-sm leading-5">{chapter.notes} Notes</p>
                                             </div>
                                             <div className="flex items-center w-24 h-5 gap-0 tablet:gap-2">
                                                 <div className="w-5 h-5 flex items-center">
                                                     <CgFileDocument/>
                                                 </div>
-                                                <p className="w-fit h-full font-normal text-sm leading-5">24 MCQs</p>
+                                                <p className="w-fit h-full font-normal text-sm leading-5">{chapter.mcqs} MCQs</p>
                                             </div>
                                         </div>
                                     </div>
@@ -175,7 +307,7 @@ const Description = (props) => {
                             </div>
                             {toggle[chapterIndex] && 
                                 <div className="w-full h-fit border-t border-t-[#E1ECF3] bg-white  mt-8">
-                                    {subchapters.map((subchapter, index) => (
+                                    {chapter.subchapters.map((subchapter, index) => (
                                         <div className="w-full tablet:w-[90%] h-fit mt-1 ml-0 laptop:ml-9">
                                         <div className="w-full h-fit border-b border-b-[#E1ECF3] px-10 py-6">
                                             <div className="flex flex-col tablet:flex-row justify-between  w-full h-fit">
@@ -183,7 +315,7 @@ const Description = (props) => {
                                                     <div className="w-6 h-6 flex items-center">
                                                         <RxDotFilled/>
                                                     </div>
-                                                    <p className="w-fit h-full font-normal text-base leading-6 ">Foundation and Basics of Accounting and its principles</p>
+                                                    <p className="w-fit h-full font-normal text-base leading-6 ">{subchapter.title}</p>
                                                 </div>
                                                 <div className="flex justify-between items-center w-fit h-5 gap-1 tablet:gap-3 ml-8 ">
                                                     <p className="w-fit h-full font-normal text-sm leading-5 text-[#2C2724BF]">Videos</p>

@@ -15,8 +15,12 @@ const About = () => {
 
     return (
         <div>
+            <UserNav/>
             <IntroCourse/>
             <Description openTab={openTab} handleTabChange={handleTabChange}/>
+            <FooetRecently/>
+            <Footer/>
+           
         </div>
     )
 }

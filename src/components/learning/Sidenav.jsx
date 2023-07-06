@@ -11,8 +11,138 @@ const Sidenav = ( props ) => {
     const [toggle, setToggle] = useState([]);
     console.log(props.subChapter);
 
-    const chapters = ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5", "Chapter 6" ]
-    const subchapters = ["1", "2", "3", "4"]
+    const chapters = [
+        {
+            id: '1',
+            title: 'Foundation and Basics of Accounting',
+            video: '12',
+            notes: '7',
+            mcqs: '18',
+            subchapters: [
+                {
+                    id: '1',
+                    title: 'Foundation and Basics of Accounting',
+                },
+                {
+                    id: '2',
+                    title: 'Foundation and Basics of Accounting II',
+                },
+                {
+                    id: '3',
+                    title: 'Foundation and Basics of Accounting III',
+                },
+                {
+                    id: '4',
+                    title: 'Foundation and Basics of Accounting IV',
+                }
+            ]
+        },
+        {
+            id: '2',
+            title: 'Laws of Accounting',
+            video: '22',
+            notes: '12',
+            mcqs: '20',
+            subchapters: [
+                {
+                    id: '1',
+                    title: 'Laws of Accounting',
+                },
+                {
+                    id: '2',
+                    title: 'Laws of Accounting II',
+                },
+                {
+                    id: '3',
+                    title: 'Laws of Accounting III',
+                },
+                {
+                    id: '4',
+                    title: 'Laws of Accounting IV',
+                }
+            ]
+        },
+        {
+            id: '3',
+            title: 'Advanced Accounting',
+            video: '29',
+            notes: '72',
+            mcqs: '11',
+            subchapters: [
+                {
+                    id: '1',
+                    title: 'Advanced Accounting',
+                },
+                {
+                    id: '2',
+                    title: 'Advanced Accounting II',
+                },
+                {
+                    id: '3',
+                    title: 'Advanced Accounting III',
+                },
+            ]
+        },
+        {
+            id: '4',
+            title: 'Foundation and Basics of Accounting',
+            video: '12',
+            notes: '7',
+            mcqs: '18',
+            subchapters: [
+                {
+                    id: '1',
+                    title: 'Foundation and Basics of Accounting'
+                },
+                {
+                    id: '2',
+                    title: 'Foundation and Basics of Accounting II',
+                }
+            ]
+        },
+        {
+            id: '5',
+            title: 'Laws of Accounting',
+            video: '22',
+            notes: '12',
+            mcqs: '20',
+            subchapters: [
+                {
+                    id: '1',
+                    title: 'Laws of Accounting',
+                },
+                {
+                    id: '2',
+                    title: 'Laws of Accounting II',
+                },
+                {
+                    id: '3',
+                    title: 'Laws of Accounting III',
+                }
+            ]
+        },
+        {
+            id: '6',
+            title: 'Advanced Accounting',
+            video: '29',
+            notes: '72',
+            mcqs: '11',
+            subchapters: [
+                {
+                    id: '1',
+                    title: 'Advanced Accounting',
+                },
+                {
+                    id: '2',
+                    title: 'Advanced Accounting II',
+                },
+                {
+                    id: '3',
+                    title: 'Advanced Accounting III',
+                },
+            ]
+        }
+    ]
       
     const toggleView = ( index ) => {
         const updatedToggle = [...toggle];
@@ -44,26 +174,26 @@ const Sidenav = ( props ) => {
                             <div className="flex w-full h-20 gap-16">
                                 <div className="w-full h-20 gap-2"> 
                                     <p className="w-[80%] laptop:w-80 h-12 text-base font-medium leading-6 text-left">
-                                        {chapter}:  Foundation and Basics of Accounting
+                                        Chapter {chapter.id}:  {chapter.title}
                                     </p>
                                     <div className="flex justify-start ml-0 mt-2 w-72 h-5 gap-6">
-                                        <div className="flex justify-start items-center w-36 h-5 gap-2">
+                                        <div className="flex justify-start items-center w-40 h-5 gap-2">
                                             <div className="flex justify-center items-center w-4 h-4">
                                                 <IoVideocamOutline/>
                                             </div>
-                                            <p className="text-xs font-normal leading-5 tracking-normal text-left"> 12 videos</p>
+                                            <p className="text-xs font-normal leading-5 tracking-normal text-left"> {chapter.video} videos</p>
                                         </div>
                                         <div className="flex justify-start items-center w-36 h-5 gap-2">
                                             <div className="flex justify-center items-center w-4 h-4">
                                                 <GrDocumentText/>
                                             </div>
-                                            <p className="text-xs font-normal leading-5 tracking-normal text-left">9 notes</p>
+                                            <p className="text-xs font-normal leading-5 tracking-normal text-left"> {chapter.notes} notes</p>
                                         </div>
                                         <div className="flex justify-start items-center w-36 h-5 gap-2">
                                             <div className="flex justify-center items-center w-4 h-4">
                                                 <CgFileDocument/>
                                             </div>
-                                            <p className="text-xs font-normal leading-5 tracking-normal text-left">24 MCQs</p>
+                                            <p className="text-xs font-normal leading-5 tracking-normal text-left">{chapter.mcqs} MCQs</p>
                                         </div>
                                     </div>
                                 </div>
@@ -80,7 +210,7 @@ const Sidenav = ( props ) => {
                         
                     { toggle[chapterIndex] &&
                     <div>
-                        {subchapters.map((subchapter, subChapterIndex) => (
+                        {chapter.subchapters.map((subchapter, subChapterIndex) => (
                             <div className= { props.subChapter === subChapterIndex && props.chapter === chapterIndex ? "w-full h-24 py-4 pr-2 pl-0.5 bg-[#E1ECF3]" : "w-full h-24 py-4 pr-2 pl-0.5 hover:bg-[#E1ECF3]"} onClick={() => handleSelect(chapterIndex, subChapterIndex)}>
                             <div className="laptop:w-96 h-16 w-full">
                                 <div className="laptop:w-96 h-10 gap-4 w-full">
@@ -88,7 +218,7 @@ const Sidenav = ( props ) => {
                                         <div className="w-5 h-5 p-1.5">
                                             <RxDotFilled/>
                                         </div>
-                                        <p className="w-full laptop:w-96 h-10 text-sm font-normal leading-5 tracking-normal text-left">Foundation and Basics of Accounting and its principles</p>
+                                        <p className="w-full laptop:w-96 h-10 text-sm font-normal leading-5 tracking-normal text-left">{subchapter.title}</p>
                                     </div>
                                 </div>
                                 <div className="flex justify-between align-middle w-36 h-5 mt-1.5 ml-7">

@@ -24,7 +24,7 @@ const Selectbar = (props) => {
                         <div className="flex items-center justify-center mobile:w-16 mobile:h-10 tablet:w-28 tablet:h-12 tablet:px-8 tablet:py-2 border tablet:gap-2 bg-black text-white rounded-3xl">
                             <p>Video</p>
                         </div> :
-                        <Link to="/learning">
+                        <Link to="/learning/video">
                             <div className="flex items-center justify-center mobile:w-16 mobile:h-10 tablet:w-28 tablet:h-12 tablet:px-8 tablet:py-2 border tablet:gap-2 rounded-3xl border-blue-200">
                                 <p>Video</p>
                             </div>

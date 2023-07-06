@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const IntroCourse = () => {
     return (
-        <div className="flex flex-col-reverse laptop:flex-row w-full laptop:w-[1200px] h-[408px] mt-32 ml-6 tablet:mt-60 laptop:mt-40 tablet:ml-32 gap-6 laptop:gap-24 border-b border-b-[#E1ECF3]">
+        <div className="flex flex-col-reverse laptop:flex-row w-full laptop:w-[1200px] h-[408px] mt-32 ml-6 tablet:mt-60 laptop:mt-20 tablet:ml-32 gap-6 laptop:gap-24 border-b border-b-[#E1ECF3]">
             <div className=" w-full laptop:w-[50%] h-full">
                 <div className="w-full h-[272px] gap:4 tablet:gap-16">
                     <div className="flex flex-col justify-between w-full h-[272px] gap-2 tablet:gap-6">
