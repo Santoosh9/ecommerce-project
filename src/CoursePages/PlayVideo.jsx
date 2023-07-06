@@ -46,7 +46,7 @@ const PlayVideo = () => {
 
     return (
     <div className="App">
-      <CourseHead />
+      <CourseHead header="course" />
       <div className='flex flex-col mobile:w-full tablet:w-full laptop:flex-row laptop:w-full laptop:justify-center'>
           <div>
             <Topic subChapter = {selectData} chapter = {chapterData} hideSideNav={hideSideNav}/>
@@ -56,7 +56,6 @@ const PlayVideo = () => {
           {hideSideNav && 
             <Sidenav handleSelectData={handleSelectData} handleChapterData={handleChapterData} subChapter = {selectData} chapter = {chapterData}/>
           }
-          {/* <Sidenav handleSelectData={handleSelectData} handleChapterData={handleChapterData} subChapter = {selectData} chapter = {chapterData}/> */}
       </div>
     </div>
     )

@@ -6,7 +6,7 @@ import { BsChevronDown } from 'react-icons/bs'
 import { BsChevronUp } from 'react-icons/bs'
 import Dropdown from "./Dropdown";
 
-const CourseHead = () => {
+const CourseHead = (props) => {
 
     const [clicked, setClicked] = useState(false)
 
@@ -18,10 +18,14 @@ const CourseHead = () => {
         <div className="flex justify-between mobile:w-full tablet:w-full laptop:w-navwidth h-navheight px-2.5 py-10 border-b border-b-blue-200 gap:auto laptop:gap-navgap">
             <div className="flex items-center gap-2 tablet:gap-8 h-76 mobile:w-60 tablet:w-[50%]">
                 <img src={logo} alt="logo" className="w-16 h-16 ml-4 tablet:ml-10" />
+                { props.header === 'course' &&
+                <div>
                 <p className="w-full h-6 text-base font-medium leading-6 tracking-normal text-left mobile:hidden tablet:flex">
                 Rastriya Banijya Bank (RBB) 4th Level Full Course
                 </p>
                 <p className="tablet:hidden ml-0.5 w-full">RBB 4th Level</p>
+                </div>}
+                {props.header === "exam" && <p className="w-full h-6 text-base font-medium leading-6 tracking-normal text-left">Exam</p>}
             </div>
             <div className="flex items-center mr-6">
                 <div className="flex items-center tablet:gap-4">

@@ -11,6 +11,7 @@ import Notes from './CoursePages/Notes';
 import MCQs from './CoursePages/Mcqs';
 import Complete from './CoursePages/Complete';
 import About from './CoursePages/About';
+import AttemptExam from './CoursePages/ExamAttempt';
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
           <Route path="/exams" element={<Exams />} />
           <Route path="/forms" element={<Forms />} />
           <Route path="/exam" element={<Exam />} />
+          <Route path="/exam/attempt" element={<AttemptExam />} />
           <Route path='/learning' element={<About/>}></Route>
           <Route path='/learning/video' element={<PlayVideo/>}></Route>
           <Route path='/learning/notes' element={<Notes/>}></Route>

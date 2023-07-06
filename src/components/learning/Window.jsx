@@ -8,7 +8,6 @@ import { FaRegCircle } from 'react-icons/fa'
 import { FaRegCircleDot } from 'react-icons/fa6'
 import HelpOutlinedIcon from '@mui/icons-material/HelpOutlined';
 import LinearProgress from '@mui/joy/LinearProgress';
-import { progress } from "@material-tailwind/react";
 
 const Window = (props) => {
 
@@ -16,42 +15,94 @@ const Window = (props) => {
         {
             id: 1,
             question: "Which of the following might not lead to an increase in the demand for a product that can be stored?",
-            options: {
-                a: "Fall in the price of the component",
-                b: "Rise in the price of the component.",
-                c: "Decrease in the production of the component",
-                d: "Increase in the production of the component"
-            }
+            options: [
+                {
+                    key: "a",
+                    value: "Fall in the price of the component"
+                },
+                {
+                    key: "b",
+                    value: "Rise in the price of the component."
+                },
+                {
+                    key: "c",
+                    value: "Decrease in the production of the component"
+                },
+                {
+                    key: "d",
+                    value: "Increase in the production of the component"
+                }
+            ],
+            selected: null
         },
         {
-            id: 1,
-            question: "Who is the President of the United States?",
-            options: {
-              a: "Joe Biden",
-              b: "Donald Trump",
-              c: "Barack Obama",
-              d: "George Washington"
-            }
-          },
-          {
             id: 2,
-            question: "What is the capital of France?",
-            options: {
-              a: "Paris",
-              b: "London",
-              c: "Berlin",
-              d: "Rome"
-            }
+            question: "Who is the President of the United States?",
+            options: [
+                {
+                    key: "a",
+                    value: "Joe Biden"
+                },
+                {
+                    key: "b",
+                    value: "Donald Trump."
+                },
+                {
+                    key: "c",
+                    value: "Decrease in the production of the component"
+                },
+                {
+                    key: "d",
+                    value: "Increase in the production of the component"
+                }
+            ],
+            selected: null
+          },
+        {
+            id: 3,
+            question: "Which of the following might not lead to an increase in the demand for a product that can be stored?",
+            options: [
+                {
+                    key: "a",
+                    value: "Fall in the price of the component"
+                },
+                {
+                    key: "b",
+                    value: "Rise in the price of the component."
+                },
+                {
+                    key: "c",
+                    value: "Decrease in the production of the component"
+                },
+                {
+                    key: "d",
+                    value: "Increase in the production of the component"
+                }
+            ],
+            selected: null
           },
           {
-            id: 3,
+            id: 4,
             question: "Which planet is known as the Red Planet?",
-            options: {
-              a: "Mars",
-              b: "Jupiter",
-              c: "Venus",
-              d: "Saturn"
-            }
+            options: [
+                {
+                    key: "a",
+                    value: "Fall in the price of the component"
+                },
+                {
+                    key: "b",
+                    value: "Rise in the price of the component."
+                },
+                {
+                    key: "c",
+                    value: "Decrease in the production of the component"
+                },
+                {
+                    key: "d",
+                    value: "Increase in the production of the component"
+                }
+            ],
+            selected: null
           }
     ]
 
@@ -64,8 +115,17 @@ const Window = (props) => {
         props.sideNavControl(1);
     }
 
-    const handleSelect = (data) => {
-        setSelected(data)
+    const handleSelect = (que, option) => {
+        console.log(que, option);
+        setSelected(que);
+        let length = questions.length;
+        for (let i = 0; i < length;  i++ ) {
+            if (questions[i].id === que) {
+                console.log(questions[i].selected)
+                questions[i].selected = "a";
+                console.log(questions[i].selected)
+            }
+        }
     }
 
     const handleChangeQue = (data) => {
@@ -124,7 +184,7 @@ const Window = (props) => {
                     </div>
             </div> 
             }
-            { props.openPage === "mcqs" &&
+            { props.openPage === "mcqs"  &&
             <div className="w-full h-full mt-4 ml-4 mr-4 tablet:mt-9 tablet:ml-28 tablet:mr-28 gap-10">
                 <div className="w:full laptop:w-[706px] laptop:max-h-[340px] overflow-y-auto p-2 tablet:p-6 border gap-12 border-blue-200">
                     <div className="tablet:gap-16">
@@ -139,20 +199,20 @@ const Window = (props) => {
                                 <p className="text-lg font-normal leading-6 tracking-normal text-left text-black">{questions[question].question}</p>
                             </div>
                             <div>
-                                {options.map((oneoption, index) => (
-                                    <div className={selected === oneoption ? "flex justify-start items-center w-full px-5 py-4 border gap-2 border-blue-200 bg-blue-200" : "flex justify-start items-center w-full px-5 py-4 border gap-2 border-blue-100  hover:bg-blue-200"}  onClick={() => handleSelect(oneoption)}>
-                                    <div className="w-4 h-4 p-0.5">
-                                        {selected === oneoption ? <FaRegCircleDot className="text-blue-500"/> : <FaRegCircle className="text-blue-300"/> }
-                                    </div>
-                                    <p className="w-full h-fit text-sm font-normal leading-5 tracking-normal text-left pl-2 text-gray-700">
-                                    {oneoption}. {questions[question].options[oneoption]}
-                                    </p>
+                                {questions[question].options.map((oneoption, index) => (
+                                    <div className={selected === oneoption.key ? "flex justify-start items-center w-full px-5 py-4 border gap-2 border-blue-200 bg-blue-200" : "flex justify-start items-center w-full px-5 py-4 border gap-2 border-blue-100  hover:bg-blue-200"}  onClick={() => handleSelect(oneoption.key)}>
+                                        <div className="w-4 h-4 p-0.5">
+                                            {selected === oneoption.key ? <FaRegCircleDot className="text-blue-500"/> : <FaRegCircle className="text-blue-300"/> }
+                                        </div>
+                                        <p className="w-full h-fit text-sm font-normal leading-5 tracking-normal text-left pl-2 text-gray-700">
+                                        {oneoption.key}. {oneoption.value}
+                                        </p>
                                     </div>
                                 ))}
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> 
                 <div className="flex justify-between w-full h-4 m-4 laptop:gap-96">
                     <div className="flex justify-center items-center w-24 h-4 gap-2" onClick={ () => handleChangeQue(0)}>
                         <div className="flex justify-center items-center w-4 h-4">
@@ -212,6 +272,64 @@ const Window = (props) => {
                             </div>
                         </div>
                     </div>
+            </div>
+            }
+
+            { props.openPage === "exam"  &&
+            <div className="overflow-y-auto">
+            <div className="w-[80%] h-full mt-4 ml-4 mr-4 tablet:mt-9 tablet:ml-20 tablet:mr-10 gap-10">
+            {questions.map((onequestion, index) => (
+                <div className="w:full h-fit mt-10  p-2 tablet:p-6 border gap-12 border-blue-200">
+                    <div className="tablet:gap-16">
+                        <div className="tablet:gap-8">
+                                <div>
+                                <div className="tablet:gap-12 h-26">
+                                <div className="flex justify-start w-40 gap-0.5">
+                                    <div className="flex justify-center items-start w-10 h-10">
+                                        <HelpOutlinedIcon className="text-blue-500"/>
+                                    </div>
+                                    <p className="flex items-center w-36 h-full text-lg font-medium leading-6 tracking-normal text-left text-blue-500">Question {onequestion.id}</p>
+                                </div>
+                                <p className="text-lg font-normal leading-6 tracking-normal text-left text-black">{onequestion.question}</p>
+                            </div>
+                            <div>
+                                {onequestion.options.map((oneoption, index) => (
+                                    <div className={(oneoption.key === onequestion.selected) ? "flex justify-start items-center w-full px-5 py-4 border gap-2 border-blue-200 bg-blue-200" : "flex justify-start items-center w-full px-5 py-4 border gap-2 border-blue-100  hover:bg-blue-200"}  onClick={() => handleSelect(onequestion.id, oneoption.key)}>
+                                    <div className="w-4 h-4 p-0.5">
+                                        {onequestion.selected === oneoption.key ? <FaRegCircleDot className="text-blue-500"/> : <FaRegCircle className="text-blue-300"/> }
+                                    </div>
+                                    <p className="w-full h-fit text-sm font-normal leading-5 tracking-normal text-left pl-2 text-gray-700">
+                                    {oneoption.key}. {oneoption.value}
+                                    </p>
+                                    </div>
+                                ))}
+                            </div>
+                            </div>
+                            {/* <div className="tablet:gap-12 h-26">
+                                <div className="flex justify-start w-40 gap-0.5">
+                                    <div className="flex justify-center items-start w-10 h-10">
+                                        <HelpOutlinedIcon className="text-blue-500"/>
+                                    </div>
+                                    <p className="flex items-center w-36 h-full text-lg font-medium leading-6 tracking-normal text-left text-blue-500">Question {question + 1}</p>
+                                </div>
+                                <p className="text-lg font-normal leading-6 tracking-normal text-left text-black">{questions[question].question}</p>
+                            </div>
+                            <div>
+                                {options.map((oneoption, index) => (
+                                    <div className={selected === oneoption ? "flex justify-start items-center w-full px-5 py-4 border gap-2 border-blue-200 bg-blue-200" : "flex justify-start items-center w-full px-5 py-4 border gap-2 border-blue-100  hover:bg-blue-200"}  onClick={() => handleSelect(oneoption)}>
+                                    <div className="w-4 h-4 p-0.5">
+                                        {selected === oneoption ? <FaRegCircleDot className="text-blue-500"/> : <FaRegCircle className="text-blue-300"/> }
+                                    </div>
+                                    <p className="w-full h-fit text-sm font-normal leading-5 tracking-normal text-left pl-2 text-gray-700">
+                                    {oneoption}. {questions[question].options[oneoption]}
+                                    </p>
+                                    </div>
+                                ))}
+                            </div> */}
+                        </div>
+                    </div>
+                </div> ))}
+            </div>
             </div>
             }
         </div> 
