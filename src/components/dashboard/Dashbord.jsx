@@ -5,6 +5,7 @@ import Footer from '../layout/Footer';
 import { Tab } from '@headlessui/react';
 import Mycourse from './Mycourse';
 import Exams from './Exams';
+import Forms from './Forms';
 
 const Dashbord = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -19,7 +20,7 @@ const Dashbord = () => {
     },
     {
       title: 'Fourms',
-      component: <>forms</>,
+      component: <Forms/>,
     },
   ];
   return (

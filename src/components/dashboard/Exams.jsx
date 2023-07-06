@@ -1,7 +1,5 @@
 import React from 'react';
-import UserNav from '../layout/UserNav';
-import FooetRecently from '../layout/Foorerreseltly';
-import Footer from '../layout/Footer';
+
 import { FiArrowRight } from 'react-icons/fi';
 
 import {
@@ -70,7 +68,7 @@ const Exams = () => {
         Recommended Exams
       </p>
 
-      <div className="ml-28 mt-5 flex flex-row flex-wrap gap-10">
+      <div className="ml-28 mt-5 flex flex-row flex-wrap gap-10 mb-10">
         {data.map((item) => (
           <Card className="mt-6 w-[282px] h-[120px] border  shadow-none bg-[rgba(255,255,255,1)]   hover:bg-[rgba(240,249,255,1)]">
             <div className="ml-4 mt-4">
@@ -91,8 +89,7 @@ const Exams = () => {
           </Card>
         ))}
       </div>
-      <FooetRecently />
-      <Footer />
+    
     </>
   );
 };

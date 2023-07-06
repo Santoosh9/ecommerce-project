@@ -58,7 +58,10 @@ const Navbar = () => {
                 />
               </svg>
             </li>
-            <li className="  justify-between">Current Affairs</li>
+
+            <Link to="/currentoffiars">
+              <li className="  justify-between">Current Affairs</li>
+            </Link>
           </ul>
         </div>
         <div className="mr-10">
