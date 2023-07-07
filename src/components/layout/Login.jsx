@@ -47,7 +47,7 @@ const Login = () => {
               <label className="label-text ">Email</label>
               <input
                 type="email"
-                className="  border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px]"
+                className="  border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3"
                 placeholder=" Please enter your email id"
               ></input>
 
@@ -58,14 +58,14 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 autoComplete="current-password"
-                className=" border-[1px] border-[rgba(177,181,195,1)] focus:outline  h-[52px] "
+                className=" border-[1px] border-[rgba(177,181,195,1)] focus:outline  h-[52px]  px-3"
                 placeholder=" Please enter your password"
               ></input>
               <span
                 className="flex justify-end items-center "
                 onClick={handleToggle}
               >
-                <Icon class="absolute mr-10 mt-[-52px]" icon={icon} size={25} />
+                <Icon class="absolute mr-4 mt-[-52px]" icon={icon} size={25} />
               </span>
 
               <div className="flex flex-row  justify-between mt-4 font-Poppins  text-sm font-[400]">

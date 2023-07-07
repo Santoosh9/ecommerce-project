@@ -30,8 +30,8 @@ const Register = () => {
     <>
       <Navbar />
       <div className=" flex justify-center items-center mt-1 ">
-        <div className=" w-[510px] h-[700px] bg-white-100">
-          <h3 className="font-[500] text-3xl ml-2 text-[rgba(17,17,17,1)]">
+        <div className=" w-[510px] h-[700px] bg-white-100 mb-10" >
+          <h3 className="font-[500] text-3xl ml-2 mt-10  text-[rgba(17,17,17,1)]">
             Register
           </h3>
 
@@ -47,13 +47,13 @@ const Register = () => {
               <label className="label-text ">Full Name</label>
               <input
                 type="text"
-                className="  border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px]"
+                className="  border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3"
                 placeholder=" Please enter your full name"
               ></input>
               <label className="label-text mt-2">Email</label>
               <input
                 type="email"
-                className="  border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px]"
+                className="  border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3"
                 placeholder=" Please enter your email id"
               ></input>
 
@@ -64,14 +64,14 @@ const Register = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 autoComplete="current-password"
-                className=" border-[1px] border-[rgba(177,181,195,1)] focus:outline  h-[52px] "
+                className=" border-[1px] border-[rgba(177,181,195,1)] focus:outline  h-[52px]  px-3 "
                 placeholder=" Please enter your password"
               ></input>
               <span
                 className="flex justify-end items-center "
                 onClick={handleToggle}
               >
-                <Icon class="absolute mr-10 mt-[-52px]" icon={icon} size={25} />
+                <Icon class="absolute mr-4 mt-[-52px]" icon={icon} size={25} />
               </span>
 
               <label className=" label-text mt-2 ">Confrom Password</label>
@@ -81,14 +81,14 @@ const Register = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 autoComplete="current-password"
-                className=" border-[1px] border-[rgba(177,181,195,1)] focus:outline  h-[52px] "
+                className=" border-[1px] border-[rgba(177,181,195,1)] focus:outline  h-[52px]  px-3"
                 placeholder=" Please enter your Confrom password"
               ></input>
               <span
                 className="flex justify-end items-center "
                 onClick={handleToggle}
               >
-                <Icon class="absolute mr-10 mt-[-52px]" icon={icon} size={25} />
+                <Icon class="absolute mr-4 mt-[-52px]" icon={icon} size={25} />
               </span>
 
               <div className="flex flex-row  justify-between mt-4 font-Poppins  text-sm font-[400]">
