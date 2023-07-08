@@ -65,7 +65,11 @@ const Login = () => {
                 className="flex justify-end items-center "
                 onClick={handleToggle}
               >
-                <Icon class="absolute mr-4 mt-[-52px]" icon={icon} size={25} />
+                <Icon
+                  class="absolute mr-4 mt-[-52px] text-[rgba(44,39,36,0.5)]"
+                  icon={icon}
+                  size={20}
+                />
               </span>
 
               <div className="flex flex-row  justify-between mt-4 font-Poppins  text-sm font-[400]">

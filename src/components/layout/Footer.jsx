@@ -1,10 +1,7 @@
 import React from 'react';
-import {
-  AiTwotoneEnvironment,
-  AiFillPhone,
-  AiFillMail,
-  AiFillTwitterCircle,
-} from 'react-icons/ai';
+import { AiFillTwitterCircle } from 'react-icons/ai';
+import { BiPhoneCall, BiMap, BiEnvelope } from 'react-icons/bi';
+
 import { CiFacebook, CiLinkedin, CiInstagram } from 'react-icons/ci';
 
 const Footer = () => {
@@ -81,20 +78,24 @@ const Footer = () => {
               <p className="  font-[500] text-lg mt-2  "> Contact</p>
               <li class="mb-4  mt-3 ">
                 <a href="#" className="hover:underline flex flex-row">
-                  <AiFillPhone className=" mt-1 mr-1  text-[rgba(0,110,185,1)]" />
+                  <BiPhoneCall className=" mt-1 mr-1  text-[rgba(0,110,185,1)] text-lg" />
                   <p>9800098000, 9823000679</p>
                 </a>
               </li>
               <li class="mb-4">
                 <a href="#" className="hover:underline flex flex-row">
-                  <AiFillMail className=" mt-1 mr-1  text-[rgba(0,110,185,1)] " />
+                  <BiEnvelope
+                    className=" mt-1 mr-1  text-[rgba(0,110,185,1)] rgba(0, 110, 185, 1) text-lg
+                    
+ "
+                  />
                   <p>user@gmail.com, contactus@email.com</p>
                 </a>
               </li>
 
               <li class="mb-4">
                 <a href="#" className="hover:underline flex flex-row ">
-                  <AiTwotoneEnvironment className=" mt-1 mr-1 text-[rgba(0,110,185,1)]" />
+                  <BiMap className=" mt-1 mr-1 text-[rgba(0,110,185,1)] text-lg" />
                   <p>Kathmandu Kupandol</p>
                 </a>
               </li>

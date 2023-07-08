@@ -30,7 +30,7 @@ const Register = () => {
     <>
       <Navbar />
       <div className=" flex justify-center items-center mt-1 ">
-        <div className=" w-[510px] h-[700px] bg-white-100 mb-10" >
+        <div className=" w-[510px] h-[700px] bg-white-100 mb-10">
           <h3 className="font-[500] text-3xl ml-2 mt-10  text-[rgba(17,17,17,1)]">
             Register
           </h3>
@@ -71,7 +71,11 @@ const Register = () => {
                 className="flex justify-end items-center "
                 onClick={handleToggle}
               >
-                <Icon class="absolute mr-4 mt-[-52px]" icon={icon} size={25} />
+                <Icon
+                  class="absolute mr-4 mt-[-52px]  text-[rgba(44,39,36,0.5)]"
+                  icon={icon}
+                  size={20}
+                />
               </span>
 
               <label className=" label-text mt-2 ">Confrom Password</label>
@@ -88,13 +92,17 @@ const Register = () => {
                 className="flex justify-end items-center "
                 onClick={handleToggle}
               >
-                <Icon class="absolute mr-4 mt-[-52px]" icon={icon} size={25} />
+                <Icon
+                  class="absolute mr-4 mt-[-52px]  text-[rgba(44,39,36,0.5)]"
+                  icon={icon}
+                  size={20}
+                />
               </span>
 
               <div className="flex flex-row  justify-between mt-4 font-Poppins  text-sm font-[400]">
                 <p>
                   Agree to all
-                  <span className="text-blue-500 text-opacity-100 ml-2">
+                  <span className="text-[rgba(0,110,185,1)] text-opacity-100 ml-2">
                     Terms and Cindition
                   </span>
                 </p>

@@ -127,7 +127,7 @@ const Card1 = () => {
                 className="h-[177px] border bg-cover w-[282px] ml-0"
                 style={{ backgroundImage: `url(${item.image})` }}
               >
-                <div className="h-[27px] w-[106px]  mt-[149px]  bg-[rgba(0,110,185,1)] font-Poppins text-white">
+                <div className="h-[27px] w-[106px]  mt-[149px]  bg-[rgba(0,110,185,1)] font-Poppins text-white text-center">
                   {item.price}
                 </div>
               </div>
@@ -143,7 +143,7 @@ const Card1 = () => {
                     {item.video}
                   </p>
                 </div>
-                <Typography className="mb-2   font-[500] font-Poppins text-[rgba(17,17,17,1)]">
+                <Typography className="mb-2  font-[500]   text-base font-Poppins text-[rgba(17,17,17,1)]">
                   {item.title}
                 </Typography>
                 <Typography className=" text-sm font-Poppins text-[rgba(44,39,36,0.75)]">
