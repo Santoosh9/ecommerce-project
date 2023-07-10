@@ -45,7 +45,7 @@ const PlayVideo = () => {
     }
 
     return (
-    <div className="App">
+    <div className="h-full flex-col">
       <CourseHead header="course" />
       <div className='flex flex-col mobile:w-full tablet:w-full laptop:flex-row laptop:w-full laptop:justify-center'>
           <div>

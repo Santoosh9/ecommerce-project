@@ -12,6 +12,7 @@ import MCQs from './CoursePages/Mcqs';
 import Complete from './CoursePages/Complete';
 import About from './CoursePages/About';
 import AttemptExam from './CoursePages/ExamAttempt';
+import ExamComplete from './CoursePages/ExamComplete';
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           <Route path="/forms" element={<Forms />} />
           <Route path="/exam" element={<Exam />} />
           <Route path="/exam/attempt" element={<AttemptExam />} />
+          <Route path="/exam/complete" element={<ExamComplete />} />
           <Route path='/learning' element={<About/>}></Route>
           <Route path='/learning/video' element={<PlayVideo/>}></Route>
           <Route path='/learning/notes' element={<Notes/>}></Route>

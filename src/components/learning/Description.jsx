@@ -9,10 +9,10 @@ import { IoVideocamOutline } from 'react-icons/io5'
 import { GrDocumentText } from 'react-icons/gr'
 import { CgFileDocument } from 'react-icons/cg'
 import { RxDotFilled } from 'react-icons/rx'
+import { Link } from "react-router-dom";
 
 const Description = (props) => {
 
-    // const chapters = ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5", "Chapter 6" ]
     const chapters = [
         {
             id: '1',
@@ -223,7 +223,7 @@ const Description = (props) => {
                     </div>
                 </div>
                 <div className="w-full h-[499px] border border-[#E0EBF2]">
-                    <div className=" flex flex-col justify-start w-full h-fit mt-8 ml-10 gap-8">
+                    <div className=" flex flex-col justify-start w-full h-[499px] mt-8 ml-10 gap-8">
                         <p className="w-fit h-6 font-medium text-xl leading-6">Current Affairs</p>
                         <div className="flex flex-col justify-evenly w-full h-fit gap-5">
                             <div className="w-full h-fit gap-2">
@@ -279,7 +279,7 @@ const Description = (props) => {
                                     <FaAngleUp/> :
                                     <FaAngleDown/>}
                                 </div>
-                                <div className="flex flex-col laptop:flex-row w-full h-fit">
+                                <div className="flex flex-col items-center laptop:flex-row w-full h-fit">
                                     <p className="w-fit flex items-center laptop:w-full h-full font-medium text-lg leading-6">Chapter {chapter.id}. {chapter.title}</p>
                                     <div className="w-fit h-full gap-6">
                                         <div className="flex items-center w-fit h-5 gap-0 laptop:gap-4 py-4">
@@ -308,6 +308,7 @@ const Description = (props) => {
                             {toggle[chapterIndex] && 
                                 <div className="w-full h-fit border-t border-t-[#E1ECF3] bg-white  mt-8">
                                     {chapter.subchapters.map((subchapter, index) => (
+                                        <Link to="/learning/video">
                                         <div className="w-full tablet:w-[90%] h-fit mt-1 ml-0 laptop:ml-9">
                                         <div className="w-full h-fit border-b border-b-[#E1ECF3] px-10 py-6">
                                             <div className="flex flex-col tablet:flex-row justify-between  w-full h-fit">
@@ -327,6 +328,7 @@ const Description = (props) => {
                                             </div>
                                         </div>
                                     </div>
+                                    </Link>
                                     ))}
                                 </div>
                             }

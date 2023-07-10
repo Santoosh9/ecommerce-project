@@ -13,7 +13,7 @@ const IntroCourse = () => {
                     <div className="flex flex-col justify-between w-full h-[272px] gap-2 tablet:gap-6">
                         <div className="flex flex-col w-full h-fit gap-1 tablet:gap-4">
                             <div className="w-24 h-8 rounded-[160px] py-1.5 px-4 gap-2 bg-[#F0F9FF]">
-                                <p className="font-normal text-sm text-center leading-5 text-[#006EB9]">Lok Sewa</p>
+                                <p className="w-fit font-normal text-sm text-center leading-5 text-[#006EB9]">Lok Sewa</p>
                             </div>
                             <p className="w-full h-fit laptop:h-24 font-medium text-4xl leading-[48px] text-black">Rastriya Banijya Bank (RBB) 4th Level Full Course</p>
                             <div className="w-[210px] h-6 gap-2.5">

@@ -149,17 +149,17 @@ const Window = (props) => {
     }
 
     return (
-        <div className="flex justify-center w-full h-220px tablet:h-[440px] border border-blue-200">
+        <div className="flex justify-center w-full tablet:h-[440px] border border-blue-200">
             { props.openPage === "video" &&
-            <div className="flex flex-col justify-between items-center w-320px h-220px tablet:w-780px tablet:h-playwindow laptop:w-playwindow laptop:h-playwindow">
+            <div className="flex flex-col justify-between items-center tablet:h-playwindow laptop:w-playwindow laptop:h-playwindow">
                 <div className="mobile:hidden laptop:block">
-                    <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' controls playing width="932px" height="440px"/>
+                    <ReactPlayer url='https://www.youtube.com/watch?v=miV-1btpLfY' controls playing width="932px" height="440px"/>
                 </div>
                 <div className="mobile:hidden tablet:max-laptop:block">
-                    <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' controls playing width="780px" height="440px"/>
+                    <ReactPlayer url='https://www.youtube.com/watch?v=miV-1btpLfY' controls playing width="780px" height="440px"/>
                 </div>
                 <div className="mobile:max-tablet:block tablet:hidden">
-                    <ReactPlayer url='https://www.youtube.com/watch?v=ysz5S6PUM-U' controls playing width="320px" height="220px"/>
+                    <ReactPlayer url='https://www.youtube.com/watch?v=miV-1btpLfY' controls playing width="320px" height="220px"/>
                 </div>
                 <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-sidenav mt-sidenavh p-2 border border-r-0 bg-black border-blue-100 absolute inset-0 mobile:hidden laptop:block cursor-pointer" : "flex justify-center items-center w-10 h-10 ml-sidenavplus mt-sidenavh p-2 border border-r-0 bg-black border-blue-100 absolute inset-0 sm:hidden lg:block cursor-pointer"} onClick={hideSideNav}>
                 <div className="flex justify-center items-center w-6 h-6">
