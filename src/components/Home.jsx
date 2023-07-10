@@ -3,6 +3,7 @@ import Navbar from './layout/Navbar';
 import Card from '../Cards/Cards';
 import Footer from './layout/Footer';
 import Cards from '../Cards/Cards';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
@@ -26,9 +27,11 @@ const Home = () => {
                   journey.
                 </p>
 
-                <button className=" bg-white text-[rgba(0,110,185,1)]  font-Poppins   text-base font-[500] mt-6 h-[48px] w-[216px]">
-                  Explore All Course 
-                </button>
+                <Link to="/mycourse">
+                  <button className=" bg-white text-[rgba(0,110,185,1)]  font-Poppins   text-base font-[500] mt-6 h-[48px] w-[216px]">
+                    Explore All Course
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

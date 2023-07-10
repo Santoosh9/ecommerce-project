@@ -165,17 +165,71 @@ const Forms = () => {
 
         <div className="flex flex-col  ml-10 mt-10 w-[700px] ">
           <div className=" border  ">
-            <div className=" flex flex-row mt-3">
-              <img
-                className="rounded-full w-[10%] h-[10%] mb-6 ml-3"
-                src="./images/me.jpg"
-              />
+            {!isOpen && (
+              <div className=" flex flex-row mt-3">
+                <img
+                  className="rounded-full w-[10%] h-[10%] mb-6 ml-3"
+                  src="./images/me.jpg"
+                />
 
-              <input
-                className=" h-[44px] w-[534px] border-gray-300 mt-2 border ml-3"
-                placeholder="Share what going on your mind"
-              />
-            </div>
+                <input
+                  className=" h-[44px] w-[534px] border-gray-300 mt-2 border ml-3 px-3"
+                  placeholder="Share what going on your mind"
+                  onClick={handleOpen}
+                />
+              </div>
+            )}
+
+            {isOpen && (
+              <div className="flex flex-col w-[505px] h-[556px] mt-6 ml-6 ">
+                <div className="flex flex-row justify-between  h-[40px]">
+                  <div className=" flex flex-row gap-4">
+                    <img
+                      className="rounded-full w-[100%] h-[100%] mb-6 ml-3"
+                      src="./images/me.jpg"
+                    />
+
+                    <p className=" text-[rgba(17,17,17,1)] font-[500]  font-Poppins text-base mt-2">
+                      Santosh
+                    </p>
+                  </div>
+
+                  <button onClick={handleClose}>
+                    <AiOutlineCloseCircle className="mt-3" />
+                  </button>
+                </div>
+                <div className="h-[220px] mt-2 ml-6 ">
+                  <input
+                    className="h-[220px] w-[505px] border px-6"
+                    placeholder="Share what going on your mind"
+                  />
+                </div>
+                <div className="ml-6 ">
+                  <input
+                    className="h-[44px] w-[505px] mt-4 border px-3"
+                    placeholder="Course"
+                  />
+                </div>
+                <div className="ml-6 ">
+                  <input
+                    className="h-[44px] w-[505px] mt-4 border px-3"
+                    placeholder="Subject"
+                  ></input>
+                </div>
+                <div className="bg-[rgba(225,236,243,1)] mt-4 h-[48px] w-[154px] flex flex-row justify-center gap-2 ml-6 ">
+                  <div className="mt-3">
+                    <img src="./images/Vector.png" />
+                  </div>
+                  <p className="mt-3">Add Image</p>
+                </div>
+
+                <div className="mt-10  bg-[rgba(0,110,185,1)]  h-[46px] w-[146px]  ml-96 mb-2">
+                  <p className=" font-[500] text-sm font-Poppins text-center text-white mt-2 ">
+                    Create Post
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
           <div className=" flex flex-col flex-wrap w-[700px] h-[350]  mt-10">
             {data.map((item) => (
@@ -287,63 +341,6 @@ const Forms = () => {
           </div>
         </div>
       </div>
-
-      <button
-        className=" bg-blue-600 h-[20px] text-xs font-[200]  ml-2 mt-3 rounded-sm"
-        onClick={handleOpen}
-      >
-        CreatePost
-      </button>
-      {isOpen && (
-        <div className="flex flex-col w-[505px] h-[556px]">
-          <div className="flex flex-row justify-between  h-[40px]">
-            <div className=" flex flex-row gap-4">
-              <img
-                className="rounded-full w-[100%] h-[100%] mb-6 ml-3"
-                src="./images/me.jpg"
-              />
-
-              <p className=" text-[rgba(17,17,17,1)] font-[500]  font-Poppins text-base mt-2">
-                Santosh
-              </p>
-            </div>
-
-            <button onClick={handleClose}>
-              <AiOutlineCloseCircle className="mt-3" />
-            </button>
-          </div>
-          <div className="h-[220px] mt-2 ml-6 ">
-            <input
-              className="h-[220px] w-[505px] border"
-              placeholder="Share what going on your mind"
-            />
-          </div>
-          <div className="ml-6 ">
-            <input
-              className="h-[44px] w-[505px] mt-4 border"
-              placeholder="Course"
-            />
-          </div>
-          <div className="ml-6 ">
-            <input
-              className="h-[44px] w-[505px] mt-4 border"
-              placeholder="Subject"
-            ></input>
-          </div>
-          <div className="bg-[rgba(225,236,243,1)] mt-4 h-[48px] w-[154px] flex flex-row justify-center gap-2 ml-6 ">
-            <div className="mt-3">
-              <img src="./images/Vector.png" />
-            </div>
-            <p className="mt-3">Add Image</p>
-          </div>
-
-          <div className="mt-10  bg-[rgba(0,110,185,1)]  h-[46px] w-[146px]  ml-96 mb-1">
-            <p className=" font-[500] text-sm font-Poppins text-center text-white mt-2 ">
-              Create Post
-            </p>
-          </div>
-        </div>
-      )}
     </>
   );
 };

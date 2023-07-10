@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   return (
     <>
-      <div className="flex flex-row h-[96px]  w-full   border-[1px]  justify-around font-Poppins  items-center ">
-        <div className="ml-10">
-          <img className=" h-[60%]   " src="./images/logo.png" alt="logo-img" />
+      <div className="flex flex-row h-auto  w-full  border-[1.5px]  justify-around font-Poppins  items-center sm:flex md:flex lg:flex xl:flex 2xl:flex">
+        <div className="">
+          <img className="mt-2 mb-2  " src="./images/logo.png" alt="logo-img" />
         </div>
         <div className="">
-          <ul className="flex flex-row justify-around   gap-[20px]  font-Poppins font-[400] ">
+          <ul className="flex flex-row justify-around   gap-[20px]  font-Poppins font-[400]  sm:flex md:flex lg:flex xl:flex 2xl:flex">
             <li className="flex flex-row ">
               लोकसेवा (संघ र प्रदेश‌‍‍‌)
               <svg
@@ -26,6 +26,7 @@ const Navbar = () => {
                 />
               </svg>
             </li>
+
             <li className="flex flex-row">
               बैंकिङ तयारी
               <svg
@@ -60,7 +61,7 @@ const Navbar = () => {
             </li>
 
             <Link to="/currentoffiars">
-              <li className="  justify-between">Current Affairs</li>
+              <li className="  justify-between  ml-6">Current Affairs</li>
             </Link>
           </ul>
         </div>

@@ -63,19 +63,23 @@ const UserNav = () => {
           </li>
 
           <Link to="/currentoffiars">
-            <li className="  justify-between">Current Affairs</li>
+            <li className="  justify-between ml-2 ">Current Affairs</li>
           </Link>
         </ul>
       </div>
-      <div className="flex justify-between mr-32 gap-6 font-Poppins font-[400]">
-        <img
-          className=" w-[50%] h-[50%]  mt-6"
-          src="./images/Notification.png"
-        />
-        <img
-          className="rounded-full w-[50%] h-[50%] mt-6"
-          src="./images/me.jpg"
-        />
+      <div className="flex justify-between mr-28 gap-6 font-Poppins font-[400]">
+        <div>
+          <img
+            className=" w-[100%] h-[50%]  mt-6 overflow-hidden"
+            src="./images/Notification.png"
+          />
+        </div>
+        <div>
+          <img
+            className="rounded-full w-[100%] h-[50%] mt-6 overflow-hidden	"
+            src="./images/me.jpg"
+          />
+        </div>
         <p className="flex flex-row mt-8 font-Poppins">
           Santosh
           <svg

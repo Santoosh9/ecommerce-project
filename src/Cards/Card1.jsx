@@ -13,6 +13,7 @@ import { TbCircleCaretRight } from 'react-icons/tb';
 import { CiClock2 } from 'react-icons/ci';
 
 import { FiArrowRight } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 const Card1 = () => {
   const data = [
@@ -127,7 +128,7 @@ const Card1 = () => {
                 className="h-[177px] border bg-cover w-[282px] ml-0"
                 style={{ backgroundImage: `url(${item.image})` }}
               >
-                <div className="h-[27px] w-[106px]  mt-[149px]  bg-[rgba(0,110,185,1)] font-Poppins text-white text-center">
+                <div className="h-[27px] w-[106px]  mt-[149px]  bg-[rgba(0,110,185,1)] font-Poppins font-[400] text-white text-center ">
                   {item.price}
                 </div>
               </div>
@@ -151,10 +152,12 @@ const Card1 = () => {
                 </Typography>
               </CardBody>
               <CardFooter className="pt-0 ml-3">
-                <p className="flex flex-row font-Poppins mt-2 font-[20px] text-[rgba(0,110,185,1)]">
-                  {item.engroll}
-                  <FiArrowRight className="mt-1.5 ml-1" />
-                </p>
+                <Link to="learning">
+                  <p className="flex flex-row font-Poppins mt-2 font-[20px] text-[rgba(0,110,185,1)]">
+                    {item.engroll}
+                    <FiArrowRight className="mt-1.5 ml-1" />
+                  </p>
+                </Link>
               </CardFooter>
             </Card>
           ))}
