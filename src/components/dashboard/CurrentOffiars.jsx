@@ -5,7 +5,7 @@ import FooetRecently from '../layout/Foorerreseltly';
 import Footer from '../layout/Footer';
 
 const CurrentOffiars = () => {
-  const HEAD = ['SN', 'Titel', 'Date', 'Download'];
+  const HEAD = ['SN', 'Title', 'Date', 'Download'];
 
   const data = [
     {
@@ -114,15 +114,12 @@ const CurrentOffiars = () => {
       <Card className="  ml-20 mr-20 mt-10 mb-10 ">
         <table className="w-full min-w-max table-auto">
           <thead>
-            <tr>
+            <tr className="border  border-blue-gray-100 bg-[rgba(0,110,185,0.11)] p-4 h-[48px]">
               {HEAD.map((head) => (
-                <th
-                  key={head}
-                  className=" border-b border-blue-gray-100 bg-[rgba(0,110,185,0.11)] p-4 h-[48px]"
-                >
+                <th key={head} className=" ">
                   <Typography
                     variant="small"
-                    className=" leading-none opacity-70  font-Poppins text-base font-[500] text-[rgba(0,110,185,1)]"
+                    className=" leading-none opacity-70  font-Poppins text-base font-[500] text-[rgba(0,110,185,1)] ml-6"
                   >
                     {head}
                   </Typography>
@@ -134,7 +131,7 @@ const CurrentOffiars = () => {
             {data.map(({ sn, titel, date, image, text }, index) => (
               <tr
                 key={sn}
-                className=" text-[rgba(44,39,36,0.75)] font-[400]  text-base"
+                className=" text-[rgba(44,39,36,0.75)] font-[400]  font-Poppins text-base"
               >
                 <td className="p-4 w-[62px]">
                   <Typography
