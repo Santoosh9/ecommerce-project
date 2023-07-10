@@ -2,14 +2,23 @@ import React from 'react';
 
 const FooetRecently = () => {
   return (
-    <div className="bg-blue-500 h-[418px]  w-[100%] ">
-      <div className="flex flex-col ml-28 mt-28">
-        <p className="  text-white text-lg">Recently Viewed</p>
+    <div
+      className=" h-[418px]  w-[100%]  flex flex-col  gap-10 "
+      style={{
+        backgroundImage: `url(${'./images/Banner2.png'})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+      }}
+    >
+      <div className="mt-16  ml-32 ">
+        <p className="  text-white font-Poppins font-[500]  text-2xl">
+          Recently Viewed
+        </p>
       </div>
-      <div className=" flex flex-row  mt-8 text-white">
-        <div className="ml-28">
-          <ul className="font-link">
-            <p className=" font-bold mt-2"> Support</p>
+      <div className=" flex flex-row   text-white ml-32  justify-start gap-[122px]">
+        <div className="">
+          <ul className=" font-[400] font-Poppins text-base">
+            <p className=" font-[500]  font-Poppins  text-lg mt-2"> Support</p>
             <li class="mb-4 mt-3">
               <a href="#">Disclaimer Privacy</a>
             </li>
@@ -26,9 +35,9 @@ const FooetRecently = () => {
             </li>
           </ul>
         </div>
-        <div className="ml-28">
-          <ul class="font-link">
-            <p className=" font-bold mt-2"> Courses</p>
+        <div className="">
+          <ul class="font-[400] font-Poppins text-base">
+            <p className=" font-[500]  font-Poppins  text-lg mt-2"> Courses</p>
             <li class="mb-4 mt-3">
               <a href="#" class="hover:underline">
                 लोकसेवा (संघ र प्रदेश‌‍‍‌)
@@ -46,9 +55,9 @@ const FooetRecently = () => {
             </li>
           </ul>
         </div>
-        <div className="ml-28">
-          <ul class="font-link">
-            <p className=" font-bold mt-2 "> Contact</p>
+        <div className="">
+          <ul class="font-[400] font-Poppins text-base">
+            <p className=" font-[500]  font-Poppins  text-lg mt-2 "> Contact</p>
             <li class="mb-4  mt-3 ">
               <a href="#" className="hover:underline flex flex-row">
                 98671000189
