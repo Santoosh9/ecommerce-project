@@ -3,6 +3,8 @@ import UserNav from '../layout/UserNav';
 import { Card, Typography } from '@material-tailwind/react';
 import FooetRecently from '../layout/Foorerreseltly';
 import Footer from '../layout/Footer';
+import { AiFillFilePdf } from 'react-icons/ai';
+
 
 const CurrentOffiars = () => {
   const HEAD = ['SN', 'Title', 'Date', 'Download'];
@@ -111,8 +113,8 @@ const CurrentOffiars = () => {
         </div>
       </div>
 
-      <Card className="  ml-20 mr-20 mt-10 mb-10 ">
-        <table className="w-full min-w-max table-auto">
+      <Card className="  ml-20 mr-20 mt-10 mb-10 border ">
+        <table className="">
           <thead>
             <tr className="border  border-blue-gray-100 bg-[rgba(0,110,185,0.11)] p-4 h-[48px]">
               {HEAD.map((head) => (
@@ -160,10 +162,13 @@ const CurrentOffiars = () => {
                     {date}
                   </Typography>
                 </td>
-                <td className="p-4 w-[173px]">
-                  <Typography className="flex flex-row gap-1">
-                    <img src={image} alt="img" />
-                    {text}
+                <td className="p-4 w-[173px] flex flex-row ">
+                  <Typography className="flex flex-row gap-1 ">
+                    <AiFillFilePdf className="text-red-600 w-[16.5px] h-[21px]" />
+                    <p
+                      className=" font-Poppins font-[400] text-sm text-[rgba(44,39,36,0.75)]">
+                      {text}
+                    </p>
                   </Typography>
                 </td>
               </tr>
