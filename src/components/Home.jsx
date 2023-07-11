@@ -10,7 +10,7 @@ const Home = () => {
     <>
       <Navbar />
 
-      <div className="flex flex-col w-[100%]  ">
+      <div className="flex flex-col w-[100%] ">
         <div className="flex flex-row  w-[100%]">
           <div className="w-[50%] bg-[rgba(0,110,185,1)] flex  ">
             <div className=" w-[526px]  h-[332.72px] ml-[134px]  flex flex-col mt-[122px]">

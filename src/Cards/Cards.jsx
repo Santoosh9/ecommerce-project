@@ -85,7 +85,7 @@ const Cards = () => {
                   <Tab as={Fragment} key={i + 1}>
                     {({ selected }) => (
                       <button
-                        className={`px-4 py-2 bg-white cursor-pointer focus:outline-none ${
+                        className={`px-4 py-2 bg-white cursor-pointer focus:outline-none  ${
                           selected
                             ? 'text-[#006EB9] border-b-2 border-b-[#006EB9]'
                             : ' text-gray-500'
@@ -97,7 +97,7 @@ const Cards = () => {
                   </Tab>
                 ))}
               </Tab.List>
-              <Tab.Panels>
+              <Tab.Panels className="mt-6">
                 {tabData.map((t, i) => (
                   <Tab.Panel key={i + 1}>{t?.component}</Tab.Panel>
                 ))}

@@ -36,7 +36,7 @@ const Footer = () => {
         <div className="justify-center items-center flex flex-row mb-16 gap-12">
           <div className="">
             <ul className="font-link font-Poppins text-base h-[180px] ">
-              <p className=" font-[500] text-lg mt-2 "> Support</p>
+              <p className=" font-[500] text-lg mt-12 "> Support</p>
               <li class="mb-2 mt-3">
                 <a href="#">Disclaimer </a>
               </li>
