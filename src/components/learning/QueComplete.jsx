@@ -3,23 +3,25 @@ import LinearProgress from '@mui/joy/LinearProgress';
 
 const QueComplete = () => {
     return (
-        <div className="w-full h-fit laptop:h-[442px] px:4 laptop:px-20 laptop:p-10 border">
-        <div className="flex items-center justify-between">
-        <div className="flex flex-col laptop:flex-row justify-between items-center gap-48">
+        <div className="w-full h-full px-2 laptop:px-20 laptop:p-10 border">
+        <div className="flex items-center justify-around ">
+        <div className="flex flex-col laptop:flex-row justify-around items-center gap-48">
             <div className="w-full laptop:w-[516px] gap-32">
                 <div className="w-[90%] h-full gap-8">
                     <div className="w-full h-fit gap-12">
                         <p className="w-fit h-12 font-medium text-4xl leading-[48px] text-center text-[#006EB9] py-4 mb-4">Congralutations!</p>
                         <p className="w-full h-fit font-normal text-base leading-g text-left text-[#2C2724BF] py-2">Congratulations on completing your exam! Embrace this achievement, cherish the knowledge you've gained, and keep striving for excellence.</p>
                     </div>
-                    <div className="w-full h-10 gap-2">
+                    <div className="w-full h-10 gap-2 py-4">
                         <p className="w-full h-fit font-medium text-right text-base leading-6 text-[#006EB9]">62/100</p>
                         <LinearProgress determinate value={62}/>
                     </div>
-                    <button className="w-[153px] h-12 py-4 px-8 bg-[#006EB9] text-white">Done</button>
+                    <div className="py-4">
+                    <button className="flex w-[153px] h-12 justify-center items-center py-4 px-8 bg-[#006EB9] text-white">Done</button>
+                    </div>
                 </div>
             </div>
-            <div className=" flex items-center w-full laptop:w-[492px] h-[380px] border border-[rgb(227,239,247)]">
+            <div className=" flex items-center w-full laptop:w-[492px] h-[340px] border border-[rgb(227,239,247)]">
                 <div className="flex flex-col items-center w-full px-12 py-20 gap-8">
                     <div className="w-full h-16 gap-2">
                         <p className="w-fit h-9 font-medium text-xl leading-9">Subject Wise</p>

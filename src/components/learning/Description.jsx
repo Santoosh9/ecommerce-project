@@ -159,15 +159,15 @@ const Description = (props) => {
     }
 
     return (
-        <div className="font-Poppins">
+        <div className="font-Poppins mt-20 tablet:mt-[-50px]">
             {!props.openTab ?
-            <div className="flex flex-col laptop:flex-row  justify-between w-[90%]  mt-48 tablet:mt-28 ml-6 tablet:ml-32 gap-8 mb-4" >
+            <div className="flex flex-col laptop:flex-row  justify-between w-full laptop:w-[85%]  mt-48 tablet:mt-28 ml-6 tablet:ml-32 gap-8 mb-4" >
             <div className="w-full h-fit laptop:h-[856px] gap-12">
-                <div className="flex w-full h-fit border-b gap-10 border-b-[#F0F9FF] text-[#F0F9FF]">
-                    <div className= { !props.openTab ? "w-fit h-full border-b border-b-[#006EB9] text-[#006EB9] px-4 py-3 gap-2" :"w-fit h-full text-[#2C2724BF] px-4 py-3 gap-2 cursor-pointer"} onClick={() => tabChange(0)}>
+                <div className="flex w-full h-fit border-b gap-6 border-b-[#F0F9FF] text-[#F0F9FF]">
+                    <div className= { !props.openTab ? "w-fit h-full border-b border-b-[#006EB9] text-[#006EB9] px-1 py-3" :"w-fit h-full text-[#2C2724BF] px-1 py-3 cursor-pointer"} onClick={() => tabChange(0)}>
                         <p className="w-fit h-6 font-medium text-lg leading-6" >About Course</p>
                     </div>
-                    <div className= { props.openTab ? "w-fit h-full border-b border-b-[#006EB9] text-[#006EB9] px-4 py-3 gap-2" :"w-fit h-full text-[#2C2724BF] px-4 py-3 gap-2 cursor-pointer"} onClick={() => tabChange(1)}>
+                    <div className= { props.openTab ? "w-fit h-full border-b border-b-[#006EB9] text-[#006EB9] px-1 py-3" :"w-fit h-full text-[#2C2724BF] px-1 py-3 cursor-pointer"} onClick={() => tabChange(1)}>
                         <p className="w-fit h-6 font-medium text-lg leading-6">Syllabus</p>
                     </div>
                 </div>
@@ -261,28 +261,28 @@ const Description = (props) => {
                 </div>
             </div>
             </div> :
-            <div className="flex flex-col justify-between w-full laptop:w-[1170px] mt-48 tablet:mt-28 ml-6 tablet:ml-32 gap-8 mb-4" >
-                <div className="flex w-full h-fit border-b gap-10 border-b-[#F0F9FF] text-[#F0F9FF]">
-                        <div className= { !props.openTab ? "w-fit h-full border-b border-b-[#006EB9] text-[#006EB9] px-4 py-3 gap-2 cursor-pointer" :"w-fit h-full text-[#2C2724BF] px-4 py-3 gap-2 cursor-pointer"} onClick={() => tabChange(0)}>
-                            <p className="w-fit h-6 font-medium text-lg leading-6" >About Course</p>
-                        </div>
-                        <div className= { props.openTab ? "w-fit h-full border-b border-b-[#006EB9] text-[#006EB9] px-4 py-3 gap-2 cursor-pointer" :"w-fit h-full text-[#2C2724BF] px-4 py-3 gap-2 cursor-pointer"} onClick={() => tabChange(1)}>
-                            <p className="w-fit h-6 font-medium text-lg leading-6">Syllabus</p>
-                        </div>
+            <div className="flex flex-col justify-between w-full laptop:w-[85%] mt-48 tablet:mt-28 ml-6 tablet:ml-32 gap-8 mb-4" >
+                <div className="flex w-full h-fit border-b gap-6 border-b-[#F0F9FF] text-[#F0F9FF]">
+                <div className= { !props.openTab ? "w-fit h-full border-b border-b-[#006EB9] text-[#006EB9] px-1 py-3" :"w-fit h-full text-[#2C2724BF] px-1 py-3 cursor-pointer"} onClick={() => tabChange(0)}>
+                        <p className="w-fit h-6 font-medium text-lg leading-6" >About Course</p>
+                    </div>
+                    <div className= { props.openTab ? "w-fit h-full border-b border-b-[#006EB9] text-[#006EB9] px-1 py-3" :"w-fit h-full text-[#2C2724BF] px-1 py-3 cursor-pointer"} onClick={() => tabChange(1)}>
+                        <p className="w-fit h-6 font-medium text-lg leading-6">Syllabus</p>
+                    </div>
                     </div>
                     <div className="w-full h-fit">
                         { chapters.map ((chapter, chapterIndex) => (
-                            <div className="flex flex-col w-full min-h-[96px] border bg-[#FAFAFA] border-[#E1ECF3]">
-                            <div className="flex justify-start items-center w-full laptop:w-[90%] h-6 mt-8 ml-2 laptop:ml-10 gap-4">
+                            <div className="w-full min-h-[98px] border bg-[#FAFAFA] border-[#E1ECF3]">
+                            <div className="flex items-center w-full laptop:w-[90%] h-6 mt-8 ml-2 laptop:ml-10 gap-4">
                                 <div className="w-5 h-5 flex items-center cursor-pointer" onClick={() => toggleView(chapterIndex)}>
                                     { toggle[chapterIndex] ?
                                     <FaAngleUp/> :
                                     <FaAngleDown/>}
                                 </div>
-                                <div className="flex flex-col items-center justify-start tablet:flex-row w-full h-fit">
-                                    <p className="w-fit flex items-center laptop:w-full h-full font-medium text-lg leading-6 text-left">Chapter {chapter.id}. {chapter.title}</p>
+                                <div className="flex flex-col items-center tablet:flex-row w-full h-fit py-1">
+                                    <p className="w-[95%] flex h-full font-medium text-lg leading-6 text-left">Chapter {chapter.id}. {chapter.title}</p>
                                     <div className="w-fit h-full gap-6">
-                                        <div className="flex items-center w-fit h-5 gap-0 laptop:gap-4 py-4">
+                                        <div className="flex items-center w-full h-5 gap-0 laptop:gap-4 py-2">
                                             <div className="flex items-center w-24 h-5 gap-0 tablet:gap-2">
                                                 <div className="w-5 h-5 flex items-center">
                                                     <IoVideocamOutline/>

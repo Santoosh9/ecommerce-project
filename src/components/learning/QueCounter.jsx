@@ -592,8 +592,8 @@ const QueCounter = () => {
 
     return (
 
-    <div className="flex flex-col laptop:flex-row">
-        <div className="h-[440px] overflow-y-auto">
+    <div className="flex flex-col laptop:flex-row justify-around">
+        <div className="max-h-[68vh] overflow-y-auto">
             <div className="w-[80%] h-full mt-4 ml-4 mr-4 tablet:mt-9 tablet:ml-20 tablet:mr-10 gap-10" ref={queRef} >
             {questions.map((onequestion, index) => (
                 <div key={index} className="w:full h-fit mt-10 p-4 tablet:p-6 border gap-12 border-blue-200" data-index={index}>
@@ -627,7 +627,7 @@ const QueCounter = () => {
                 </div> ))}
             </div>
         </div>
-        <div className="flex grow-0 h-[440px] gap-6">
+        <div className="flex grow-0 max-h-[68vh] gap-6">
             <div className="w-full h-full border py-8 px-12 border-[#E1ECF3]">
                 <div className="flex flex-col flex-start w-full laptop:w-[428px] h-[476px] gap-4">
                     <p className="w-fit h-6 font-medium text-base leading-6">Attempted Questions</p>

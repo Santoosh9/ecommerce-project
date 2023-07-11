@@ -17,6 +17,7 @@ const About = () => {
         <div className="flex flex-col w-full">
             <UserNav/>
             <IntroCourse/>
+            <hr/>
             <Description openTab={openTab} handleTabChange={handleTabChange}/>
             <FooetRecently/>
             <Footer/>

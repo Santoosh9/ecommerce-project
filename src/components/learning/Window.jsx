@@ -200,7 +200,7 @@ const Window = (props) => {
                             </div>
                             <div>
                                 {questions[question].options.map((oneoption, index) => (
-                                    <div className={selected === oneoption.key ? "flex justify-start items-center w-full px-5 py-2 border gap-2 border-blue-200 bg-blue-200" : "flex justify-start items-center w-full px-5 py-3 border gap-2 border-blue-100  hover:bg-blue-200"}  onClick={() => handleSelect(oneoption.key)}>
+                                    <div className={selected === oneoption.key ? "flex justify-start items-center w-full px-5 py-3 border gap-2 border-blue-200 bg-blue-200" : "flex justify-start items-center w-full px-5 py-3 border gap-2 border-blue-100  hover:bg-blue-200"}  onClick={() => handleSelect(oneoption.key)}>
                                         <div className="w-4 h-4 p-0.5">
                                             {selected === oneoption.key ? <FaRegCircleDot className="text-blue-500"/> : <FaRegCircle className="text-blue-300"/> }
                                         </div>
