@@ -27,7 +27,7 @@ const UserNav = () => {
             }}
           >
             <button
-              className="flex flex-row relative"
+              className="flex flex-row relative "
               onMouseOver={() => setOpen(true)}
             >
               लोकसेवा (संघ र प्रदेश‌‍‍‌)
@@ -141,16 +141,16 @@ const UserNav = () => {
         <div className="flex flex-row gap-4 justify-end mr-10  tablet:mt-2">
           <div>
             <img
-              className=" w-[100%] h-[80%]  overflow-hidden mt-2 "
+              className=" w-[100%] h-[80%]  overflow-hidden  "
               src="./images/Notification.png"
             />
           </div>
           <img
-            className="rounded-full w-[7%]  h-[10%] overflow-hidden tablet:mt-2	 "
+            className="rounded-full w-[7%]  h-[10%] overflow-hidden laptop:mt-0 tablet:mt-2  	 "
             src="./images/me.jpg"
           />
 
-          <p className="flex flex-row font-Poppins font-[400] mt-2 gap-1">
+          <p className="flex flex-row font-Poppins font-[400] mt-2 gap-1 laptop:mt-0">
             Santosh
             <svg
               className="mt-2 ml-2 "
