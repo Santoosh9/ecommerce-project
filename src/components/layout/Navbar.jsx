@@ -2,15 +2,28 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
+  const [open1, setOpen1] = useState(false);
+  const [open2, setOpen2] = useState(false);
+
+ 
+
   return (
     <>
-      <div className="flex flex-row h-auto  w-full  border-[1.5px]  justify-around font-Poppins  items-center sm:flex md:flex lg:flex xl:flex 2xl:flex">
+      <div className="flex flex-row h-auto  w-full  border-[1.5px]  justify-around font-Poppins  items-center ">
         <div className="">
           <img className="mt-2 mb-2  " src="./images/logo.png" alt="logo-img" />
         </div>
         <div className="">
-          <ul className="flex flex-row justify-around   gap-[20px]  font-Poppins font-[400]  sm:flex md:flex lg:flex xl:flex 2xl:flex">
-            <li className="flex flex-row ">
+          <div
+            className="flex flex-row justify-around   gap-[20px]  font-Poppins font-[400]  "
+            onMouseLeave={() =>{ setOpen (false); setOpen1(false); setOpen2 (false)}}
+          >
+            <button
+              className="flex flex-row relative"
+              onMouseOver={() => setOpen(true)}
+            >
               लोकसेवा (संघ र प्रदेश‌‍‍‌)
               <svg
                 className="mt-2 ml-2"
@@ -25,9 +38,27 @@ const Navbar = () => {
                   fill="black"
                 />
               </svg>
-            </li>
+              <ul
+                className={` w-40 py-2 mt-2 rounded-lg shadow-xl absolute left-0 -bottom-32 bg-white ${
+                  open ? 'block' : 'hidden'
+                }`}
+              >
+                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
+                  Dropdown List 1
+                </li>
+                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
+                  Dropdown List 2
+                </li>
+                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
+                  Dropdown List 3
+                </li>
+              </ul>
+            </button>
 
-            <li className="flex flex-row">
+            <button
+              className="flex flex-row relative"
+              onMouseOver={() => setOpen1(true)}
+            >
               बैंकिङ तयारी
               <svg
                 className="mt-2 ml-2"
@@ -42,8 +73,26 @@ const Navbar = () => {
                   fill="black"
                 />
               </svg>
-            </li>
-            <li className="flex flex-row">
+              <ul
+                className={` w-40 py-2 mt-2 rounded-lg shadow-xl absolute left-0 -bottom-32 bg-white ${
+                  open1 ? 'block' : 'hidden'
+                }`}
+              >
+                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
+                  Dropdown List 1
+                </li>
+                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
+                  Dropdown List 2
+                </li>
+                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
+                  Dropdown List 3
+                </li>
+              </ul>
+            </button>
+            <button
+              className="flex flex-row relative"
+              onMouseOver={() => setOpen2(true)}
+            >
               संस्थान तयारी कक्षा
               <svg
                 className="mt-2 ml-2"
@@ -58,12 +107,29 @@ const Navbar = () => {
                   fill="black"
                 />
               </svg>
-            </li>
+              <ul
+                className={` w-40 py-2 mt-2 rounded-lg shadow-xl absolute left-0 -bottom-32 bg-white ml-16  ${
+                  open2 ? 'block' : 'hidden'
+                }`}
+              >
+                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
+                  Dropdown List 1
+                </li>
+                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
+                  Dropdown List 2
+                </li>
+                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
+                  Dropdown List 3
+                </li>
+              </ul>
+            </button>
 
             <Link to="/currentoffiars">
-              <li className="  justify-between  ml-6">Current Affairs</li>
+              <div className="  justify-between  ml-6  flex flex-row    gap-[20px]  font-Poppins font-[400] ">
+                Current Affairs
+              </div>
             </Link>
-          </ul>
+          </div>
         </div>
         <div className="mr-10">
           <Link to="/login">
