@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const UserNav = () => {
   return (
@@ -11,8 +12,8 @@ const UserNav = () => {
         />
       </div>
       <div className=" ">
-        <ul className="flex items-center mt-8 gap-9">
-          <li className="mr-7 flex justify-between font-link">
+        <ul className="flex flex-row justify-around   gap-[20px]  font-Poppins font-[400] mt-10">
+          <li className="mr-7 flex justify-between ">
             लोकसेवा (संघ र प्रदेश‌‍‍‌)
             <svg
               className="mt-2 ml-2 "
@@ -28,7 +29,7 @@ const UserNav = () => {
               />
             </svg>
           </li>
-          <li className="mr-7 flex justify-between font-link">
+          <li className="mr-7 flex justify-between ">
             बैंकिङ तयारी
             <svg
               className="mt-2 ml-2"
@@ -60,10 +61,13 @@ const UserNav = () => {
               />
             </svg>
           </li>
-          <li className="mr-7 font-link">Current Affairs</li>
+
+          <Link to="/currentoffiars">
+            <li className="  justify-between">Current Affairs</li>
+          </Link>
         </ul>
       </div>
-      <div className="flex justify-between mr-32 gap-6">
+      <div className="flex justify-between mr-32 gap-6 font-Poppins font-[400]">
         <img
           className=" w-[50%] h-[50%]  mt-6"
           src="./images/Notification.png"
@@ -72,7 +76,7 @@ const UserNav = () => {
           className="rounded-full w-[50%] h-[50%] mt-6"
           src="./images/me.jpg"
         />
-        <p className="flex flex-row mt-8">
+        <p className="flex flex-row mt-8 font-Poppins">
           Santosh
           <svg
             className="mt-2 ml-2 "

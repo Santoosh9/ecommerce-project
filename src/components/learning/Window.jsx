@@ -149,9 +149,9 @@ const Window = (props) => {
     }
 
     return (
-        <div className="flex justify-center w-full tablet:h-[440px] border border-blue-200">
+        <div className="flex justify-center items-center w-full h-full border border-blue-200 relative">
             { props.openPage === "video" &&
-            <div className="flex flex-col justify-between items-center tablet:h-playwindow laptop:w-playwindow laptop:h-playwindow">
+            <div className="flex flex-col justify-between items-center tablet:max-h-full w-full">
                 <div className="mobile:hidden laptop:block">
                     <ReactPlayer url='https://www.youtube.com/watch?v=miV-1btpLfY' controls playing width="932px" height="440px"/>
                 </div>
@@ -161,7 +161,7 @@ const Window = (props) => {
                 <div className="mobile:max-tablet:block tablet:hidden">
                     <ReactPlayer url='https://www.youtube.com/watch?v=miV-1btpLfY' controls playing width="320px" height="220px"/>
                 </div>
-                <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-sidenav mt-sidenavh p-2 border border-r-0 bg-black border-blue-100 absolute inset-0 mobile:hidden laptop:block cursor-pointer" : "flex justify-center items-center w-10 h-10 ml-sidenavplus mt-sidenavh p-2 border border-r-0 bg-black border-blue-100 absolute inset-0 sm:hidden lg:block cursor-pointer"} onClick={hideSideNav}>
+                <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-[-40px] p-2 border bg-black border-white absolute top-[45%] left-[100%] inset-0 mobile:hidden laptop:block cursor-pointer " : "flex justify-center items-center w-10 h-10 ml-[-40px] p-2 border bg-black border-white absolute top-[45%] left-[100%] inset-0 mobile:hidden laptop:block cursor-pointer"} onClick={hideSideNav}>
                 <div className="flex justify-center items-center w-6 h-6">
                     <div className="flex justify-center items-center w-6 h-6">
                         {props.hideSideNav ? 
@@ -174,19 +174,19 @@ const Window = (props) => {
             { props.openPage === "notes" &&
             <div className="flex justify-center w-playwindow h-playwindow">
                     <img src={docs} alt="docs" width="628px"/>
-                    <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-sidenav mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block cursor-pointer " : "flex justify-center items-center w-10 h-10 ml-sidenavplus mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block cursor-pointer "} onClick={hideSideNav}>
-                        <div className="flex justify-center items-center w-6 h-6">
-                            <div className="flex justify-center items-center w-6 h-6">
-                                {props.hideSideNav ? 
-                                <TfiAngleRight/> : <TfiAngleLeft/>  }
-                            </div>
-                        </div>
+                    <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-[-40px] p-2 border bg-white border-blue-100 absolute top-[45%] left-[100%] inset-0 mobile:hidden laptop:block cursor-pointer " : "flex justify-center items-center w-10 h-10 ml-[-40px] p-2 border bg-white border-blue-100 absolute top-[45%] left-[100%] inset-0 mobile:hidden laptop:block cursor-pointer"} onClick={hideSideNav}>
+                <div className="flex justify-center items-center w-6 h-6">
+                    <div className="flex justify-center items-center w-6 h-6">
+                        {props.hideSideNav ? 
+                        <TfiAngleRight/> : <TfiAngleLeft/>  }
                     </div>
+                </div>
+            </div>
             </div> 
             }
             { props.openPage === "mcqs"  &&
-            <div className="w-full h-full mt-4 ml-4 mr-4 tablet:mt-9 tablet:ml-28 tablet:mr-28 gap-10">
-                <div className="w:full laptop:w-[706px] laptop:max-h-[340px] overflow-y-auto p-2 tablet:p-6 border gap-12 border-blue-200">
+            <div className="flex flex-col justify-center w-full h-full mt-4 ml-4 mr-4 tablet:mt-6 tablet:ml-28 tablet:mr-28 gap-4">
+                <div className="w:full laptop:max-h-[340px] overflow-y-auto p-4 tablet:p-6 border gap-12 border-blue-200">
                     <div className="tablet:gap-16">
                         <div className="tablet:gap-8">
                             <div className="tablet:gap-12 h-26">
@@ -200,7 +200,7 @@ const Window = (props) => {
                             </div>
                             <div>
                                 {questions[question].options.map((oneoption, index) => (
-                                    <div className={selected === oneoption.key ? "flex justify-start items-center w-full px-5 py-4 border gap-2 border-blue-200 bg-blue-200" : "flex justify-start items-center w-full px-5 py-4 border gap-2 border-blue-100  hover:bg-blue-200"}  onClick={() => handleSelect(oneoption.key)}>
+                                    <div className={selected === oneoption.key ? "flex justify-start items-center w-full px-5 py-2 border gap-2 border-blue-200 bg-blue-200" : "flex justify-start items-center w-full px-5 py-3 border gap-2 border-blue-100  hover:bg-blue-200"}  onClick={() => handleSelect(oneoption.key)}>
                                         <div className="w-4 h-4 p-0.5">
                                             {selected === oneoption.key ? <FaRegCircleDot className="text-blue-500"/> : <FaRegCircle className="text-blue-300"/> }
                                         </div>
@@ -213,7 +213,7 @@ const Window = (props) => {
                         </div>
                     </div>
                 </div> 
-                <div className="flex justify-between w-full h-4 m-4 laptop:gap-96">
+                <div className="flex justify-between w-full h-4 m-2 laptop:gap-96">
                     <div className="flex justify-center items-center w-24 h-4 gap-2" onClick={ () => handleChangeQue(0)}>
                         <div className="flex justify-center items-center w-4 h-4">
                             <TfiAngleLeft className="text-blue-700"/>
@@ -236,7 +236,7 @@ const Window = (props) => {
                         </div>
                     </Link>  }
                 </div>
-                <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-sidenav mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block cursor-pointer" : "flex justify-center items-center w-10 h-10 ml-sidenavplus mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block cursor-pointer"} onClick={hideSideNav}>
+                <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-[-40px] p-2 border bg-white border-blue-100 absolute top-[45%] left-[100%] inset-0 mobile:hidden laptop:block cursor-pointer " : "flex justify-center items-center w-10 h-10 ml-[-40px] p-2 border bg-white border-blue-100 absolute top-[45%] left-[100%] inset-0 mobile:hidden laptop:block cursor-pointer"} onClick={hideSideNav}>
                 <div className="flex justify-center items-center w-6 h-6">
                     <div className="flex justify-center items-center w-6 h-6">
                         {props.hideSideNav ? 
@@ -264,14 +264,14 @@ const Window = (props) => {
                         </div>               
                     </div>
                     <button className="w-32 h-10 rounded-full mb-2 tablet:mb-0 tablet:w-40 tablet:h-12 py-2 px-4 bg-[#006EB9] ">Done</button>
-                    <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-sidenav mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block cursor-pointer" : "flex justify-center items-center w-10 h-10 ml-sidenavplus mt-sidenavh p-2 border border-r-0 bg-white border-blue-100 absolute inset-0 mobile:hidden laptop:block cursor-pointer"} onClick={hideSideNav}>
-                        <div className="flex justify-center items-center w-6 h-6">
-                            <div className="flex justify-center items-center w-6 h-6">
-                                {props.hideSideNav ? 
-                                <TfiAngleRight/> : <TfiAngleLeft/>  }
-                            </div>
-                        </div>
+                    <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-[-40px] p-2 border bg-white border-blue-100 absolute top-[45%] left-[100%] inset-0 mobile:hidden laptop:block cursor-pointer " : "flex justify-center items-center w-10 h-10 ml-[-40px] p-2 border bg-white border-blue-100 absolute top-[45%] left-[100%] inset-0 mobile:hidden laptop:block cursor-pointer"} onClick={hideSideNav}>
+                <div className="flex justify-center items-center w-6 h-6">
+                    <div className="flex justify-center items-center w-6 h-6">
+                        {props.hideSideNav ? 
+                        <TfiAngleRight/> : <TfiAngleLeft/>  }
                     </div>
+                </div>
+            </div>
             </div>
             }
 

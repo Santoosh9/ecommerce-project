@@ -46,17 +46,18 @@ const Complete = () => {
     }
 
     return (
-        <div className="App">
+        <div className="flex flex-col w-full min-h-screen justify-start flex-auto">
         <CourseHead header="course" />
         <div className='flex flex-col mobile:w-full tablet:w-full laptop:flex-row laptop:w-full laptop:justify-center'>
-            <div>
+            <div className="flex flex-col justify-between laptop:w-[70%] laptop:min-h-[86vh]">
             <Topic subChapter = {selectData} chapter = {chapterData} />
             <Window openPage= "complete" sideNavControl={sideNavControl} hideSideNav={hideSideNav}/>
             <Selectbar openPage= "complete" handleChangeData={handleChangeData}/>  
             </div>
             {hideSideNav && 
-              <Sidenav handleSelectData={handleSelectData} handleChapterData={handleChapterData} subChapter = {selectData} chapter = {chapterData}/>
-            }
+              <div className="laptop:overflow-y-auto laptop:overflow-x-hidden laptop:max-h-[86vh] laptop:w-[30%] justify-center">
+                <Sidenav handleSelectData={handleSelectData} handleChapterData={handleChapterData} subChapter = {selectData} chapter = {chapterData}/>
+              </div>            }
         </div>
         </div>
     )

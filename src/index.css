@@ -1,13 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Poppins:wght@100;200;300;400;500&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-.font-link {
-  font-family: 'Poppins', sans-serif;
+.tab-item {
+  @apply px-4 py-2 cursor-pointer text-gray-500 ;
 }
 
-.btn {
-  @apply bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4;
+.tab-item:hover {
+  @apply border-gray-300 text-gray-700 underline-offset-1;
 }
 
+.tab-item:focus {
+  @apply text-[rgba(0,110,185,1)];
+}
 
+.tab-item.active {
+  @apply bg-gray-200  text-[rgba(0,110,185,1)];
+}
+
+.card-img{
+@apply text-center text-2xl font-[500]  mt-4 ; 
+}
+
+.sm-text{
+  @apply text-[rgba(141,141,141,1)]  font-[400] text-xs ;
+}

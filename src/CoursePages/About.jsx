@@ -14,7 +14,7 @@ const About = () => {
     }
 
     return (
-        <div>
+        <div className="flex flex-col w-full">
             <UserNav/>
             <IntroCourse/>
             <Description openTab={openTab} handleTabChange={handleTabChange}/>

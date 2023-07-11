@@ -5,11 +5,17 @@ import { IoVideocamOutline } from 'react-icons/io5'
 import { FaAngleDown } from 'react-icons/fa6'
 import { FaAngleUp } from 'react-icons/fa6'
 import { RxDotFilled } from 'react-icons/rx'
+import { TfiAngleRight } from 'react-icons/tfi'
+import { TfiAngleLeft } from 'react-icons/tfi'
 
 const Sidenav = ( props ) => {
 
     const [toggle, setToggle] = useState([]);
     console.log(props.subChapter);
+    
+    const hideSideNav = () => {
+        props.sideNavControl(1);
+    }
 
     const chapters = [
         {
@@ -141,6 +147,65 @@ const Sidenav = ( props ) => {
                     title: 'Advanced Accounting III',
                 },
             ]
+        },
+        {
+            id: '7',
+            title: 'Foundation and Basics of Accounting',
+            video: '12',
+            notes: '7',
+            mcqs: '18',
+            subchapters: [
+                {
+                    id: '1',
+                    title: 'Foundation and Basics of Accounting'
+                },
+                {
+                    id: '2',
+                    title: 'Foundation and Basics of Accounting II',
+                }
+            ]
+        },
+        {
+            id: '8',
+            title: 'Laws of Accounting',
+            video: '22',
+            notes: '12',
+            mcqs: '20',
+            subchapters: [
+                {
+                    id: '1',
+                    title: 'Laws of Accounting',
+                },
+                {
+                    id: '2',
+                    title: 'Laws of Accounting II',
+                },
+                {
+                    id: '3',
+                    title: 'Laws of Accounting III',
+                }
+            ]
+        },
+        {
+            id: '9',
+            title: 'Advanced Accounting',
+            video: '29',
+            notes: '72',
+            mcqs: '11',
+            subchapters: [
+                {
+                    id: '1',
+                    title: 'Advanced Accounting',
+                },
+                {
+                    id: '2',
+                    title: 'Advanced Accounting II',
+                },
+                {
+                    id: '3',
+                    title: 'Advanced Accounting III',
+                },
+            ]
         }
     ]
       
@@ -159,7 +224,7 @@ const Sidenav = ( props ) => {
 
     return (
         <div>
-        <div className="flex flex-col justify-start md:justify-center mobile:w-full tablet:w-full laptop:w-auto">  
+        <div className="flex flex-col justify-start md:justify-center mobile:w-full tablet:w-full laptop:w-full">  
             <div className="w-auto h-14 pt-4 pr-64 pb-4 pl-6 bg-white">
                 <div className="flex justify-start w-32 gap-0.5">
                     <div className="w-36 h-6 gap-3">
@@ -167,13 +232,13 @@ const Sidenav = ( props ) => {
                     </div>
                 </div>
             </div>
-            <div className="overflow-y-auto overflow-x-hidden laptop:max-w-[432px] laptop:max-h-[510px] tablet:w-full">
+            <div className="tablet:w-full">
                 { chapters.map((chapter, chapterIndex) => (
                     <div className="flex flex-col justify-between w-full h-fit py-3 px-6 bg-white border-t border-blue-200 ">
-                        <div className="flex justify-between laptop:w-96 mobile:w-full">
+                        <div className="flex justify-between laptop:w-full mobile:w-full">
                             <div className="flex w-full h-20 gap-16">
                                 <div className="w-full h-20 gap-2"> 
-                                    <p className="w-[80%] laptop:w-80 h-12 text-base font-medium leading-6 text-left">
+                                    <p className="w-[80%] h-12 text-base font-medium leading-6 text-left">
                                         Chapter {chapter.id}:  {chapter.title}
                                     </p>
                                     <div className="flex justify-start ml-0 mt-2 w-72 h-5 gap-6">

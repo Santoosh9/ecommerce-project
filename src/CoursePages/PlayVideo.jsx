@@ -45,16 +45,18 @@ const PlayVideo = () => {
     }
 
     return (
-    <div className="h-full flex-col">
+    <div className="flex flex-col w-full min-h-screen justify-between flex-auto">
       <CourseHead header="course" />
-      <div className='flex flex-col mobile:w-full tablet:w-full laptop:flex-row laptop:w-full laptop:justify-center'>
-          <div>
+      <div className='flex flex-col w-full laptop:flex-row justify-between laptop:flex-1 laptop:justify-center'>
+          <div className="flex flex-col justify-between laptop:w-[70%] laptop:max-h-[86vh]">
             <Topic subChapter = {selectData} chapter = {chapterData} hideSideNav={hideSideNav}/>
             <Window openPage = "video" sideNavControl={sideNavControl} hideSideNav={hideSideNav}/>
             <Selectbar openPage = "video" handleChangeData={handleChangeData} hideSideNav={hideSideNav}/> 
           </div>
           {hideSideNav && 
-            <Sidenav handleSelectData={handleSelectData} handleChapterData={handleChapterData} subChapter = {selectData} chapter = {chapterData}/>
+            <div className="laptop:overflow-y-auto laptop:overflow-x-hidden tablet:max-h-[86vh] laptop:w-[30%] justify-center">
+              <Sidenav handleSelectData={handleSelectData} handleChapterData={handleChapterData} subChapter = {selectData} chapter = {chapterData}/>
+            </div>
           }
       </div>
     </div>

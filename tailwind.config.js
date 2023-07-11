@@ -9,7 +9,7 @@ export default {
       'tablet': '640px',
       // => @media (min-width: 1024px) { ... }
 
-      'laptop': '1020px',
+      'laptop': '1280px',
       // => @media (min-width: 1280px) { ... }
     },
     extend: {
