@@ -1,11 +1,11 @@
 .label-text {
-  @apply text-[rgba(17,17,17,1)]  font-[400]  text-base font-Poppins;
+  @apply text-[rgba(17,17,17,1)]  font-[400]  text-base ;
 }
 
 .btn-white {
-  @apply h-[60px] w-[246px] border  font-Poppins font-[500] text-base text-[rgba(36,39,49,1)];
+  @apply h-[60px] w-[246px] border   font-[500] text-base text-[rgba(36,39,49,1)];
 }
 
 .btn-primary {
-  @apply h-[60px] w-[246px] border bg-[rgba(0,110,185,1)] font-Poppins font-[540] text-base text-[rgba(255,255,255,1)];
+  @apply h-[60px] w-[246px] border bg-[rgba(0,110,185,1)]  font-[540] text-base text-[rgba(255,255,255,1)];
 }

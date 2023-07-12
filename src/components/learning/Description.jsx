@@ -9,10 +9,10 @@ import { IoVideocamOutline } from 'react-icons/io5'
 import { GrDocumentText } from 'react-icons/gr'
 import { CgFileDocument } from 'react-icons/cg'
 import { RxDotFilled } from 'react-icons/rx'
+import { Link } from "react-router-dom";
 
 const Description = (props) => {
 
-    // const chapters = ["Chapter 1", "Chapter 2", "Chapter 3", "Chapter 4", "Chapter 5", "Chapter 6" ]
     const chapters = [
         {
             id: '1',
@@ -159,15 +159,15 @@ const Description = (props) => {
     }
 
     return (
-        <div>
+        <div className="font-Poppins mt-20 tablet:mt-[-50px]">
             {!props.openTab ?
-            <div className="flex flex-col laptop:flex-row  justify-between w-full laptop:w-[1170px] mt-48 tablet:mt-28 ml-6 tablet:ml-32 gap-8" >
-            <div className="w-full laptop:w-[754px] h-fit laptop:h-[856px] gap-12">
-                <div className="flex w-full laptop:w-[306px] h-fit border-b gap-10 border-b-[#F0F9FF] text-[#F0F9FF]">
-                    <div className= { !props.openTab ? "w-fit h-full border-b border-b-[#006EB9] text-[#006EB9] px-4 py-3 gap-2 cursor-pointer" :"w-fit h-full text-[#2C2724BF] px-4 py-3 gap-2 cursor-pointer"} onClick={() => tabChange(0)}>
+            <div className="flex flex-col laptop:flex-row  justify-between w-full laptop:w-[85%]  mt-48 tablet:mt-28 ml-6 tablet:ml-32 gap-8 mb-4" >
+            <div className="w-full h-fit laptop:h-[856px] gap-12">
+                <div className="flex w-full h-fit border-b gap-6 border-b-[#F0F9FF] text-[#F0F9FF]">
+                    <div className= { !props.openTab ? "w-fit h-full border-b border-b-[#006EB9] text-[#006EB9] px-1 py-3" :"w-fit h-full text-[#2C2724BF] px-1 py-3 cursor-pointer"} onClick={() => tabChange(0)}>
                         <p className="w-fit h-6 font-medium text-lg leading-6" >About Course</p>
                     </div>
-                    <div className= { props.openTab ? "w-fit h-full border-b border-b-[#006EB9] text-[#006EB9] px-4 py-3 gap-2 cursor-pointer" :"w-fit h-full text-[#2C2724BF] px-4 py-3 gap-2 cursor-pointer"} onClick={() => tabChange(1)}>
+                    <div className= { props.openTab ? "w-fit h-full border-b border-b-[#006EB9] text-[#006EB9] px-1 py-3" :"w-fit h-full text-[#2C2724BF] px-1 py-3 cursor-pointer"} onClick={() => tabChange(1)}>
                         <p className="w-fit h-6 font-medium text-lg leading-6">Syllabus</p>
                     </div>
                 </div>
@@ -222,36 +222,36 @@ const Description = (props) => {
                         </div>
                     </div>
                 </div>
-                <div className="w-full h-[499px] border border-[#E0EBF2]">
-                    <div className=" flex flex-col justify-start w-full h-fit mt-8 ml-10 gap-8">
+                <div className="w-full h-[490px] border border-[#E0EBF2]">
+                    <div className=" flex flex-col justify-start w-full h-[490px] mt-8 ml-10 gap-8">
                         <p className="w-fit h-6 font-medium text-xl leading-6">Current Affairs</p>
-                        <div className="flex flex-col justify-evenly w-full h-fit gap-5">
-                            <div className="w-full h-fit gap-2">
-                                <div className="w-full h-fit gap-4">
+                        <div className="flex flex-col justify-between w-full h-fit gap-3">
+                            <div className="w-full h-fit">
+                                <div className="w-full h-fit">
                                     <p className="w-full h-full font-medium text-lg leading-6 py-2">पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना</p>
                                     <p className="w-fit font-normal text-base leading-6 text-[#2C2724BF]">March 21, 2023</p>
                                 </div>
                             </div>
-                            <div className="w-full h-fit gap-2">
-                                <div className="w-full h-fit gap-4">
+                            <div className="w-full h-fit">
+                                <div className="w-full h-fit">
                                     <p className="w-full h-full font-medium text-lg leading-6 py-2">परीक्षा कार्यक्रम संशाेधन गरिएको सूचना</p>
                                     <p className="w-fit font-normal text-base leading-6 text-[#2C2724BF]">March 21, 2023</p>
                                 </div>
                             </div>
-                            <div className="w-full h-fit gap-2">
-                                <div className="w-full h-fit gap-4">
+                            <div className="w-full h-fit">
+                                <div className="w-full h-fit">
                                     <p className="w-full h-full font-medium text-lg leading-6 py-2">पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना</p>
                                     <p className="w-fit font-normal text-base leading-6 text-[#2C2724BF]">March 21, 2023</p>
                                 </div>
                             </div>
-                            <div className="w-full h-fit gap-2">
-                                <div className="w-full h-fit gap-4">
+                            <div className="w-full h-fit">
+                                <div className="w-full h-fit">
                                     <p className="w-full h-full font-medium text-lg leading-6 py-2">पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना</p>
                                     <p className="w-fit font-normal text-base leading-6 text-[#2C2724BF]">March 21, 2023</p>
                                 </div>
                             </div>
-                            <div className="w-full h-fit gap-2">
-                                <div className="w-full h-gfit gap-4">
+                            <div className="w-full h-fit">
+                                <div className="w-full h-gfit">
                                     <p className="w-full h-full font-medium text-lg leading-6 py-2">पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना</p>
                                     <p className="w-fit font-normal text-base leading-6 text-[#2C2724BF]">March 21, 2023</p>
                                 </div>
@@ -261,28 +261,28 @@ const Description = (props) => {
                 </div>
             </div>
             </div> :
-            <div className="flex flex-col justify-between w-full laptop:w-[1170px] mt-48 tablet:mt-28 ml-6 tablet:ml-32 gap-8" >
-                <div className="flex w-full laptop:w-[306px] h-fit border-b gap-10 border-b-[#F0F9FF] text-[#F0F9FF]">
-                        <div className= { !props.openTab ? "w-fit h-full border-b border-b-[#006EB9] text-[#006EB9] px-4 py-3 gap-2 cursor-pointer" :"w-fit h-full text-[#2C2724BF] px-4 py-3 gap-2 cursor-pointer"} onClick={() => tabChange(0)}>
-                            <p className="w-fit h-6 font-medium text-lg leading-6" >About Course</p>
-                        </div>
-                        <div className= { props.openTab ? "w-fit h-full border-b border-b-[#006EB9] text-[#006EB9] px-4 py-3 gap-2 cursor-pointer" :"w-fit h-full text-[#2C2724BF] px-4 py-3 gap-2 cursor-pointer"} onClick={() => tabChange(1)}>
-                            <p className="w-fit h-6 font-medium text-lg leading-6">Syllabus</p>
-                        </div>
+            <div className="flex flex-col justify-between w-full laptop:w-[85%] mt-48 tablet:mt-28 ml-6 tablet:ml-32 gap-8 mb-4" >
+                <div className="flex w-full h-fit border-b gap-6 border-b-[#F0F9FF] text-[#F0F9FF]">
+                <div className= { !props.openTab ? "w-fit h-full border-b border-b-[#006EB9] text-[#006EB9] px-1 py-3" :"w-fit h-full text-[#2C2724BF] px-1 py-3 cursor-pointer"} onClick={() => tabChange(0)}>
+                        <p className="w-fit h-6 font-medium text-lg leading-6" >About Course</p>
+                    </div>
+                    <div className= { props.openTab ? "w-fit h-full border-b border-b-[#006EB9] text-[#006EB9] px-1 py-3" :"w-fit h-full text-[#2C2724BF] px-1 py-3 cursor-pointer"} onClick={() => tabChange(1)}>
+                        <p className="w-fit h-6 font-medium text-lg leading-6">Syllabus</p>
+                    </div>
                     </div>
                     <div className="w-full h-fit">
                         { chapters.map ((chapter, chapterIndex) => (
-                            <div className="flex flex-col w-full min-h-[96px] border bg-[#FAFAFA] border-[#E1ECF3]">
+                            <div className="w-full min-h-[98px] border bg-[#FAFAFA] border-[#E1ECF3]">
                             <div className="flex items-center w-full laptop:w-[90%] h-6 mt-8 ml-2 laptop:ml-10 gap-4">
                                 <div className="w-5 h-5 flex items-center cursor-pointer" onClick={() => toggleView(chapterIndex)}>
                                     { toggle[chapterIndex] ?
                                     <FaAngleUp/> :
                                     <FaAngleDown/>}
                                 </div>
-                                <div className="flex flex-col laptop:flex-row w-full h-fit">
-                                    <p className="w-fit flex items-center laptop:w-full h-full font-medium text-lg leading-6">Chapter {chapter.id}. {chapter.title}</p>
+                                <div className="flex flex-col items-center tablet:flex-row w-full h-fit py-1">
+                                    <p className="w-[95%] flex h-full font-medium text-lg leading-6 text-left">Chapter {chapter.id}. {chapter.title}</p>
                                     <div className="w-fit h-full gap-6">
-                                        <div className="flex items-center w-fit h-5 gap-0 laptop:gap-4 py-4">
+                                        <div className="flex items-center w-full h-5 gap-0 laptop:gap-4 py-2">
                                             <div className="flex items-center w-24 h-5 gap-0 tablet:gap-2">
                                                 <div className="w-5 h-5 flex items-center">
                                                     <IoVideocamOutline/>
@@ -308,6 +308,7 @@ const Description = (props) => {
                             {toggle[chapterIndex] && 
                                 <div className="w-full h-fit border-t border-t-[#E1ECF3] bg-white  mt-8">
                                     {chapter.subchapters.map((subchapter, index) => (
+                                        <Link to="/learning/video">
                                         <div className="w-full tablet:w-[90%] h-fit mt-1 ml-0 laptop:ml-9">
                                         <div className="w-full h-fit border-b border-b-[#E1ECF3] px-10 py-6">
                                             <div className="flex flex-col tablet:flex-row justify-between  w-full h-fit">
@@ -327,6 +328,7 @@ const Description = (props) => {
                                             </div>
                                         </div>
                                     </div>
+                                    </Link>
                                     ))}
                                 </div>
                             }
