@@ -176,12 +176,12 @@ const Mycourse = () => {
   return (
     <>
       <div className=" flex flex-col">
-        <div className=" ml-[140px] mt-5">
-          <p className=" text-[rgba(17,17,17,1)] font-Poppins text-2xl font-[500]  mt-5">
+        <div className=" ml-[140px] mt-1">
+          <p className=" text-[rgba(17,17,17,1)] font-Poppins text-2xl font-[500]  mt-3">
             Enrolled Courses
           </p>
         </div>
-        <div className="flex flex-row   w-[100%] ">
+        <div className="flex flex-row   w-[100%]  ">
           <div className=" flex flex-row flex-wrap  justify-center items-center  gap-10  ">
             {data.map((item) => (
               <Card
@@ -192,7 +192,7 @@ const Mycourse = () => {
                   className="h-[177px] border bg-cover w-[282px] ml-0"
                   style={{ backgroundImage: `url(${item.image})` }}
                 >
-                  <div className="h-[27px] w-[106px]  mt-[149px]  bg-[rgba(0,110,185,1)] font-Poppins text-white">
+                  <div className="h-[27px] w-[106px]  mt-[149px]  bg-[rgba(0,110,185,1)] font-Poppins text-white text-center ">
                     {item.price}
                   </div>
                 </div>
@@ -229,12 +229,12 @@ const Mycourse = () => {
 
       <div className=" flex flex-col">
         <div className="  ml-[140px] mt-5">
-          <p className="text-[rgba(17,17,17,1)] font-Poppins text-2xl font-[500]  mt-5">
+          <p className="text-[rgba(17,17,17,1)] font-Poppins text-2xl font-[500]  mt-3">
             Recommended Courses
           </p>
         </div>
 
-        <div className="flex flex-row   w-[100%]  justify-center items-center ">
+        <div className="flex flex-row  w-[100%]  justify-center items-center ">
           <div className=" flex flex-row flex-wrap   gap-10  ">
             {data1.map((item) => (
               <Card

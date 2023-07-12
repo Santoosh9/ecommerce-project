@@ -13,6 +13,7 @@ import { TbCircleCaretRight } from 'react-icons/tb';
 import { CiClock2 } from 'react-icons/ci';
 
 import { FiArrowRight } from 'react-icons/fi';
+import { Link } from 'react-router-dom';
 
 const Card2 = () => {
   const data = [
@@ -151,10 +152,12 @@ const Card2 = () => {
                 </Typography>
               </CardBody>
               <CardFooter className="pt-0 ml-3">
-                <p className="flex flex-row font-Poppins mt-2 font-[20px] text-[rgba(0,110,185,1)]">
-                  {item.engroll}
-                  <FiArrowRight className="mt-1.5 ml-1" />
-                </p>
+                <Link>
+                  <p className="flex flex-row font-Poppins mt-2 font-[20px] text-[rgba(0,110,185,1)]">
+                    {item.engroll}
+                    <FiArrowRight className="mt-1.5 ml-1" />
+                  </p>
+                </Link>
               </CardFooter>
             </Card>
           ))}

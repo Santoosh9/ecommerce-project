@@ -20,7 +20,7 @@ const Dashbord = () => {
     },
     {
       title: 'Fourms',
-      component: <Forms/>,
+      component: <Forms />,
     },
   ];
   return (

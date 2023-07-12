@@ -3,13 +3,14 @@ import Navbar from './layout/Navbar';
 import Card from '../Cards/Cards';
 import Footer from './layout/Footer';
 import Cards from '../Cards/Cards';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
     <>
       <Navbar />
 
-      <div className="flex flex-col w-[100%] ">
+      <div className="flex flex-col w-[100%]  ">
         <div className="flex flex-row  w-[100%]">
           <div className="w-[50%] bg-[rgba(0,110,185,1)] flex  ">
             <div className=" w-[526px]  h-[332.72px] ml-[134px]  flex flex-col mt-[122px]">
@@ -26,14 +27,16 @@ const Home = () => {
                   journey.
                 </p>
 
-                <button className=" bg-white text-[rgba(0,110,185,1)]  font-Poppins   text-base font-[500] mt-6 h-[48px] w-[216px]">
-                  Explore All Course 
-                </button>
+                <Link to="/mycourse">
+                  <button className=" bg-white text-[rgba(0,110,185,1)]  font-Poppins   text-base font-[500] mt-6 h-[48px] w-[216px]">
+                    Explore All Course
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
 
-          <div className="w-[50%] ">
+          <div className="w-[50%] z-[-1] ">
             <div
               id="carouselExampleIndicators"
               className="carousel slide"
