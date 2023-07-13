@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 
 const Dropdown = () => {
     return (
-        <div className="fixed inset-0 flex items-top justify-end">                   
-                     <div className="mt-16 mr-0">
+        <div className="fixed inset-0 flex items-top justify-end w-full mt-16 z-10">                   
+                     <div>
                         <div className="bg-white">
                             <Link to="/mycourse">
                                 <div className=" py-3 px-6 hover:bg-blue-100">

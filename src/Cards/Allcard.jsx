@@ -86,7 +86,7 @@ const Allcard = () => {
               All Courses
             </p>
 
-            <p className=" font-[16px]  font-Poppins mt-6 text-[#2C2724BF]">
+            <p className=" font-[16px]  font-Poppins mt-6 px-2 text-[#2C2724BF]">
               We offer a diverse range of courses, covering a range of subjects
               and disciplines
             </p>
@@ -96,7 +96,7 @@ const Allcard = () => {
               selectedIndex={selectedIndex}
               onChange={setSelectedIndex}
             >
-              <Tab.List className=" font-Poppins font-[16px] flex justify-between mt-10 text-base">
+              <Tab.List className=" font-Poppins font-[16px] flex flex-wrap justify-between mt-10 text-base">
                 {tabData.map((t, i) => (
                   <Tab as={Fragment} key={i + 1}>
                     {({ selected }) => (

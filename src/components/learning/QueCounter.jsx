@@ -611,7 +611,7 @@ const QueCounter = () => {
                             </div>
                             <div>
                                 {onequestion.options.map((oneoption, index2) => (
-                                    <div key={index2}className={onequestion.selected === oneoption.key ? "flex justify-start items-center w-full px-5 py-4 border gap-2 border-blue-200 bg-blue-200" : "flex justify-start items-center w-full px-5 py-4 border gap-2 border-blue-100  hover:bg-blue-200"}  onClick={() => handleSelect(onequestion.id, oneoption.key)}>
+                                    <div key={index2} className={onequestion.selected === oneoption.key ? "flex justify-start items-center w-full px-2 py-1.5 tablet:px-5 tablet:py-4 border gap-2 border-blue-200 bg-blue-200" : "flex justify-start items-center w-full px-2 py-1.5 tablet:px-5 tablet:py-4 border gap-2 border-blue-100  hover:bg-blue-200"}  onClick={() => handleSelect(onequestion.id, oneoption.key)}>
                                     <div className="w-4 h-4 p-0.5">
                                         {onequestion.selected === oneoption.key ? <FaRegCircleDot className="text-blue-500"/> : <FaRegCircle className="text-blue-300"/> }
                                     </div>

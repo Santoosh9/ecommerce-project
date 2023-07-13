@@ -7,8 +7,8 @@ import { CiFacebook, CiLinkedin, CiInstagram } from 'react-icons/ci';
 const Footer = () => {
   return (
     <div class=" w-[100%]  bg-sky-100 flex flex-col">
-      <div className="flex flex-row  justify-center items-center mt-[60px]  mb-[50px]   gap-24 ">
-        <div className="w-[327px] h-[281px]  mr-10 ">
+      <div className="flex flex-col tablet:flex-row w-full justify-center items-center mt-[60px]  mb-[50px] gap-8 laptop:gap-24 ">
+        <div className="w-full tablet:w-[327px] h-fit tablet:mr-10 px-2 ">
           <img src="./images/logo.png" alt="logo-img" />
 
           <p className=" mt-4  text-base font-Poppins ">
@@ -33,7 +33,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="justify-center items-center flex flex-row mb-16 gap-12">
+        <div className="justify-center items-start flex flex-col tablet:flex-row mb-16 gap-12 px-2">
           <div className="">
             <ul className="font-link font-Poppins text-base h-[180px] ">
               <p className=" font-[500] text-lg mt-2 "> Support</p>

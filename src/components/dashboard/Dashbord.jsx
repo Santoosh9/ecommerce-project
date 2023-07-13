@@ -27,16 +27,16 @@ const Dashbord = () => {
     <>
       <UserNav />
 
-      <div className="flex flex-col mt-1">
+      <div className="flex flex-col mt-1 w-full">
         <div
-          className="h-[150px] "
+          className="w-full h-[150px] "
           style={{
             backgroundImage: `url(${'./images/header.jpg'})`,
             backgroundRepeat: 'no-repeat',
             backgroundSize: 'cover',
           }}
         >
-          <div className="flex flex-col ml-32 mt-10 font-Poppins">
+          <div className="flex flex-col ml-12 laptop:ml-32 mt-10 font-Poppins">
             <p className=" font-[500]  text-3xl text-white ">Dashbord</p>
             <p className="mt-2 text-white	 font-[300] text-xl">Welcome back!</p>
           </div>
@@ -47,7 +47,7 @@ const Dashbord = () => {
           selectedIndex={selectedIndex}
           onChange={setSelectedIndex}
         >
-          <Tab.List className=" font-Poppins font-[16px] flex  mt-10 text-base ml-[140px]">
+          <Tab.List className=" font-Poppins font-[16px] flex  mt-10 text-base ml:12 tablet:ml-[70px] laptop:ml-[140px]">
             {tabData.map((t, i) => (
               <Tab as={Fragment} key={i + 1}>
                 {({ selected }) => (

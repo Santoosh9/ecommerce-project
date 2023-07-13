@@ -39,12 +39,12 @@ const Notifications = () => {
             group: 'alert',
             header: "Entrance Exam for IOE is starting from tomorrow: 12/02/2023",
             timestamp: "Last Wednesday at 11:15 AM"
-        },
+        }
     ]
     return (
-        <div className="fixed inset-0 w-full max-w-[440px] h-fit mt-20 z-10 ml-[65%] bg-white">
+        <div className="fixed inset-0 w-full max-h-screen overflow-y-auto max-w-[440px] flex justify-end h-fit mt-20 z-10 laptop:ml-[65%] bg-white">
             <div className="w-full h-full rounded">
-                <div className="flex justify-between items-center w-full h-12 py-3 px-4 gap-24">
+                <div className="flex justify-between items-center w-full h-12 py-3  pl-4 pr-1 gap-4">
                     <div className="w-1/2 h-3/5">
                         <div className="flex w-3/4 h-full gap-2">
                             <p className="w-fit h-[18px] font-medium text-sm leading-[18px]">Notifications</p>
@@ -58,8 +58,8 @@ const Notifications = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="w-32 h-5">
-                        <div className="flex justify-between items-center w-full h-full gap-1">
+                    <div className="w-36 h-5 pr-2">
+                        <div className="flex justify-end items-center w-full h-full gap-1">
                             <p className="w-fit h-5 font-normal text-xs leading-5 text-[#2C2724BF]">
                                 Mark all as read
                             </p>

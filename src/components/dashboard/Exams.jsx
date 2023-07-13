@@ -65,11 +65,11 @@ const Exams = () => {
 
   return (
     <>
-      <p className=" text-[rgba(17,17,17,1)] font-Poppins text-2xl font-[500] ml-[120px] mt-5">
+      <p className=" text-[rgba(17,17,17,1)] font-Poppins text-2xl font-[500] ml-8 tablet:ml-[120px] mt-5">
         Recommended Exams
       </p>
 
-      <div className="ml-28 mt-5 flex flex-row flex-wrap gap-10 mb-10">
+      <div className="ml-6 tablet:ml-28 mt-5 flex flex-row flex-wrap gap-10 mb-10">
         {data.map((item) => (
           <Card className="mt-6 w-[282px] h-[120px] border  shadow-none bg-[rgba(255,255,255,1)]   hover:bg-[rgba(240,249,255,1)]">
             <div className="ml-4 mt-4">

@@ -3,19 +3,19 @@ import React from 'react';
 const FooetRecently = () => {
   return (
     <div
-      className=" h-[418px]  w-[100%]  flex flex-col  gap-10 "
+      className=" h-fit  w-full  flex flex-col gap-10 "
       style={{
         backgroundImage: `url(${'./images/Banner2.png'})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
       }}
     >
-      <div className="mt-16  ml-32 ">
+      <div className="mt-4 tablet:mt-16 ml-8 tablet:ml-32 ">
         <p className="  text-white font-Poppins font-[500]  text-2xl">
           Recently Viewed
         </p>
       </div>
-      <div className=" flex flex-row   text-white ml-32  justify-start gap-[122px]">
+      <div className=" flex flex-col  tablet:flex-row   text-white ml-8 tablet:ml-32  justify-start laptop:gap-[122px]">
         <div className="">
           <ul className=" font-[400] font-Poppins text-base">
             <p className=" font-[500]  font-Poppins  text-lg mt-2"> Support</p>

@@ -176,13 +176,13 @@ const Mycourse = () => {
   return (
     <>
       <div className=" flex flex-col">
-        <div className=" ml-[140px] mt-1">
+        <div className="ml-5 tablet:ml-[140px] mt-1">
           <p className=" text-[rgba(17,17,17,1)] font-Poppins text-2xl font-[500]  mt-3">
             Enrolled Courses
           </p>
         </div>
-        <div className="flex flex-row   w-[100%]  ">
-          <div className=" flex flex-row flex-wrap  justify-center items-center  gap-10  ">
+        <div className="flex flex-row w-full ">
+          <div className=" flex flex-row flex-wrap  justify-center items-center gap-10  ">
             {data.map((item) => (
               <Card
                 key={item.id}
@@ -228,14 +228,14 @@ const Mycourse = () => {
       </div>
 
       <div className=" flex flex-col">
-        <div className="  ml-[140px] mt-5">
+        <div className=" ml-5 tablet:ml-[140px] mt-5">
           <p className="text-[rgba(17,17,17,1)] font-Poppins text-2xl font-[500]  mt-3">
             Recommended Courses
           </p>
         </div>
 
-        <div className="flex flex-row  w-[100%]  justify-center items-center ">
-          <div className=" flex flex-row flex-wrap   gap-10  ">
+        <div className="flex flex-row w-full  justify-center items-center ">
+          <div className=" flex flex-row flex-wrap gap-10 ml-5 ">
             {data1.map((item) => (
               <Card
                 key={item.id}
