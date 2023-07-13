@@ -3,28 +3,35 @@ export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     screens: {
-      mobile: '20px',
+      'mobile': '20px',
       // => @media (min-width: 640px) { ... }
 
-      tablet: '640px',
+      'tablet': '640px',
       // => @media (min-width: 1024px) { ... }
 
-      laptop: '1020px',
+      'laptop': '1280px',
       // => @media (min-width: 1280px) { ... }
     },
-
     extend: {
-      colors: {
-        primary: { rbg: (0, 110, 185, 1) },
-        secondary: { rgba: (0, 140, 236, 1) },
+      margin: {
+        'sidenav' : '893px',
+        'sidenavplus' : '1110px',
+        'sidenavh' : '350px'
       },
-
-      PaleOrang: {},
-
-      fontFamily: {
-        Poppins: ['Poppins', 'sans-serif'],
-        Lato: ['Lato', 'sans-serif'],
+      width: {
+        'playwindow' : '932px',
+        'navwidth' : '100%'
       },
+      height: {
+        'playwindow' : '440px',
+        'navheight' : '86px'
+      },
+      gap: {
+        'navgap': '440px'
+      },
+      dropShadow: {
+        'notifcation': '0px 5px 15px 0px #00000033',
+      }
     },
   },
   plugins: [],

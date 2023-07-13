@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import {
   Card,
   CardHeader,
@@ -24,7 +23,7 @@ import { Tab } from '@headlessui/react';
 import Card1 from './Card1';
 import Card2 from './Card2';
 
-const Cards = () => {
+const Allcard = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
 
   const tabData = [
@@ -32,6 +31,8 @@ const Cards = () => {
       title: 'Most Popular',
       component: (
         <>
+          <Card1 />
+          <Card2 />
           <Card1 />
         </>
       ),
@@ -41,37 +42,51 @@ const Cards = () => {
       component: (
         <>
           <Card2 />
+          <Card2 />
+          <Card1 />
         </>
       ),
     },
     {
       title: 'Lok Sewa',
-      component: <><Card1 /></>,
+      component: 
+      <>
+        <Card1 />
+        <Card2 />
+        <Card1 />
+      </>,
     },
     {
       title: 'Banking',
-      component: <><Card2 /></>,
+      component: 
+      <>
+        <Card1 />
+        <Card2 />
+        <Card1 />
+      </>,
     },
     {
       title: 'Other',
-      component: <><Card1 /></>,
+      component:
+      <>
+        <Card1 />
+        <Card2 />
+        <Card1 />
+      </>,
     },
   ];
 
   return (
     <>
-      <div className=" flex flex-col  mt-0 w-[100%]  ">
+      <div className=" flex flex-col  mt-0 w-[100%] mb-20">
         <div className="flex flex-col w-[100%] ">
           <div className="flex flex-col items-center w-[100%]  ">
-            <a className=" text-[rgba(0,110,185,1)]  font-Poppins  text-lg font-[500]  mt-16">
-              Cutting-edge Courses
-            </a>
 
             <p className="text-[rgba(17,17,17,1)] font-Poppins  text-4xl font-[400] mt-6 ">
-              Find a course that fits your need
+              All Courses
             </p>
 
-            <p className=" font-[16px]  font-Poppins mt-6">
+            <p className=" font-[16px]  font-Poppins mt-6 text-[#2C2724BF]">
               We offer a diverse range of courses, covering a range of subjects
               and disciplines
             </p>
@@ -86,7 +101,7 @@ const Cards = () => {
                   <Tab as={Fragment} key={i + 1}>
                     {({ selected }) => (
                       <button
-                        className={`px-4 py-2 bg-white cursor-pointer focus:outline-none  ${
+                        className={`px-4 py-2 bg-white cursor-pointer focus:outline-none ${
                           selected
                             ? 'text-[#006EB9] border-b-2 border-b-[#006EB9]'
                             : ' text-gray-500'
@@ -98,27 +113,17 @@ const Cards = () => {
                   </Tab>
                 ))}
               </Tab.List>
-              <Tab.Panels className="mt-6">
+              <Tab.Panels>
                 {tabData.map((t, i) => (
                   <Tab.Panel key={i + 1}>{t?.component}</Tab.Panel>
                 ))}
               </Tab.Panels>
             </Tab.Group>
           </div>
-          <Link to="/allcourse">
-          <div className="flex flex-col mt-2 w-[100%] ">
-            <p className="flex  flex-row justify-center text-lg items-center mt-4 text-[rgba(0,110,185,1)] font-Poppins font-[500] ">
-              Explore all courses
-              <FiArrowRight className="mt-0.5 ml-1" />
-            </p>
-          </div>
-          </Link>
         </div>
       </div>
-
-      <Map />
     </>
   );
 };
 
-export default Cards;
+export default Allcard;

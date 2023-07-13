@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import Navbar from './layout/Navbar';
 import Card from '../Cards/Cards';
 import Footer from './layout/Footer';
@@ -6,6 +6,11 @@ import Cards from '../Cards/Cards';
 import { Link } from 'react-router-dom';
 
 const Home = () => {
+
+  useEffect (() => {
+    window.scrollTo(0, 0);
+  })
+
   return (
     <>
       <Navbar />
@@ -27,7 +32,7 @@ const Home = () => {
                   journey.
                 </p>
 
-                <Link to="/mycourse">
+                <Link to="/allcourse">
                   <button className=" bg-white text-[rgba(0,110,185,1)]  font-Poppins   text-base font-[500] mt-6 h-[48px] w-[216px]">
                     Explore All Course
                   </button>
