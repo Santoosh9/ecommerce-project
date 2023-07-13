@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { FiArrowRight } from 'react-icons/fi';
 
@@ -81,9 +82,11 @@ const Exams = () => {
                 </Typography>
               </CardBody>
               <CardFooter className="pt-0">
-                <p className=" text-[rgba(0,110,185,1)]  font-Poppins  font-[400] text-sm flex flex-row mt-4">
-                  {item.attempt} <FiArrowRight className="mt-[3px] ml-1" />
-                </p>
+                <Link to='/exam'>
+                  <p className=" text-[rgba(0,110,185,1)]  font-Poppins  font-[400] text-sm flex flex-row mt-4">
+                    {item.attempt} <FiArrowRight className="mt-[3px] ml-1" />
+                  </p>
+                </Link>
               </CardFooter>
             </div>
           </Card>

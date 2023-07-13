@@ -152,14 +152,14 @@ const Window = (props) => {
         <div className="flex justify-center items-center w-full h-full border border-blue-200 relative">
             { props.openPage === "video" &&
             <div className="flex flex-col justify-between items-center tablet:max-h-full w-full">
-                <div className="mobile:hidden laptop:block">
-                    <ReactPlayer url='https://www.youtube.com/watch?v=miV-1btpLfY' controls playing width="932px" height="440px"/>
+                <div className="hidden laptop:block">
+                    <ReactPlayer url='https://www.youtube.com/watch?v=miV-1btpLfY' controls width="932px" height="440px"/>
                 </div>
-                <div className="mobile:hidden tablet:max-laptop:block">
-                    <ReactPlayer url='https://www.youtube.com/watch?v=miV-1btpLfY' controls playing width="780px" height="440px"/>
+                <div className="hidden tablet:block laptop:hidden">
+                    <ReactPlayer url='https://www.youtube.com/watch?v=miV-1btpLfY' controls width="780px" height="440px"/>
                 </div>
-                <div className="mobile:max-tablet:block tablet:hidden">
-                    <ReactPlayer url='https://www.youtube.com/watch?v=miV-1btpLfY' controls playing width="320px" height="220px"/>
+                <div className="mobile:block tablet:hidden laptop:hidden">
+                    <ReactPlayer url='https://www.youtube.com/watch?v=miV-1btpLfY' controls width="320px" height="220px"/>
                 </div>
                 <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-[-40px] p-2 border bg-black border-white absolute top-[45%] left-[100%] inset-0 mobile:hidden laptop:block cursor-pointer " : "flex justify-center items-center w-10 h-10 ml-[-40px] p-2 border bg-black border-white absolute top-[45%] left-[100%] inset-0 mobile:hidden laptop:block cursor-pointer"} onClick={hideSideNav}>
                 <div className="flex justify-center items-center w-6 h-6">

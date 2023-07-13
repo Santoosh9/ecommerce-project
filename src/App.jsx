@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Login from './components/layout/Login';
 import Register from './components/layout/Register';
-
+import TopScroll from './TopScroll';
 import Exam from './components/dashboard/Exam';
 import PlayVideo from './CoursePages/PlayVideo';
 import Notes from './CoursePages/Notes';
@@ -20,6 +20,7 @@ import Dashbord from './components/dashboard/Dashbord';
 // import Complete from './components/CoursePages/Complete';
 import ExamAttempt from './CoursePages/ExamAttempt';
 import ExamComplete from './CoursePages/ExamComplete';
+import Allcourses from './components/dashboard/Allcourses';
 // import MCQs from './components/CoursePages/Mcqs';
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/exam" element={<Exam />} />
           <Route path="/mycourse" element={<Dashbord />} />
+          <Route path="/allcourse" element={<Allcourses/>}></Route>
           <Route path="/currentoffiars" element={<CurrentOffiars />} />
 
           {/* bibek tasks */}

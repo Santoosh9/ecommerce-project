@@ -28,6 +28,9 @@ export default {
       },
       gap: {
         'navgap': '440px'
+      },
+      dropShadow: {
+        'notifcation': '0px 5px 15px 0px #00000033',
       }
     },
   },

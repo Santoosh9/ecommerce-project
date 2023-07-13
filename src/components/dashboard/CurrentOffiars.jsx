@@ -4,6 +4,7 @@ import { Card, Typography } from '@material-tailwind/react';
 import FooetRecently from '../layout/Foorerreseltly';
 import Footer from '../layout/Footer';
 import { AiFillFilePdf } from 'react-icons/ai';
+import dummypdf from "../../Assets/dummy.pdf";
 
 
 const CurrentOffiars = () => {
@@ -165,10 +166,12 @@ const CurrentOffiars = () => {
                 <td className="p-4 w-[173px] flex flex-row ">
                   <Typography className="flex flex-row gap-1 ">
                     <AiFillFilePdf className="text-red-600 w-[16.5px] h-[21px]" />
+                    <a href={dummypdf}>
                     <p
                       className=" font-Poppins font-[400] text-sm text-[rgba(44,39,36,0.75)]">
                       {text}
                     </p>
+                    </a>
                   </Typography>
                 </td>
               </tr>
