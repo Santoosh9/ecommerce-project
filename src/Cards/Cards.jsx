@@ -67,11 +67,11 @@ const Cards = () => {
               Cutting-edge Courses
             </a>
 
-            <p className="text-[rgba(17,17,17,1)] font-Poppins  text-4xl font-[400] mt-6 ">
+            <p className="text-[rgba(17,17,17,1)] font-Poppins text-center text-4xl font-[400] mt-6 ">
               Find a course that fits your need
             </p>
 
-            <p className=" font-[16px]  font-Poppins mt-6">
+            <p className=" font-[16px] text-center  font-Poppins mt-6">
               We offer a diverse range of courses, covering a range of subjects
               and disciplines
             </p>
@@ -81,7 +81,7 @@ const Cards = () => {
               selectedIndex={selectedIndex}
               onChange={setSelectedIndex}
             >
-              <Tab.List className=" font-Poppins font-[16px] flex justify-between mt-10 text-base">
+              <Tab.List className=" font-Poppins font-[16px] flex flex-wrap justify-between mt-10 text-base text-left">
                 {tabData.map((t, i) => (
                   <Tab as={Fragment} key={i + 1}>
                     {({ selected }) => (
