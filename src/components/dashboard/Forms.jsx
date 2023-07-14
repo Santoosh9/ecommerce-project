@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from 'react';
+<<<<<<< HEAD
 import {RiImageAddFill} from 'react-icons/ri';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import {BsBookmark} from 'react-icons/bs';
+=======
+import { RiImageAddFill } from 'react-icons/ri';
+import { AiOutlineCloseCircle } from 'react-icons/ai';
+import { BsBookmark } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
+>>>>>>> 037fc1cc65f2cde9fd8f31f05150a0a85484bd8a
 
 const Forms = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -70,34 +77,39 @@ const Forms = () => {
           <div className="h-fit w-full flex flex-col border ml-6 laptop:ml-20 mt-10 ">
             <div className="ml-3  mt-3 flex flex-row">
               <img className="h-[50%] mt-3" src="./images/ic1.png" />
-
-              <ul className="ml-3">
-                <p className=" text-[rgba(63,67,84,1)] font[500]  font-Poppins  text-base">
-                  ALL
-                </p>
-                <li className=" sm-text">show all post</li>
-              </ul>
+              <Link to="#">
+                <button className="ml-3 ">
+                  <p className=" text-[rgba(63,67,84,1)] font[500]  font-Poppins  text-base  text-start">
+                    ALL
+                  </p>
+                  <p className=" sm-text">show all post</p>
+                </button>
+              </Link>
             </div>
             <div className=" ml-3  mt-3 flex  bg-[rgba(244,246,248,1)]">
               <img className="h-[50%] mt-3" src="./images/ic2.png" />
 
-              <ul className="ml-3">
-                <p className=" text-[rgba(63,67,84,1)] font[500] font-Poppins text-base ">
-                  Posted by me
-                </p>
-                <li className=" sm-text">Show posts posted by me</li>
-              </ul>
+              <Link to="#">
+                <button className="ml-3">
+                  <p className=" text-[rgba(63,67,84,1)] font[500] font-Poppins text-base text-start ">
+                    Posted by me
+                  </p>
+                  <p className=" sm-text">Show posts posted by me</p>
+                </button>
+              </Link>
             </div>
 
             <div className=" ml-3  mt-3 flex flex-row">
               <img className="h-[50%] mt-3" src="./images/ic3.png" />
 
-              <ul className="ml-3">
-                <p className=" text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins ">
-                  Commented by me
-                </p>
-                <li className="sm-text ">Show posts posted by me</li>
-              </ul>
+              <Link to="#">
+                <button className="ml-3">
+                  <p className=" text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins  text-start">
+                    Commented by me
+                  </p>
+                  <p className="sm-text ">Show posts posted by me</p>
+                </button>
+              </Link>
             </div>
           </div>
           <div className=" h-fit w-full  flex flex-col border ml-6 laptop:ml-20 mt-10 ">
@@ -107,57 +119,69 @@ const Forms = () => {
               </p>
               <div className="flex flex-row flex-wrap my-2 ">
                 <div className="flex flex-col w-full">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
+                  <button className="text-start">
+                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins  ">
                       RBB
                     </p>
-                    <li className="sm-text">82645 Posted by this tag</li>
-                  </ul>
+                    <p className="sm-text">82645 Posted by this tag</p>
+                  </button>
                 </div>
 
                 <div className="flex flex-col  w-full">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2  font[500]  text-base font-Poppins ">
-                      NEA
-                    </p>
-                    <li className="sm-text">65523 Posted Trending</li>
-                  </ul>
+                  <Link to="#">
+                    {' '}
+                    <button className=" text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2  font[500]  text-base font-Poppins ">
+                        NEA
+                      </p>
+                      <p className="sm-text">65523 Posted Trending</p>
+                    </button>
+                  </Link>
                 </div>
 
                 <div className="flex flex-col  w-full">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
-                      Lok Sewa
-                    </p>
-                    <li className="sm-text">Trending</li>
-                  </ul>
+                  <Link to="#">
+                    {' '}
+                    <button className=" text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
+                        Lok Sewa
+                      </p>
+                      <p className="sm-text">Trending</p>
+                    </button>
+                  </Link>
                 </div>
 
                 <div className="flex flex-col  w-full">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
-                      Entrance
-                    </p>
-                    <li className="sm-text">Trending</li>
-                  </ul>
+                  <Link to="#">
+                    <button className="text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
+                        Entrance
+                      </p>
+                      <p className="sm-text">Trending</p>
+                    </button>
+                  </Link>
                 </div>
 
                 <div className="flex flex-col  w-full">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
-                      RSB
-                    </p>
-                    <li className="sm-text">Posted by this tag</li>
-                  </ul>
+                  <Link to="#">
+                    <button className=" text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
+                        RSB
+                      </p>
+                      <p className="sm-text">Posted by this tag</p>
+                    </button>
+                  </Link>
                 </div>
 
                 <div className="flex flex-col  w-full">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
-                      Nepal Telecom
-                    </p>
-                    <li className="sm-text">48029 Posted by this tag</li>
-                  </ul>
+                  <Link to="#">
+                    <button className=" text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
+                        Nepal Telecom
+                      </p>
+                      <p className="sm-text">48029 Posted by this tag</p>
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
@@ -219,9 +243,17 @@ const Forms = () => {
                 </div>
                 <div className="bg-[rgba(225,236,243,1)] mt-4 h-[48px] w-[154px] flex justify-center items-center gap-2 ml-0.5 tablet:ml-6 ">
                   <div className=" flex items-center">
+<<<<<<< HEAD
                     <RiImageAddFill className='text-[#006EB9] text-lg'/>
                   </div>
                   <p className="font-normal text-sm leading-5 text-[#006EB9]">Add Image</p>
+=======
+                    <RiImageAddFill className="text-[#006EB9] text-lg" />
+                  </div>
+                  <p className="font-normal text-sm leading-5 text-[#006EB9]">
+                    Add Image
+                  </p>
+>>>>>>> 037fc1cc65f2cde9fd8f31f05150a0a85484bd8a
                 </div>
 
                 <div className="mt-10  bg-[rgba(0,110,185,1)]  h-[46px] w-[146px] ml-0.5 tablet:ml-[80%] mb-2">
@@ -234,7 +266,14 @@ const Forms = () => {
           </div>
           <div className=" flex flex-col flex-wrap w-full mt-10">
             {data.map((item) => (
+<<<<<<< HEAD
               <div key={item.id} className="flex flex-col tablet:flex-row mt-3 pr-2  border">
+=======
+              <div
+                key={item.id}
+                className="flex flex-col tablet:flex-row mt-3 pr-2  border"
+              >
+>>>>>>> 037fc1cc65f2cde9fd8f31f05150a0a85484bd8a
                 <div className=" mb:4 tablet:mb-24 mt-4 ml-4 w-[120%] tablet:w-[25%]">
                   <img src={item.image} />
                 </div>
@@ -243,12 +282,21 @@ const Forms = () => {
                   <div className="flex flex-col ml-4 w-[70%] tablet:w-[90%]">
                     <div>
                       <div className="flex flex-row w-fit gap-10 text-sky-600	">
+<<<<<<< HEAD
                         <p className="bg-[#F0F9FF] w-fit rounded-full text-[rgba(0,110,185,1)]">
                           {item.texttop1}
                         </p>
                         <p className="bg-[#F0F9FF] w-fit rounded-full">
                           {item.texttop2}
                         </p>
+=======
+                        <button className="bg-[#F0F9FF] w-fit rounded-full text-[rgba(0,110,185,1)]">
+                          {item.texttop1}
+                        </button>
+                        <button className="bg-[#F0F9FF] w-fit rounded-full">
+                          {item.texttop2}
+                        </button>
+>>>>>>> 037fc1cc65f2cde9fd8f31f05150a0a85484bd8a
                       </div>
                     </div>
 
@@ -261,6 +309,7 @@ const Forms = () => {
                         {item.name}
                         <li className=" sm-text  mb-4">3 weeks ago</li>
                       </ul>
+<<<<<<< HEAD
                       <div className='flex'>
                       <p className="tablet:ml-5 -mt-2 tablet:mt-3 text-[rgba(0,110,185,1)] font-Poppins font-[400] text-xs">
                         {item.views}
@@ -268,11 +317,24 @@ const Forms = () => {
                       <p className="ml-4 tablet:ml-7 -mt-2 tablet:mt-3 text-[rgba(0,110,185,1)] font-Poppins font-[400] text-xs">
                         {item.cmt}
                       </p>
+=======
+                      <div className="flex">
+                        <p className="tablet:ml-5 -mt-2 tablet:mt-3 text-[rgba(0,110,185,1)] font-Poppins font-[400] text-xs">
+                          {item.views}
+                        </p>
+                        <p className="ml-4 tablet:ml-7 -mt-2 tablet:mt-3 text-[rgba(0,110,185,1)] font-Poppins font-[400] text-xs">
+                          {item.cmt}
+                        </p>
+>>>>>>> 037fc1cc65f2cde9fd8f31f05150a0a85484bd8a
                       </div>
                     </div>
                   </div>
                   <div className=" flex items-center justify-center ml-0 tablet:ml-4 w-[8%] h-9 bg-[#006EB91A]">
+<<<<<<< HEAD
                     <BsBookmark className=' text-[#006EB9]'/>
+=======
+                    <BsBookmark className=" text-[#006EB9]" />
+>>>>>>> 037fc1cc65f2cde9fd8f31f05150a0a85484bd8a
                   </div>
                 </div>
               </div>
@@ -286,57 +348,71 @@ const Forms = () => {
               <p className=" font-bold font-lg">Recommended Courses</p>
               <div className="flex flex-row flex-wrap my-2 ">
                 <div className="flex flex-col w-full mt-1">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
-                      RBB 4th Level Course
-                    </p>
-                    <li className="sm-text">82645 Posted by this tag</li>
-                  </ul>
+                  <Link to="#">
+                    <button className=" text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
+                        RBB 4th Level Course
+                      </p>
+                      <p className="sm-text">82645 Posted by this tag</p>
+                    </button>
+                  </Link>
                 </div>
 
                 <div className="flex flex-col  w-full mt-1">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
-                      RBB 4th Level Course
-                    </p>
-                    <li className="sm-text">65523 Posted Trending</li>
-                  </ul>
+                  <Link to="#">
+                    <button className=" text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
+                        RBB 4th Level Course
+                      </p>
+                      <p className="sm-text">65523 Posted Trending</p>
+                    </button>
+                  </Link>
                 </div>
 
                 <div className="flex flex-col  w-full mt-1">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins  ">
-                      RBB 4th Level Course
-                    </p>
-                    <li className="sm-text">Trending</li>
-                  </ul>
+                  <Link to="#">
+                    {' '}
+                    <button className=" text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins  ">
+                        RBB 4th Level Course
+                      </p>
+                      <p className="sm-text">Trending</p>
+                    </button>
+                  </Link>
                 </div>
 
                 <div className="flex flex-col  w-full mt-1">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
-                      RBB 4th Level Course
-                    </p>
-                    <li className="sm-text">Trending</li>
-                  </ul>
+                  <Link to="#">
+                    {' '}
+                    <button className=" text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
+                        RBB 4th Level Course
+                      </p>
+                      <p className="sm-text">Trending</p>
+                    </button>
+                  </Link>
                 </div>
 
                 <div className="flex flex-col  w-full mt-1">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
-                      RBB 4th Level Course
-                    </p>
-                    <li className="sm-text">Posted by this tag</li>
-                  </ul>
+                  <Link to="#">
+                    <button className=" text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
+                        RBB 4th Level Course
+                      </p>
+                      <p className="sm-text">Posted by this tag</p>
+                    </button>
+                  </Link>
                 </div>
 
                 <div className="flex flex-col  w-full mt-1">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
-                      RBB 4th Level Course
-                    </p>
-                    <li className="sm-text">48029 Posted by this tag</li>
-                  </ul>
+                  <Link to="#">
+                    <button className=" text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
+                        RBB 4th Level Course
+                      </p>
+                      <p className="sm-text">48029 Posted by this tag</p>
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

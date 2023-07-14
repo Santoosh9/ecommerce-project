@@ -9,16 +9,24 @@ import MCQs from './CoursePages/Mcqs';
 import Complete from './CoursePages/Complete';
 import About from './CoursePages/About';
 
-
 import CurrentOffiars from './components/dashboard/CurrentOffiars';
 import Dashbord from './components/dashboard/Dashbord';
 import ExamAttempt from './CoursePages/ExamAttempt';
 import ExamComplete from './CoursePages/ExamComplete';
 import Allcourses from './components/dashboard/Allcourses';
+<<<<<<< HEAD
+=======
+import Payment from './components/payment/Payment';
+import PaymentSucess from './components/payment/PaymentSucess';
+import PaymentFail from './components/payment/PaymentFail';
+import EditProfile from './profile/EditProfile';
+import ChangePawssword from './profile/ChangePassword';
+// import MCQs from './components/CoursePages/Mcqs';
+>>>>>>> 037fc1cc65f2cde9fd8f31f05150a0a85484bd8a
 
 function App() {
   return (
-    <div className='font-[Poppins]'>
+    <div className="font-[Poppins]">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
@@ -26,8 +34,13 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/exam" element={<Exam />} />
           <Route path="/mycourse" element={<Dashbord />} />
-          <Route path="/allcourse" element={<Allcourses/>}></Route>
+          <Route path="/allcourse" element={<Allcourses />}></Route>
           <Route path="/currentoffiars" element={<CurrentOffiars />} />
+          <Route path="/payment" element={<Payment />} />
+          <Route path="/paymentsuccess" element={<PaymentSucess />} />
+          <Route path="/paymentfail" element={<PaymentFail />} />
+          <Route path="/editprofile" element={<EditProfile />} />
+          <Route path="/changepassword" element={<ChangePawssword />} />
 
           {/* bibek tasks */}
           <Route path="/exam/attempt" element={<ExamAttempt />} />

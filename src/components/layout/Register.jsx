@@ -13,6 +13,7 @@ import './style.css';
 
 const Register = () => {
   const [password, setPassword] = useState('');
+  const [cpassword, setCPassword] = useState('');
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(eyeOff);
 
@@ -26,11 +27,21 @@ const Register = () => {
     }
   };
 
+  const handleToggleConfrom = () => {
+    if (type === 'cpassword') {
+      setIcon(eye);
+      setType('text');
+    } else {
+      setIcon(eyeOff);
+      setType('cpassword');
+    }
+  };
+
   return (
     <>
       <Navbar />
-      <div className=" flex justify-center items-center mt-1 ">
-        <div className=" w-[510px] h-[700px] bg-white-100 mb-10">
+      <div className=" flex flex-col justify-center items-center mt-1  flex-nowrap ">
+        <div className=" w-[510px] h-[700px] bg-white-100 mb-10  laptop:w-[510px]:h-[584px] tablet:w-[450px]:h-[500px] mobile:w-[300px]:h-[370] ">
           <h3 className="font-[500] text-3xl ml-2 mt-10  text-[rgba(17,17,17,1)]">
             Register
           </h3>
@@ -81,16 +92,16 @@ const Register = () => {
               <label className=" label-text mt-2 ">Confrom Password</label>
               <input
                 type={type}
-                name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete="current-password"
+                name="cpassword"
+                value={cpassword}
+                onChange={(e) => setCPassword(e.target.value)}
+                autoComplete="confrom-password"
                 className=" border-[1px] border-[rgba(177,181,195,1)] focus:outline  h-[52px]  px-3"
                 placeholder=" Please enter your Confrom password"
               ></input>
               <span
                 className="flex justify-end items-center "
-                onClick={handleToggle}
+                onClick={handleToggleConfrom}
               >
                 <Icon
                   class="absolute mr-4 mt-[-52px]  text-[rgba(44,39,36,0.5)]"

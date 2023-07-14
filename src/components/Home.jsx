@@ -15,12 +15,21 @@ const Home = () => {
     <>
       <Navbar />
 
+<<<<<<< HEAD
       <div className="flex flex-col w-[100%]  ">
         <div className="flex flex-col-reverse laptop:flex-row  w-[100%]">
           <div className="w-full laptop:w-[50%] bg-[rgba(0,110,185,1)] flex  ">
             <div className=" w-full h-fit laptop:h-[332.72px] ml-12 laptop:ml-[134px]  flex flex-col mt-[122px]">
               <div className="w-[90%]">
                 <p className="text-white  font-[500] font-Poppins  text-5xl h-fit mb-4">
+=======
+      <div className="flex flex-col w-[100%] ">
+        <div className="flex flex-row  w-[100%]">
+          <div className="w-[50%] bg-[rgba(0,110,185,1)] flex  ">
+            <div className=" w-[526px]  h-[332.72px] ml-[134px]  flex flex-col mt-[122px]">
+              <div className="">
+                <p className="text-white  font-[500] font-Poppins  text-5xl h-[68px] mb-4">
+>>>>>>> 037fc1cc65f2cde9fd8f31f05150a0a85484bd8a
                   Ignite your Learning Journey with SmartGK
                 </p>
               </div>
