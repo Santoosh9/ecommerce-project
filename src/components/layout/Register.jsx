@@ -40,8 +40,8 @@ const Register = () => {
   return (
     <>
       <Navbar />
-      <div className=" flex justify-center items-center mt-1 ">
-        <div className=" w-[510px] h-[700px] bg-white-100 mb-10">
+      <div className=" flex flex-col justify-center items-center mt-1  flex-nowrap ">
+        <div className=" w-[510px] h-[700px] bg-white-100 mb-10  laptop:w-[510px]:h-[584px] tablet:w-[450px]:h-[500px] mobile:w-[300px]:h-[370] ">
           <h3 className="font-[500] text-3xl ml-2 mt-10  text-[rgba(17,17,17,1)]">
             Register
           </h3>
