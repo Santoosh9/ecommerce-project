@@ -153,7 +153,7 @@ const Card2 = () => {
               </CardBody>
               <CardFooter className="pt-0 ml-3">
                 <Link to="/learning">
-                  <p className="flex flex-row font-Poppins mt-2 font-[20px] text-[rgba(0,110,185,1)]">
+                  <p className="flex flex-row font-Poppins mt-2 font-[20px] text-[rgba(0,110,185,1)] ">
                     {item.engroll}
                     <FiArrowRight className="mt-1.5 ml-1" />
                   </p>

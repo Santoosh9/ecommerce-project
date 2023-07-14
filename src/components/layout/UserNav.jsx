@@ -6,6 +6,7 @@ import { BsChevronUp } from 'react-icons/bs'
 import { HiBell} from "react-icons/hi"
 import { GoDotFill } from "react-icons/go"
 import { AiOutlineMenu } from "react-icons/ai"
+import SubjectMenu from './SubjectMenu';
 
 import Notifications from './Notifications';
 
@@ -16,6 +17,7 @@ const UserNav = () => {
   const [open2, setOpen2] = useState(false);
   const [clicked, setClicked] = useState(false);
   const [notification, setNotification] = useState(false)
+  const [showMenu, setShowMenu] = useState(false);
 
   const handleOpen = (index) => {
     console.log(index, 'clicked')
@@ -43,12 +45,21 @@ const UserNav = () => {
       setOpen2(false);
       setNotification(!notification);
       setClicked(false);
+      setShowMenu(false)
     } else if (index === "user") {
       setOpen(false);
       setOpen1(false);
       setOpen2(false);
       setNotification(false);
       setClicked(!clicked);
+      setShowMenu(false)
+    } else if (index === "menu") {
+      setOpen(false);
+      setOpen1(false);
+      setOpen2(false);
+      setNotification(false);
+      setClicked(false);
+      setShowMenu(!showMenu)
     }
   }
 
@@ -56,6 +67,7 @@ const UserNav = () => {
     const handleScroll = () => {
       setNotification(false);
       setClicked(false);
+      setShowMenu(false);
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -168,7 +180,9 @@ const UserNav = () => {
             </Link>
           </div>
         </div>
-        <AiOutlineMenu className='tablet:hidden text-lg ml-[20%]'/>
+        <div>
+          <AiOutlineMenu className='tablet:hidden text-lg ml-[20%]' onClick={() => handleOpen('menu')}/>
+        </div>
         <div className="flex gap-4 items-center justify-end mr-2 tablet:mr-10  tablet:mt-2 w-[30%] ">
           <div className='flex w-10 h-10 p-2 gap-2.5 items-center bg-[#006EB91A] relative cursor-pointer' onClick={() => handleOpen('notification')}>
             <HiBell className='text-4xl text-[#006EB9]'/>
@@ -188,6 +202,7 @@ const UserNav = () => {
           <Dropdown/>
         }
         {notification && <Notifications/>}
+        {showMenu && <SubjectMenu/>}
       </div>
     </>
   );

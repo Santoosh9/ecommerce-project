@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { BsChevronDown } from 'react-icons/bs'
 import { BsChevronUp } from 'react-icons/bs'
 import { AiOutlineMenu } from "react-icons/ai"
+import SubjectMenu from './SubjectMenu';
 
 
 const Navbar = () => {
@@ -10,6 +11,7 @@ const Navbar = () => {
 
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
+  const [showMenu, setShowMenu] = useState(false);
 
   const handleOpen = (index) => {
     console.log(index, 'clicked')
@@ -17,16 +19,36 @@ const Navbar = () => {
       setOpen(!open);
       setOpen1(false);
       setOpen2(false);
+      setShowMenu(false)
     } else if (index ==='2') {
       setOpen(false);
       setOpen1(!open1);
       setOpen2(false);
+      setShowMenu(false)
     } else if (index ==='3') {
       setOpen(false);
       setOpen1(false);
       setOpen2(!open2);
+      setShowMenu(false)
+    } else if (index === 'menu') {
+      setOpen(false);
+      setOpen1(false);
+      setOpen2(false);
+      setShowMenu(!showMenu)
     }
   }
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowMenu(false);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
  
 
@@ -121,26 +143,27 @@ const Navbar = () => {
             </button>
 
             <Link to="/currentoffiars">
-              <div className="  justify-between  ml-6  flex flex-row    gap-[20px]  font-Poppins font-[400] ">
+              <div className="  justify-between  ml-6  flex flex-row  gap-[20px]  font-Poppins font-[400] ">
                 Current Affairs
               </div>
             </Link>
           </div>
         </div>
-        <AiOutlineMenu className='tablet:hidden text-lg ml-[20%]'/>
-        <div className="mr-10">
+        <AiOutlineMenu className='tablet:hidden text-lg ml-[20%]' onClick={() => handleOpen('menu')}/>
+        <div className=" w-20 tablet:w-80">
           <Link to="/login">
-            <button className=" font-[500] w-[107px]  mr-10   font-Poppins text-[rgba(0,110,185,1)] ">
+            <button className=" font-[500] w-16 laptop:w-[107px]  mr-10   font-Poppins text-[rgba(0,110,185,1)] ">
               Login
             </button>
           </Link>
 
           <Link to="/register">
-            <button className=" text-white  h-[40px] font-[500]  w-[130px] font-Poppins  bg-[rgba(0,110,185,1)]">
+            <button className=" text-white  h-[40px] font-[500]  w-20 tablet:w-[130px] font-Poppins  bg-[rgba(0,110,185,1)]">
               Register
             </button>
           </Link>
         </div>
+        {showMenu && <SubjectMenu/>}
       </div>
     </>
   );

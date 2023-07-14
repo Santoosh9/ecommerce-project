@@ -42,7 +42,7 @@ const Notifications = () => {
         }
     ]
     return (
-        <div className="fixed inset-0 w-full max-h-screen overflow-y-auto max-w-[440px] flex justify-end h-fit mt-20 z-10 laptop:ml-[65%] bg-white">
+        <div className="fixed inset-0 w-full max-h-screen overflow-y-auto max-w-[400px] flex justify-end h-fit mt-20 z-10 laptop:ml-[65%] bg-white">
             <div className="w-full h-full rounded">
                 <div className="flex justify-between items-center w-full h-12 py-3  pl-4 pr-1 gap-4">
                     <div className="w-1/2 h-3/5">
@@ -59,7 +59,7 @@ const Notifications = () => {
                         </div>
                     </div>
                     <div className="w-36 h-5 pr-2">
-                        <div className="flex justify-end items-center w-full h-full gap-1">
+                        <div className="flex justify-center items-center w-full h-full gap-1">
                             <p className="w-fit h-5 font-normal text-xs leading-5 text-[#2C2724BF]">
                                 Mark all as read
                             </p>
