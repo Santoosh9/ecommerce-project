@@ -161,7 +161,7 @@ const Description = (props) => {
     return (
         <div className="font-Poppins mt-24">
             {!props.openTab ?
-            <div className="flex flex-col laptop:flex-row  justify-between w-full laptop:w-[85%]  mt-48 tablet:mt-16 ml-6 tablet:ml-32 gap-8 mb-4" >
+            <div className="flex flex-col laptop:flex-row  justify-between w-full tablet:w-[85%]  mt-48 tablet:mt-16 ml-6 tablet:ml-32 gap-8 mb-4" >
             <div className="w-full h-fit laptop:h-[856px] gap-12">
                 <div className="flex w-[80%] h-fit border-b gap-6 border-b-[#F0F9FF] text-[#F0F9FF]">
                     <div className= { !props.openTab ? "w-fit h-full border-b border-b-[#006EB9] text-[#006EB9] px-1 py-3" :"w-fit h-full text-[#2C2724BF] px-1 py-3 cursor-pointer"} onClick={() => tabChange(0)}>
@@ -190,7 +190,7 @@ const Description = (props) => {
                 </div>
             </div>
             <div className="flex flex-col w-[90%] tablet:w-[366px] h-fit gap-8">
-                <div className="w-full border pl-10 pr-12 py-8 gap-2 bg-[#E1ECF3] border-[#E1ECF3]">
+                <div className="w-full border pl-2 pr-2 py-8 gap-2 bg-[#E1ECF3] border-[#E1ECF3]">
                     <div className="flex flex-col justify-between w-[298px] h-[270px] gap-6">
                         <p className="w-fit h-6 font-medium text-xl leading-6 text-[#111111]">Course Details</p>
                         <div className="w-full h-14 ">
