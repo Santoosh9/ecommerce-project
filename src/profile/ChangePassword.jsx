@@ -96,7 +96,7 @@ const ChangePassword = () => {
                 </label>
                 <input
                   name="number"
-                  className="border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3 laptop:w-[830px] tablet:w-[380px] mobile:w-[250px] mr-8"
+                  className="border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3 laptop:w-[830px] tablet:w-[380px] mobile:w-[300px] mr-8"
                   placeholder=" Please enter your Confrom Password"
                 ></input>
                 <span

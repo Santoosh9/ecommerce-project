@@ -21,7 +21,7 @@ const EditProfile = () => {
             <p className="text-[rgba(44,39,36,0.75)]  font-[400] text-base text-center">
               Santosh@gmail.com
             </p>
-            <Link to="/editpassword">
+            <Link to="/changepassword">
               <button className="  mr-10 h-[52px] mt-3 w-[220px] text-white  bg-[rgba(0,110,185,1)] text-center">
                 Change Password
               </button>

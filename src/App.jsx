@@ -24,7 +24,7 @@ import Payment from './components/payment/Payment';
 import PaymentSucess from './components/payment/PaymentSucess';
 import PaymentFail from './components/payment/PaymentFail';
 import EditProfile from './profile/EditProfile';
-import ChangePassword from './profile/ChangePassword';
+import ChangePawssword from './profile/ChangePassword';
 // import MCQs from './components/CoursePages/Mcqs';
 
 function App() {
@@ -43,7 +43,7 @@ function App() {
           <Route path="/paymentsuccess" element={<PaymentSucess />} />
           <Route path="/paymentfail" element={<PaymentFail />} />
           <Route path="/editprofile" element={<EditProfile />} />
-          <Route path="/editpassword" element={<ChangePassword />} />
+          <Route path="/changepassword" element={<ChangePawssword />} />
 
           {/* bibek tasks */}
           <Route path="/exam/attempt" element={<ExamAttempt />} />
