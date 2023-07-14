@@ -192,7 +192,7 @@ const Description = (props) => {
             <div className="flex flex-col w-[90%] tablet:w-[366px] h-fit gap-8">
                 <div className="w-full border pl-2 pr-2 py-8 gap-2 bg-[#E1ECF3] border-[#E1ECF3]">
                     <div className="flex flex-col justify-between w-[298px] h-[270px] gap-6">
-                        <p className="w-fit h-6 font-medium text-xl leading-6 text-[#111111]">Course Details</p>
+                        <p className="w-fit h-6 font-medium text-xl px-2 leading-6 text-[#111111]">Course Details</p>
                         <div className="w-full h-14 ">
                             <div className="flex justify-start items-center w-full h-fit gap-4">
                                 <div className="flex justify-center items-center w-6 h-6">
@@ -247,12 +247,6 @@ const Description = (props) => {
                             <div className="w-full h-fit">
                                 <div className="w-full h-fit">
                                     <p className="w-[90%] h-full font-medium text-lg leading-6 py-2">पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना </p>
-                                    <p className="w-fit font-normal text-base leading-6 text-[#2C2724BF]">March 21, 2023</p>
-                                </div>
-                            </div>
-                            <div className="w-full h-fit">
-                                <div className="w-full h-gfit">
-                                    <p className="[90%] w-full h-full font-medium text-lg leading-6 py-2">पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना</p>
                                     <p className="w-fit font-normal text-base leading-6 text-[#2C2724BF]">March 21, 2023</p>
                                 </div>
                             </div>
