@@ -5,6 +5,7 @@ import user from "../../Assets/user.png"
 import { BsChevronDown } from 'react-icons/bs'
 import { BsChevronUp } from 'react-icons/bs'
 import Dropdown from "./Dropdown";
+import { Link } from "react-router-dom";
 
 const CourseHead = (props) => {
 
@@ -17,7 +18,7 @@ const CourseHead = (props) => {
     return (
         <div className="flex justify-between mobile:w-full tablet:w-full  h-navheight px-2.5 py-10 border-b border-b-blue-200 gap:auto laptop:gap-navgap">
             <div className="flex items-center gap-2 tablet:gap-8 h-76 mobile:w-60 tablet:w-[50%]">
-                <img src={logo} alt="logo" className="w-16 h-16 ml-4 tablet:ml-10" />
+                <Link to="/"><img src={logo} alt="logo" className="w-16 h-16 ml-4  tablet:ml-10" /></Link>
                 { props.header === 'course' &&
                 <div>
                 <p className="w-full h-6 text-base font-medium leading-6 tracking-normal text-left mobile:hidden tablet:flex">
@@ -25,7 +26,7 @@ const CourseHead = (props) => {
                 </p>
                 <p className="tablet:hidden ml-0.5 w-full">RBB 4th Level</p>
                 </div>}
-                {props.header === "exam" && <p className="w-full h-6 text-base font-medium leading-6 tracking-normal text-left">Exam</p>}
+                {props.header === "exam" && <p className="w-full h-6 text-base font-medium leading-6 tracking-normal text-left ml-8">Exam</p>}
             </div>
             <div className="flex items-center mr-6">
                 <div className="flex items-center tablet:gap-4">

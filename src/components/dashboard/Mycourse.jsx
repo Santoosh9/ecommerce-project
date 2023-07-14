@@ -19,6 +19,7 @@ import {
   BsFillPlayCircleFill,
   BsArrowRightShort,
 } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 const Mycourse = () => {
   const data1 = [
@@ -31,7 +32,7 @@ const Mycourse = () => {
       title: 'RBB 4th Level Full Course',
       description:
         'Access a vast array of courses, by a very interactive lessons, and expert also by giving a full course',
-      engroll: 'Engroll Now ',
+      engroll: 'Enroll Now ',
       content: 'example content',
     },
     {
@@ -43,7 +44,7 @@ const Mycourse = () => {
       title: 'RBB 4th Level Full Course',
       description:
         'Access a vast array of courses, by a very interactive lessons, and expert also by giving a full course',
-      engroll: 'Engroll Now',
+      engroll: 'Enroll Now',
       content: 'example content',
     },
     {
@@ -55,7 +56,7 @@ const Mycourse = () => {
       title: 'RBB 4th Level Full Course',
       description:
         'Access a vast array of courses, by a very interactive lessons, and expert also by giving a full course',
-      engroll: 'Engroll Now',
+      engroll: 'Enroll Now',
       content: 'example content',
     },
 
@@ -68,7 +69,7 @@ const Mycourse = () => {
       title: 'RBB 4th Level Full Course',
       description:
         'Access a vast array of courses, by a very interactive lessons, and expert also by giving a full course',
-      engroll: 'Engroll Now',
+      engroll: 'Enroll Now',
       content: 'example content',
     },
   ];
@@ -83,7 +84,7 @@ const Mycourse = () => {
       title: 'RBB 4th Level Full Course',
       description:
         'Access a vast array of courses, by a very interactive lessons, and expert also by giving a full course',
-      engroll: 'Engroll Now ',
+      engroll: 'Enroll Now',
       content: 'example content',
     },
     {
@@ -95,7 +96,7 @@ const Mycourse = () => {
       title: 'RBB 4th Level Full Course',
       description:
         'Access a vast array of courses, by a very interactive lessons, and expert also by giving a full course',
-      engroll: 'Engroll Now',
+      engroll: 'Enroll Now',
       content: 'example content',
     },
     {
@@ -107,7 +108,7 @@ const Mycourse = () => {
       title: 'RBB 4th Level Full Course',
       description:
         'Access a vast array of courses, by a very interactive lessons, and expert also by giving a full course',
-      engroll: 'Engroll Now',
+      engroll: 'Enroll Now',
       content: 'example content',
     },
 
@@ -120,7 +121,7 @@ const Mycourse = () => {
       title: 'RBB 4th Level Full Course',
       description:
         'Access a vast array of courses, by a very interactive lessons, and expert also by giving a full course',
-      engroll: 'Engroll Now',
+      engroll: 'Enroll Now',
       content: 'example content',
     },
     {
@@ -132,7 +133,7 @@ const Mycourse = () => {
       title: 'RBB 4th Level Full Course',
       description:
         'Access a vast array of courses, by a very interactive lessons, and expert also by giving a full course',
-      engroll: 'Engroll Now',
+      engroll: 'Enroll Now',
       content: 'example content',
     },
     {
@@ -144,7 +145,7 @@ const Mycourse = () => {
       title: 'RBB 4th Level Full Course',
       description:
         'Access a vast array of courses, by a very interactive lessons, and expert also by giving a full course',
-      engroll: 'Engroll Now',
+      engroll: 'Enroll Now',
       content: 'example content',
     },
     {
@@ -156,7 +157,7 @@ const Mycourse = () => {
       title: 'RBB 4th Level Full Course',
       description:
         'Access a vast array of courses, by a very interactive lessons, and expert also by giving a full course',
-      engroll: 'Engroll Now',
+      engroll: 'Enroll Now',
       content: 'example content',
     },
     {
@@ -168,7 +169,7 @@ const Mycourse = () => {
       title: 'RBB 4th Level Full Course',
       description:
         'Access a vast array of courses, by a very interactive lessons, and expert also by giving a full course',
-      engroll: 'Engroll Now',
+      engroll: 'Enroll Now',
       content: 'example content',
     },
   ];
@@ -176,13 +177,13 @@ const Mycourse = () => {
   return (
     <>
       <div className=" flex flex-col">
-        <div className=" ml-[140px] mt-1">
+        <div className="ml-5 tablet:ml-[140px] mt-1">
           <p className=" text-[rgba(17,17,17,1)] font-Poppins text-2xl font-[500]  mt-3">
             Enrolled Courses
           </p>
         </div>
-        <div className="flex flex-row   w-[100%]  ">
-          <div className=" flex flex-row flex-wrap  justify-center items-center  gap-10  ">
+        <div className="flex flex-row w-full ">
+          <div className=" flex flex-row flex-wrap  justify-center items-center gap-10  ">
             {data.map((item) => (
               <Card
                 key={item.id}
@@ -216,10 +217,12 @@ const Mycourse = () => {
                   </Typography>
                 </CardBody>
                 <CardFooter className="pt-0 ml-3">
+                  <Link to='/learning'>
                   <p className="flex flex-row font-Poppins mt-2 font-[20px] text-[rgba(0,110,185,1)]">
                     {item.engroll}
                     <FiArrowRight className="mt-1.5 ml-1" />
                   </p>
+                  </Link>
                 </CardFooter>
               </Card>
             ))}
@@ -228,14 +231,14 @@ const Mycourse = () => {
       </div>
 
       <div className=" flex flex-col">
-        <div className="  ml-[140px] mt-5">
+        <div className=" ml-5 tablet:ml-[140px] mt-5">
           <p className="text-[rgba(17,17,17,1)] font-Poppins text-2xl font-[500]  mt-3">
             Recommended Courses
           </p>
         </div>
 
-        <div className="flex flex-row  w-[100%]  justify-center items-center ">
-          <div className=" flex flex-row flex-wrap   gap-10  ">
+        <div className="flex flex-row w-full  justify-center items-center ">
+          <div className=" flex flex-row flex-wrap gap-10 ml-5 ">
             {data1.map((item) => (
               <Card
                 key={item.id}
@@ -269,10 +272,12 @@ const Mycourse = () => {
                   </Typography>
                 </CardBody>
                 <CardFooter className="pt-0 ml-3">
+                  <Link to="/learning">
                   <p className="flex flex-row font-Poppins mt-2 font-[20px] text-[rgba(0,110,185,1)]">
                     {item.engroll}
                     <FiArrowRight className="mt-1.5 ml-1" />
                   </p>
+                  </Link>
                 </CardFooter>
               </Card>
             ))}

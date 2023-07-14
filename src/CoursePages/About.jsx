@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import IntroCourse from "../components/learning/IntroCourse";
 import Description from "../components/learning/Description";
 import UserNav from "../components/layout/UserNav";
@@ -13,11 +13,14 @@ const About = () => {
         setOpenTab(data);
     }
 
+    useEffect (() => {
+        window.scrollTo(0, 0);
+    })
+
     return (
         <div className="flex flex-col w-full">
             <UserNav/>
             <IntroCourse/>
-            <hr/>
             <Description openTab={openTab} handleTabChange={handleTabChange}/>
             <FooetRecently/>
             <Footer/>

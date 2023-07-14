@@ -8,11 +8,11 @@ const Map = () => {
           Features
         </p>
 
-        <div className="  text-black  text-3xl mt-4  w-[600px] font-Poppins">
+        <div className="  text-black  text-3xl mt-4  w-full text-center font-Poppins">
           Elevate your learning experience
         </div>
 
-        <div className="mt-4 w-[670px] mb-10">
+        <div className="mt-4 w-full text-center mb-10">
           <p className="font-Poppins  w-full inline-block text-base  ">
             Break free & unlock your full potential with, convenient, and online
             education.

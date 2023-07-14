@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-
+import { RiImageAddFill } from 'react-icons/ri';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
+import { BsBookmark } from 'react-icons/bs';
+import { Link } from 'react-router-dom';
 
 const Forms = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -64,116 +66,133 @@ const Forms = () => {
 
   return (
     <>
-      <div className="flex flex-row mb-10">
-        <div className="flex flex-col">
-          <div className="h-[220px] w-[248.5px]  flex flex-col  flex-wrap border ml-28 mt-10 ">
+      <div className="flex flex-col laptop:flex-row mb-10 justify-around w-full">
+        <div className="flex flex-col h-fit w-[90%] laptop:w-[18%]">
+          <div className="h-fit w-full flex flex-col border ml-6 laptop:ml-20 mt-10 ">
             <div className="ml-3  mt-3 flex flex-row">
               <img className="h-[50%] mt-3" src="./images/ic1.png" />
-
-              <ul className="ml-3">
-                <p className=" text-[rgba(63,67,84,1)] font[500]  font-Poppins  text-base">
-                  ALL
-                </p>
-                <li className=" sm-text">show all post</li>
-              </ul>
+              <Link to="#">
+                <button className="ml-3 ">
+                  <p className=" text-[rgba(63,67,84,1)] font[500]  font-Poppins  text-base  text-start">
+                    ALL
+                  </p>
+                  <p className=" sm-text">show all post</p>
+                </button>
+              </Link>
             </div>
             <div className=" ml-3  mt-3 flex  bg-[rgba(244,246,248,1)]">
               <img className="h-[50%] mt-3" src="./images/ic2.png" />
 
-              <ul className="ml-3">
-                <p className=" text-[rgba(63,67,84,1)] font[500] font-Poppins text-base ">
-                  Posted by me
-                </p>
-                <li className=" sm-text">Show posts posted by me</li>
-              </ul>
+              <Link to="#">
+                <button className="ml-3">
+                  <p className=" text-[rgba(63,67,84,1)] font[500] font-Poppins text-base text-start ">
+                    Posted by me
+                  </p>
+                  <p className=" sm-text">Show posts posted by me</p>
+                </button>
+              </Link>
             </div>
 
             <div className=" ml-3  mt-3 flex flex-row">
               <img className="h-[50%] mt-3" src="./images/ic3.png" />
 
-              <ul className="ml-3">
-                <p className=" text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins ">
-                  Commented by me
-                </p>
-                <li className="sm-text ">Show posts posted by me</li>
-              </ul>
+              <Link to="#">
+                <button className="ml-3">
+                  <p className=" text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins  text-start">
+                    Commented by me
+                  </p>
+                  <p className="sm-text ">Show posts posted by me</p>
+                </button>
+              </Link>
             </div>
           </div>
-          <div className=" h-[375px] w-[248.5px]  flex flex-col  flex-wrap border ml-28 mt-10 ">
+          <div className=" h-fit w-full  flex flex-col border ml-6 laptop:ml-20 mt-10 ">
             <div className="mt-6 ml-4 ">
               <p className="  font-Poppins text-[rgba(63,67,84,1)] font-[500] text-base">
                 Subjects
               </p>
               <div className="flex flex-row flex-wrap my-2 ">
                 <div className="flex flex-col w-full">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
+                  <button className="text-start">
+                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins  ">
                       RBB
                     </p>
-                    <li className="sm-text">82645 Posted by this tag</li>
-                  </ul>
+                    <p className="sm-text">82645 Posted by this tag</p>
+                  </button>
                 </div>
 
                 <div className="flex flex-col  w-full">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2  font[500]  text-base font-Poppins ">
-                      NEA
-                    </p>
-                    <li className="sm-text">65523 Posted Trending</li>
-                  </ul>
+                  <Link to="#">
+                    {' '}
+                    <button className=" text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2  font[500]  text-base font-Poppins ">
+                        NEA
+                      </p>
+                      <p className="sm-text">65523 Posted Trending</p>
+                    </button>
+                  </Link>
                 </div>
 
                 <div className="flex flex-col  w-full">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
-                      Lok Sewa
-                    </p>
-                    <li className="sm-text">Trending</li>
-                  </ul>
+                  <Link to="#">
+                    {' '}
+                    <button className=" text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
+                        Lok Sewa
+                      </p>
+                      <p className="sm-text">Trending</p>
+                    </button>
+                  </Link>
                 </div>
 
                 <div className="flex flex-col  w-full">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
-                      Entrance
-                    </p>
-                    <li className="sm-text">Trending</li>
-                  </ul>
+                  <Link to="#">
+                    <button className="text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
+                        Entrance
+                      </p>
+                      <p className="sm-text">Trending</p>
+                    </button>
+                  </Link>
                 </div>
 
                 <div className="flex flex-col  w-full">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
-                      RSB
-                    </p>
-                    <li className="sm-text">Posted by this tag</li>
-                  </ul>
+                  <Link to="#">
+                    <button className=" text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
+                        RSB
+                      </p>
+                      <p className="sm-text">Posted by this tag</p>
+                    </button>
+                  </Link>
                 </div>
 
                 <div className="flex flex-col  w-full">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
-                      Nepal Telecom
-                    </p>
-                    <li className="sm-text">48029 Posted by this tag</li>
-                  </ul>
+                  <Link to="#">
+                    <button className=" text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
+                        Nepal Telecom
+                      </p>
+                      <p className="sm-text">48029 Posted by this tag</p>
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="flex flex-col  ml-10 mt-10 w-[700px] ">
-          <div className=" border  ">
+        <div className="flex flex-col ml-6 laptop:ml-32 mt-10 w-[90%] laptop:w-[50%]">
+          <div className=" w-full h-fit border px-2">
             {!isOpen && (
-              <div className=" flex flex-row mt-3">
+              <div className=" flex flex-row items-center mt-3 py-2">
                 <img
-                  className="rounded-full w-[10%] h-[10%] mb-6 ml-3"
+                  className="flex items-center rounded-full w-10 h-10 ml-3"
                   src="./images/me.jpg"
                 />
 
                 <input
-                  className=" h-[44px] w-[534px] border-gray-300 mt-2 border ml-3 px-3"
+                  className="flex items-center h-11 w-full border-gray-300 border ml-3 px-3"
                   placeholder="Share what going on your mind"
                   onClick={handleOpen}
                 />
@@ -181,8 +200,8 @@ const Forms = () => {
             )}
 
             {isOpen && (
-              <div className="flex flex-col w-[505px] h-[556px] mt-6 ml-6 ">
-                <div className="flex flex-row justify-between  h-[40px]">
+              <div className="flex flex-col w-[90%] h-[556px] mt-6 ml-6 ">
+                <div className="flex flex-row justify-between h-[40px]">
                   <div className=" flex flex-row gap-4">
                     <img
                       className="rounded-full w-[100%] h-[100%] mb-6 ml-3"
@@ -195,35 +214,37 @@ const Forms = () => {
                   </div>
 
                   <button onClick={handleClose}>
-                    <AiOutlineCloseCircle className="mt-3" />
+                    <AiOutlineCloseCircle className="mt-3 text-lg" />
                   </button>
                 </div>
-                <div className="h-[220px] mt-2 ml-6 ">
+                <div className="h-[220px] mt-2 ml-0.5 tablet:ml-6 w-full ">
                   <input
-                    className="h-[220px] w-[505px] border px-6"
+                    className="h-[220px] w-[90%] tablet:w-full border px-6"
                     placeholder="Share what going on your mind"
                   />
                 </div>
-                <div className="ml-6 ">
+                <div className="ml-0.5 tablet:ml-6 ">
                   <input
-                    className="h-[44px] w-[505px] mt-4 border px-3"
+                    className="h-[44px] w-full mt-4 border px-3"
                     placeholder="Course"
                   />
                 </div>
-                <div className="ml-6 ">
+                <div className="ml-0.5 tablet:ml-6 ">
                   <input
-                    className="h-[44px] w-[505px] mt-4 border px-3"
+                    className="h-[44px] w-full mt-4 border px-3"
                     placeholder="Subject"
                   ></input>
                 </div>
-                <div className="bg-[rgba(225,236,243,1)] mt-4 h-[48px] w-[154px] flex flex-row justify-center gap-2 ml-6 ">
-                  <div className="mt-3">
-                    <img src="./images/Vector.png" />
+                <div className="bg-[rgba(225,236,243,1)] mt-4 h-[48px] w-[154px] flex justify-center items-center gap-2 ml-0.5 tablet:ml-6 ">
+                  <div className=" flex items-center">
+                    <RiImageAddFill className="text-[#006EB9] text-lg" />
                   </div>
-                  <p className="mt-3">Add Image</p>
+                  <p className="font-normal text-sm leading-5 text-[#006EB9]">
+                    Add Image
+                  </p>
                 </div>
 
-                <div className="mt-10  bg-[rgba(0,110,185,1)]  h-[46px] w-[146px]  ml-96 mb-2">
+                <div className="mt-10  bg-[rgba(0,110,185,1)]  h-[46px] w-[146px] ml-0.5 tablet:ml-[80%] mb-2">
                   <p className=" font-[500] text-sm font-Poppins text-center text-white mt-2 ">
                     Create Post
                   </p>
@@ -231,46 +252,50 @@ const Forms = () => {
               </div>
             )}
           </div>
-          <div className=" flex flex-col flex-wrap w-[700px] h-[350]  mt-10">
+          <div className=" flex flex-col flex-wrap w-full mt-10">
             {data.map((item) => (
-              <div key={item.id} className="flex flex-row mt-3 ml-3  border">
-                <div className=" mb-24 mt-4 ml-4">
+              <div
+                key={item.id}
+                className="flex flex-col tablet:flex-row mt-3 pr-2  border"
+              >
+                <div className=" mb:4 tablet:mb-24 mt-4 ml-4 w-[120%] tablet:w-[25%]">
                   <img src={item.image} />
                 </div>
 
-                <div className="ml-3 flex flex-row   mt-4">
-                  <div className="flex flex-col ml-4">
+                <div className="tablet:ml-3 flex flex-row mt-4 w-full justify-around tablet:w-[70%]">
+                  <div className="flex flex-col ml-4 w-[70%] tablet:w-[90%]">
                     <div>
-                      <ul className="flex flex-row  gap-10 text-sky-600	">
-                        <li className="bg-cyan-50 rounded-md text-[rgba(0,110,185,1)]">
+                      <div className="flex flex-row w-fit gap-10 text-sky-600	">
+                        <button className="bg-[#F0F9FF] w-fit rounded-full text-[rgba(0,110,185,1)]">
                           {item.texttop1}
-                        </li>
-                        <li className="bg-cyan-50 rounded-md">
+                        </button>
+                        <button className="bg-[#F0F9FF] w-fit rounded-full">
                           {item.texttop2}
-                        </li>
-                      </ul>
+                        </button>
+                      </div>
                     </div>
 
-                    <div className=" mr-3 w-[376px] h-[120px] flex-wrap font-Poppins text-[rgba(44,39,36,0.75)] font-[400] text-sm mt-4 text-full text-justify	 ">
+                    <div className=" mr-3 w-[110%] tablet:w-[90%] h-fit flex  font-Poppins text-[rgba(44,39,36,0.75)] font-[400] text-sm mt-4 text-full text-justify	 ">
                       {item.description}
                     </div>
 
-                    <div className=" mt-10  flex flex-row">
-                      <ul className=" text-[rgba(0,110,185,1)] font-[400]  text-base font-Poppins">
+                    <div className=" mt-10 flex flex-col tablet:flex-row">
+                      <ul className=" text-[rgba(0,110,185,1)] font-[400] text-base font-Poppins">
                         {item.name}
-                        <li className="  sm-text  mb-4">3 weeks ago</li>
+                        <li className=" sm-text  mb-4">3 weeks ago</li>
                       </ul>
-
-                      <p className="ml-5 mt-3 text-[rgba(0,110,185,1)] font-Poppins font-[400] text-xs">
-                        {item.views}
-                      </p>
-                      <p className="ml-7 mt-3 text-[rgba(0,110,185,1)] font-Poppins font-[400] text-xs">
-                        {item.cmt}
-                      </p>
+                      <div className="flex">
+                        <p className="tablet:ml-5 -mt-2 tablet:mt-3 text-[rgba(0,110,185,1)] font-Poppins font-[400] text-xs">
+                          {item.views}
+                        </p>
+                        <p className="ml-4 tablet:ml-7 -mt-2 tablet:mt-3 text-[rgba(0,110,185,1)] font-Poppins font-[400] text-xs">
+                          {item.cmt}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                  <div className="   ml-16 justify-end">
-                    <img src={item.image2} />
+                  <div className=" flex items-center justify-center ml-0 tablet:ml-4 w-[8%] h-9 bg-[#006EB91A]">
+                    <BsBookmark className=' text-[#006EB9]'/>
                   </div>
                 </div>
               </div>
@@ -278,63 +303,77 @@ const Forms = () => {
           </div>
         </div>
 
-        <div className="">
-          <div className=" h-[390px] w-[260px]  flex flex-col  flex-wrap border ml-16 mt-10 ">
+        <div className="h-fit w-full laptop:w-[20%]">
+          <div className=" h-fit w-full  flex flex-col  flex-wrap border mt-10 ">
             <div className="mt-6 ml-4 ">
               <p className=" font-bold font-lg">Recommended Courses</p>
               <div className="flex flex-row flex-wrap my-2 ">
                 <div className="flex flex-col w-full mt-1">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
-                      RBB 4th Level Course
-                    </p>
-                    <li className="sm-text">82645 Posted by this tag</li>
-                  </ul>
+                  <Link to="#">
+                    <button className=" text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
+                        RBB 4th Level Course
+                      </p>
+                      <p className="sm-text">82645 Posted by this tag</p>
+                    </button>
+                  </Link>
                 </div>
 
                 <div className="flex flex-col  w-full mt-1">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
-                      RBB 4th Level Course
-                    </p>
-                    <li className="sm-text">65523 Posted Trending</li>
-                  </ul>
+                  <Link to="#">
+                    <button className=" text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
+                        RBB 4th Level Course
+                      </p>
+                      <p className="sm-text">65523 Posted Trending</p>
+                    </button>
+                  </Link>
                 </div>
 
                 <div className="flex flex-col  w-full mt-1">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins  ">
-                      RBB 4th Level Course
-                    </p>
-                    <li className="sm-text">Trending</li>
-                  </ul>
+                  <Link to="#">
+                    {' '}
+                    <button className=" text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins  ">
+                        RBB 4th Level Course
+                      </p>
+                      <p className="sm-text">Trending</p>
+                    </button>
+                  </Link>
                 </div>
 
                 <div className="flex flex-col  w-full mt-1">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
-                      RBB 4th Level Course
-                    </p>
-                    <li className="sm-text">Trending</li>
-                  </ul>
+                  <Link to="#">
+                    {' '}
+                    <button className=" text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
+                        RBB 4th Level Course
+                      </p>
+                      <p className="sm-text">Trending</p>
+                    </button>
+                  </Link>
                 </div>
 
                 <div className="flex flex-col  w-full mt-1">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
-                      RBB 4th Level Course
-                    </p>
-                    <li className="sm-text">Posted by this tag</li>
-                  </ul>
+                  <Link to="#">
+                    <button className=" text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
+                        RBB 4th Level Course
+                      </p>
+                      <p className="sm-text">Posted by this tag</p>
+                    </button>
+                  </Link>
                 </div>
 
                 <div className="flex flex-col  w-full mt-1">
-                  <ul>
-                    <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
-                      RBB 4th Level Course
-                    </p>
-                    <li className="sm-text">48029 Posted by this tag</li>
-                  </ul>
+                  <Link to="#">
+                    <button className=" text-start">
+                      <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
+                        RBB 4th Level Course
+                      </p>
+                      <p className="sm-text">48029 Posted by this tag</p>
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

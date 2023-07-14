@@ -7,8 +7,8 @@ import { CiFacebook, CiLinkedin, CiInstagram } from 'react-icons/ci';
 const Footer = () => {
   return (
     <div class=" w-[100%]  bg-sky-100 flex flex-col">
-      <div className="flex flex-row  justify-center items-center mt-[60px]  mb-[50px]   gap-24 ">
-        <div className="w-[327px] h-[281px]  mr-10 ">
+      <div className="flex flex-col tablet:flex-row w-full justify-center items-center mt-[60px]  mb-[50px] gap-8 laptop:gap-24 ">
+        <div className="w-full tablet:w-[327px] h-fit tablet:mr-10 px-2 ">
           <img src="./images/logo.png" alt="logo-img" />
 
           <p className=" mt-4  text-base font-Poppins ">
@@ -33,10 +33,10 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="justify-center items-center flex flex-row mb-16 gap-12">
+        <div className="flex flex-col justify-center items-start tablet:flex-row mb-16 gap-12 px-2">
           <div className="">
             <ul className="font-link font-Poppins text-base h-[180px] ">
-              <p className=" font-[500] text-lg mt-2 "> Support</p>
+              <p className=" font-[500] text-lg  "> Support</p>
               <li class="mb-2 mt-3">
                 <a href="#">Disclaimer </a>
               </li>
@@ -62,7 +62,7 @@ const Footer = () => {
           </div>
           <div>
             <ul class="font-link font-Poppins">
-              <p className=" font-[500] text-lg mt-2 "> Courses</p>
+              <p className=" font-[500] text-lg"> Courses</p>
               <li class="mb-2 mt-3">
                 <a href="#" class="hover:underline">
                   लोकसेवा (संघ र प्रदेश‌‍‍‌)
@@ -82,7 +82,7 @@ const Footer = () => {
           </div>
           <div>
             <ul class="font-link font-Poppins">
-              <p className="  font-[500] text-lg mt-2  "> Contact</p>
+              <p className="  font-[500] text-lg   "> Contact</p>
               <li class="mb-2  mt-3 ">
                 <a href="#" className="hover:underline flex flex-row">
                   <BiPhoneCall className=" mt-1 mr-1  text-[rgba(0,110,185,1)] text-lg" />
@@ -92,9 +92,7 @@ const Footer = () => {
               <li class="mb-2">
                 <a href="#" className="hover:underline flex flex-row">
                   <BiEnvelope
-                    className=" mt-1 mr-1  text-[rgba(0,110,185,1)] rgba(0, 110, 185, 1) text-lg
-                    
- "
+                    className=" mt-1 mr-1  text-[rgba(0,110,185,1)] rgba(0, 110, 185, 1) text-lg"
                   />
                   <p>user@gmail.com, contactus@email.com</p>
                 </a>

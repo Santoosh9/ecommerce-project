@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import docs from "../../Assets/doc.png";
 import ReactPlayer from "react-player"
 import { Link } from "react-router-dom";
 import { TfiAngleRight } from 'react-icons/tfi'
@@ -8,6 +7,16 @@ import { FaRegCircle } from 'react-icons/fa'
 import { FaRegCircleDot } from 'react-icons/fa6'
 import HelpOutlinedIcon from '@mui/icons-material/HelpOutlined';
 import LinearProgress from '@mui/joy/LinearProgress';
+import pdf from "../../Assets/pdf.pdf";
+import { pdfjs, Document, Page } from 'react-pdf';
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+import 'react-pdf/dist/esm/Page/TextLayer.css';
+
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+    'pdfjs-dist/build/pdf.worker.min.js',
+    import.meta.url,
+  ).toString();
+  
 
 const Window = (props) => {
 
@@ -106,6 +115,17 @@ const Window = (props) => {
           }
     ]
 
+    const pages = []
+    const [total, setTotal] = useState(null)
+
+    function onDocumentLoadSuccess({ numPages }) {
+        console.log(numPages)
+        for (let i = 1 ; i <= numPages; i++) {
+            pages.push(i);
+        }
+        setTotal(pages.length)
+    }
+
     const options = [ 'a', 'b', 'c', 'd']
     const [ selected, setSelected ] = useState(null)
     const [question, setQuestion] = useState( 0 );
@@ -152,14 +172,14 @@ const Window = (props) => {
         <div className="flex justify-center items-center w-full h-full border border-blue-200 relative">
             { props.openPage === "video" &&
             <div className="flex flex-col justify-between items-center tablet:max-h-full w-full">
-                <div className="mobile:hidden laptop:block">
-                    <ReactPlayer url='https://www.youtube.com/watch?v=miV-1btpLfY' controls playing width="932px" height="440px"/>
+                <div className="hidden laptop:block">
+                    <ReactPlayer url='https://www.youtube.com/watch?v=miV-1btpLfY' controls width="932px" height="440px"/>
                 </div>
-                <div className="mobile:hidden tablet:max-laptop:block">
-                    <ReactPlayer url='https://www.youtube.com/watch?v=miV-1btpLfY' controls playing width="780px" height="440px"/>
+                <div className="hidden tablet:block laptop:hidden">
+                    <ReactPlayer url='https://www.youtube.com/watch?v=miV-1btpLfY' controls width="780px" height="440px"/>
                 </div>
-                <div className="mobile:max-tablet:block tablet:hidden">
-                    <ReactPlayer url='https://www.youtube.com/watch?v=miV-1btpLfY' controls playing width="320px" height="220px"/>
+                <div className="mobile:block tablet:hidden laptop:hidden">
+                    <ReactPlayer url='https://www.youtube.com/watch?v=miV-1btpLfY' controls width="320px" height="220px"/>
                 </div>
                 <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-[-40px] p-2 border bg-black border-white absolute top-[45%] left-[100%] inset-0 mobile:hidden laptop:block cursor-pointer " : "flex justify-center items-center w-10 h-10 ml-[-40px] p-2 border bg-black border-white absolute top-[45%] left-[100%] inset-0 mobile:hidden laptop:block cursor-pointer"} onClick={hideSideNav}>
                 <div className="flex justify-center items-center w-6 h-6">
@@ -172,9 +192,14 @@ const Window = (props) => {
             </div>
             }
             { props.openPage === "notes" &&
-            <div className="flex justify-center w-playwindow h-playwindow">
-                    <img src={docs} alt="docs" width="628px"/>
-                    <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-[-40px] p-2 border bg-white border-blue-100 absolute top-[45%] left-[100%] inset-0 mobile:hidden laptop:block cursor-pointer " : "flex justify-center items-center w-10 h-10 ml-[-40px] p-2 border bg-white border-blue-100 absolute top-[45%] left-[100%] inset-0 mobile:hidden laptop:block cursor-pointer"} onClick={hideSideNav}>
+            <div className="flex justify-center w-full h-playwindow overflow-x-auto overflow-y-auto">
+                <Document className="flex flex-col items-center w-full" file={pdf} onLoadSuccess={onDocumentLoadSuccess} >
+                    {Array(total).fill().map((onepage, index) => {
+                        return <Page className="w-full flex justify-center" pageNumber={index + 1}/>
+                    })}
+                    
+                </Document>
+                <div className={props.hideSideNav ? "flex justify-center items-center w-10 h-10 ml-[-40px] p-2 border bg-white border-blue-100 absolute top-[45%] left-[100%] inset-0 mobile:hidden laptop:block cursor-pointer " : "flex justify-center items-center w-10 h-10 ml-[-40px] p-2 border bg-white border-blue-100 absolute top-[45%] left-[100%] inset-0 mobile:hidden laptop:block cursor-pointer"} onClick={hideSideNav}>
                 <div className="flex justify-center items-center w-6 h-6">
                     <div className="flex justify-center items-center w-6 h-6">
                         {props.hideSideNav ? 
@@ -305,27 +330,6 @@ const Window = (props) => {
                                 ))}
                             </div>
                             </div>
-                            {/* <div className="tablet:gap-12 h-26">
-                                <div className="flex justify-start w-40 gap-0.5">
-                                    <div className="flex justify-center items-start w-10 h-10">
-                                        <HelpOutlinedIcon className="text-blue-500"/>
-                                    </div>
-                                    <p className="flex items-center w-36 h-full text-lg font-medium leading-6 tracking-normal text-left text-blue-500">Question {question + 1}</p>
-                                </div>
-                                <p className="text-lg font-normal leading-6 tracking-normal text-left text-black">{questions[question].question}</p>
-                            </div>
-                            <div>
-                                {options.map((oneoption, index) => (
-                                    <div className={selected === oneoption ? "flex justify-start items-center w-full px-5 py-4 border gap-2 border-blue-200 bg-blue-200" : "flex justify-start items-center w-full px-5 py-4 border gap-2 border-blue-100  hover:bg-blue-200"}  onClick={() => handleSelect(oneoption)}>
-                                    <div className="w-4 h-4 p-0.5">
-                                        {selected === oneoption ? <FaRegCircleDot className="text-blue-500"/> : <FaRegCircle className="text-blue-300"/> }
-                                    </div>
-                                    <p className="w-full h-fit text-sm font-normal leading-5 tracking-normal text-left pl-2 text-gray-700">
-                                    {oneoption}. {questions[question].options[oneoption]}
-                                    </p>
-                                    </div>
-                                ))}
-                            </div> */}
                         </div>
                     </div>
                 </div> ))}
