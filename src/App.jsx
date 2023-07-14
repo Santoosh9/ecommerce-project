@@ -14,15 +14,12 @@ import Dashbord from './components/dashboard/Dashbord';
 import ExamAttempt from './CoursePages/ExamAttempt';
 import ExamComplete from './CoursePages/ExamComplete';
 import Allcourses from './components/dashboard/Allcourses';
-<<<<<<< HEAD
-=======
 import Payment from './components/payment/Payment';
 import PaymentSucess from './components/payment/PaymentSucess';
 import PaymentFail from './components/payment/PaymentFail';
 import EditProfile from './profile/EditProfile';
 import ChangePawssword from './profile/ChangePassword';
 // import MCQs from './components/CoursePages/Mcqs';
->>>>>>> 037fc1cc65f2cde9fd8f31f05150a0a85484bd8a
 
 function App() {
   return (

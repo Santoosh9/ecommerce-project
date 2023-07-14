@@ -39,7 +39,9 @@ const IntroCourse = () => {
                             <p className="w-fit h-full font-medium text-xl leading-6 text-[#006EB9]">Rs. 4,500/-</p>
                         </div>
                         <div className="w-fit h-12 gap-4 py-2">
+                            <Link to='/payment'>
                             <button className="flex w-fit h-12 mt-6 px-8 py-4 bg-[#006EB9] text-white text-center items-center">Enroll Now</button>
+                            </Link>
                         </div> 
                     </div>
                 </div>

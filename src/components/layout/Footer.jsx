@@ -33,10 +33,10 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="justify-center items-start flex flex-col tablet:flex-row mb-16 gap-12 px-2">
+        <div className="flex flex-col justify-center items-start tablet:flex-row mb-16 gap-12 px-2">
           <div className="">
             <ul className="font-link font-Poppins text-base h-[180px] ">
-              <p className=" font-[500] text-lg mt-12 "> Support</p>
+              <p className=" font-[500] text-lg  "> Support</p>
               <li class="mb-2 mt-3">
                 <a href="#">Disclaimer </a>
               </li>
@@ -62,7 +62,7 @@ const Footer = () => {
           </div>
           <div>
             <ul class="font-link font-Poppins">
-              <p className=" font-[500] text-lg mt-2 "> Courses</p>
+              <p className=" font-[500] text-lg"> Courses</p>
               <li class="mb-2 mt-3">
                 <a href="#" class="hover:underline">
                   लोकसेवा (संघ र प्रदेश‌‍‍‌)
@@ -82,7 +82,7 @@ const Footer = () => {
           </div>
           <div>
             <ul class="font-link font-Poppins">
-              <p className="  font-[500] text-lg mt-2  "> Contact</p>
+              <p className="  font-[500] text-lg   "> Contact</p>
               <li class="mb-2  mt-3 ">
                 <a href="#" className="hover:underline flex flex-row">
                   <BiPhoneCall className=" mt-1 mr-1  text-[rgba(0,110,185,1)] text-lg" />
@@ -92,9 +92,7 @@ const Footer = () => {
               <li class="mb-2">
                 <a href="#" className="hover:underline flex flex-row">
                   <BiEnvelope
-                    className=" mt-1 mr-1  text-[rgba(0,110,185,1)] rgba(0, 110, 185, 1) text-lg
-                    
- "
+                    className=" mt-1 mr-1  text-[rgba(0,110,185,1)] rgba(0, 110, 185, 1) text-lg"
                   />
                   <p>user@gmail.com, contactus@email.com</p>
                 </a>

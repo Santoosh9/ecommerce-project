@@ -1,10 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import UserNav from '../layout/UserNav';
 import Footer from '../layout/Footer';
 
 const PaymentFail = () => {
   
-
+  useEffect (() => {
+    window.scrollTo(0, 0);
+  })
   return (
     <>
       <UserNav />
@@ -26,7 +28,7 @@ const PaymentFail = () => {
           </p>
         </div>
 
-        <div className=" flex flex-col bg-[rgba(249,249,249,1)] gap-10 mt-10  ">
+        <div className=" flex flex-col bg-[rgba(249,249,249,1)] gap-10 mt-10 w-full tablet:w-[50%] ">
           <div className=" ml-6 mr-6">
             <div className="flex flex-row justify-between mt-6 ">
               <p className=" text-[rgba(44,39,36,0.75)] font-[400] text-xl ">
@@ -34,7 +36,7 @@ const PaymentFail = () => {
               </p>
               <p className="font-[500] text-xl">Rs. 1,000</p>
             </div>
-            <div className="flex flex-row  justify-between mt-6">
+            <div className="flex flex-row items-center justify-between mt-6">
               <p
                 className="
               text-[rgba(44,39,36,0.75)] font-[400] text-xl"
@@ -47,9 +49,9 @@ const PaymentFail = () => {
                 </p>
               </div>
             </div>
-            <hr className="ml-3 mr-4 border-1 mt-7 mb-7 w-[608px]" />
+            <hr className="ml-3 mr-4 border-1 mt-7 mb-7 w-full" />
 
-            <div className="flex flex-row justify-between mt-6">
+            <div className="flex flex-row justify-between mt-6 ">
               <p className=" text-[rgba(44,39,36,0.75)] font-[400] text-xl">
                 Ref Number
               </p>

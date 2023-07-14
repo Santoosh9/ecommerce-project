@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import UserNav from '../layout/UserNav';
 import Footer from '../layout/Footer';
 
 const PaymentSucess = () => {
+
+  useEffect (() => {
+    window.scrollTo(0, 0);
+  })
   return (
     <>
       <UserNav />
@@ -23,7 +27,7 @@ const PaymentSucess = () => {
           </p>
         </div>
 
-        <div className=" flex flex-col bg-[rgba(249,249,249,1)] gap-10 mt-10  ">
+        <div className=" flex flex-col bg-[rgba(249,249,249,1)] gap-10 mt-10 w-full tablet:w-[50%]  ">
           <div className=" ml-6 mr-6">
             <div className="flex flex-row justify-between mt-6 ">
               <p className=" text-[rgba(44,39,36,0.75)] font-[400] text-xl ">
@@ -31,7 +35,7 @@ const PaymentSucess = () => {
               </p>
               <p className="font-[500] text-xl">Rs. 1,000</p>
             </div>
-            <div className="flex flex-row  justify-between mt-6">
+            <div className="flex flex-row items-center justify-between mt-6">
               <p
                 className="
               text-[rgba(44,39,36,0.75)] font-[400] text-xl"
@@ -44,7 +48,7 @@ const PaymentSucess = () => {
                 </p>
               </div>
             </div>
-            <hr className="ml-3 mr-4 border-1 mt-7 mb-7 w-[608px]" />
+            <hr className="ml-3 mr-4 border-1 mt-7 mb-7 w-full" />
 
             <div className="flex flex-row justify-between mt-6">
               <p className=" text-[rgba(44,39,36,0.75)] font-[400] text-xl">
@@ -56,20 +60,20 @@ const PaymentSucess = () => {
               <p className=" text-[rgba(44,39,36,0.75)] font-[400] text-xl">
                 Payment Method
               </p>
-              <p className="font-[500] text-xl">Esewa Transfer</p>
+              <p className="font-[500] text-xl text-right">Esewa Transfer</p>
             </div>
             <div className="flex flex-row justify-between mt-6">
               <p className=" text-[rgba(44,39,36,0.75)] font-[400] text-xl">
                 Payment Time
               </p>
-              <p className="font-[500] text-xl">Jul 12, 2023, 12:22:16</p>
+              <p className="font-[500] text-xl flex text-right ">Jul 12, 2023, 12:22:16</p>
             </div>
 
             <div className="flex flex-row justify-between mt-6">
               <p className=" text-[rgba(44,39,36,0.75)] font-[400] text-xl">
                 Sender
               </p>
-              <p className="font-[500] text-xl">Santoosh G</p>
+              <p className="font-[500] text-xl text-right">Santoosh G</p>
             </div>
           </div>
 
