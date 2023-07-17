@@ -10,6 +10,10 @@ import dummypdf from "../../Assets/dummy.pdf";
 const CurrentOffiars = () => {
   const HEAD = ['SN', 'Title', 'Date', 'Download'];
 
+  function isEven(number) {
+    return number % 2 === 0;
+  }
+
   const data = [
     {
       sn: 1,
@@ -30,7 +34,7 @@ const CurrentOffiars = () => {
     {
       sn: 3,
       titel:
-        'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, ',
+        'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,   पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, ',
       date: '22/02/2023',
       image: './images/pdf.png',
       text: 'Download PDF',
@@ -54,7 +58,7 @@ const CurrentOffiars = () => {
     {
       sn: 6,
       titel:
-        'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
+        'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
       date: '22/02/2023',
       image: './images/pdf.png',
       text: 'Download PDF',
@@ -62,7 +66,7 @@ const CurrentOffiars = () => {
     {
       sn: 7,
       titel:
-        'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
+        'सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
       date: '22/02/2023',
       image: './images/pdf.png',
       text: 'Download PDF',
@@ -70,7 +74,7 @@ const CurrentOffiars = () => {
     {
       sn: 8,
       titel:
-        'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
+        'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
       date: '22/02/2023',
       image: './images/pdf.png',
       text: 'Download PDF',
@@ -86,7 +90,7 @@ const CurrentOffiars = () => {
     {
       sn: 10,
       titel:
-        'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
+        'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, ',
       date: '22/02/2023',
       image: './images/pdf.png',
       text: 'Download PDF',
@@ -104,7 +108,7 @@ const CurrentOffiars = () => {
           backgroundSize: 'cover',
         }}
       >
-        <div className="flex flex-col  ml-20  font-Poppins ">
+        <div className="flex flex-col ml-4 tablet:ml-20  font-Poppins ">
           <p className=" font-[500]  text-3xl text-white  mt-10">
             All Current Affairs
           </p>
@@ -114,71 +118,31 @@ const CurrentOffiars = () => {
         </div>
       </div>
 
-      <Card className="  ml-20 mr-20 mt-10 mb-10 border ">
-        <table className="">
-          <thead>
-            <tr className="border  border-blue-gray-100 bg-[rgba(0,110,185,0.11)] p-4 h-[48px]">
-              {HEAD.map((head) => (
-                <th key={head} className=" ">
-                  <Typography
-                    variant="small"
-                    className=" leading-none opacity-70  font-Poppins text-base font-[500] text-[rgba(0,110,185,1)] ml-6"
-                  >
-                    {head}
-                  </Typography>
-                </th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {data.map(({ sn, titel, date, image, text }, index) => (
-              <tr
-                key={sn}
-                className=" text-[rgba(44,39,36,0.75)] font-[400]  font-Poppins text-base"
-              >
-                <td className="p-4 w-[62px]">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="font-normal"
-                  >
-                    {sn}
-                  </Typography>
-                </td>
-                <td className="p-4 w-[791px]">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="font-normal"
-                  >
-                    {titel}
-                  </Typography>
-                </td>
-                <td className="p-4 w-[157px]">
-                  <Typography
-                    variant="small"
-                    color="blue-gray"
-                    className="font-normal"
-                  >
-                    {date}
-                  </Typography>
-                </td>
-                <td className="p-4 w-[173px] flex flex-row ">
-                  <Typography className="flex flex-row gap-1 ">
-                    <AiFillFilePdf className="text-red-600 w-[16.5px] h-[21px]" />
-                    <a href={dummypdf}>
-                    <p
-                      className=" font-Poppins font-[400] text-sm text-[rgba(44,39,36,0.75)]">
-                      {text}
-                    </p>
-                    </a>
-                  </Typography>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </Card>
+      <div className='w-[90%] h-fit rounded-2xl mx-auto my-10 border '>
+        <div className='hidden tablet:flex items-center justify-around w-full h-12 bg-[#006EB91C] px-4 py-2 rounded-t-2xl'>
+          <p className='text-[#006EB9] text-base font-medium leading-5 w-[5%] text-left'>SN</p>
+          <p className='text-[#006EB9] text-base font-medium leading-5 w-[60%] text-left'>Title</p>
+          <p className='hidden tablet:block text-[#006EB9] text-base font-medium leading-5 w-[20%] text-center'>Date</p>
+          <p className='hidden tablet:block text-[#006EB9] text-base font-medium leading-5 w-[20%] text-center'>Download</p>
+        </div>
+        {data.map((onedata, index) => (
+            <div className={isEven(onedata.sn) ? "w-full h-fit bg-[#F9F9F9] border-t border-b" : "w-full h-fit" }>
+              <div className='flex flex-col tablet:flex-row w-full h-fit py-4 gap-2'>
+                <div className='w-full tablet:w-[65%] flex justify-around'>
+                  <p className='w-[10%] text-center'>{onedata.sn}</p>
+                  <p className='w-[90%] px-2'>{onedata.titel}</p>
+                </div>
+                <div className='flex justify-around w-full tablet:w-[40%]'>
+                  <p className='w-1/2 text-center'>{onedata.date}</p>
+                  <div className='w-1/2 flex items-center justify-center gap-1'>
+                    <AiFillFilePdf className="text-red-600 w-[16.5px] h-[21px] flex items-center" />
+                    <a href={dummypdf}><p className="">{onedata.text}</p></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
+      </div>
 
       <FooetRecently />
       <Footer />
