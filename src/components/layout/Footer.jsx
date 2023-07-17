@@ -86,7 +86,7 @@ const Footer = () => {
               <li class="mb-2  mt-3 ">
                 <a href="#" className="hover:underline flex flex-row">
                   <BiPhoneCall className=" mt-1 mr-1  text-[rgba(0,110,185,1)] text-lg" />
-                  <p>9800098000, 9823000679</p>
+                  <p>9800098000</p>
                 </a>
               </li>
               <li class="mb-2">
@@ -94,14 +94,14 @@ const Footer = () => {
                   <BiEnvelope
                     className=" mt-1 mr-1  text-[rgba(0,110,185,1)] rgba(0, 110, 185, 1) text-lg"
                   />
-                  <p>user@gmail.com, contactus@email.com</p>
+                  <p>user@gmail.com</p>
                 </a>
               </li>
 
               <li class="mb-2">
                 <a href="#" className="hover:underline flex flex-row ">
                   <BiMap className=" mt-1 mr-1 text-[rgba(0,110,185,1)] text-lg" />
-                  <p>Kathmandu Kupandol</p>
+                  <p>Kathmandu, Kupandol</p>
                 </a>
               </li>
             </ul>
