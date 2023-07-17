@@ -23,18 +23,18 @@ const ChangePassword = () => {
   return (
     <>
       <UserNav />
-      <div className="flex flex-row mt-10  ml-20 mr-20   ">
-        <div className="bg-[rgba(253,253,253,1)] border  h-[461px]">
-          <div className="   justify-center items-center ml-10 mb-4   ">
+      <div className="flex flex-col tablet:flex-row justify-center items-start mt-10 ml-2 w-full gap-4">
+      <div className="bg-[rgba(253,253,253,1)] border h-[461px]">
+          <div className=" flex flex-col justify-center items-center px-4 py-4">
             <img
-              className="mt-10    ml-10    w-[82px] h-[82px] rounded-full"
+              className=" mt-10 w-[82px] h-[82px] rounded-full"
               src="./images/me.jpg"
             />
 
-            <p className="mt-2  mr-2   font-[500] text-lg  text-black text-center ">
+            <p className="mt-2 font-[500] text-lg  text-black text-center ">
               Santosh Gajurel
             </p>
-            <p className="text-[rgba(44,39,36,0.75)]  mr-4 font-[400] text-base text-center">
+            <p className="text-[rgba(44,39,36,0.75)]  w-[220px] font-[400] text-base text-center">
               Santosh@gmail.com
             </p>
           </div>
@@ -50,25 +50,23 @@ const ChangePassword = () => {
             <p className="text-black font-[500] text-base mt-1">Kathmandu</p>
           </div>
         </div>
-        <div className="bg-[rgba(253,253,253,1)] ">
-          <div className="ml-7 mb-10 border ">
+        <div className="flex w-[90%] tablet:w-[65%] flex-col flex-start ml-2 mb-10 border bg-[rgba(253,253,253,1)] ">
             <p className=" font-[500] text-2xl mt-5 ml-7 ">Basic Information</p>
-            <form className="mt-6 ml-7 flex-nowrap">
+            <form className="mt-6 ml-4 flex-nowrap">
               <div className="flex flex-col ml-3   mr-10   ">
                 <label className=" label-text  mt-2 mb-2">
                   Current Password
                 </label>
                 <input
                   name="text"
-                  className=" border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3 laptop:w-[830px] tablet:w-[380px] mobile:w-[250px] mr-8"
-                  placeholder=" Please enter your Current Password"
+                  className=" border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3 w-full mr-8"
                 ></input>
                 <span
                   className="flex justify-end items-center "
                   onClick={handleToggle}
                 >
                   <Icon
-                    class="absolute mr-12 mt-[-52px]  text-[rgba(44,39,36,0.5)]"
+                    class="absolute px-3 mt-[-52px]  text-[rgba(44,39,36,0.5)]"
                     icon={icon}
                     size={20}
                   />
@@ -77,34 +75,32 @@ const ChangePassword = () => {
                 <label className="label-text mt-2 mb-2 ">New Password</label>
                 <input
                   type="text"
-                  className=" border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3 laptop:w-[830px] tablet:w-[380px] mobile:w-[250px] mr-8"
-                  placeholder=" Please enter your New Password"
+                  className=" border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3 w-full mr-8"
                 ></input>
                 <span
                   className="flex justify-end items-center "
                   onClick={handleToggle}
                 >
                   <Icon
-                    class="absolute mr-12 mt-[-52px]  text-[rgba(44,39,36,0.5)]"
+                    class="absolute px-3 mt-[-52px]  text-[rgba(44,39,36,0.5)]"
                     icon={icon}
                     size={20}
                   />
                 </span>
 
                 <label className=" label-text  mt-2 mb-2">
-                  Confrom Password
+                  Confirm Password
                 </label>
                 <input
                   name="number"
-                  className="border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3 laptop:w-[830px] tablet:w-[380px] mobile:w-[300px] mr-8"
-                  placeholder=" Please enter your Confrom Password"
+                  className="border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3 w-full mr-8"
                 ></input>
                 <span
                   className="flex justify-end items-center "
                   onClick={handleToggle}
                 >
                   <Icon
-                    class="absolute mr-12 mt-[-52px]  text-[rgba(44,39,36,0.5)]  "
+                    class="absolute px-3 mt-[-52px]  text-[rgba(44,39,36,0.5)]  "
                     icon={icon}
                     size={20}
                   />
@@ -127,7 +123,6 @@ const ChangePassword = () => {
                 </div>
               </div>
             </form>
-          </div>
         </div>
       </div>
 
