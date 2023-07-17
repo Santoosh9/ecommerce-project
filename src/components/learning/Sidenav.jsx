@@ -236,9 +236,9 @@ const Sidenav = ( props ) => {
                 { chapters.map((chapter, chapterIndex) => (
                     <div className="flex flex-col justify-between w-full h-fit py-3 px-6 bg-white border-t border-blue-200 ">
                         <div className="flex justify-between laptop:w-full mobile:w-full">
-                            <div className="flex w-full h-20 gap-16">
-                                <div className="w-full h-20 gap-2"> 
-                                    <p className="w-[80%] h-12 text-base font-medium leading-6 text-left">
+                            <div className="flex w-full h-fit gap-16">
+                                <div className="w-full h-fit gap-2"> 
+                                    <p className="w-[80%] h-fit text-base font-medium leading-6 text-left">
                                         Chapter {chapter.id}:  {chapter.title}
                                     </p>
                                     <div className="flex justify-start ml-0 mt-2 w-72 h-5 gap-6">
@@ -263,7 +263,7 @@ const Sidenav = ( props ) => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="w-5 h-5">
+                            <div className="w-5 h-5 cursor-pointer">
                                 <div>
                                     { toggle[chapterIndex] ?
                                     <FaAngleUp onClick= {() => toggleView(chapterIndex)}/> :

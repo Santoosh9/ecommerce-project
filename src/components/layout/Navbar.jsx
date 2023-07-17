@@ -54,11 +54,11 @@ const Navbar = () => {
 
   return (
     <>
-      <div className="flex flex-row h-auto  w-full  border-[1.5px]  justify-around font-Poppins  items-center ">
+      <div className="flex flex-row h-auto w-full border-[1.5px] justify-around font-Poppins  items-center ">
         <div className="">
-          <Link to='/'><img className="mt-2 mb-2  " src="./images/logo.png" alt="logo-img" /></Link>
+          <Link to='/'><img className="mt-2 mb-2" src="./images/logo.png" alt="logo-img" /></Link>
         </div>
-        <div className="hidden tablet:block">
+        <div className="hidden laptop:block">
           <div
             className="flex flex-row justify-around   gap-[20px]  font-Poppins font-[400]  "
           >
@@ -149,7 +149,7 @@ const Navbar = () => {
             </Link>
           </div>
         </div>
-        <AiOutlineMenu className='tablet:hidden text-lg ml-[20%]' onClick={() => handleOpen('menu')}/>
+        <AiOutlineMenu className='laptop:hidden text-lg ml-auto mr-4' onClick={() => handleOpen('menu')}/>
         <div className=" w-20 tablet:w-80">
           <Link to="/login">
             <button className=" font-[500] w-16 laptop:w-[107px]  mr-10   font-Poppins text-[rgba(0,110,185,1)] ">
