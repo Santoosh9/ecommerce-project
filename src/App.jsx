@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import {  Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Login from './components/layout/Login';
 import Register from './components/layout/Register';
@@ -24,7 +24,6 @@ import ChangePawssword from './profile/ChangePassword';
 function App() {
   return (
     <div className="font-[Poppins]">
-      <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/register" element={<Register />} />
@@ -48,7 +47,6 @@ function App() {
           <Route path="/learning/mcqs" element={<MCQs />} />
           <Route path="/learning/complete" element={<Complete />} />
         </Routes>
-      </BrowserRouter>
     </div>
   );
 }

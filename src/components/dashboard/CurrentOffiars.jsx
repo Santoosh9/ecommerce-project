@@ -126,7 +126,7 @@ const CurrentOffiars = () => {
           <p className='hidden tablet:block text-[#006EB9] text-base font-medium leading-5 w-[20%] text-center'>Download</p>
         </div>
         {data.map((onedata, index) => (
-            <div className={isEven(onedata.sn) ? "w-full h-fit bg-[#F9F9F9] border-t border-b" : "w-full h-fit" }>
+            <div className={!isEven(onedata.sn) ? "w-full h-fit bg-[#F9F9F9] border-t border-b" : "w-full h-fit" }>
               <div className='flex flex-col tablet:flex-row w-full h-fit py-4 gap-2'>
                 <div className='w-full tablet:w-[65%] flex justify-around'>
                   <p className='w-[10%] text-center'>{onedata.sn}</p>

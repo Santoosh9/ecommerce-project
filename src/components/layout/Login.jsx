@@ -10,10 +10,17 @@ import { CiFacebook } from 'react-icons/ci';
 import { FcGoogle } from 'react-icons/fc';
 
 import './style.css';
+import { loginUser } from '../../store/auth';
+import { useDispatch } from 'react-redux';
+import { CgLayoutGrid } from 'react-icons/cg';
+
 const Login = () => {
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState(null);
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(eyeOff);
+
+  const dispatch = useDispatch();
 
   const handleToggle = () => {
     if (type === 'password') {
@@ -24,6 +31,36 @@ const Login = () => {
       setType('password');
     }
   };
+
+  const handleUserLogin = async (data) => {
+    // setIsSubmitting(true);
+
+   
+
+    const response = await dispatch(loginUser(data)).unwrap();
+
+    if (response.success) {
+      navigate("/dashboard");
+    } else {
+      // toast.error(response.message);
+      console.log("error")
+    }
+
+    // setIsSubmitting(false);
+  };
+
+  //   //
+  //   const getSession = async () => {
+  //     const session = await dispatch(getCurrentSession()).unwrap();
+  //     if (session.success) navigate("/dashboard");
+
+  //     setIsLoading(false);
+  //   };
+
+  //   //
+  //   useEffect(() => {
+  //     getSession();
+  //   }, []); 
   return (
     <>
       <Navbar />
@@ -34,7 +71,7 @@ const Login = () => {
           </h3>
 
           <p className=" mt-3 ml-2 font-[500] font-Poppins  text-base text-[rgba(44,39,36,0.75)] ">
-            Don’t have an account?
+            Don't have an account?
             <Link to="/register">
               <span className="text-blue-500 text-opacity-100 ml-1">
                 Register
@@ -42,11 +79,12 @@ const Login = () => {
             </Link>
           </p>
 
-          <form className="mt-12">
+          <form className="mt-12" onSubmit={()=>handleUserLogin({ email, password })}>
             <div className="flex flex-col ml-3">
               <label className="label-text ">Email</label>
               <input
                 type="email"
+                onChange={(e) => setEmail(e.target.value)}
                 className="  border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3"
                 placeholder=" Please enter your email id"
               ></input>
@@ -82,8 +120,8 @@ const Login = () => {
                 </p>
               </div>
               <button
-                className=" text-[rgba(255,250,247,1)] bg-[rgba(0,110,185,1)] h-[50px] mt-8
- "
+                type='submit'
+                className=" text-[rgba(255,250,247,1)] bg-[rgba(0,110,185,1)] h-[50px] mt-8"
               >
                 Sign In
               </button>
