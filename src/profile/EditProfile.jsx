@@ -6,23 +6,23 @@ import { Link } from 'react-router-dom';
 const EditProfile = () => {
   return (
     <>
-      <UserNav />;
-      <div className="flex flex-row mt-10  ml-20 mr-20  ">
-        <div className="bg-[rgba(253,253,253,1)] border   h-[461px]">
-          <div className="   justify-center items-center ml-10 mb-4  ">
+      <UserNav />
+      <div className="flex flex-col tablet:flex-row justify-center items-start mt-10 ml-2 w-full gap-4">
+        <div className="bg-[rgba(253,253,253,1)] border h-[461px]">
+          <div className=" flex flex-col justify-center items-center px-4 py-4">
             <img
-              className="mt-10    ml-20    w-[82px] h-[82px] rounded-full"
+              className=" mt-10 w-[82px] h-[82px] rounded-full"
               src="./images/me.jpg"
             />
 
-            <p className="mt-2    font-[500] text-lg  text-black text-center ">
+            <p className="mt-2 font-[500] text-lg  text-black text-center ">
               Santosh Gajurel
             </p>
             <p className="text-[rgba(44,39,36,0.75)]  font-[400] text-base text-center">
               Santosh@gmail.com
             </p>
             <Link to="/changepassword">
-              <button className="  mr-10 h-[52px] mt-3 w-[220px] text-white  bg-[rgba(0,110,185,1)] text-center">
+              <button className=" flex justify-center items-center h-[52px] mt-3 w-[220px] text-white  bg-[rgba(0,110,185,1)] text-center">
                 Change Password
               </button>
             </Link>
@@ -40,35 +40,35 @@ const EditProfile = () => {
           </div>
         </div>
 
-        <div className="ml-7 mb-10 border bg-[rgba(253,253,253,1)] ">
+        <div className="flex w-[90%] tablet:w-[65%] flex-col flex-start laptop:ml-7 mb-10 border bg-[rgba(253,253,253,1)] ">
           <p className=" font-[500] text-2xl mt-5 ml-7 ">Basic Information</p>
           <form className="mt-6 ml-7 flex-nowrap">
             <div className="flex flex-col ml-3  mr-10 flex-nowrap ">
               <label className="label-text m-2">Full Name</label>
               <input
                 type="text"
-                className="  border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3 laptop:w-[830px] tablet:w-[480px] mobile:w-[250px] mr-8 "
+                className="  border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3 w-full mr-8 "
                 placeholder=" Please enter your full name"
               ></input>
 
               <label className=" label-text  mt-2 mb-2">Email</label>
               <input
                 name="text"
-                className=" border-[1px] border-[rgba(177,181,195,1)] focus:outline  h-[52px] laptop:w-[830px] tablet:w-[480px] mobile:w-[250px] px-3 mr-8"
+                className=" border-[1px] border-[rgba(177,181,195,1)] focus:outline  h-[52px] w-full px-3 mr-8"
                 placeholder=" Please enter your email"
               ></input>
 
               <label className="label-text mt-2  m-2">Full Name </label>
               <input
                 type="text"
-                className="  border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3 mr-8 laptop:w-[830px] tablet:w-[480px] mobile:w-[250px]"
+                className="  border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3 mr-8 w-full"
                 placeholder=" Please enter your full name"
               ></input>
 
               <label className=" label-text  mt-2  mb-2">Phone</label>
               <input
                 name="number"
-                className=" border-[1px] border-[rgba(177,181,195,1)] focus:outline  h-[52px]  px-3 mr-8 laptop:w-[830px] tablet:w-[480px] mobile:w-[250px]"
+                className=" border-[1px] border-[rgba(177,181,195,1)] focus:outline  h-[52px]  px-3 mr-8 w-full"
                 placeholder=" Please enter your phone number"
               ></input>
 

@@ -42,7 +42,7 @@ const Notifications = () => {
         }
     ]
     return (
-        <div className="fixed inset-0 w-full max-h-screen overflow-y-auto max-w-[400px] flex justify-end h-fit mt-20 z-10 laptop:ml-[65%] bg-white">
+        <div className="fixed inset-0 w-full max-h-screen overflow-y-auto max-w-[400px] flex justify-end h-fit mt-20 z-10 ml-auto tablet:mr-[10%] bg-white">
             <div className="w-full h-full rounded">
                 <div className="flex justify-between items-center w-full h-12 py-3  pl-4 pr-1 gap-4">
                     <div className="w-1/2 h-3/5">

@@ -11,9 +11,11 @@ const Dropdown = () => {
                                     <p>Dashboard</p>
                                 </div>
                             </Link>
+                            <Link to="/editprofile">
                             <div className="py-3 px-6 hover:bg-blue-100">
                                 <p>Profile</p>
                             </div>
+                            </Link>
                             <div className="py-3 px-6 hover:bg-blue-100">
                                 <p>My Courses</p>
                             </div>

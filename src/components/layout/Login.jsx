@@ -1,19 +1,35 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { Icon } from 'react-icons-kit';
 import { eyeOff } from 'react-icons-kit/feather/eyeOff';
 import { eye } from 'react-icons-kit/feather/eye';
-
 import { CiFacebook } from 'react-icons/ci';
 import { FcGoogle } from 'react-icons/fc';
 
 import './style.css';
+import { loginUser } from '../../store/auth';
+import { useDispatch } from 'react-redux';
+import { CgLayoutGrid } from 'react-icons/cg';
+
 const Login = () => {
   const [password, setPassword] = useState('');
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(eyeOff);
+  const [loginData, setloginData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+   const { name, value } = e.target;
+   setloginData({ ...loginData, [name]: value });
+   };
+
+  const dispatch = useDispatch();
 
   const handleToggle = () => {
     if (type === 'password') {
@@ -24,6 +40,38 @@ const Login = () => {
       setType('password');
     }
   };
+
+  const handleUserLogin = async (e) => {
+      e.preventDefault();
+      // setIsSubmitting(true);
+    
+      console.log(loginData);
+    
+      const response = await dispatch(loginUser(loginData)).unwrap();
+      console.log(response);
+      if (response.success) {
+       navigate('/mycourse');
+      } else {
+       // toast.error(response.message);
+       console.log('error');
+      }
+    
+
+    // setIsSubmitting(false);
+  };
+
+  //   //
+  //   const getSession = async () => {
+  //     const session = await dispatch(getCurrentSession()).unwrap();
+  //     if (session.success) navigate("/dashboard");
+
+  //     setIsLoading(false);
+  //   };
+
+  //   //
+  //   useEffect(() => {
+  //     getSession();
+  //   }, []); 
   return (
     <>
       <Navbar />
@@ -34,7 +82,7 @@ const Login = () => {
           </h3>
 
           <p className=" mt-3 ml-2 font-[500] font-Poppins  text-base text-[rgba(44,39,36,0.75)] ">
-            Don’t have an account?
+            Don't have an account?
             <Link to="/register">
               <span className="text-blue-500 text-opacity-100 ml-1">
                 Register
@@ -42,12 +90,14 @@ const Login = () => {
             </Link>
           </p>
 
-          <form className="mt-12">
+          <form className="mt-12" onSubmit={(e) => handleUserLogin(e)}>
             <div className="flex flex-col ml-3">
               <label className="label-text ">Email</label>
               <input
                 type="email"
-                className="  border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3"
+                name="email"
+                onChange={handleChange}
+                className=" border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3"
                 placeholder=" Please enter your email id"
               ></input>
 
@@ -55,9 +105,9 @@ const Login = () => {
               <input
                 type={type}
                 name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete="current-password"
+                value={loginData?.password}
+                onChange={handleChange}
+                // autoComplete="current-password"
                 className=" border-[1px] border-[rgba(177,181,195,1)] focus:outline  h-[52px]  px-3"
                 placeholder=" Please enter your password"
               ></input>
@@ -66,7 +116,7 @@ const Login = () => {
                 onClick={handleToggle}
               >
                 <Icon
-                  class="absolute mr-4 mt-[-52px] text-[rgba(44,39,36,0.5)]"
+                  className="absolute mr-4 mt-[-52px] text-[rgba(44,39,36,0.5)]"
                   icon={icon}
                   size={20}
                 />
@@ -82,8 +132,8 @@ const Login = () => {
                 </p>
               </div>
               <button
-                className=" text-[rgba(255,250,247,1)] bg-[rgba(0,110,185,1)] h-[50px] mt-8
- "
+                type='submit'
+                className=" text-[rgba(255,250,247,1)] bg-[rgba(0,110,185,1)] h-[50px] mt-8"
               >
                 Sign In
               </button>

@@ -59,7 +59,7 @@ const SubjectMenu = () => {
       ]
 
     return (
-        <div className=' tablet:hidden fixed inset-0 ml-[30%] mt-20 w-fit h-[192px] overflow-y-auto bg-white'>
+        <div className=' laptop:hidden fixed inset-0 ml-auto mr-6 tablet:mr-[25%] mt-20 w-fit h-[192px] overflow-y-auto bg-white'>
                   {menu.map((onemenu, index) => (
                     <div>
                     <div key={index} className='w-full h-16 border-b flex items-center justify-between px-2 py-1'>

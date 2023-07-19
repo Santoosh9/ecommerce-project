@@ -79,7 +79,7 @@ const UserNav = () => {
 
   return (
     <>
-      <div className="flex flex-row h-auto  w-full  border-[1.5px]  justify-between font-Poppins  items-center  ">
+      <div className="flex flex-row h-auto  w-full  border-[1.5px]  justify-around font-Poppins  items-center  ">
         <div className="ml-6 tablet:ml-16">
           <Link to="/">
             <img
@@ -89,7 +89,7 @@ const UserNav = () => {
             />
           </Link>
         </div>
-        <div className="hidden tablet:block">
+        <div className="hidden laptop:block">
           <div
             className="flex flex-row justify-around gap-[20px]  w-full font-Poppins font-[400] ml-16 laptop:mt-2 text-base  tablet:mt-3"
           >
@@ -180,20 +180,18 @@ const UserNav = () => {
             </Link>
           </div>
         </div>
-        <div>
-          <AiOutlineMenu className='tablet:hidden text-lg ml-[20%]' onClick={() => handleOpen('menu')}/>
-        </div>
-        <div className="flex gap-4 items-center justify-end mr-2 tablet:mr-10  tablet:mt-2 w-[30%] ">
+        <AiOutlineMenu className='flex justify-end laptop:hidden text-lg ml-auto mr-8 items-center' onClick={() => handleOpen('menu')}/>
+        <div className="flex gap-4 items-center justify-end mr-2 tablet:mr-10 tablet:mt-2 laptop:w-80">
           <div className='flex w-10 h-10 p-2 gap-2.5 items-center bg-[#006EB91A] relative cursor-pointer' onClick={() => handleOpen('notification')}>
             <HiBell className='text-4xl text-[#006EB9]'/>
             <GoDotFill className='text-[#EB5757] absolute top-1 left-4'/>
           </div>
           <img
-            className="rounded-full w-10 laptop:mt-0 tablet:mt-2 cursor-pointer"
+            className="flex items-center rounded-full w-10 laptop:mt-0 tablet:mt-2 cursor-pointer"
             src="./images/me.jpg"
             onClick={() => handleOpen("user")}
           />
-          <p className="hidden laptop:flex flex-row items-center font-Poppins font-[400] mt-2 gap-1 laptop:mt-0 z-10 cursor-pointer " onClick={() => handleOpen("user")}>
+          <p className="hidden tablet:flex flex-row items-center font-Poppins font-[400] mt-2 gap-1 laptop:mt-0 z-10 cursor-pointer " onClick={() => handleOpen("user")}>
             Santosh
               {clicked? <BsChevronUp className="text-lg"/>: <BsChevronDown className='text-lg'/> }
           </p>
