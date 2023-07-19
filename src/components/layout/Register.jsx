@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 import { CiFacebook } from 'react-icons/ci';
 import { FcGoogle } from 'react-icons/fc';
 import { useDispatch } from 'react-redux';
-import axios, { AxiosError } from "axios";
+import axios, { AxiosError } from 'axios';
 import toast from 'react-hot-toast';
 import './style.css';
 import { registerUser } from '../../store/auth';
@@ -20,11 +20,11 @@ const Register = () => {
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(eyeOff);
   const [registerData, setRegisterData] = useState({
-    fullname: '',
+    name: '',
     email: '',
     password: '',
     mobileno: 123456789,
-    source: 'localhost'
+    source: 'normal',
   });
 
   const navigate = useNavigate();
@@ -33,7 +33,7 @@ const Register = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setRegisterData({ ...registerData, [name]: value });
-    };
+  };
 
   const handleToggle = () => {
     if (type === 'password') {
@@ -61,14 +61,14 @@ const Register = () => {
 
     const response = await dispatch(registerUser(registerData)).unwrap();
     console.log(response);
-    
+
     if (response.success) {
       navigate('/login');
-     } else {
-      toast.error("error");
+    } else {
+      toast.error('error');
       console.log('error');
-     }
     }
+  };
 
   return (
     <>
@@ -91,7 +91,7 @@ const Register = () => {
               <label className="label-text ">Full Name</label>
               <input
                 type="text"
-                name="fullname"
+                name="name"
                 onChange={handleChange}
                 className="  border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3"
                 placeholder=" Please enter your full name"
@@ -155,7 +155,10 @@ const Register = () => {
                   </span>
                 </p>
               </div>
-              <button type='submit' className=" text-[rgba(255,250,247,1)] bg-[rgba(0,110,185,1)] h-[50px] mt-8">
+              <button
+                type="submit"
+                className=" text-[rgba(255,250,247,1)] bg-[rgba(0,110,185,1)] h-[50px] mt-8"
+              >
                 Register
               </button>
             </div>

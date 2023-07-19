@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { Icon } from 'react-icons-kit';
@@ -7,30 +8,23 @@ import { eyeOff } from 'react-icons-kit/feather/eyeOff';
 import { eye } from 'react-icons-kit/feather/eye';
 import { CiFacebook } from 'react-icons/ci';
 import { FcGoogle } from 'react-icons/fc';
-
 import './style.css';
 import { loginUser } from '../../store/auth';
 import { useDispatch } from 'react-redux';
 import { CgLayoutGrid } from 'react-icons/cg';
-
 const Login = () => {
-  const [password, setPassword] = useState('');
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(eyeOff);
   const [loginData, setloginData] = useState({
     email: '',
     password: '',
   });
-
   const navigate = useNavigate();
-
   const handleChange = (e) => {
-   const { name, value } = e.target;
-   setloginData({ ...loginData, [name]: value });
-   };
-
+    const { name, value } = e.target;
+    setloginData({ ...loginData, [name]: value });
+  };
   const dispatch = useDispatch();
-
   const handleToggle = () => {
     if (type === 'password') {
       setIcon(eye);
@@ -40,38 +34,19 @@ const Login = () => {
       setType('password');
     }
   };
-
   const handleUserLogin = async (e) => {
-      e.preventDefault();
-      // setIsSubmitting(true);
-    
-      console.log(loginData);
-    
-      const response = await dispatch(loginUser(loginData)).unwrap();
-      console.log(response);
-      if (response.success) {
-       navigate('/mycourse');
-      } else {
-       // toast.error(response.message);
-       console.log('error');
-      }
-    
-
+    e.preventDefault();
+    // setIsSubmitting(true);
+    console.log(loginData);
+    const response = await dispatch(loginUser(loginData)).unwrap();
+    if (response.success) {
+      navigate('/mycourse');
+    } else {
+      // toast.error(response.message);
+      console.log('error');
+    }
     // setIsSubmitting(false);
   };
-
-  //   //
-  //   const getSession = async () => {
-  //     const session = await dispatch(getCurrentSession()).unwrap();
-  //     if (session.success) navigate("/dashboard");
-
-  //     setIsLoading(false);
-  //   };
-
-  //   //
-  //   useEffect(() => {
-  //     getSession();
-  //   }, []); 
   return (
     <>
       <Navbar />
@@ -80,7 +55,6 @@ const Login = () => {
           <h3 className=" font-[500] text-3xl ml-2 text-[rgba(17,17,17,1)]">
             Login
           </h3>
-
           <p className=" mt-3 ml-2 font-[500] font-Poppins  text-base text-[rgba(44,39,36,0.75)] ">
             Don't have an account?
             <Link to="/register">
@@ -89,7 +63,6 @@ const Login = () => {
               </span>
             </Link>
           </p>
-
           <form className="mt-12" onSubmit={(e) => handleUserLogin(e)}>
             <div className="flex flex-col ml-3">
               <label className="label-text ">Email</label>
@@ -97,17 +70,15 @@ const Login = () => {
                 type="email"
                 name="email"
                 onChange={handleChange}
-                className=" border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3"
+                className="  border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3"
                 placeholder=" Please enter your email id"
               ></input>
-
               <label className=" label-text  mt-4">Password</label>
               <input
                 type={type}
                 name="password"
                 value={loginData?.password}
                 onChange={handleChange}
-                // autoComplete="current-password"
                 className=" border-[1px] border-[rgba(177,181,195,1)] focus:outline  h-[52px]  px-3"
                 placeholder=" Please enter your password"
               ></input>
@@ -116,12 +87,11 @@ const Login = () => {
                 onClick={handleToggle}
               >
                 <Icon
-                  className="absolute mr-4 mt-[-52px] text-[rgba(44,39,36,0.5)]"
+                  class="absolute mr-4 mt-[-52px] text-[rgba(44,39,36,0.5)]"
                   icon={icon}
                   size={20}
                 />
               </span>
-
               <div className="flex flex-row  justify-between mt-4 font-Poppins  text-sm font-[400]">
                 <div className="flex flex-row gap-3  text-[rgba(44,39,36,0.5)]">
                   <input type="checkbox" className="" />
@@ -132,25 +102,22 @@ const Login = () => {
                 </p>
               </div>
               <button
-                type='submit'
+                type="submit"
                 className=" text-[rgba(255,250,247,1)] bg-[rgba(0,110,185,1)] h-[50px] mt-8"
               >
                 Sign In
               </button>
             </div>
           </form>
-
           <div className="py-2 relative text-center mt-2  text-[rgba(44,39,36,0.5)] font-Poppins text-lg">
             <hr className="absolute w-full top-[50%] z-0" />
             <p className="z-10 mx-auto isolate bg-white  w-12 ">or</p>
           </div>
-
           <div className="grid grid-cols-2 gap-6 text-sm mt-2">
             <button className="btn-white flex flex-row justify-center items-center gap-[10px]">
               <FcGoogle />
               <p> Login with Google</p>
             </button>
-
             <button className="btn-primary flex flex-row justify-center items-center gap-[10px]">
               <CiFacebook />
               <p>Login with Facbook</p>
@@ -158,10 +125,8 @@ const Login = () => {
           </div>
         </div>
       </div>
-
       <Footer />
     </>
   );
 };
-
 export default Login;
