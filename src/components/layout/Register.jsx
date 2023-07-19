@@ -5,17 +5,35 @@ import Footer from './Footer';
 import { Icon } from 'react-icons-kit';
 import { eyeOff } from 'react-icons-kit/feather/eyeOff';
 import { eye } from 'react-icons-kit/feather/eye';
-
+import { useNavigate } from 'react-router-dom';
 import { CiFacebook } from 'react-icons/ci';
 import { FcGoogle } from 'react-icons/fc';
-
+import { useDispatch } from 'react-redux';
+import axios, { AxiosError } from "axios";
+import toast from 'react-hot-toast';
 import './style.css';
+import { registerUser } from '../../store/auth';
 
 const Register = () => {
   const [password, setPassword] = useState('');
   const [cpassword, setCPassword] = useState('');
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(eyeOff);
+  const [registerData, setRegisterData] = useState({
+    fullname: '',
+    email: '',
+    password: '',
+    mobileno: 123456789,
+    source: 'localhost'
+  });
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setRegisterData({ ...registerData, [name]: value });
+    };
 
   const handleToggle = () => {
     if (type === 'password') {
@@ -37,6 +55,21 @@ const Register = () => {
     }
   };
 
+  const handleRegisterUser = async (e) => {
+    e.preventDefault();
+    console.log(registerData);
+
+    const response = await dispatch(registerUser(registerData)).unwrap();
+    console.log(response);
+    
+    if (response.success) {
+      navigate('/login');
+     } else {
+      toast.error("error");
+      console.log('error');
+     }
+    }
+
   return (
     <>
       <Navbar />
@@ -53,17 +86,21 @@ const Register = () => {
             </Link>
           </p>
 
-          <form className="mt-2 ">
+          <form className="mt-2 " onSubmit={(e) => handleRegisterUser(e)}>
             <div className="flex flex-col ml-3">
               <label className="label-text ">Full Name</label>
               <input
                 type="text"
+                name="fullname"
+                onChange={handleChange}
                 className="  border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3"
                 placeholder=" Please enter your full name"
               ></input>
               <label className="label-text mt-2">Email</label>
               <input
                 type="email"
+                name="email"
+                onChange={handleChange}
                 className="  border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3"
                 placeholder=" Please enter your email id"
               ></input>
@@ -72,8 +109,8 @@ const Register = () => {
               <input
                 type={type}
                 name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={registerData?.password}
+                onChange={handleChange}
                 autoComplete="current-password"
                 className=" border-[1px] border-[rgba(177,181,195,1)] focus:outline  h-[52px]  px-3 "
                 placeholder=" Please enter your password"
@@ -83,28 +120,28 @@ const Register = () => {
                 onClick={handleToggle}
               >
                 <Icon
-                  class="absolute mr-4 mt-[-52px]  text-[rgba(44,39,36,0.5)]"
+                  className="absolute mr-4 mt-[-52px]  text-[rgba(44,39,36,0.5)]"
                   icon={icon}
                   size={20}
                 />
               </span>
 
-              <label className=" label-text mt-2 ">Confrom Password</label>
+              <label className=" label-text mt-2 ">Confirm Password</label>
               <input
                 type={type}
                 name="cpassword"
-                value={cpassword}
-                onChange={(e) => setCPassword(e.target.value)}
-                autoComplete="confrom-password"
+                // value={cpassword}
+                // onChange={handleChange}
+                autoComplete="confirm-password"
                 className=" border-[1px] border-[rgba(177,181,195,1)] focus:outline  h-[52px]  px-3"
-                placeholder=" Please enter your Confrom password"
+                placeholder=" Please enter your Confirm password"
               ></input>
               <span
                 className="flex justify-end items-center "
                 onClick={handleToggleConfrom}
               >
                 <Icon
-                  class="absolute mr-4 mt-[-52px]  text-[rgba(44,39,36,0.5)]"
+                  className="absolute mr-4 mt-[-52px]  text-[rgba(44,39,36,0.5)]"
                   icon={icon}
                   size={20}
                 />
@@ -114,11 +151,11 @@ const Register = () => {
                 <p>
                   Agree to all
                   <span className="text-[rgba(0,110,185,1)] text-opacity-100 ml-2">
-                    Terms and Cindition
+                    Terms and Condition
                   </span>
                 </p>
               </div>
-              <button className=" text-[rgba(255,250,247,1)] bg-[rgba(0,110,185,1)] h-[50px] mt-8">
+              <button type='submit' className=" text-[rgba(255,250,247,1)] bg-[rgba(0,110,185,1)] h-[50px] mt-8">
                 Register
               </button>
             </div>

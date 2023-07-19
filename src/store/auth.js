@@ -8,8 +8,6 @@ import axiosInstance from "../utils/axios";
 
 //
 const API_URL = import.meta.env.VITE_API_URL;
-
-
 console.log(API_URL)
 
 // Magic strings
@@ -55,6 +53,50 @@ export const loginUser = createAsyncThunk(
         error instanceof AxiosError
           ? error.response?.data?.message
           : "Unable to login";
+
+      return {
+        success: false,
+        message: errorMessage,
+      };
+    }
+  },
+);
+
+export const registerUser = createAsyncThunk(
+  "login",
+  async (payload) => {
+    console.log(payload)
+    try {
+      const { data } = await axios.put(
+        `${API_URL}/register`,
+        {
+          name: payload.fullname,
+          email: payload.email,
+          password: payload.password,
+          mobileno: payload.mobileno,
+          source: payload.source,
+        },
+      
+        
+      );
+
+      console.log(data)
+
+      //
+      jsCookie.set(TOKEN_NAME, data.accessToken);
+
+      //
+      return {
+        success: true,
+        message: "Successfully logged in!",
+        data,
+      };
+    } catch (error) {
+      console.log(error)
+      const errorMessage =
+        error instanceof AxiosError
+          ? error.response?.data?.message
+          : "Unable to regsiter";
 
       return {
         success: false,

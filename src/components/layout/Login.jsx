@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
 import { Icon } from 'react-icons-kit';
 import { eyeOff } from 'react-icons-kit/feather/eyeOff';
 import { eye } from 'react-icons-kit/feather/eye';
-
 import { CiFacebook } from 'react-icons/ci';
 import { FcGoogle } from 'react-icons/fc';
 
@@ -16,9 +15,19 @@ import { CgLayoutGrid } from 'react-icons/cg';
 
 const Login = () => {
   const [password, setPassword] = useState('');
-  const [email, setEmail] = useState(null);
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(eyeOff);
+  const [loginData, setloginData] = useState({
+    email: '',
+    password: '',
+  });
+
+  const navigate = useNavigate();
+
+  const handleChange = (e) => {
+   const { name, value } = e.target;
+   setloginData({ ...loginData, [name]: value });
+   };
 
   const dispatch = useDispatch();
 
@@ -32,19 +41,21 @@ const Login = () => {
     }
   };
 
-  const handleUserLogin = async (data) => {
-    // setIsSubmitting(true);
-
-   
-
-    const response = await dispatch(loginUser(data)).unwrap();
-
-    if (response.success) {
-      navigate("/dashboard");
-    } else {
-      // toast.error(response.message);
-      console.log("error")
-    }
+  const handleUserLogin = async (e) => {
+      e.preventDefault();
+      // setIsSubmitting(true);
+    
+      console.log(loginData);
+    
+      const response = await dispatch(loginUser(loginData)).unwrap();
+      console.log(response);
+      if (response.success) {
+       navigate('/mycourse');
+      } else {
+       // toast.error(response.message);
+       console.log('error');
+      }
+    
 
     // setIsSubmitting(false);
   };
@@ -79,13 +90,14 @@ const Login = () => {
             </Link>
           </p>
 
-          <form className="mt-12" onSubmit={()=>handleUserLogin({ email, password })}>
+          <form className="mt-12" onSubmit={(e) => handleUserLogin(e)}>
             <div className="flex flex-col ml-3">
               <label className="label-text ">Email</label>
               <input
                 type="email"
-                onChange={(e) => setEmail(e.target.value)}
-                className="  border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3"
+                name="email"
+                onChange={handleChange}
+                className=" border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3"
                 placeholder=" Please enter your email id"
               ></input>
 
@@ -93,9 +105,9 @@ const Login = () => {
               <input
                 type={type}
                 name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                autoComplete="current-password"
+                value={loginData?.password}
+                onChange={handleChange}
+                // autoComplete="current-password"
                 className=" border-[1px] border-[rgba(177,181,195,1)] focus:outline  h-[52px]  px-3"
                 placeholder=" Please enter your password"
               ></input>
@@ -104,7 +116,7 @@ const Login = () => {
                 onClick={handleToggle}
               >
                 <Icon
-                  class="absolute mr-4 mt-[-52px] text-[rgba(44,39,36,0.5)]"
+                  className="absolute mr-4 mt-[-52px] text-[rgba(44,39,36,0.5)]"
                   icon={icon}
                   size={20}
                 />
