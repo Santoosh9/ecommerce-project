@@ -7,6 +7,8 @@ import { FaAngleUp } from 'react-icons/fa6'
 import { RxDotFilled } from 'react-icons/rx'
 import { TfiAngleRight } from 'react-icons/tfi'
 import { TfiAngleLeft } from 'react-icons/tfi'
+import axios from "axios";
+import { useQuery } from "react-query";
 
 const Sidenav = ( props ) => {
 
@@ -17,197 +19,204 @@ const Sidenav = ( props ) => {
         props.sideNavControl(1);
     }
 
-    const chapters = [
-        {
-            id: '1',
-            title: 'Foundation and Basics of Accounting',
-            video: '12',
-            notes: '7',
-            mcqs: '18',
-            subchapters: [
-                {
-                    id: '1',
-                    title: 'Foundation and Basics of Accounting',
-                },
-                {
-                    id: '2',
-                    title: 'Foundation and Basics of Accounting II',
-                },
-                {
-                    id: '3',
-                    title: 'Foundation and Basics of Accounting III',
-                },
-                {
-                    id: '4',
-                    title: 'Foundation and Basics of Accounting IV',
-                }
-            ]
-        },
-        {
-            id: '2',
-            title: 'Laws of Accounting',
-            video: '22',
-            notes: '12',
-            mcqs: '20',
-            subchapters: [
-                {
-                    id: '1',
-                    title: 'Laws of Accounting',
-                },
-                {
-                    id: '2',
-                    title: 'Laws of Accounting II',
-                },
-                {
-                    id: '3',
-                    title: 'Laws of Accounting III',
-                },
-                {
-                    id: '4',
-                    title: 'Laws of Accounting IV',
-                }
-            ]
-        },
-        {
-            id: '3',
-            title: 'Advanced Accounting',
-            video: '29',
-            notes: '72',
-            mcqs: '11',
-            subchapters: [
-                {
-                    id: '1',
-                    title: 'Advanced Accounting',
-                },
-                {
-                    id: '2',
-                    title: 'Advanced Accounting II',
-                },
-                {
-                    id: '3',
-                    title: 'Advanced Accounting III',
-                },
-            ]
-        },
-        {
-            id: '4',
-            title: 'Foundation and Basics of Accounting',
-            video: '12',
-            notes: '7',
-            mcqs: '18',
-            subchapters: [
-                {
-                    id: '1',
-                    title: 'Foundation and Basics of Accounting'
-                },
-                {
-                    id: '2',
-                    title: 'Foundation and Basics of Accounting II',
-                }
-            ]
-        },
-        {
-            id: '5',
-            title: 'Laws of Accounting',
-            video: '22',
-            notes: '12',
-            mcqs: '20',
-            subchapters: [
-                {
-                    id: '1',
-                    title: 'Laws of Accounting',
-                },
-                {
-                    id: '2',
-                    title: 'Laws of Accounting II',
-                },
-                {
-                    id: '3',
-                    title: 'Laws of Accounting III',
-                }
-            ]
-        },
-        {
-            id: '6',
-            title: 'Advanced Accounting',
-            video: '29',
-            notes: '72',
-            mcqs: '11',
-            subchapters: [
-                {
-                    id: '1',
-                    title: 'Advanced Accounting',
-                },
-                {
-                    id: '2',
-                    title: 'Advanced Accounting II',
-                },
-                {
-                    id: '3',
-                    title: 'Advanced Accounting III',
-                },
-            ]
-        },
-        {
-            id: '7',
-            title: 'Foundation and Basics of Accounting',
-            video: '12',
-            notes: '7',
-            mcqs: '18',
-            subchapters: [
-                {
-                    id: '1',
-                    title: 'Foundation and Basics of Accounting'
-                },
-                {
-                    id: '2',
-                    title: 'Foundation and Basics of Accounting II',
-                }
-            ]
-        },
-        {
-            id: '8',
-            title: 'Laws of Accounting',
-            video: '22',
-            notes: '12',
-            mcqs: '20',
-            subchapters: [
-                {
-                    id: '1',
-                    title: 'Laws of Accounting',
-                },
-                {
-                    id: '2',
-                    title: 'Laws of Accounting II',
-                },
-                {
-                    id: '3',
-                    title: 'Laws of Accounting III',
-                }
-            ]
-        },
-        {
-            id: '9',
-            title: 'Advanced Accounting',
-            video: '29',
-            notes: '72',
-            mcqs: '11',
-            subchapters: [
-                {
-                    id: '1',
-                    title: 'Advanced Accounting',
-                },
-                {
-                    id: '2',
-                    title: 'Advanced Accounting II',
-                },
-                {
-                    id: '3',
-                    title: 'Advanced Accounting III',
-                },
-            ]
-        }
-    ]
+    // const chapters = [
+    //     {
+    //         id: '1',
+    //         title: 'Foundation and Basics of Accounting',
+    //         video: '12',
+    //         notes: '7',
+    //         mcqs: '18',
+    //         subchapters: [
+    //             {
+    //                 id: '1',
+    //                 title: 'Foundation and Basics of Accounting',
+    //             },
+    //             {
+    //                 id: '2',
+    //                 title: 'Foundation and Basics of Accounting II',
+    //             },
+    //             {
+    //                 id: '3',
+    //                 title: 'Foundation and Basics of Accounting III',
+    //             },
+    //             {
+    //                 id: '4',
+    //                 title: 'Foundation and Basics of Accounting IV',
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         id: '2',
+    //         title: 'Laws of Accounting',
+    //         video: '22',
+    //         notes: '12',
+    //         mcqs: '20',
+    //         subchapters: [
+    //             {
+    //                 id: '1',
+    //                 title: 'Laws of Accounting',
+    //             },
+    //             {
+    //                 id: '2',
+    //                 title: 'Laws of Accounting II',
+    //             },
+    //             {
+    //                 id: '3',
+    //                 title: 'Laws of Accounting III',
+    //             },
+    //             {
+    //                 id: '4',
+    //                 title: 'Laws of Accounting IV',
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         id: '3',
+    //         title: 'Advanced Accounting',
+    //         video: '29',
+    //         notes: '72',
+    //         mcqs: '11',
+    //         subchapters: [
+    //             {
+    //                 id: '1',
+    //                 title: 'Advanced Accounting',
+    //             },
+    //             {
+    //                 id: '2',
+    //                 title: 'Advanced Accounting II',
+    //             },
+    //             {
+    //                 id: '3',
+    //                 title: 'Advanced Accounting III',
+    //             },
+    //         ]
+    //     },
+    //     {
+    //         id: '4',
+    //         title: 'Foundation and Basics of Accounting',
+    //         video: '12',
+    //         notes: '7',
+    //         mcqs: '18',
+    //         subchapters: [
+    //             {
+    //                 id: '1',
+    //                 title: 'Foundation and Basics of Accounting'
+    //             },
+    //             {
+    //                 id: '2',
+    //                 title: 'Foundation and Basics of Accounting II',
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         id: '5',
+    //         title: 'Laws of Accounting',
+    //         video: '22',
+    //         notes: '12',
+    //         mcqs: '20',
+    //         subchapters: [
+    //             {
+    //                 id: '1',
+    //                 title: 'Laws of Accounting',
+    //             },
+    //             {
+    //                 id: '2',
+    //                 title: 'Laws of Accounting II',
+    //             },
+    //             {
+    //                 id: '3',
+    //                 title: 'Laws of Accounting III',
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         id: '6',
+    //         title: 'Advanced Accounting',
+    //         video: '29',
+    //         notes: '72',
+    //         mcqs: '11',
+    //         subchapters: [
+    //             {
+    //                 id: '1',
+    //                 title: 'Advanced Accounting',
+    //             },
+    //             {
+    //                 id: '2',
+    //                 title: 'Advanced Accounting II',
+    //             },
+    //             {
+    //                 id: '3',
+    //                 title: 'Advanced Accounting III',
+    //             },
+    //         ]
+    //     },
+    //     {
+    //         id: '7',
+    //         title: 'Foundation and Basics of Accounting',
+    //         video: '12',
+    //         notes: '7',
+    //         mcqs: '18',
+    //         subchapters: [
+    //             {
+    //                 id: '1',
+    //                 title: 'Foundation and Basics of Accounting'
+    //             },
+    //             {
+    //                 id: '2',
+    //                 title: 'Foundation and Basics of Accounting II',
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         id: '8',
+    //         title: 'Laws of Accounting',
+    //         video: '22',
+    //         notes: '12',
+    //         mcqs: '20',
+    //         subchapters: [
+    //             {
+    //                 id: '1',
+    //                 title: 'Laws of Accounting',
+    //             },
+    //             {
+    //                 id: '2',
+    //                 title: 'Laws of Accounting II',
+    //             },
+    //             {
+    //                 id: '3',
+    //                 title: 'Laws of Accounting III',
+    //             }
+    //         ]
+    //     },
+    //     {
+    //         id: '9',
+    //         title: 'Advanced Accounting',
+    //         video: '29',
+    //         notes: '72',
+    //         mcqs: '11',
+    //         subchapters: [
+    //             {
+    //                 id: '1',
+    //                 title: 'Advanced Accounting',
+    //             },
+    //             {
+    //                 id: '2',
+    //                 title: 'Advanced Accounting II',
+    //             },
+    //             {
+    //                 id: '3',
+    //                 title: 'Advanced Accounting III',
+    //             },
+    //         ]
+    //     }
+    // ]
+
+    const fetchChapters = async () => {
+        const response = await axios.get("http://localhost:4000/chapters")
+        return response?.data;
+    }
+
+    const {isLoading, data:chapters, isError, error} = useQuery("chapters", fetchChapters);
       
     const toggleView = ( index ) => {
         const updatedToggle = [...toggle];
@@ -233,7 +242,8 @@ const Sidenav = ( props ) => {
                 </div>
             </div>
             <div className="tablet:w-full">
-                { chapters.map((chapter, chapterIndex) => (
+                {isLoading && <p className="text-center">Loading...</p>}
+                { chapters?.map((chapter, chapterIndex) => (
                     <div className="flex flex-col justify-between w-full h-fit py-3 px-6 bg-white border-t border-blue-200 ">
                         <div className="flex justify-between laptop:w-full mobile:w-full">
                             <div className="flex w-full h-fit gap-16">

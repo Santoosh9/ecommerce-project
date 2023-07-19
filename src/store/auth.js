@@ -63,7 +63,7 @@ export const loginUser = createAsyncThunk(
 );
 
 export const registerUser = createAsyncThunk(
-  "login",
+  "register",
   async (payload) => {
     console.log(payload)
     try {

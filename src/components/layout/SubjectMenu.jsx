@@ -1,6 +1,8 @@
+import axios from "axios";
 import React, {useState} from "react";
 import { BsChevronDown } from 'react-icons/bs'
 import { BsChevronUp } from 'react-icons/bs'
+import { useQuery } from "react-query";
 import { Link } from 'react-router-dom';
 
 const SubjectMenu = () => {
@@ -13,54 +15,62 @@ const SubjectMenu = () => {
         setToggle(updatedToggle);
     }
 
-    const menu = [
-        {
-          title: 'लोकसेवा (संघ र प्रदेश‌‍‍‌)',
-          submenu: [
-            {
-              subtitle:"लोकसेवा (संघ‌‍‍‌)"
-            },
-            {
-              subtitle:"लोकसेवा (प्रदेश‌‍‍‌‍‍‌)"
-            },
-            {
-              subtitle:"लोकसेवा (संघ‌‍‍‌)"
-            }
-          ]
-        },
-        {
-          title: 'बैंकिङ तयारी',
-          submenu: [
-            {
-              subtitle:"RBB 4th Level"
-            },
-            {
-              subtitle:"RBB 4th Level"
-            },
-            {
-              subtitle:"RBB 4th Level"
-            }
-          ]
-        },
-        {
-          title: 'संस्थान तयारी',
-          submenu: [
-            {
-              subtitle:"संस्थान तयारी"
-            },
-            {
-              subtitle:"संस्थान तयारी"
-            },
-            {
-              subtitle:"संस्थान तयारी"
-            }
-          ]
-        }
-      ]
+    // const menu = [
+    //     {
+    //       title: 'लोकसेवा (संघ र प्रदेश‌‍‍‌)',
+    //       submenu: [
+    //         {
+    //           subtitle:"लोकसेवा (संघ‌‍‍‌)"
+    //         },
+    //         {
+    //           subtitle:"लोकसेवा (प्रदेश‌‍‍‌‍‍‌)"
+    //         },
+    //         {
+    //           subtitle:"लोकसेवा (संघ‌‍‍‌)"
+    //         }
+    //       ]
+    //     },
+    //     {
+    //       title: 'बैंकिङ तयारी',
+    //       submenu: [
+    //         {
+    //           subtitle:"RBB 4th Level"
+    //         },
+    //         {
+    //           subtitle:"RBB 4th Level"
+    //         },
+    //         {
+    //           subtitle:"RBB 4th Level"
+    //         }
+    //       ]
+    //     },
+    //     {
+    //       title: 'संस्थान तयारी',
+    //       submenu: [
+    //         {
+    //           subtitle:"संस्थान तयारी"
+    //         },
+    //         {
+    //           subtitle:"संस्थान तयारी"
+    //         },
+    //         {
+    //           subtitle:"संस्थान तयारी"
+    //         }
+    //       ]
+    //     }
+    //   ]
+
+    const fetchSubjects = async () => {
+      const response = await axios.get("http://localhost:4000/menu")
+      return response?.data
+    }
+
+    const {isLoading, data:menu, isError, error} = useQuery("menu", fetchSubjects);
 
     return (
-        <div className=' laptop:hidden fixed inset-0 ml-auto mr-6 tablet:mr-[25%] mt-20 w-fit h-[192px] overflow-y-auto bg-white'>
-                  {menu.map((onemenu, index) => (
+        <div className=' laptop:hidden fixed inset-0 ml-auto mr-6 tablet:mr-[25%] mt-20 w-fit h-fit overflow-y-auto bg-white'>
+          {isLoading && <p className="text-center">Loading...</p>}
+                  {menu?.map((onemenu, index) => (
                     <div>
                     <div key={index} className='w-full h-16 border-b flex items-center justify-between px-2 py-1'>
                       <div><p>{onemenu.title}</p></div>
@@ -83,6 +93,11 @@ const SubjectMenu = () => {
                         </div>
                         </div>
                   ))}
+              <Link to="/currentoffiars">
+              <div className="flex justify-start items-center h-16 px-2 py-1  font-Poppins font-[400] ">
+                Current Affairs
+              </div>
+            </Link>
         </div>
     )
 }

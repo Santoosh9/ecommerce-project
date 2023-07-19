@@ -66,7 +66,6 @@ const Register = () => {
       navigate('/login');
      } else {
       toast.error("error");
-      console.log('error');
      }
     }
 

@@ -180,7 +180,7 @@ const UserNav = () => {
             </Link>
           </div>
         </div>
-        <AiOutlineMenu className='flex justify-end laptop:hidden text-lg ml-auto mr-8 items-center' onClick={() => handleOpen('menu')}/>
+        <AiOutlineMenu className='flex justify-end laptop:hidden text-lg ml-auto mr-8 items-center cursor-pointer' onClick={() => handleOpen('menu')}/>
         <div className="flex gap-4 items-center justify-end mr-2 tablet:mr-10 tablet:mt-2 laptop:w-80">
           <div className='flex w-10 h-10 p-2 gap-2.5 items-center bg-[#006EB91A] relative cursor-pointer' onClick={() => handleOpen('notification')}>
             <HiBell className='text-4xl text-[#006EB9]'/>
