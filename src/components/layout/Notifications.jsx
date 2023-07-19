@@ -12,66 +12,47 @@ import { useQuery } from 'react-query';
 
 const Notifications = () => {
 
-    // const notification= [
-    //     {
-    //         id:1,
-    //         read: false,
-    //         group: 'class',
-    //         header: "The Class for RBB 4th Level has resumed from Chapter 7",
-    //         timestamp: "Yesterday at 11:42 PM"
-    //     },
-    //     {
-    //         id:2,
-    //         read: true,
-    //         group: 'exam',
-    //         header: "Entrance Exam for IOE is starting from tomorrow: 12/02/2023",
-    //         timestamp: "Yesterday at 12:32 PM"
-    //     },
-    //     {
-    //         id:3,
-    //         read: true,
-    //         group: 'alert',
-    //         header: "Class Resumption Notice",
-    //         description: "This is to notice all the students that their regular class for NEA 7th Level Full Course is resuming from tomorrow: 12/02/2023 from 9 to 12 AM  ",
-    //         timestamp: "Last Wednesday at 11:15 AM"
-    //     },
-    //     {
-    //         id:4,
-    //         read: true,
-    //         group: 'alert',
-    //         header: "Entrance Exam for IOE is starting from tomorrow: 12/02/2023",
-    //         timestamp: "Last Wednesday at 11:15 AM"
-    //     }
-    // ]
+    const notification= [
+        {
+            id:1,
+            read: false,
+            group: 'class',
+            header: "The Class for RBB 4th Level has resumed from Chapter 7",
+            timestamp: "Yesterday at 11:42 PM"
+        },
+        {
+            id:2,
+            read: true,
+            group: 'exam',
+            header: "Entrance Exam for IOE is starting from tomorrow: 12/02/2023",
+            timestamp: "Yesterday at 12:32 PM"
+        },
+        {
+            id:3,
+            read: true,
+            group: 'alert',
+            header: "Class Resumption Notice",
+            description: "This is to notice all the students that their regular class for NEA 7th Level Full Course is resuming from tomorrow: 12/02/2023 from 9 to 12 AM  ",
+            timestamp: "Last Wednesday at 11:15 AM"
+        },
+        {
+            id:4,
+            read: true,
+            group: 'alert',
+            header: "Entrance Exam for IOE is starting from tomorrow: 12/02/2023",
+            timestamp: "Last Wednesday at 11:15 AM"
+        }
+    ]
 
-    // const [notification setNotification] = useState([]);
-    // const [isLoading, setIsLoading] = useState(false);
+    // const fetchNotificaitons = async () => {
+    //     const response = await axios.get('http://localhost:4000/notification')
+    //     return await response?.data
+    // }
 
-    const fetchNotificaitons = async () => {
-        const response = await axios.get('http://localhost:4000/notification')
-        return await response?.data
-    }
-
-    const { isLoading, data: notification, isError, error } = useQuery('notifications', fetchNotificaitons )
+    // const { isLoading, data: notification, isError, error } = useQuery('notifications', fetchNotificaitons )
 
 
     console.log(notification);
-
-    // useEffect(() => {
-    //     axios.get('http://localhost:4000/notification').then((res) => {
-    //         setNotification(res.data);
-    //         setIsLoading(false)
-    //     })
-    // })
-
-    // if (isLoading) {
-    //     console.log(isLoading);
-    //     return <h1>Loading...</h1>
-    // }
-
-    if (isError) {
-        console.log(error.message);
-    }
 
     return (
         <div className="fixed inset-0 w-full max-h-screen overflow-y-auto max-w-[400px] flex justify-end h-fit mt-20 z-10 ml-auto tablet:mr-[10%] bg-white">
@@ -102,9 +83,9 @@ const Notifications = () => {
                     </div>
                 </div>
                 <div className="w-full h-fit gap-0.25">
-                {isLoading && <p className="text-center p-4">Loading...</p>}
+                {/* {isLoading && <p className="text-center p-4">Loading...</p>} */}
                     <div className="w-full h-fit">
-                        {notification?.map((onenotice, index) => (
+                        {notification.map((onenotice, index) => (
                             <div className="w-full h-fit px-0 pt-2 pb-4 border-b border-b-[#E4E8EE]">
                                 <div className="w-full h-fit pb-2 relative">
                                     {!onenotice.read && <div className="absolute top-0 left-0">

@@ -6,6 +6,7 @@ import { AiOutlineMenu } from "react-icons/ai"
 import SubjectMenu from './SubjectMenu';
 import axios from 'axios';
 import { useQuery } from 'react-query';
+import { PiCloudSlash } from 'react-icons/pi';
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
@@ -14,12 +15,57 @@ const Navbar = () => {
     setShowMenu(!showMenu)
   }
 
-  const fetchSubjects = async () => {
-    const response = await axios.get("http://localhost:4000/menu")
-    return response?.data
-  }
+  const menu = [
+    {
+      title: 'लोकसेवा (संघ र प्रदेश‌‍‍‌)',
+      submenu: [
+        {
+          subtitle:"लोकसेवा (संघ‌‍‍‌)"
+        },
+        {
+          subtitle:"लोकसेवा (प्रदेश‌‍‍‌‍‍‌)"
+        },
+        {
+          subtitle:"लोकसेवा (संघ‌‍‍‌)"
+        }
+      ]
+    },
+    {
+      title: 'बैंकिङ तयारी',
+      submenu: [
+        {
+          subtitle:"RBB 4th Level"
+        },
+        {
+          subtitle:"RBB 4th Level"
+        },
+        {
+          subtitle:"RBB 4th Level"
+        }
+      ]
+    },
+    {
+      title: 'संस्थान तयारी',
+      submenu: [
+        {
+          subtitle:"संस्थान तयारी"
+        },
+        {
+          subtitle:"संस्थान तयारी"
+        },
+        {
+          subtitle:"संस्थान तयारी"
+        }
+      ]
+    }
+  ]
 
-  const {isLoading, data:menu, isError, error} = useQuery("menu", fetchSubjects);
+  // const fetchSubjects = async () => {
+  //   const response = await axios.get("http://localhost:4000/menu")
+  //   return response?.data
+  // }
+
+  // const {isLoading, data:menu, isError, error} = useQuery("menu", fetchSubjects);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -154,7 +200,7 @@ const Navbar = () => {
               className="flex flex-row relative items-center gap-1"
               onClick={() => handleOpen("subjects")}
             >
-              {onemenu.title}
+              <p onClick= {() => toggleView(menuIndex)}>{onemenu.title}</p>
               <div>
                 { toggle[menuIndex] ?
                   <BsChevronUp onClick= {() => toggleView(menuIndex)}/> :
