@@ -9,10 +9,17 @@ const SubjectMenu = () => {
 
     const [toggle, setToggle] = useState([]);
 
-    const toggleView = ( index ) => {
-        const updatedToggle = [...toggle];
-        updatedToggle[index] = !updatedToggle[index];
-        setToggle(updatedToggle);
+    const toggleView = (index) => {
+      const updatedToggle = [...toggle]
+      for (let i=0; i<=toggle.length; i++) {
+        if (i===index) {
+          updatedToggle[i] = !updatedToggle[i];
+        }
+        else {
+          updatedToggle[i] = false;
+        }
+      }
+      setToggle(updatedToggle);
     }
 
     const menu = [
@@ -68,7 +75,7 @@ const SubjectMenu = () => {
     // const {isLoading, data:menu, isError, error} = useQuery("menu", fetchSubjects);
 
     return (
-        <div className=' laptop:hidden fixed inset-0 ml-auto mr-6 tablet:mr-[25%] mt-20 w-fit h-fit overflow-y-auto bg-white'>
+        <div className=' laptop:hidden fixed inset-0 ml-auto mr-6 tablet:mr-[25%] mt-20 w-fit h-[250px] overflow-y-auto bg-white'>
           {/* {isLoading && <p className="text-center">Loading...</p>} */}
                   {menu.map((onemenu, index) => (
                     <div>

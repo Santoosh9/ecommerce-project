@@ -152,11 +152,18 @@ const Description = (props) => {
         props.handleTabChange(data);
     }
     
-    const toggleView = ( index ) => {
-        const updatedToggle = [...toggle];
-        updatedToggle[index] = !updatedToggle[index];
+    const toggleView = (index) => {
+        const updatedToggle = [...toggle]
+        for (let i=0; i<=toggle.length; i++) {
+          if (i===index) {
+            updatedToggle[i] = !updatedToggle[i];
+          }
+          else {
+            updatedToggle[i] = false;
+          }
+        }
         setToggle(updatedToggle);
-    }
+      }
 
     return (
         <div className="font-Poppins mt-24">

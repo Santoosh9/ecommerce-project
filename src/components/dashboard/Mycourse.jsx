@@ -238,7 +238,7 @@ const Mycourse = () => {
         </div>
 
         <div className="flex flex-row w-full  justify-center items-center ">
-          <div className=" flex flex-row flex-wrap gap-10 ml-5 ">
+          <div className=" flex flex-row flex-wrap gap-10 ml-5 justify-center ">
             {data1.map((item) => (
               <Card
                 key={item.id}
