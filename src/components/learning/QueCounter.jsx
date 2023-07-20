@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import HelpOutlinedIcon from '@mui/icons-material/HelpOutlined';
 import { FaRegCircle } from 'react-icons/fa'
 import { FaRegCircleDot } from 'react-icons/fa6'
+import axios from "axios";
+import { useQuery } from "react-query";
 
 const QueCounter = () => {
 
@@ -11,7 +13,9 @@ const QueCounter = () => {
     for (let i = 0 ; i <= 23; i++) {
         numbers.push(i);
     }
-      
+    
+    console.log(numbers);
+
     const [questions, setQuestions] = useState([
         {
             id: 1,
@@ -567,6 +571,14 @@ const QueCounter = () => {
         },
     ])
 
+    // const fetchQuestions = async() => {
+    //     const response = await axios("http://localhost:4000/questions")
+    //     console.log(response?.data);
+    //     return response?.data
+    // }
+
+    // const {isLoading, data:questions, isError, error} = useQuery("questions", fetchQuestions)
+
     const handleSelect = (que, option) => {
         setQuestions((prevQuestions) => {
           return prevQuestions.map((question) => {
@@ -595,7 +607,7 @@ const QueCounter = () => {
     <div className="flex flex-col laptop:flex-row justify-around">
         <div className="max-h-[68vh] overflow-y-auto">
             <div className="w-[80%] h-full mt-4 ml-4 mr-4 tablet:mt-9 tablet:ml-20 tablet:mr-10 gap-10" ref={queRef} >
-            {questions.map((onequestion, index) => (
+            {questions?.map((onequestion, index) => (
                 <div key={index} className="w:full h-fit mt-10 p-4 tablet:p-6 border gap-12 border-blue-200" data-index={index}>
                     <div className="tablet:gap-16">
                         <div className="tablet:gap-8">

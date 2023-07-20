@@ -7,7 +7,7 @@ import { HiBell} from "react-icons/hi"
 import { GoDotFill } from "react-icons/go"
 import { AiOutlineMenu } from "react-icons/ai"
 import SubjectMenu from './SubjectMenu';
-
+import jsCookie from "js-cookie";
 import Notifications from './Notifications';
 
 const UserNav = () => {
