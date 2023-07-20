@@ -6,7 +6,6 @@ import FooetRecently from "../components/layout/Foorerreseltly";
 import Footer from "../components/layout/Footer";
 import Card1 from "../Cards/Card1";
 
-
 const About = () => {
 
     const [openTab, setOpenTab] = useState( 0 );

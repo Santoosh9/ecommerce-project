@@ -4,39 +4,68 @@ import { BsChevronDown } from 'react-icons/bs'
 import { BsChevronUp } from 'react-icons/bs'
 import { AiOutlineMenu } from "react-icons/ai"
 import SubjectMenu from './SubjectMenu';
-
+import axios from 'axios';
+import { useQuery } from 'react-query';
+import { PiCloudSlash } from 'react-icons/pi';
 
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
-
-  const [open1, setOpen1] = useState(false);
-  const [open2, setOpen2] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
-  const handleOpen = (index) => {
-    console.log(index, 'clicked')
-    if (index === '1') {
-      setOpen(!open);
-      setOpen1(false);
-      setOpen2(false);
-      setShowMenu(false)
-    } else if (index ==='2') {
-      setOpen(false);
-      setOpen1(!open1);
-      setOpen2(false);
-      setShowMenu(false)
-    } else if (index ==='3') {
-      setOpen(false);
-      setOpen1(false);
-      setOpen2(!open2);
-      setShowMenu(false)
-    } else if (index === 'menu') {
-      setOpen(false);
-      setOpen1(false);
-      setOpen2(false);
-      setShowMenu(!showMenu)
-    }
+  const handleOpen = () => {
+    setShowMenu(!showMenu)
   }
+
+  const menu = [
+    {
+      title: 'लोकसेवा (संघ र प्रदेश‌‍‍‌)',
+      submenu: [
+        {
+          subtitle:"लोकसेवा (संघ‌‍‍‌)"
+        },
+        {
+          subtitle:"लोकसेवा (प्रदेश‌‍‍‌‍‍‌)"
+        },
+        {
+          subtitle:"लोकसेवा (संघ‌‍‍‌)"
+        }
+      ]
+    },
+    {
+      title: 'बैंकिङ तयारी',
+      submenu: [
+        {
+          subtitle:"RBB 4th Level"
+        },
+        {
+          subtitle:"RBB 4th Level"
+        },
+        {
+          subtitle:"RBB 4th Level"
+        }
+      ]
+    },
+    {
+      title: 'संस्थान तयारी',
+      submenu: [
+        {
+          subtitle:"संस्थान तयारी"
+        },
+        {
+          subtitle:"संस्थान तयारी"
+        },
+        {
+          subtitle:"संस्थान तयारी"
+        }
+      ]
+    }
+  ]
+
+  // const fetchSubjects = async () => {
+  //   const response = await axios.get("http://localhost:4000/menu")
+  //   return response?.data
+  // }
+
+  // const {isLoading, data:menu, isError, error} = useQuery("menu", fetchSubjects);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,6 +79,21 @@ const Navbar = () => {
     };
   }, []);
 
+  const [toggle, setToggle] = useState([]);
+
+  const toggleView = (index) => {
+    const updatedToggle = [...toggle]
+    for (let i=0; i<=toggle.length; i++) {
+      if (i===index) {
+        updatedToggle[i] = !updatedToggle[i];
+      }
+      else {
+        updatedToggle[i] = false;
+      }
+    }
+    setToggle(updatedToggle);
+  }
+
  
 
   return (
@@ -58,7 +102,7 @@ const Navbar = () => {
         <div className="">
           <Link to='/'><img className="mt-2 mb-2" src="./images/logo.png" alt="logo-img" /></Link>
         </div>
-        <div className="hidden laptop:block">
+        {/* <div className="hidden laptop:block">
           <div
             className="flex flex-row justify-around   gap-[20px]  font-Poppins font-[400]  "
           >
@@ -148,8 +192,43 @@ const Navbar = () => {
               </div>
             </Link>
           </div>
+        </div> */}
+        <div className="hidden laptop:flex flex-row justify-around   gap-[20px]  font-Poppins font-[400]">
+          {menu?.map((onemenu, menuIndex) => (
+          <div>
+            <button
+              className="flex flex-row relative items-center gap-1"
+              onClick={() => handleOpen("subjects")}
+            >
+              <p onClick= {() => toggleView(menuIndex)}>{onemenu.title}</p>
+              <div>
+                { toggle[menuIndex] ?
+                  <BsChevronUp onClick= {() => toggleView(menuIndex)}/> :
+                  <BsChevronDown onClick= {() => toggleView(menuIndex)}/>
+                }
+              </div>
+              <Link to='/learning'>
+              {toggle[menuIndex] && 
+                <div className=" w-40 py-2 mt-2 rounded-lg shadow-xl absolute left-0 -bottom-32 bg-white">
+                {onemenu.submenu?.map((onesubmenu, subMenuIndex) => (
+                  <div className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
+                    {onesubmenu.subtitle}
+                  </div>
+                ))}
+              </div>
+              }
+              </Link>
+            </button>
+          </div>
+          ))}
+          <Link to="/currentoffiars">
+              <div className="  justify-between  ml-6  flex flex-row  gap-[20px]  font-Poppins font-[400] ">
+                Current Affairs
+              </div>
+        </Link>
         </div>
-        <AiOutlineMenu className='laptop:hidden text-lg ml-auto mr-4' onClick={() => handleOpen('menu')}/>
+
+        <AiOutlineMenu className='laptop:hidden text-lg ml-auto mr-4 cursor-pointer' onClick={() => handleOpen()}/>
         <div className=" w-20 tablet:w-80">
           <Link to="/login">
             <button className=" font-[500] w-16 laptop:w-[107px]  mr-10   font-Poppins text-[rgba(0,110,185,1)] ">

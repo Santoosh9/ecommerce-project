@@ -1,0 +1,268 @@
+{ 
+    "notification" : [
+    {
+        "id":1,
+        "read": false,
+        "group": "class",
+        "header": "The Class for RBB 4th Level has resumed from Chapter 7",
+        "timestamp": "Yesterday at 11:42 PM"
+    },
+    {
+        "id":2,
+        "read": true,
+        "group": "exam",
+        "header": "Entrance Exam for IOE is starting from tomorrow: 12/02/2023",
+        "timestamp": "Yesterday at 12:32 PM"
+    },
+    {
+        "id":3,
+        "read": true,
+        "group": "alert",
+        "header": "Class Resumption Notice",
+        "description": "This is to notice all the students that their regular class for NEA 7th Level Full Course is resuming from tomorrow: 12/02/2023 from 9 to 12 AM  ",
+        "timestamp": "Last Wednesday at 11:15 AM"
+    },
+    {
+        "id":4,
+        "read": true,
+        "group": "alert",
+        "header": "Entrance Exam for IOE is starting from tomorrow: 12/02/2023",
+        "timestamp": "Last Wednesday at 11:15 AM"
+    }
+],
+    "menu": [
+    {
+      "title": "लोकसेवा (संघ र प्रदेश‌‍‍‌)",
+      "submenu": [
+        {
+          "subtitle":"लोकसेवा (संघ‌‍‍‌)"
+        },
+        {
+          "subtitle":"लोकसेवा (प्रदेश‌‍‍‌‍‍‌)"
+        },
+        {
+          "subtitle":"लोकसेवा (संघ‌‍‍‌)"
+        }
+      ]
+    },
+    {
+      "title": "बैंकिङ तयारी",
+      "submenu": [
+        {
+          "subtitle":"RBB 4th Level"
+        },
+        {
+          "subtitle":"RBB 4th Level"
+        },
+        {
+          "subtitle":"RBB 4th Level"
+        }
+      ]
+    },
+    {
+      "title": "संस्थान तयारी",
+      "submenu": [
+        {
+          "subtitle":"संस्थान तयारी"
+        },
+        {
+          "subtitle":"संस्थान तयारी"
+        },
+        {
+          "subtitle":"संस्थान तयारी"
+        }
+      ]
+    }
+  ],
+  "chapters": [
+    {
+        "id" : "1",
+        "title": "Foundation and Basics of Accounting",
+        "video": "12",
+        "notes": "7",
+        "mcqs": "18",
+        "subchapters": [
+            {
+                "id" : "1",
+                "title": "Foundation and Basics of Accounting"
+            },
+            {
+                "id" : "2",
+                "title": "Foundation and Basics of Accounting II"
+            },
+            {
+                "id" : "3",
+                "title": "Foundation and Basics of Accounting III"
+            },
+            {
+                "id" : "4",
+                "title": "Foundation and Basics of Accounting IV"
+            }
+        ]
+    },
+    {
+        "id" : "2",
+        "title": "Laws of Accounting",
+        "video": "22",
+        "notes": "12",
+        "mcqs": "20",
+        "subchapters": [
+            {
+                "id" : "1",
+                "title": "Laws of Accounting"
+            },
+            {
+                "id" : "2",
+                "title": "Laws of Accounting II"
+            },
+            {
+                "id" : "3",
+                "title": "Laws of Accounting III"
+            },
+            {
+                "id" : "4",
+                "title": "Laws of Accounting IV"
+            }
+        ]
+    },
+    {
+        "id" : "3",
+        "title": "Advanced Accounting",
+        "video": "29",
+        "notes": "72",
+        "mcqs": "11",
+        "subchapters": [
+            {
+                "id" : "1",
+                "title": "Advanced Accounting"
+            },
+            {
+                "id" : "2",
+                "title": "Advanced Accounting II"
+            },
+            {
+                "id" : "3",
+                "title": "Advanced Accounting III"
+            }
+        ]
+    },
+    {
+        "id" : "4",
+        "title": "Foundation and Basics of Accounting",
+        "video": "12",
+        "notes": "7",
+        "mcqs": "18",
+        "subchapters": [
+            {
+                "id" : "1",
+                "title": "Foundation and Basics of Accounting"
+            },
+            {
+                "id" : "2",
+                "title": "Foundation and Basics of Accounting II"
+            }
+        ]
+    },
+    {
+        "id" : "5",
+        "title": "Laws of Accounting",
+        "video": "22",
+        "notes": "12",
+        "mcqs": "20",
+        "subchapters": [
+            {
+                "id" : "1",
+                "title": "Laws of Accounting"
+            },
+            {
+                "id" : "2",
+                "title": "Laws of Accounting II"
+            },
+            {
+                "id" : "3",
+                "title": "Laws of Accounting III"
+            }
+        ]
+    },
+    {
+        "id": "6",
+        "title": "Advanced Accounting",
+        "video": "29",
+        "notes": "72",
+        "mcqs": "11",
+        "subchapters": [
+            {
+                "id": "1",
+                "title": "Advanced Accounting"
+            },
+            {
+                "id": "2",
+                "title": "Advanced Accounting II"
+            },
+            {
+                "id": "3",
+                "title": "Advanced Accounting III"
+            }
+        ]
+    },
+    {
+        "id": "7",
+        "title": "Foundation and Basics of Accounting",
+        "video": "12",
+        "notes": "7",
+        "mcqs": "18",
+        "subchapters": [
+            {
+                "id": "1",
+                "title": "Foundation and Basics of Accounting"
+            },
+            {
+                "id": "2",
+                "title": "Foundation and Basics of Accounting II"
+            }
+        ]
+    },
+    {
+        "id": "8",
+        "title": "Laws of Accounting",
+        "video": "22",
+        "notes": "12",
+        "mcqs": "20",
+        "subchapters": [
+            {
+                "id": "1",
+                "title": "Laws of Accounting"
+            },
+            {
+                "id": "2",
+                "title": "Laws of Accounting II"
+            },
+            {
+                "id": "3",
+                "title": "Laws of Accounting III"
+            }
+        ]
+    },
+    {
+        "id": "9",
+        "title": "Advanced Accounting",
+        "video": "29",
+        "notes": "72",
+        "mcqs": "11",
+        "subchapters": [
+            {
+                "id": "1",
+                "title": "Advanced Accounting"
+            },
+            {
+                "id": "2",
+                "title": "Advanced Accounting II"
+            },
+            {
+                "id": "3",
+                "title": "Advanced Accounting III"
+            }
+        ]
+    }
+]
+}

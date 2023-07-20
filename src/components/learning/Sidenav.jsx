@@ -7,6 +7,8 @@ import { FaAngleUp } from 'react-icons/fa6'
 import { RxDotFilled } from 'react-icons/rx'
 import { TfiAngleRight } from 'react-icons/tfi'
 import { TfiAngleLeft } from 'react-icons/tfi'
+import axios from "axios";
+import { useQuery } from "react-query";
 
 const Sidenav = ( props ) => {
 
@@ -208,12 +210,26 @@ const Sidenav = ( props ) => {
             ]
         }
     ]
+
+    // const fetchChapters = async () => {
+    //     const response = await axios.get("http://localhost:4000/chapters")
+    //     return response?.data;
+    // }
+
+    // const {isLoading, data:chapters, isError, error} = useQuery("chapters", fetchChapters);
       
-    const toggleView = ( index ) => {
-        const updatedToggle = [...toggle];
-        updatedToggle[index] = !updatedToggle[index];
+    const toggleView = (index) => {
+        const updatedToggle = [...toggle]
+        for (let i=0; i<=toggle.length; i++) {
+          if (i===index) {
+            updatedToggle[i] = !updatedToggle[i];
+          }
+          else {
+            updatedToggle[i] = false;
+          }
+        }
         setToggle(updatedToggle);
-    }
+      }
 
     const handleSelect = ( chapterIndex, subChapterIndex ) => {
         console.log("Subchapter selected:", subChapterIndex);
@@ -233,6 +249,7 @@ const Sidenav = ( props ) => {
                 </div>
             </div>
             <div className="tablet:w-full">
+                {/* {isLoading && <p className="text-center">Loading...</p>} */}
                 { chapters.map((chapter, chapterIndex) => (
                     <div className="flex flex-col justify-between w-full h-fit py-3 px-6 bg-white border-t border-blue-200 ">
                         <div className="flex justify-between laptop:w-full mobile:w-full">

@@ -1,16 +1,18 @@
-import React from "react";
-import {RiArrowDropDownLine} from "react-icons/ri"
-import {RiCheckboxCircleLine} from "react-icons/ri"
+import React, { useEffect, useState } from "react";
+import { RiArrowDropDownLine } from "react-icons/ri"
+import { RiCheckboxCircleLine } from "react-icons/ri"
 import { GoDotFill } from "react-icons/go"
 import { BsChevronDown } from 'react-icons/bs'
-import {MdPeopleOutline} from "react-icons/md"
-import { HiBell} from "react-icons/hi"
-import { CgFileDocument } from 'react-icons/cg'
+import { MdPeopleOutline } from "react-icons/md"
+import { HiBell } from "react-icons/hi"
+import { CgFileDocument, CgLayoutGrid } from 'react-icons/cg'
 import line from '../../Assets/line.png'
+import axios from "axios";
+import { useQuery } from 'react-query';
 
 const Notifications = () => {
 
-    const notification = [
+    const notification= [
         {
             id:1,
             read: false,
@@ -41,6 +43,17 @@ const Notifications = () => {
             timestamp: "Last Wednesday at 11:15 AM"
         }
     ]
+
+    // const fetchNotificaitons = async () => {
+    //     const response = await axios.get('http://localhost:4000/notification')
+    //     return await response?.data
+    // }
+
+    // const { isLoading, data: notification, isError, error } = useQuery('notifications', fetchNotificaitons )
+
+
+    console.log(notification);
+
     return (
         <div className="fixed inset-0 w-full max-h-screen overflow-y-auto max-w-[400px] flex justify-end h-fit mt-20 z-10 ml-auto tablet:mr-[10%] bg-white">
             <div className="w-full h-full rounded">
@@ -52,7 +65,7 @@ const Notifications = () => {
                                 <div className="flex items-center h-full w-full gap-1">
                                     <p className="w-11 h-full font-medium text-xs leading-5 text-[#2C272480]">All</p>
                                     <div className="flex items-center w-3 h-3 ">
-                                        <BsChevronDown className="text-[#9EA0AA] font-bold text-xl"/>
+                                        <BsChevronDown className="text-[#9EA0AA] font-bold text-xl" />
                                     </div>
                                 </div>
                             </div>
@@ -64,46 +77,47 @@ const Notifications = () => {
                                 Mark all as read
                             </p>
                             <div className="w-4 h-4">
-                                <RiCheckboxCircleLine className="text-[#2C2724BF]"/>
+                                <RiCheckboxCircleLine className="text-[#2C2724BF]" />
                             </div>
                         </div>
                     </div>
                 </div>
                 <div className="w-full h-fit gap-0.25">
+                {/* {isLoading && <p className="text-center p-4">Loading...</p>} */}
                     <div className="w-full h-fit">
                         {notification.map((onenotice, index) => (
                             <div className="w-full h-fit px-0 pt-2 pb-4 border-b border-b-[#E4E8EE]">
-                            <div className="w-full h-fit pb-2 relative">
-                                {!onenotice.read && <div className="absolute top-0 left-0">
-                                    <GoDotFill className="text-[#EB5757]"/>
-                                </div>}
-                                <div className="flex items-center justify-start w-full h-fit px-4">
-                                    <div className="flex justify-center items-center bg-[#006EB9] rounded-full w-8 h-8">
-                                        { onenotice.group === 'class' && <MdPeopleOutline className="text-white"/> }
-                                        { onenotice.group === 'exam' && <CgFileDocument className="text-white"/> }
-                                        { onenotice.group === 'alert' && <HiBell className="text-white"/> }
+                                <div className="w-full h-fit pb-2 relative">
+                                    {!onenotice.read && <div className="absolute top-0 left-0">
+                                        <GoDotFill className="text-[#EB5757]" />
+                                    </div>}
+                                    <div className="flex items-center justify-start w-full h-fit px-4">
+                                        <div className="flex justify-center items-center bg-[#006EB9] rounded-full w-8 h-8">
+                                            {onenotice.group === 'class' && <MdPeopleOutline className="text-white" />}
+                                            {onenotice.group === 'exam' && <CgFileDocument className="text-white" />}
+                                            {onenotice.group === 'alert' && <HiBell className="text-white" />}
+                                        </div>
+                                        <div className="w-[80%] h-fit gap-2.5 pl-2">
+                                            <p className="w-full h-fit font-semibold text-sm leading-[18px]">{onenotice.header}</p>
+                                        </div>
                                     </div>
-                                    <div className="w-[80%] h-fit gap-2.5 pl-2">
-                                        <p className="w-full h-fit font-semibold text-sm leading-[18px]">{onenotice.header}</p>
-                                    </div>
+                                    {onenotice.description &&
+                                        <div className="flex justify-start w-full h-fit pr-4 pl-16 gap-2.5">
+                                            <div className="w-1 h-full bg-[#2C272440]">
+                                                <img src={line} alt="line" className="h-full" />
+                                            </div>
+                                            <div className="w-full h-fit gap-2">
+                                                <p className="w-full h-fit font-normal text-sm leading-5">{onenotice.description}</p>
+                                            </div>
+                                        </div>
+                                    }
                                 </div>
-                                {onenotice.description && 
-                                    <div className="flex justify-start w-full h-fit pr-4 pl-16 gap-2.5">
-                                        <div className="w-1 h-full bg-[#2C272440]">
-                                            <img src={line} alt="line" className="h-full"/>
-                                        </div>
-                                        <div className="w-full h-fit gap-2">
-                                            <p className="w-full h-fit font-normal text-sm leading-5">{onenotice.description}</p>
-                                        </div>
-                                    </div>
-                                }
+                                <div className="w-full h-5 pl-16 gap-2.5">
+                                    <p className="w-fit h-full font-normal text-sm leading-5 text-[#8D8D8D]">
+                                        {onenotice.timestamp}
+                                    </p>
+                                </div>
                             </div>
-                            <div className="w-full h-5 pl-16 gap-2.5">
-                                <p className="w-fit h-full font-normal text-sm leading-5 text-[#8D8D8D]">
-                                   {onenotice.timestamp}
-                                </p>
-                            </div>
-                        </div>
                         ))}
                         {/* <div className="w-full h-fit px-0 pt-2 pb-4 border-b border-b-[#E4E8EE]">
                             <div className="w-full h-fit pb-2 relative">
