@@ -68,7 +68,7 @@ export const registerUser = createAsyncThunk('register', async (payload) => {
     //
     return {
       success: true,
-      message: 'Successfully logged in!',
+      message: 'Successfully register user!',
       data,
     };
   } catch (error) {
@@ -90,6 +90,7 @@ export const registerUser = createAsyncThunk('register', async (payload) => {
  */
 export const logoutUser = createAsyncThunk('logout', async () => {
   jsCookie.remove(TOKEN_NAME);
+  // await logoutUser.logout();
 
   //
   return {

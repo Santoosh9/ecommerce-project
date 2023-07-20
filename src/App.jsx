@@ -24,29 +24,31 @@ import ChangePawssword from './profile/ChangePassword';
 function App() {
   return (
     <div className="font-[Poppins]">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/exam" element={<Exam />} />
-          <Route path="/mycourse" element={<Dashbord />} />
-          <Route path="/allcourse" element={<Allcourses />}></Route>
-          <Route path="/currentoffiars" element={<CurrentOffiars />} />
-          <Route path="/payment" element={<Payment />} />
-          <Route path="/paymentsuccess" element={<PaymentSucess />} />
-          <Route path="/paymentfail" element={<PaymentFail />} />
-          <Route path="/editprofile" element={<EditProfile />} />
-          <Route path="/changepassword" element={<ChangePawssword />} />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/exam" element={<Exam />} />
+        <Route path="/mycourse" element={<Dashbord />} />
+        <Route path="/allcourse" element={<Allcourses />}></Route>
+        <Route path="/currentoffiars" element={<CurrentOffiars />} />
+        <Route path="/payment" element={<Payment />} />
+        <Route path="/paymentsuccess" element={<PaymentSucess />} />
+        <Route path="/paymentfail" element={<PaymentFail />} />
+        <Route path="/editprofile" element={<EditProfile />} />
+        <Route path="/changepassword" element={<ChangePawssword />} />
 
-          {/* bibek tasks */}
-          <Route path="/exam/attempt" element={<ExamAttempt />} />
-          <Route path="/exam/complete" element={<ExamComplete />} />
-          <Route path="/learning" element={<About />} />
-          <Route path="/learning/video" element={<PlayVideo />} />
-          <Route path="/learning/notes" element={<Notes />} />
-          <Route path="/learning/mcqs" element={<MCQs />} />
-          <Route path="/learning/complete" element={<Complete />} />
-        </Routes>
+        <Route path="/changepassword" element={<Notification />} />
+
+        {/* bibek tasks */}
+        <Route path="/exam/attempt" element={<ExamAttempt />} />
+        <Route path="/exam/complete" element={<ExamComplete />} />
+        <Route path="/learning" element={<About />} />
+        <Route path="/learning/video" element={<PlayVideo />} />
+        <Route path="/learning/notes" element={<Notes />} />
+        <Route path="/learning/mcqs" element={<MCQs />} />
+        <Route path="/learning/complete" element={<Complete />} />
+      </Routes>
     </div>
   );
 }
