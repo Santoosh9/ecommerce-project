@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Dropdown from '../learning/Dropdown';
-import { BsChevronDown } from 'react-icons/bs'
-import { BsChevronUp } from 'react-icons/bs'
-import { HiBell} from "react-icons/hi"
-import { GoDotFill } from "react-icons/go"
-import { AiOutlineMenu } from "react-icons/ai"
+import { BsChevronDown } from 'react-icons/bs';
+import { BsChevronUp } from 'react-icons/bs';
+import { HiBell } from 'react-icons/hi';
+import { GoDotFill } from 'react-icons/go';
+import { AiOutlineMenu } from 'react-icons/ai';
 import SubjectMenu from './SubjectMenu';
-import jsCookie from "js-cookie";
+import jsCookie from 'js-cookie';
 import Notifications from './Notifications';
 
 const UserNav = () => {
@@ -16,81 +16,81 @@ const UserNav = () => {
   const [open1, setOpen1] = useState(false);
   const [open2, setOpen2] = useState(false);
   const [clicked, setClicked] = useState(false);
-  const [notification, setNotification] = useState(false)
+  const [notification, setNotification] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
   const handleOpen = (index) => {
-    console.log(index, 'clicked')
+    console.log(index, 'clicked');
     if (index === 'subject') {
       setOpen(!open);
       setNotification(false);
       setClicked(false);
-    } else if (index === "notification") {
+    } else if (index === 'notification') {
       setOpen(false);
       setNotification(!notification);
       setClicked(false);
-      setShowMenu(false)
-      setToggle(new Array(toggle.length).fill(false))
-    } else if (index === "user") {
+      setShowMenu(false);
+      setToggle(new Array(toggle.length).fill(false));
+    } else if (index === 'user') {
       setOpen(false);
       setNotification(false);
       setClicked(!clicked);
-      setShowMenu(false)
-      setToggle(new Array(toggle.length).fill(false))
-    } else if (index === "menu") {
+      setShowMenu(false);
+      setToggle(new Array(toggle.length).fill(false));
+    } else if (index === 'menu') {
       setOpen(false);
       setOpen1(false);
       setOpen2(false);
       setNotification(false);
       setClicked(false);
-      setShowMenu(!showMenu)
+      setShowMenu(!showMenu);
     }
-  }
+  };
 
   const menu = [
     {
       title: 'लोकसेवा (संघ र प्रदेश‌‍‍‌)',
       submenu: [
         {
-          subtitle:"लोकसेवा (संघ‌‍‍‌)"
+          subtitle: 'लोकसेवा (संघ‌‍‍‌)',
         },
         {
-          subtitle:"लोकसेवा (प्रदेश‌‍‍‌‍‍‌)"
+          subtitle: 'लोकसेवा (प्रदेश‌‍‍‌‍‍‌)',
         },
         {
-          subtitle:"लोकसेवा (संघ‌‍‍‌)"
-        }
-      ]
+          subtitle: 'लोकसेवा (संघ‌‍‍‌)',
+        },
+      ],
     },
     {
       title: 'बैंकिङ तयारी',
       submenu: [
         {
-          subtitle:"RBB 4th Level"
+          subtitle: 'RBB 4th Level',
         },
         {
-          subtitle:"RBB 4th Level"
+          subtitle: 'RBB 4th Level',
         },
         {
-          subtitle:"RBB 4th Level"
-        }
-      ]
+          subtitle: 'RBB 4th Level',
+        },
+      ],
     },
     {
       title: 'संस्थान तयारी',
       submenu: [
         {
-          subtitle:"संस्थान तयारी"
+          subtitle: 'संस्थान तयारी',
         },
         {
-          subtitle:"संस्थान तयारी"
+          subtitle: 'संस्थान तयारी',
         },
         {
-          subtitle:"संस्थान तयारी"
-        }
-      ]
-    }
-  ]
+          subtitle: 'संस्थान तयारी',
+        },
+      ],
+    },
+  ];
 
   // const fetchSubjects = async () => {
   //   const response = await axios.get("http://localhost:4000/menu")
@@ -114,26 +114,25 @@ const UserNav = () => {
   }, []);
 
   const [toggle, setToggle] = useState([]);
-  const TOKEN_NAME = "seveti_token";
-  
+  const TOKEN_NAME = 'seveti_token';
+
   let user = jsCookie.get(TOKEN_NAME);
 
-  if(user){
+  if (user) {
     user = JSON.parse(user);
   }
 
   const toggleView = (index) => {
-    const updatedToggle = [...toggle]
-    for (let i=0; i<=toggle.length; i++) {
-      if (i===index) {
+    const updatedToggle = [...toggle];
+    for (let i = 0; i <= toggle.length; i++) {
+      if (i === index) {
         updatedToggle[i] = !updatedToggle[i];
-      }
-      else {
+      } else {
         updatedToggle[i] = false;
       }
     }
     setToggle(updatedToggle);
-  }
+  };
 
   return (
     <>
@@ -147,154 +146,80 @@ const UserNav = () => {
             />
           </Link>
         </div>
-        {/* <div className="hidden laptop:block">
-          <div
-            className="flex flex-row justify-around gap-[20px]  w-full font-Poppins font-[400] ml-16 laptop:mt-2 text-base  tablet:mt-3"
-          >
-            <button
-              className="flex flex-row items-center relative gap-1"
-              onClick={() => handleOpen('1')}
-            >
-              लोकसेवा (संघ र प्रदेश‌‍‍‌)
-              <div>
-                {open? <BsChevronUp className="text-lg"/>: <BsChevronDown className='text-lg'/> }
-              </div>
-              <Link to="/learning">
-              <ul
-                className={` w-40 py-2 mt-2 rounded-lg shadow-xl absolute left-0 -bottom-32 bg-white ${
-                  open ? 'block' : 'hidden'
-                }`}
-              >
-                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
-                लोकसेवा (प्रदेश‌‍‍‌)
-                </li>
-                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
-                लोकसेवा (संघ)
-                </li>
-                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
-                लोकसेवा (प्रदेश‌‍‍‌)
-                </li>
-              </ul>
-              </Link>
-            </button>
 
-            <button
-              className="flex flex-row items-center relative gap-1"
-              onClick={() => handleOpen('2')}
-            >
-              बैंकिङ तयारी
-              <div>
-                {open1? <BsChevronUp className="text-lg"/>: <BsChevronDown className='text-lg'/> }
-              </div>
-              <Link to="/learning">
-              <ul
-                className={` w-40 py-2 mt-2 rounded-lg shadow-xl absolute left-0 -bottom-32 bg-white ${
-                  open1 ? 'block' : 'hidden'
-                }`}
-              >
-                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
-                  RBB 4th Level
-                </li>
-                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
-                  RBB 4th Level
-                </li>
-                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
-                  RBB 4th Level
-                </li>
-              </ul>
-              </Link>
-            </button>
-            <button
-              className="flex flex-row items-center relative gap-1"
-              onClick={() => handleOpen('3')}
-            >
-              संस्थान तयारी कक्षा
-              <div>
-                {open2 ? <BsChevronUp className="text-lg"/>: <BsChevronDown className='text-lg'/> }
-              </div>
-              <Link to="/learning">
-              <ul
-                className={` w-40 py-2 mt-2 rounded-lg shadow-xl absolute left-0 -bottom-32 bg-white ml-16  ${
-                  open2 ? 'block' : 'hidden'
-                }`}
-              >
-                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
-                संस्थान तयारी
-                </li>
-                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
-                संस्थान तयारी
-                </li>
-                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
-                संस्थान तयारी
-                </li>
-              </ul>
-              </Link>
-            </button>
-
-            <Link to="/currentoffiars">
-              <div className="  justify-between  ml-6  flex flex-row gap-[20px]  font-Poppins font-[400] ">
-                Current Affairs
-              </div>
-            </Link>
-          </div>
-        </div> */}
         <div className="hidden laptop:flex flex-row justify-around   gap-[20px]  font-Poppins font-[400]">
           {menu?.map((onemenu, menuIndex) => (
-          <div>
-            <button
-              className="flex flex-row relative items-center gap-1"
-              onClick={() => handleOpen("subject")}
-            >
-              <p onClick= {() => toggleView(menuIndex)}>{onemenu.title}</p>
-              <div>
-                { toggle[menuIndex] ?
-                  <BsChevronUp onClick= {() => toggleView(menuIndex)}/> :
-                  <BsChevronDown onClick= {() => toggleView(menuIndex)}/>
-                }
-              </div>
-              <Link to='/learning'>
-              {toggle[menuIndex] && 
-                <div className=" w-40 py-2 mt-2 rounded-lg shadow-xl absolute left-0 -bottom-32 bg-white">
-                {onemenu.submenu?.map((onesubmenu, subMenuIndex) => (
-                  <div className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
-                    {onesubmenu.subtitle}
-                  </div>
-                ))}
-              </div>
-              }
-              </Link>
-            </button>
-          </div>
+            <div>
+              <button
+                className="flex flex-row relative items-center gap-1"
+                onClick={() => handleOpen('subject')}
+              >
+                <p onClick={() => toggleView(menuIndex)}>{onemenu.title}</p>
+                <div>
+                  {toggle[menuIndex] ? (
+                    <BsChevronUp onClick={() => toggleView(menuIndex)} />
+                  ) : (
+                    <BsChevronDown onClick={() => toggleView(menuIndex)} />
+                  )}
+                </div>
+                <Link to="/learning">
+                  {toggle[menuIndex] && (
+                    <div className=" w-40 py-2 mt-2 rounded-lg shadow-xl absolute left-0 -bottom-32 bg-white">
+                      {onemenu.submenu?.map((onesubmenu, subMenuIndex) => (
+                        <div className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
+                          {onesubmenu.subtitle}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </Link>
+              </button>
+            </div>
           ))}
           <Link to="/currentoffiars">
-              <div className="  justify-between  ml-6  flex flex-row  gap-[20px]  font-Poppins font-[400] ">
-                Current Affairs
-              </div>
-        </Link>
+            <div className="  justify-between  ml-6  flex flex-row  gap-[20px]  font-Poppins font-[400] ">
+              Current Affairs
+            </div>
+          </Link>
         </div>
-        <AiOutlineMenu className='flex justify-end laptop:hidden text-lg ml-auto mr-8 items-center cursor-pointer' onClick={() => handleOpen('menu')}/>
+        <AiOutlineMenu
+          className="flex justify-end laptop:hidden text-lg ml-auto mr-8 items-center cursor-pointer"
+          onClick={() => handleOpen('menu')}
+        />
         <div className="flex gap-4 items-center justify-end mr-2 tablet:mr-10 tablet:mt-2 laptop:w-80">
-          <div className='flex w-10 h-10 p-2 gap-2.5 items-center bg-[#006EB91A] relative cursor-pointer' onClick={() => handleOpen('notification')}>
-            <HiBell className='text-4xl text-[#006EB9]'/>
-            <GoDotFill className='text-[#EB5757] absolute top-1 left-4'/>
+          <div
+            className="flex w-10 h-10 p-2 gap-2.5 items-center bg-[#006EB91A] relative cursor-pointer"
+            onClick={() => handleOpen('notification')}
+          >
+            <HiBell className="text-4xl text-[#006EB9]" />
+            <GoDotFill className="text-[#EB5757] absolute top-1 left-4" />
           </div>
           <img
             className="flex items-center rounded-full w-10 laptop:mt-0 tablet:mt-2 cursor-pointer"
-            src={user? 
-              user.photourl? user.photourl : "./images/blankuser.png" :
-              "./images/blankuser.png"}
-            onClick={() => handleOpen("user")}
+            src={
+              user
+                ? user.photourl
+                  ? user.photourl
+                  : './images/blankuser.png'
+                : './images/blankuser.png'
+            }
+            onClick={() => handleOpen('user')}
           />
-          <p className="hidden tablet:flex flex-row items-center font-Poppins font-[400] mt-2 gap-1 laptop:mt-0 z-10 cursor-pointer " onClick={() => handleOpen("user")}>
-            {user? user.name : <p>Santosh</p>}
-              {clicked? <BsChevronUp className="text-lg"/>: <BsChevronDown className='text-lg'/> }
+          <p
+            className="hidden tablet:flex flex-row items-center font-Poppins font-[400] mt-2 gap-1 laptop:mt-0 z-10 cursor-pointer "
+            onClick={() => handleOpen('user')}
+          >
+            {user ? user.name : <p>Santosh</p>}
+            {clicked ? (
+              <BsChevronUp className="text-lg" />
+            ) : (
+              <BsChevronDown className="text-lg" />
+            )}
           </p>
         </div>
-        { clicked  &&
-          <Dropdown/>
-        }
-        {notification && <Notifications/>}
-        {showMenu && <SubjectMenu/>}
+        {clicked && <Dropdown />}
+        {notification && <Notifications />}
+        {showMenu && <SubjectMenu />}
       </div>
     </>
   );
