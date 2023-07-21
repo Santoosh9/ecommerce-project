@@ -12,23 +12,23 @@ import { useQuery } from 'react-query';
 
 const Notifications = () => {
 
-    const notification= [
+    const notification = [
         {
-            id:1,
+            id: 1,
             read: false,
             group: 'class',
             header: "The Class for RBB 4th Level has resumed from Chapter 7",
             timestamp: "Yesterday at 11:42 PM"
         },
         {
-            id:2,
+            id: 2,
             read: true,
             group: 'exam',
             header: "Entrance Exam for IOE is starting from tomorrow: 12/02/2023",
             timestamp: "Yesterday at 12:32 PM"
         },
         {
-            id:3,
+            id: 3,
             read: true,
             group: 'alert',
             header: "Class Resumption Notice",
@@ -36,7 +36,7 @@ const Notifications = () => {
             timestamp: "Last Wednesday at 11:15 AM"
         },
         {
-            id:4,
+            id: 4,
             read: true,
             group: 'alert',
             header: "Entrance Exam for IOE is starting from tomorrow: 12/02/2023",
@@ -44,15 +44,18 @@ const Notifications = () => {
         }
     ]
 
+    // const API_URL = import.meta.env.VITE_API_URL;
+    // console.log(API_URL);
+
     // const fetchNotificaitons = async () => {
-    //     const response = await axios.get('http://localhost:4000/notification')
+    //     const response = await axios.get(`${API_URL}/notifications`)
     //     return await response?.data
     // }
 
     // const { isLoading, data: notification, isError, error } = useQuery('notifications', fetchNotificaitons )
 
 
-    console.log(notification);
+    // console.log(notification);
 
     return (
         <div className="fixed inset-0 w-full max-h-screen overflow-y-auto max-w-[400px] flex justify-end h-fit mt-20 z-10 ml-auto tablet:mr-[10%] bg-white">
@@ -83,7 +86,7 @@ const Notifications = () => {
                     </div>
                 </div>
                 <div className="w-full h-fit gap-0.25">
-                {/* {isLoading && <p className="text-center p-4">Loading...</p>} */}
+                    {/* {isLoading && <p className="text-center p-4">Loading...</p>} */}
                     <div className="w-full h-fit">
                         {notification.map((onenotice, index) => (
                             <div className="w-full h-fit px-0 pt-2 pb-4 border-b border-b-[#E4E8EE]">
@@ -119,26 +122,6 @@ const Notifications = () => {
                                 </div>
                             </div>
                         ))}
-                        {/* <div className="w-full h-fit px-0 pt-2 pb-4 border-b border-b-[#E4E8EE]">
-                            <div className="w-full h-fit pb-2 relative">
-                                <div className="absolute top-0 left-0">
-                                    <GoDotFill className="text-[#EB5757]"/>
-                                </div>
-                                <div className="flex items-center justify-start w-full h-fit px-4">
-                                    <div className="flex justify-center items-center bg-[#006EB9] rounded-full w-8 h-8">
-                                        <MdPeopleOutline/>
-                                    </div>
-                                    <div className="w-[80%] h-fit gap-2.5">
-                                        <p className="w-full h-fit font-semibold text-sm leading-[18px]">The Class for RBB 4th Level has resumed from Chapter 7</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="w-full h-5 pl-16 gap-2.5">
-                                <p className="w-fit h-full font-normal text-sm leading-5 text-[#8D8D8D]">
-                                    Yesterday at 11:42 PM
-                                </p>
-                            </div>
-                        </div> */}
                     </div>
                 </div>
             </div>

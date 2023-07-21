@@ -7,7 +7,7 @@ import { HiBell} from "react-icons/hi"
 import { GoDotFill } from "react-icons/go"
 import { AiOutlineMenu } from "react-icons/ai"
 import SubjectMenu from './SubjectMenu';
-
+import jsCookie from "js-cookie";
 import Notifications from './Notifications';
 
 const UserNav = () => {
@@ -114,6 +114,13 @@ const UserNav = () => {
   }, []);
 
   const [toggle, setToggle] = useState([]);
+  const TOKEN_NAME = "seveti_token";
+  
+  let user = jsCookie.get(TOKEN_NAME);
+
+  if(user){
+    user = JSON.parse(user);
+  }
 
   const toggleView = (index) => {
     const updatedToggle = [...toggle]
@@ -273,11 +280,13 @@ const UserNav = () => {
           </div>
           <img
             className="flex items-center rounded-full w-10 laptop:mt-0 tablet:mt-2 cursor-pointer"
-            src="./images/me.jpg"
+            src={user? 
+              user.photourl? user.photourl : "./images/blankuser.png" :
+              "./images/blankuser.png"}
             onClick={() => handleOpen("user")}
           />
           <p className="hidden tablet:flex flex-row items-center font-Poppins font-[400] mt-2 gap-1 laptop:mt-0 z-10 cursor-pointer " onClick={() => handleOpen("user")}>
-            Santosh
+            {user? user.name : <p>Santosh</p>}
               {clicked? <BsChevronUp className="text-lg"/>: <BsChevronDown className='text-lg'/> }
           </p>
         </div>

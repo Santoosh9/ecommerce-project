@@ -10,6 +10,8 @@ import { GrDocumentText } from 'react-icons/gr'
 import { CgFileDocument } from 'react-icons/cg'
 import { RxDotFilled } from 'react-icons/rx'
 import { Link } from "react-router-dom";
+import axios from "axios";
+import { useQuery } from "react-query";
 
 const Description = (props) => {
 
@@ -145,7 +147,14 @@ const Description = (props) => {
             ]
         }
     ]
-    const subchapters = ["1", "2", "3", "4"]
+
+    // const fetchChapters = async() => {
+    //     const response = await axios.get("http://localhost:4000/chapters")
+    //     return response?.data;
+    // }
+
+    // const {isLoading, data:chapters, isError, error} = useQuery("chapters", fetchChapters)
+
     const [toggle, setToggle] = useState([]);
 
     const tabChange = (data) => {
