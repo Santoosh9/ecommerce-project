@@ -66,7 +66,7 @@ const Register = () => {
       toast.success('Successfully Registered.')
       navigate('/login');
     } else {
-      toast.error('Failed To Register');
+      toast.error("Could not register");
     }
   };
 

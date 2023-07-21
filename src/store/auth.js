@@ -37,10 +37,10 @@ export const loginUser = createAsyncThunk(
         
       );
 
-      console.log(data.response)
+      console.log(data)
 
       //
-      jsCookie.set(TOKEN_NAME, data.response);
+      jsCookie.set(TOKEN_NAME, JSON.stringify(data.response));
       //
       return {
         success: true,
@@ -61,47 +61,38 @@ export const loginUser = createAsyncThunk(
   },
 );
 
-export const registerUser = createAsyncThunk(
-  "register",
-  async (payload) => {
-    console.log(payload)
-    try {
-      const { data } = await axios.put(
-        `${API_URL}/register`,
-        {
-          name: payload.name,
-          email: payload.email,
-          password: payload.password,
-          mobileno: payload.mobileno,
-          source: payload.source,
-        },        
-      );
+export const registerUser = createAsyncThunk('register', async (payload) => {
+  console.log(payload);
 
-      console.log(data)
+  const params = new URLSearchParams(payload);
+  try {
+    const { data } = await axios.put(`${API_URL}/register`, null, { params });
 
-      //
-      jsCookie.set(TOKEN_NAME, data.accessToken);
+    console.log(data);
 
-      //
-      return {
-        success: true,
-        message: "Successfully logged in!",
-        data,
-      };
-    } catch (error) {
-      console.log(error)
-      const errorMessage =
-        error instanceof AxiosError
-          ? error.response?.data?.message
-          : "Unable to regsiter";
+    //
+    jsCookie.set(TOKEN_NAME, data.accessToken);
 
-      return {
-        success: false,
-        message: errorMessage,
-      };
-    }
-  },
-);
+    //
+    return {
+      success: true,
+      message: 'Successfully register user!',
+      data,
+    };
+  } catch (error) {
+    console.log(error);
+    const errorMessage =
+      error instanceof AxiosError
+        ? error.response?.data?.message
+        : 'Unable to regsiter';
+
+    return {
+      success: false,
+      message: errorMessage,
+    };
+  }
+});
+
 
 /**
  * Logout function

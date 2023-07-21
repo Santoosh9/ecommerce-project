@@ -7,7 +7,7 @@ const EditProfile = () => {
   return (
     <>
       <UserNav />
-      <div className="flex flex-col tablet:flex-row justify-center items-start mt-10 ml-2 w-full gap-4">
+      <div className="flex flex-col tablet:flex-row justify-center items-start mt-10 mx-auto w-full gap-4">
         <div className="bg-[rgba(253,253,253,1)] border h-[461px]">
           <div className=" flex flex-col justify-center items-center px-4 py-4">
             <img

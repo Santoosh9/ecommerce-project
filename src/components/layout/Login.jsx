@@ -11,7 +11,8 @@ import { FcGoogle } from 'react-icons/fc';
 import './style.css';
 import { loginUser } from '../../store/auth';
 import { useDispatch } from 'react-redux';
-import { CgLayoutGrid } from 'react-icons/cg';
+import toast from 'react-hot-toast';
+
 const Login = () => {
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(eyeOff);
@@ -36,17 +37,18 @@ const Login = () => {
   };
   const handleUserLogin = async (e) => {
     e.preventDefault();
-    // setIsSubmitting(true);
     console.log(loginData);
+
     const response = await dispatch(loginUser(loginData)).unwrap();
     if (response.success) {
+      toast.success(response.message);
       navigate('/mycourse');
     } else {
-      // toast.error(response.message);
-      console.log('error');
+      toast.error(response.message);
+      console.log(response.message);
     }
-    // setIsSubmitting(false);
   };
+
   return (
     <>
       <Navbar />
