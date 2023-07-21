@@ -42,7 +42,10 @@ const EditProfile = () => {
 
         <div className="flex w-[90%] tablet:w-[65%] flex-col flex-start laptop:ml-7 mb-10 border bg-[rgba(253,253,253,1)] ">
           <p className=" font-[500] text-2xl mt-5 ml-7 ">Basic Information</p>
-          <form className="mt-6 ml-7 flex-nowrap">
+          <form
+            className="mt-6 ml-7 flex-nowrap"
+            onClick={(event) => event.preventDefault()}
+          >
             <div className="flex flex-col ml-3  mr-10 flex-nowrap ">
               <label className="label-text m-2">Full Name</label>
               <input
@@ -58,13 +61,6 @@ const EditProfile = () => {
                 placeholder=" Please enter your email"
               ></input>
 
-              <label className="label-text mt-2  m-2">Full Name </label>
-              <input
-                type="text"
-                className="  border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3 mr-8 w-full"
-                placeholder=" Please enter your full name"
-              ></input>
-
               <label className=" label-text  mt-2  mb-2">Phone</label>
               <input
                 name="number"
@@ -72,18 +68,19 @@ const EditProfile = () => {
                 placeholder=" Please enter your phone number"
               ></input>
 
+              <label className="label-text mt-2  m-2">Address </label>
+              <input
+                type="text"
+                className="  border-[1px] border-[rgba(177,181,195,1)]  focus:outline h-[52px] px-3 mr-8 w-full"
+                placeholder=" Please enter your Address"
+              ></input>
+
               <div className=" flex flex-row mb-5  gap-3">
-                <button
-                  className=" text-[rgba(255,250,247,1)] bg-[rgba(0,110,185,1)] h-[50px] mt-8 w-[153.38px]   
- "
-                >
+                <button className=" text-[rgba(255,250,247,1)] bg-[rgba(0,110,185,1)] h-[50px] mt-8 w-[153.38px]">
                   Save
                 </button>
 
-                <button
-                  className=" bg-[#f4f6f7] h-[50px] mt-8 w-[153.38px] border 
- "
-                >
+                <button className=" bg-[#f4f6f7] h-[50px] mt-8 w-[153.38px] border">
                   Cancel
                 </button>
               </div>
