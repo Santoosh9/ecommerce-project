@@ -6,9 +6,10 @@ import Footer from '../layout/Footer';
 import { AiFillFilePdf } from 'react-icons/ai';
 import dummypdf from '../../Assets/dummy.pdf';
 import { useQuery } from 'react-query';
-import axios from 'axios';
 import axiosInstance from '../../utils/axios';
 import { isAllOf } from '@reduxjs/toolkit';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 const CurrentOffiars = () => {
   const HEAD = ['SN', 'Title', 'Date', 'Download'];
@@ -16,88 +17,6 @@ const CurrentOffiars = () => {
   function isEven(number) {
     return number % 2 === 0;
   }
-
-  // const data = [
-  //   {
-  //     sn: 1,
-  //     titel:
-  //       'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन',
-  //     date: '22/02/2023',
-  //     image: './images/pdf.png',
-  //     text: 'Download PDF',
-  //   },
-  //   {
-  //     sn: 2,
-  //     titel:
-  //       'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
-  //     date: '22/02/2023',
-  //     image: './images/pdf.png',
-  //     text: 'Download PDF',
-  //   },
-  //   {
-  //     sn: 3,
-  //     titel:
-  //       'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,   पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, ',
-  //     date: '22/02/2023',
-  //     image: './images/pdf.png',
-  //     text: 'Download PDF',
-  //   },
-  //   {
-  //     sn: 4,
-  //     titel:
-  //       'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
-  //     date: '22/02/2023',
-  //     image: './images/pdf.png',
-  //     text: 'Download PDF',
-  //   },
-  //   {
-  //     sn: 5,
-  //     titel:
-  //       'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
-  //     date: '22/02/2023',
-  //     image: './images/pdf.png',
-  //     text: 'Download PDF',
-  //   },
-  //   {
-  //     sn: 6,
-  //     titel:
-  //       'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
-  //     date: '22/02/2023',
-  //     image: './images/pdf.png',
-  //     text: 'Download PDF',
-  //   },
-  //   {
-  //     sn: 7,
-  //     titel: 'सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
-  //     date: '22/02/2023',
-  //     image: './images/pdf.png',
-  //     text: 'Download PDF',
-  //   },
-  //   {
-  //     sn: 8,
-  //     titel:
-  //       'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
-  //     date: '22/02/2023',
-  //     image: './images/pdf.png',
-  //     text: 'Download PDF',
-  //   },
-  //   {
-  //     sn: 9,
-  //     titel:
-  //       'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
-  //     date: '22/02/2023',
-  //     image: './images/pdf.png',
-  //     text: 'Download PDF',
-  //   },
-  //   {
-  //     sn: 10,
-  //     titel:
-  //       'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, ',
-  //     date: '22/02/2023',
-  //     image: './images/pdf.png',
-  //     text: 'Download PDF',
-  //   },
-  // ];
   
   const API_URL = import.meta.env.VITE_API_URL;
   console.log(API_URL);
@@ -146,8 +65,12 @@ const CurrentOffiars = () => {
             Download
           </p>
         </div>
-        {isLoading && <p className='mx-10 text-center font-medium text-base'>Loading...</p>}
-        {isError && <p className='mx-10 text-center font-medium text-base text-red-600'>{error.message}</p>}
+        {isLoading &&
+          <div className='flex w-full h-10 items-center justify-center px-3'>
+            <CircularProgress size='1.5rem' color='primary'/>
+            <p className='mx-10 text-center font-medium text-base'>Loading...</p>
+          </div>}
+        {isError && <div className='flex mx-10 w-full h-10 items-center justify-center font-medium text-base text-center text-red-600'>{error.message}</div>}
         {data?.map((onedata, index) => (
           <div
             className={
