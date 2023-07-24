@@ -25,7 +25,7 @@ const NotificationPage = () => {
             }}
             >
             <div className="flex items-center ml-12 laptop:ml-32 font-Poppins">
-                <p className=" font-medium text-3xl text-white ">Notifcations</p>
+                <p className=" font-medium text-3xl text-white ">Notifications</p>
             </div>
             </div>
             <div className="w-full flex justify-end h-fit mt-10 z-10 ml-auto tablet:mr-[10%] bg-white mb-10">
