@@ -5,6 +5,10 @@ import FooetRecently from '../layout/Foorerreseltly';
 import Footer from '../layout/Footer';
 import { AiFillFilePdf } from 'react-icons/ai';
 import dummypdf from '../../Assets/dummy.pdf';
+import { useQuery } from 'react-query';
+import axios from 'axios';
+import axiosInstance from '../../utils/axios';
+import { isAllOf } from '@reduxjs/toolkit';
 
 const CurrentOffiars = () => {
   const HEAD = ['SN', 'Title', 'Date', 'Download'];
@@ -13,87 +17,98 @@ const CurrentOffiars = () => {
     return number % 2 === 0;
   }
 
-  const data = [
-    {
-      sn: 1,
-      titel:
-        'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन',
-      date: '22/02/2023',
-      image: './images/pdf.png',
-      text: 'Download PDF',
-    },
-    {
-      sn: 2,
-      titel:
-        'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
-      date: '22/02/2023',
-      image: './images/pdf.png',
-      text: 'Download PDF',
-    },
-    {
-      sn: 3,
-      titel:
-        'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,   पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, ',
-      date: '22/02/2023',
-      image: './images/pdf.png',
-      text: 'Download PDF',
-    },
-    {
-      sn: 4,
-      titel:
-        'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
-      date: '22/02/2023',
-      image: './images/pdf.png',
-      text: 'Download PDF',
-    },
-    {
-      sn: 5,
-      titel:
-        'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
-      date: '22/02/2023',
-      image: './images/pdf.png',
-      text: 'Download PDF',
-    },
-    {
-      sn: 6,
-      titel:
-        'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
-      date: '22/02/2023',
-      image: './images/pdf.png',
-      text: 'Download PDF',
-    },
-    {
-      sn: 7,
-      titel: 'सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
-      date: '22/02/2023',
-      image: './images/pdf.png',
-      text: 'Download PDF',
-    },
-    {
-      sn: 8,
-      titel:
-        'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
-      date: '22/02/2023',
-      image: './images/pdf.png',
-      text: 'Download PDF',
-    },
-    {
-      sn: 9,
-      titel:
-        'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
-      date: '22/02/2023',
-      image: './images/pdf.png',
-      text: 'Download PDF',
-    },
-    {
-      sn: 10,
-      titel:
-        'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, ',
-      date: '22/02/2023',
-      image: './images/pdf.png',
-      text: 'Download PDF',
-    },
-  ];
+  // const data = [
+  //   {
+  //     sn: 1,
+  //     titel:
+  //       'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन',
+  //     date: '22/02/2023',
+  //     image: './images/pdf.png',
+  //     text: 'Download PDF',
+  //   },
+  //   {
+  //     sn: 2,
+  //     titel:
+  //       'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
+  //     date: '22/02/2023',
+  //     image: './images/pdf.png',
+  //     text: 'Download PDF',
+  //   },
+  //   {
+  //     sn: 3,
+  //     titel:
+  //       'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,   पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, ',
+  //     date: '22/02/2023',
+  //     image: './images/pdf.png',
+  //     text: 'Download PDF',
+  //   },
+  //   {
+  //     sn: 4,
+  //     titel:
+  //       'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
+  //     date: '22/02/2023',
+  //     image: './images/pdf.png',
+  //     text: 'Download PDF',
+  //   },
+  //   {
+  //     sn: 5,
+  //     titel:
+  //       'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
+  //     date: '22/02/2023',
+  //     image: './images/pdf.png',
+  //     text: 'Download PDF',
+  //   },
+  //   {
+  //     sn: 6,
+  //     titel:
+  //       'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
+  //     date: '22/02/2023',
+  //     image: './images/pdf.png',
+  //     text: 'Download PDF',
+  //   },
+  //   {
+  //     sn: 7,
+  //     titel: 'सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
+  //     date: '22/02/2023',
+  //     image: './images/pdf.png',
+  //     text: 'Download PDF',
+  //   },
+  //   {
+  //     sn: 8,
+  //     titel:
+  //       'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
+  //     date: '22/02/2023',
+  //     image: './images/pdf.png',
+  //     text: 'Download PDF',
+  //   },
+  //   {
+  //     sn: 9,
+  //     titel:
+  //       'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,  पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना,',
+  //     date: '22/02/2023',
+  //     image: './images/pdf.png',
+  //     text: 'Download PDF',
+  //   },
+  //   {
+  //     sn: 10,
+  //     titel:
+  //       'पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, पुन: दरखास्त पेश गर्ने सम्बन्धी सूचना, ',
+  //     date: '22/02/2023',
+  //     image: './images/pdf.png',
+  //     text: 'Download PDF',
+  //   },
+  // ];
+  
+  const API_URL = import.meta.env.VITE_API_URL;
+  console.log(API_URL);
+
+  const fetchAffairs = async () => {
+    const response = await axiosInstance.get("/current-affairs")
+    console.log(response.data.response);
+    return await response?.data.response;
+  }
+
+  const { isLoading, data, isError, error } = useQuery('current-affairs', fetchAffairs )
   return (
     <>
       <UserNav />
@@ -131,25 +146,27 @@ const CurrentOffiars = () => {
             Download
           </p>
         </div>
-        {data.map((onedata, index) => (
+        {isLoading && <p className='mx-10 text-center font-medium text-base'>Loading...</p>}
+        {isError && <p className='mx-10 text-center font-medium text-base text-red-600'>{error.message}</p>}
+        {data?.map((onedata, index) => (
           <div
             className={
-              !isEven(onedata.sn)
+              !isEven(index+1)
                 ? 'w-full h-fit bg-[#F9F9F9] border-t border-b'
                 : 'w-full h-fit'
             }
           >
             <div className="flex flex-col tablet:flex-row w-full h-fit py-4 gap-2">
               <div className="w-full tablet:w-[65%] flex justify-around">
-                <p className="w-[10%] text-center">{onedata.sn}</p>
-                <p className="w-[90%] px-2">{onedata.titel}</p>
+                <p className="w-[10%] text-center">{index+1}</p>
+                <p className="w-[90%] px-2">{onedata.title}</p>
               </div>
               <div className="flex justify-around w-full tablet:w-[40%]">
-                <p className="w-1/2 text-center">{onedata.date}</p>
+                <p className="w-1/2 text-center">{onedata.publish_date}</p>
                 <div className="w-1/2 flex items-center justify-center gap-1">
                   <AiFillFilePdf className="text-red-600 w-[16.5px] h-[21px] flex items-center" />
-                  <a href={dummypdf}>
-                    <p className="">{onedata.text}</p>
+                  <a href={onedata.pdf}>
+                    <p className="">Download PDF</p>
                   </a>
                 </div>
               </div>
