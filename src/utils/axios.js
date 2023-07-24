@@ -20,8 +20,10 @@ const axiosInstance = axios.create({
 
 // Adding Auhorization header to every request if token is available
 axiosInstance.interceptors.request.use((config) => {
-  const token = Cookies.get("seveti_token");
-
+  const user = JSON.parse(Cookies.get("seveti_token"));
+  console.log(user);
+  const token = user.api_token;
+  console.log(token);
   //
   if (config.headers && token) {
     config.headers.Authorization = `Bearer ${token}`;
