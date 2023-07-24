@@ -8,7 +8,7 @@ import Notes from './CoursePages/Notes';
 import MCQs from './CoursePages/Mcqs';
 import Complete from './CoursePages/Complete';
 import About from './CoursePages/About';
-
+import NotificationPage from './components/layout/NotifiactionPage';
 import CurrentOffiars from './components/dashboard/CurrentOffiars';
 import Dashbord from './components/dashboard/Dashbord';
 import ExamAttempt from './CoursePages/ExamAttempt';
@@ -48,6 +48,7 @@ function App() {
         <Route path="/learning/notes" element={<Notes />} />
         <Route path="/learning/mcqs" element={<MCQs />} />
         <Route path="/learning/complete" element={<Complete />} />
+        <Route path="/notifications" element={<NotificationPage />}/>
       </Routes>
     </div>
   );
