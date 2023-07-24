@@ -117,9 +117,22 @@ const UserNav = () => {
   const TOKEN_NAME = "seveti_token";
   
   let user = jsCookie.get(TOKEN_NAME);
+  let newName = '';
 
   if(user){
     user = JSON.parse(user);
+    let name = user.name;
+    if (name.length < 10) {
+      newName = name;
+    } else {
+      for (let i=0; i<=name.length; i++) {
+        if (name.charCodeAt(i) != 32 ) {
+          newName = newName + name[i];
+        } else {
+          break;
+        }
+      }
+    }
   }
 
   const toggleView = (index) => {
@@ -147,97 +160,6 @@ const UserNav = () => {
             />
           </Link>
         </div>
-        {/* <div className="hidden laptop:block">
-          <div
-            className="flex flex-row justify-around gap-[20px]  w-full font-Poppins font-[400] ml-16 laptop:mt-2 text-base  tablet:mt-3"
-          >
-            <button
-              className="flex flex-row items-center relative gap-1"
-              onClick={() => handleOpen('1')}
-            >
-              लोकसेवा (संघ र प्रदेश‌‍‍‌)
-              <div>
-                {open? <BsChevronUp className="text-lg"/>: <BsChevronDown className='text-lg'/> }
-              </div>
-              <Link to="/learning">
-              <ul
-                className={` w-40 py-2 mt-2 rounded-lg shadow-xl absolute left-0 -bottom-32 bg-white ${
-                  open ? 'block' : 'hidden'
-                }`}
-              >
-                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
-                लोकसेवा (प्रदेश‌‍‍‌)
-                </li>
-                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
-                लोकसेवा (संघ)
-                </li>
-                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
-                लोकसेवा (प्रदेश‌‍‍‌)
-                </li>
-              </ul>
-              </Link>
-            </button>
-
-            <button
-              className="flex flex-row items-center relative gap-1"
-              onClick={() => handleOpen('2')}
-            >
-              बैंकिङ तयारी
-              <div>
-                {open1? <BsChevronUp className="text-lg"/>: <BsChevronDown className='text-lg'/> }
-              </div>
-              <Link to="/learning">
-              <ul
-                className={` w-40 py-2 mt-2 rounded-lg shadow-xl absolute left-0 -bottom-32 bg-white ${
-                  open1 ? 'block' : 'hidden'
-                }`}
-              >
-                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
-                  RBB 4th Level
-                </li>
-                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
-                  RBB 4th Level
-                </li>
-                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
-                  RBB 4th Level
-                </li>
-              </ul>
-              </Link>
-            </button>
-            <button
-              className="flex flex-row items-center relative gap-1"
-              onClick={() => handleOpen('3')}
-            >
-              संस्थान तयारी कक्षा
-              <div>
-                {open2 ? <BsChevronUp className="text-lg"/>: <BsChevronDown className='text-lg'/> }
-              </div>
-              <Link to="/learning">
-              <ul
-                className={` w-40 py-2 mt-2 rounded-lg shadow-xl absolute left-0 -bottom-32 bg-white ml-16  ${
-                  open2 ? 'block' : 'hidden'
-                }`}
-              >
-                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
-                संस्थान तयारी
-                </li>
-                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
-                संस्थान तयारी
-                </li>
-                <li className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">
-                संस्थान तयारी
-                </li>
-              </ul>
-              </Link>
-            </button>
-
-            <Link to="/currentoffiars">
-              <div className="  justify-between  ml-6  flex flex-row gap-[20px]  font-Poppins font-[400] ">
-                Current Affairs
-              </div>
-            </Link>
-          </div>
-        </div> */}
         <div className="hidden laptop:flex flex-row justify-around   gap-[20px]  font-Poppins font-[400]">
           {menu?.map((onemenu, menuIndex) => (
           <div>
@@ -286,7 +208,7 @@ const UserNav = () => {
             onClick={() => handleOpen("user")}
           />
           <p className="hidden tablet:flex flex-row items-center font-Poppins font-[400] mt-2 gap-1 laptop:mt-0 z-10 cursor-pointer " onClick={() => handleOpen("user")}>
-            {user? user.name : <p>Santosh</p>}
+            {user? newName : <p>Santosh</p>}
               {clicked? <BsChevronUp className="text-lg"/>: <BsChevronDown className='text-lg'/> }
           </p>
         </div>

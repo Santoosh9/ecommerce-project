@@ -1,14 +1,11 @@
 import React from 'react';
 import UserNav from '../layout/UserNav';
-import { Card, Typography } from '@material-tailwind/react';
 import FooetRecently from '../layout/Foorerreseltly';
 import Footer from '../layout/Footer';
 import { AiFillFilePdf } from 'react-icons/ai';
-import dummypdf from '../../Assets/dummy.pdf';
 import { useQuery } from 'react-query';
-import axiosInstance from '../../utils/axios';
-import { isAllOf } from '@reduxjs/toolkit';
 import CircularProgress from '@mui/material/CircularProgress';
+import { fetchAffairs } from '../../hooks/fetchHooks';
 
 
 const CurrentOffiars = () => {
@@ -17,17 +14,9 @@ const CurrentOffiars = () => {
   function isEven(number) {
     return number % 2 === 0;
   }
-  
-  const API_URL = import.meta.env.VITE_API_URL;
-  console.log(API_URL);
-
-  const fetchAffairs = async () => {
-    const response = await axiosInstance.get("/current-affairs")
-    console.log(response.data.response);
-    return await response?.data.response;
-  }
 
   const { isLoading, data, isError, error } = useQuery('current-affairs', fetchAffairs )
+
   return (
     <>
       <UserNav />
