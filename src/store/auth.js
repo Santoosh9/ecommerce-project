@@ -1,17 +1,16 @@
-import axios, { AxiosError } from "axios";
-import jsCookie from "js-cookie";
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
+import axios, { AxiosError } from 'axios';
+import jsCookie from 'js-cookie';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 //
-import axiosInstance from "../utils/axios";
+import axiosInstance from '../utils/axios';
 
 //
 const API_URL = import.meta.env.VITE_API_URL;
-console.log(API_URL)
+console.log(API_URL);
 
 // Magic strings
-const TOKEN_NAME = "seveti_token";
+const TOKEN_NAME = 'seveti_token';
 
 // Initial state of the store
 const initialState = {
@@ -23,43 +22,35 @@ const initialState = {
 /**
  * Login function
  */
-export const loginUser = createAsyncThunk(
-  "login",
-  async (payload) => {
-    try {
-      const { data } = await axios.post(
-        `${API_URL}/login`,
-        {
-          email: payload.email,
-          password: payload.password,
-        },
-      
-        
-      );
+export const loginUser = createAsyncThunk('login', async (payload) => {
+  try {
+    const { data } = await axios.post(`${API_URL}/login`, {
+      email: payload.email,
+      password: payload.password,
+    });
 
-      console.log(data)
+    console.log(data);
 
-      //
-      jsCookie.set(TOKEN_NAME, JSON.stringify(data.response));
-      //
-      return {
-        success: true,
-        message: "Successfully logged in!",
-        data,
-      };
-    } catch (error) {
-      const errorMessage =
-        error instanceof AxiosError
-          ? error.response?.data?.message
-          : "Unable to login";
+    //
+    jsCookie.set(TOKEN_NAME, JSON.stringify(data.response));
+    //
+    return {
+      success: true,
+      message: 'Successfully logged in!',
+      data,
+    };
+  } catch (error) {
+    const errorMessage =
+      error instanceof AxiosError
+        ? error.response?.data?.message
+        : 'Unable to login';
 
-      return {
-        success: false,
-        message: errorMessage,
-      };
-    }
-  },
-);
+    return {
+      success: false,
+      message: errorMessage,
+    };
+  }
+});
 
 export const registerUser = createAsyncThunk('register', async (payload) => {
   console.log(payload);
@@ -93,28 +84,24 @@ export const registerUser = createAsyncThunk('register', async (payload) => {
   }
 });
 
-
 /**
  * Logout function
  */
-export const logoutUser = createAsyncThunk(
-  "logout",
-  async () => {
-    jsCookie.remove(TOKEN_NAME);
+export const logoutUser = createAsyncThunk('logout', async () => {
+  jsCookie.remove(TOKEN_NAME);
 
-    //
-    return {
-      success: true,
-      message: "Successfully logged out!",
-    };
-  },
-);
+  //
+  return {
+    success: true,
+    message: 'Successfully logged out!',
+  };
+});
 
 /**
  * Get current session function
  */
 export const getCurrentSession = createAsyncThunk(
-  "getCurrentSession",
+  'getCurrentSession',
   async () => {
     const accessToken = jsCookie.get(TOKEN_NAME);
 
@@ -122,7 +109,7 @@ export const getCurrentSession = createAsyncThunk(
     if (accessToken) {
       return {
         success: true,
-        message: "Successfully fetched the current session!",
+        message: 'Successfully fetched the current session!',
         data: { accessToken },
       };
     }
@@ -133,61 +120,58 @@ export const getCurrentSession = createAsyncThunk(
     //
     return {
       success: false,
-      message: "Unable to fetch current session details!",
+      message: 'Unable to fetch current session details!',
     };
-  },
+  }
 );
 
-export const getUserDetails = createAsyncThunk(
-  "getUserDetails",
-  async () => {
-    try {
-      const { data } = await axiosInstance.get("/user/me");
+export const getUserDetails = createAsyncThunk('getUserDetails', async () => {
+  try {
+    const { data } = await axiosInstance.get('/user/me');
 
-      return {
-        success: true,
-        message: "Successfully fetched user details",
-        data: data.data,
-      };
-    } catch (error) {
-      return {
-        success: false,
-        message: "Unable to fetch user details",
-      };
-    }
-  },
-);
+    return {
+      success: true,
+      message: 'Successfully fetched user details',
+      data: data.data,
+    };
+  } catch (error) {
+    return {
+      success: false,
+      message: 'Unable to fetch user details',
+    };
+  }
+});
 
 /**
  *
  */
 export const changeActiveProfile = createAsyncThunk(
-  "changeActiveProfile",
+  'changeActiveProfile',
   async (profileId) => {
-    const { data } = await axiosInstance.patch("/user/me/active-profile", {
+    const { data } = await axiosInstance.patch('/user/me/active-profile', {
       profileId,
     });
 
     try {
       return {
         success: true,
-        message: "Successfully changed active profile",
+        message: 'Successfully changed active profile',
         data: data?.data?.profileId,
       };
     } catch (error) {
       return {
         success: false,
-        message: "Unable to change active profile",
+        message: 'Unable to change active profile',
       };
     }
-  },
+  }
 );
 
 /**
  *
  */
 export const AuthSlice = createSlice({
-  name: "auth",
+  name: 'auth',
   initialState,
   reducers: {
     setUser: (state, action) => {
@@ -241,7 +225,7 @@ export const AuthSlice = createSlice({
     //
     builder.addCase(changeActiveProfile.fulfilled, (state, action) => {
       const newActiveProfile = state.user?.profiles?.find(
-        (profile) => profile._id === action.payload.data,
+        (profile) => profile._id === action.payload.data
       );
 
       state.activeProfile = newActiveProfile;
@@ -254,4 +238,3 @@ export const AuthSlice = createSlice({
  */
 export const { setUser, setAuthToken, removeUser } = AuthSlice.actions;
 export default AuthSlice.reducer;
-

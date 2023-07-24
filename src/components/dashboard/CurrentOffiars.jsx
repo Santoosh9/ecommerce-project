@@ -6,7 +6,37 @@ import Footer from '../layout/Footer';
 import { AiFillFilePdf } from 'react-icons/ai';
 import dummypdf from '../../Assets/dummy.pdf';
 
+import axios from 'axios';
+import { useQuery } from '@tanstack/react-query';
+
+const API_URL = import.meta.env.VITE_API_URL;
+
 const CurrentOffiars = () => {
+  const fetchCurrentAffier = async () => {
+    const response = await axios.get(`${API_URL}/current-affairs`);
+    return await response?.data;
+  };
+
+  const {
+    isLoading,
+    data: current_affairs,
+    isError,
+    error,
+  } = useQuery('current-affairs', fetchCurrentAffier);
+
+  console.log(current_affairs);
+
+  const postQuery = useQuery({
+    queryKey: ['get'],
+    queryFn: async () => {
+      const response = await axios.get(
+        'https://jsonplaceholder.typicode.com/get'
+      );
+      const data = await response.data;
+      return data;
+    },
+  });
+
   const HEAD = ['SN', 'Title', 'Date', 'Download'];
 
   function isEven(number) {
@@ -94,6 +124,7 @@ const CurrentOffiars = () => {
       text: 'Download PDF',
     },
   ];
+
   return (
     <>
       <UserNav />
