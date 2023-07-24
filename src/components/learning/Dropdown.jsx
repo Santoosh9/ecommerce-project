@@ -9,7 +9,6 @@ const Dropdown = () => {
   const navigate = useNavigate();
   const handleLogout = async () => {
     try {
-      // Dispatch the logoutUser action
       await dispatch(logoutUser());
 
       navigate('/login');
