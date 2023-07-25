@@ -89,7 +89,7 @@ const Login = () => {
                 onClick={handleToggle}
               >
                 <Icon
-                  class="absolute mr-4 mt-[-52px] text-[rgba(44,39,36,0.5)]"
+                  className="absolute mr-4 mt-[-52px] text-[rgba(44,39,36,0.5)]"
                   icon={icon}
                   size={20}
                 />
