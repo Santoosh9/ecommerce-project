@@ -1,12 +1,11 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import UserNav from '../layout/UserNav';
 import Footer from '../layout/Footer';
 
 const PaymentFail = () => {
-  
-  useEffect (() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
-  })
+  });
   return (
     <>
       <UserNav />

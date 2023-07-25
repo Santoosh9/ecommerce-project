@@ -1,4 +1,4 @@
-import {  Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Home from './components/Home';
 import Login from './components/layout/Login';
 import Register from './components/layout/Register';
@@ -48,7 +48,7 @@ function App() {
         <Route path="/learning/notes" element={<Notes />} />
         <Route path="/learning/mcqs" element={<MCQs />} />
         <Route path="/learning/complete" element={<Complete />} />
-        <Route path="/notifications" element={<NotificationPage />}/>
+        <Route path="/notifications" element={<NotificationPage />} />
       </Routes>
     </div>
   );
