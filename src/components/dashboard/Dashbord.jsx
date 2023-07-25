@@ -27,7 +27,7 @@ const Dashbord = () => {
     <>
       <UserNav />
 
-      <div className="flex flex-col mt-1 w-full">
+      <div className="flex flex-col  w-full">
         <div
           className="w-full h-[150px] "
           style={{

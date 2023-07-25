@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -7,18 +7,22 @@ import { eyeOff } from 'react-icons-kit/feather/eyeOff';
 import { eye } from 'react-icons-kit/feather/eye';
 import { useNavigate } from 'react-router-dom';
 import { CiFacebook } from 'react-icons/ci';
-import { FcGoogle } from 'react-icons/fc';
+import { FcFlashAuto, FcGoogle } from 'react-icons/fc';
 import { useDispatch } from 'react-redux';
 import axios, { AxiosError } from 'axios';
 import toast from 'react-hot-toast';
 import './style.css';
 import { registerUser } from '../../store/auth';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 const Register = () => {
   const [password, setPassword] = useState('');
   const [cpassword, setCPassword] = useState('');
+  const [onLoading, setOnLoading] = useState(false);
   const [type, setType] = useState('password');
   const [icon, setIcon] = useState(eyeOff);
+  const [error, setError] = useState('');
   const [registerData, setRegisterData] = useState({
     name: '',
     email: '',
@@ -55,20 +59,33 @@ const Register = () => {
     }
   };
 
+  useEffect(() => {
+    if (error) {
+      toast.error(error)
+    }
+  },[error]);
+
   const handleRegisterUser = async (e) => {
     e.preventDefault();
-    console.log(registerData);
+    setOnLoading(true);
 
-    const response = await dispatch(registerUser(registerData)).unwrap();
-    console.log(response);
-
-    if (response.success) {
-      toast.success('Successfully Registered.')
-      navigate('/login');
+    if (registerData.name.length === 0 || registerData.email.length === 0 || registerData.mobileno.length === 0 || registerData.password === 0 || cpassword.length === 0) {
+      setError("All fields are required")
+    } else if (registerData.password != cpassword) {
+      setError("The passwords donot match.")
     } else {
-      toast.error("Could not register");
-    }
-  };
+      const response = await dispatch(registerUser(registerData)).unwrap();
+      console.log(response);
+
+      if (response.success) {
+        toast.success('Successfully Registered.')
+        navigate('/login');
+      } else {
+        toast.error(response.message);
+      }
+  }
+  setOnLoading(false);
+};
 
   return (
     <>
@@ -131,7 +148,7 @@ const Register = () => {
                 type={type}
                 name="cpassword"
                 // value={cpassword}
-                // onChange={handleChange}
+                onChange={(e)=> setCPassword(e.target.value)}
                 autoComplete="confirm-password"
                 className=" border-[1px] border-[rgba(177,181,195,1)] focus:outline  h-[52px]  px-3"
                 placeholder=" Please enter your Confirm password"
@@ -157,9 +174,18 @@ const Register = () => {
               </div>
               <button
                 type="submit"
-                className=" text-[rgba(255,250,247,1)] bg-[rgba(0,110,185,1)] h-[50px] mt-8"
+                className={onLoading? "text-[rgba(0,110,185,1)] bg-gray-300 h-[50px] mt-8":"text-white bg-[rgba(0,110,185,1)] h-[50px] mt-8"}
+                disabled={onLoading}
               >
-                Register
+                <div className='flex items-center justify-center gap-2'>
+                  {onLoading? 
+                    <>
+                    <CircularProgress color='info' size='1.5rem'/>
+                    Loading...
+                    </>:
+                    <>Register Now</>
+                  }
+                </div>
               </button>
             </div>
           </form>
