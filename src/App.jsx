@@ -31,22 +31,19 @@ function App() {
   return (
     <div className="font-[Poppins]">
       <Routes>
-        <Route path="/exam" element={<Exam />} />
         {/* <Route path="/mycourse" element={<Dashbord />} /> */}
         <Route path="/allcourse" element={<Allcourses />}></Route>
         <Route path="/currentoffiars" element={<CurrentOffiars />} />
         <Route path="/payment" element={<Payment />} />
         <Route path="/paymentsuccess" element={<PaymentSucess />} />
         <Route path="/paymentfail" element={<PaymentFail />} />
-        <Route path="/editprofile" element={<EditProfile />} />
-        <Route path="/changepassword" element={<ChangePawssword />} />
 
         <Route path="/changepassword" element={<Notification />} />
+        <Route path="/learning" element={<ProtectedRoute><About /></ProtectedRoute>} />
+
 
         {/* bibek tasks */}
         {/* <ProtectedRoute path="/learning" loggedIn={user} component={About} /> */}
-        <Route path="/exam/attempt" element={<ExamAttempt />} />
-        <Route path="/exam/complete" element={<ExamComplete />} />
         {user ? (
           <>
           <Route path="/" element={<Dashbord />} />
@@ -59,6 +56,11 @@ function App() {
           <Route path="/learning/mcqs" element={<MCQs />} />
           <Route path="/learning/complete" element={<Complete />} />
           <Route path="/notifications" element={<NotificationPage />}/>
+          <Route path="/editprofile" element={<EditProfile />} />
+          <Route path="/changepassword" element={<ChangePawssword />} />
+          <Route path="/exam" element={<Exam />} />
+          <Route path="/exam/attempt" element={<ExamAttempt />} />
+          <Route path="/exam/complete" element={<ExamComplete />} />
           </>
         ) : (
           <>
@@ -72,6 +74,11 @@ function App() {
             <Route path="/learning/mcqs" element={<Navigate to="/login" />} />
             <Route path="/learning/complete" element={<Navigate to="/login" />} />
             <Route path="/notifications" element={<Navigate to="/login" />}/>
+            <Route path="/editprofile" element={<Navigate to="/login" />}/>
+            <Route path="/changepassword" element={<Navigate to="/login"/>}/>
+            <Route path="/exam" element={<Navigate to="/login" />} />
+            <Route path="/exam/attempt" element={<Navigate to="/login" />} />
+            <Route path="/exam/complete" element={<Navigate to="/login" />} />
           </>
         )}
       </Routes>
