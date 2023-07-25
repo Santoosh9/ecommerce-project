@@ -7,7 +7,7 @@ import { HiBell } from 'react-icons/hi';
 import { GoDotFill } from 'react-icons/go';
 import { AiOutlineMenu } from 'react-icons/ai';
 import SubjectMenu from './SubjectMenu';
-import jsCookie from 'js-cookie';
+import { useSelector } from 'react-redux';
 import Notifications from './Notifications';
 
 const UserNav = () => {
@@ -114,20 +114,18 @@ const UserNav = () => {
   }, []);
 
   const [toggle, setToggle] = useState([]);
-  const TOKEN_NAME = 'seveti_token';
 
-  let user = jsCookie.get(TOKEN_NAME);
+  const user = useSelector((state) => state.auth.user);
+  console.log(user);
   let newName = '';
 
   if (user) {
-    user = JSON.parse(user);
-    let name = user.name;
-    if (name.length < 10) {
-      newName = name;
+    if (user.length < 10) {
+      newName = user;
     } else {
-      for (let i = 0; i <= name.length; i++) {
-        if (name.charCodeAt(i) != 32) {
-          newName = newName + name[i];
+      for (let i = 0; i <= user.length; i++) {
+        if (user.charCodeAt(i) != 32) {
+          newName = newName + user[i];
         } else {
           break;
         }
@@ -217,17 +215,17 @@ const UserNav = () => {
             }
             onClick={() => handleOpen('user')}
           />
-          <p
+          <div
             className="hidden tablet:flex flex-row items-center font-Poppins font-[400] mt-2 gap-1 laptop:mt-0 z-10 cursor-pointer "
             onClick={() => handleOpen('user')}
           >
-            {user ? newName : <p>Santosh</p>}
+            {user ? user : <p>Santosh</p>}
             {clicked ? (
               <BsChevronUp className="text-lg" />
             ) : (
               <BsChevronDown className="text-lg" />
             )}
-          </p>
+          </div>
         </div>
         {clicked && <Dropdown />}
         {notification && <Notifications />}

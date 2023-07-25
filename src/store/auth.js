@@ -10,7 +10,7 @@ const API_URL = import.meta.env.VITE_API_URL;
 console.log(API_URL);
 
 // Magic strings
-const TOKEN_NAME = 'seveti_token';
+export const TOKEN_NAME = 'seveti_token';
 
 // Initial state of the store
 const initialState = {
@@ -191,8 +191,9 @@ export const AuthSlice = createSlice({
   extraReducers(builder) {
     builder.addCase(loginUser.fulfilled, (state, action) => {
       const payloadAttributes = action.payload.data;
-
-      state.token = payloadAttributes?.accessToken;
+      state.token = payloadAttributes?.response.api_token;
+      state.user = payloadAttributes?.response.name;
+      state.activeProfile = payloadAttributes?.response.userid;
     });
 
     //

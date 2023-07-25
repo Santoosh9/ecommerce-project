@@ -10,3 +10,4 @@ export const fetchNotifications = async () => {
   const response = await axiosInstance.post('/notifications');
   return await response?.data.response;
 };
+

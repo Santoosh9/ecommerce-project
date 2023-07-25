@@ -63,10 +63,10 @@ const Register = () => {
     console.log(response);
 
     if (response.success) {
-      toast.success('Successfully Registered.')
+      toast.success('Successfully Registered.');
       navigate('/login');
     } else {
-      toast.error("Could not register");
+      toast.error('Could not register');
     }
   };
 
