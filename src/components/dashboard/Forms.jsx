@@ -5,6 +5,13 @@ import { BsBookmark } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
 const Forms = () => {
+
+  const [image, setImage]= useState('');
+
+  function handelImage(e){
+     console.log(e.target.files)
+     setImage(e.target.files[0])
+  }
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -123,7 +130,6 @@ const Forms = () => {
 
                 <div className="flex flex-col  w-full">
                   <Link to="#">
-                    {' '}
                     <button className=" text-start">
                       <p className="text-[rgba(0,110,185,1)] mt-2  font[500]  text-base font-Poppins ">
                         NEA
@@ -135,7 +141,6 @@ const Forms = () => {
 
                 <div className="flex flex-col  w-full">
                   <Link to="#">
-                    {' '}
                     <button className=" text-start">
                       <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
                         Lok Sewa
@@ -235,14 +240,16 @@ const Forms = () => {
                     placeholder="Subject"
                   ></input>
                 </div>
-                <div className="bg-[rgba(225,236,243,1)] mt-4 h-[48px] w-[154px] flex justify-center items-center gap-2 ml-0.5 tablet:ml-6 ">
+
+
+                <button className="bg-[rgba(225,236,243,1)] mt-4 h-[48px] w-[154px] flex justify-center items-center gap-2 ml-0.5 tablet:ml-6 " onClick={handelImage}>
                   <div className=" flex items-center">
                     <RiImageAddFill className="text-[#006EB9] text-lg" />
                   </div>
                   <p className="font-normal text-sm leading-5 text-[#006EB9]">
                     Add Image
                   </p>
-                </div>
+                </button>
 
                 <div className="mt-10  bg-[rgba(0,110,185,1)]  h-[46px] w-[146px] ml-0.5 tablet:ml-[80%] mb-2">
                   <p className=" font-[500] text-sm font-Poppins text-center text-white mt-2 ">
@@ -332,7 +339,6 @@ const Forms = () => {
 
                 <div className="flex flex-col  w-full mt-1">
                   <Link to="#">
-                    {' '}
                     <button className=" text-start">
                       <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins  ">
                         RBB 4th Level Course
@@ -344,7 +350,6 @@ const Forms = () => {
 
                 <div className="flex flex-col  w-full mt-1">
                   <Link to="#">
-                    {' '}
                     <button className=" text-start">
                       <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
                         RBB 4th Level Course
