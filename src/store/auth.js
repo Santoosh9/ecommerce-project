@@ -167,6 +167,30 @@ export const changeActiveProfile = createAsyncThunk(
   }
 );
 
+
+export const d = createAsyncThunk(
+  'changeActiveProfile',
+  async (profileId) => {
+    const { data } = await axiosInstance.patch('/user/me/active-profile', {
+      profileId,
+    });
+
+    try {
+      return {
+        success: true,
+        message: 'Successfully changed active profile',
+        data: data?.data?.profileId,
+      };
+    } catch (error) {
+      return {
+        success: false,
+        message: 'Unable to change active profile',
+      };
+    }
+  }
+);
+
+
 /**
  *
  */

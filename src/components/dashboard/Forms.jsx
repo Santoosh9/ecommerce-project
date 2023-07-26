@@ -185,7 +185,7 @@ const Forms = () => {
         <div className="flex flex-col ml-6 laptop:ml-32 mt-10 w-[90%] laptop:w-[50%]">
           <div className=" w-full h-fit border px-2">
             {!isOpen && (
-              <div className=" flex flex-row items-center mt-3 py-2">
+              <div className=" flex flex-row items-center mt-2 mb-2 mr-2 py-2">
                 <img
                   className="flex items-center rounded-full w-10 h-10 ml-3"
                   src="./images/me.jpg"
@@ -202,7 +202,7 @@ const Forms = () => {
             {isOpen && (
               <div className="flex flex-col w-[90%] h-[556px] mt-6 ml-6 ">
                 <div className="flex flex-row justify-between h-[40px]">
-                  <div className=" flex flex-row gap-4">
+                  <div className=" flex flex-row gap-4 ml-3">
                     <img
                       className="rounded-full w-[100%] h-[100%] mb-6 ml-3"
                       src="./images/me.jpg"
@@ -223,13 +223,13 @@ const Forms = () => {
                     placeholder="Share what going on your mind"
                   />
                 </div>
-                <div className="ml-0.5 tablet:ml-6 ">
+                <div className="ml-0.5 tablet:ml-6 w-full">
                   <input
                     className="h-[44px] w-full mt-4 border px-3"
                     placeholder="Course"
                   />
                 </div>
-                <div className="ml-0.5 tablet:ml-6 ">
+                <div className="ml-0.5 tablet:ml-6 w-full ">
                   <input
                     className="h-[44px] w-full mt-4 border px-3"
                     placeholder="Subject"
@@ -295,7 +295,7 @@ const Forms = () => {
                     </div>
                   </div>
                   <div className=" flex items-center justify-center ml-0 tablet:ml-4 w-[8%] h-9 bg-[#006EB91A]">
-                    <BsBookmark className=' text-[#006EB9]'/>
+                    <BsBookmark className=" text-[#006EB9]" />
                   </div>
                 </div>
               </div>
