@@ -5,13 +5,12 @@ import { useSelector } from 'react-redux/';
   const ProtectedRoute = ({children}) => {
 
     const user = useSelector((state) => state.auth.token);
-    console.log(user);
-    console.log(children)
+    console.log(user)
 
-    if(!user){
-      return <Navigate to="/login" />
-    } else {
+    if(user){
       return children;
+    } else {
+      return <Navigate to="/login"/>
     }
   };
 

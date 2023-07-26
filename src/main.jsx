@@ -16,9 +16,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     <Toaster position="top-center"/>
       <BrowserRouter>
         <Provider store={store}>
-    <QueryClientProvider client={queryClient}>
-          <App />
-    </QueryClientProvider>
+          <QueryClientProvider client={queryClient}>
+            <App />
+          </QueryClientProvider>
         </Provider>
       </BrowserRouter>
   </React.StrictMode>
