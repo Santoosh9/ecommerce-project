@@ -8,7 +8,7 @@ import { eyeOff } from 'react-icons-kit/feather/eyeOff';
 import { eye } from 'react-icons-kit/feather/eye';
 import { CiFacebook } from 'react-icons/ci';
 import { FcGoogle } from 'react-icons/fc';
-import './style.css';
+import CircularProgress from '@mui/material/CircularProgress';
 import { loginUser } from '../../store/auth';
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
@@ -20,12 +20,14 @@ const Login = () => {
     email: '',
     password: '',
   });
+  const [onLoading, setOnLoading] = useState(false);
   const navigate = useNavigate();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setloginData({ ...loginData, [name]: value });
   };
   const dispatch = useDispatch();
+
   const handleToggle = () => {
     if (type === 'password') {
       setIcon(eye);
@@ -35,11 +37,14 @@ const Login = () => {
       setType('password');
     }
   };
+
   const handleUserLogin = async (e) => {
     e.preventDefault();
+    setOnLoading(true);
     console.log(loginData);
 
     const response = await dispatch(loginUser(loginData)).unwrap();
+    console.log(response);
     if (response.success) {
       toast.success(response.message);
       navigate('/mycourse');
@@ -47,6 +52,7 @@ const Login = () => {
       toast.error(response.message);
       console.log(response.message);
     }
+    setOnLoading(false);
   };
 
   return (
@@ -105,9 +111,18 @@ const Login = () => {
               </div>
               <button
                 type="submit"
-                className=" text-[rgba(255,250,247,1)] bg-[rgba(0,110,185,1)] h-[50px] mt-8"
+                className={onLoading? "text-[rgba(0,110,185,1)] bg-gray-300 h-[50px] mt-8":"text-white bg-[rgba(0,110,185,1)] h-[50px] mt-8"}
+                disabled = {onLoading}
               >
-                Sign In
+                <div className='flex items-center justify-center gap-2'>
+                  {onLoading? 
+                    <>
+                    <CircularProgress color='info' size='1.5rem'/>
+                    Signing In...
+                    </>:
+                    <>Sign In</>
+                  }
+                </div>
               </button>
             </div>
           </form>
