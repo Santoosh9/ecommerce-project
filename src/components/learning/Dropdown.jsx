@@ -39,7 +39,7 @@ const Dropdown = () => {
             </div>
           </Link>
 
-          <Link to="">
+          <Link to="/notifications">
             <div className="py-3 px-6 hover:bg-blue-100">
               <p>Notifications</p>
             </div>
