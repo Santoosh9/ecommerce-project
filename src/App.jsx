@@ -20,7 +20,7 @@ import PaymentSucess from './components/payment/PaymentSucess';
 import PaymentFail from './components/payment/PaymentFail';
 import EditProfile from './profile/EditProfile';
 import ChangePawssword from './profile/ChangePassword';
-import ProtectedRoute from './Protected';
+import {ProtectedRoute, PreventedRoute} from './Protected';
 
 function App() {
 
@@ -30,9 +30,9 @@ function App() {
   return (
     <div className="font-[Poppins]">
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login/>} />
-        <Route path="/register" element={<Register/>} />
+        <Route path="/" element={<PreventedRoute><Home /></PreventedRoute>} />
+        <Route path="/login" element={<PreventedRoute><Login/></PreventedRoute>} />
+        <Route path="/register" element={<PreventedRoute><Register/></PreventedRoute>} />
         <Route path="/allcourse" element={<Allcourses />} />
         <Route path="/currentoffiars" element={<CurrentOffiars />} />
 

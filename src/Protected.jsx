@@ -2,7 +2,7 @@ import React from "react";
 import { Navigate } from "react-router-dom";
 import { useSelector } from 'react-redux/';
 
-  const ProtectedRoute = ({children}) => {
+  export const ProtectedRoute = ({children}) => {
 
     const user = useSelector((state) => state.auth.token);
     console.log(user)
@@ -14,4 +14,16 @@ import { useSelector } from 'react-redux/';
     }
   };
 
-export default ProtectedRoute;
+  export const PreventedRoute = ({children}) => {
+
+    const user = useSelector((state) => state.auth.token);
+
+    if(user){
+      console.log("user")
+      return <Navigate to="/mycourse"/>
+    } else {
+      console.log(" no user")
+      return children;
+    }
+  };
+
