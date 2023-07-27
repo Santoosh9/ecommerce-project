@@ -1,18 +1,17 @@
 import React, { useEffect, useState } from 'react';
+import { useQuery } from 'react-query';
 import { RiImageAddFill } from 'react-icons/ri';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { BsBookmark } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
+import { addQuestion, fetchQuetions } from '../../hooks/fetchHooks';
+import CircularProgress from '@mui/material/CircularProgress';
+import axiosInstance from '../../utils/axios';
+import { TextField } from '@mui/material';
 
 const Forms = () => {
-
-  const [image, setImage]= useState('');
-
-  function handelImage(e){
-     console.log(e.target.files)
-     setImage(e.target.files[0])
-  }
   const [isOpen, setIsOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -28,6 +27,25 @@ const Forms = () => {
 
   const handleOpen = () => {
     setIsOpen(true);
+  };
+
+  const [postData, setPostData] = useState({
+    questiontext: '',
+    subjectid: '',
+    courseid: '',
+    image: '',
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setPostData({ ...postData, [name]: value });
+  };
+
+  const handleCreatePost = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+    const data = await axiosInstance.put('/questions', postData);
+    console.log(data);
   };
 
   const data = [
@@ -70,6 +88,14 @@ const Forms = () => {
       image2: './images/save.png',
     },
   ];
+
+  const {
+    isLoading: postsLoading,
+    data: forumPosts,
+    error,
+    isError,
+  } = useQuery('posts', fetchQuetions);
+  console.log(forumPosts);
 
   return (
     <>
@@ -130,6 +156,7 @@ const Forms = () => {
 
                 <div className="flex flex-col  w-full">
                   <Link to="#">
+                    {' '}
                     <button className=" text-start">
                       <p className="text-[rgba(0,110,185,1)] mt-2  font[500]  text-base font-Poppins ">
                         NEA
@@ -141,6 +168,7 @@ const Forms = () => {
 
                 <div className="flex flex-col  w-full">
                   <Link to="#">
+                    {' '}
                     <button className=" text-start">
                       <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
                         Lok Sewa
@@ -188,9 +216,9 @@ const Forms = () => {
         </div>
 
         <div className="flex flex-col ml-6 laptop:ml-32 mt-10 w-[90%] laptop:w-[50%]">
-          <div className=" w-full h-fit border px-2">
+          <div className=" w-full h-fit border px-2 ">
             {!isOpen && (
-              <div className=" flex flex-row items-center mt-2 mb-2 mr-2 py-2">
+              <div className=" flex flex-row items-center mt-2 py-2  mb-2 mr-2">
                 <img
                   className="flex items-center rounded-full w-10 h-10 ml-3"
                   src="./images/me.jpg"
@@ -205,7 +233,7 @@ const Forms = () => {
             )}
 
             {isOpen && (
-              <div className="flex flex-col w-[90%] h-[556px] mt-6 ml-6 ">
+              <div className="flex flex-col w-[90%] h-fit mt-6 ml-6 ">
                 <div className="flex flex-row justify-between h-[40px]">
                   <div className=" flex flex-row gap-4 ml-3">
                     <img
@@ -222,44 +250,53 @@ const Forms = () => {
                     <AiOutlineCloseCircle className="mt-3 text-lg" />
                   </button>
                 </div>
-                <div className="h-[220px] mt-2 ml-0.5 tablet:ml-6 w-full ">
-                  <input
-                    className="h-[220px] w-[90%] tablet:w-full border px-6"
-                    placeholder="Share what going on your mind"
-                  />
-                </div>
-                <div className="ml-0.5 tablet:ml-6 w-full">
-                  <input
-                    className="h-[44px] w-full mt-4 border px-3"
-                    placeholder="Course"
-                  />
-                </div>
-                <div className="ml-0.5 tablet:ml-6 w-full ">
-                  <input
-                    className="h-[44px] w-full mt-4 border px-3"
-                    placeholder="Subject"
-                  ></input>
-                </div>
-
-
-                <button className="bg-[rgba(225,236,243,1)] mt-4 h-[48px] w-[154px] flex justify-center items-center gap-2 ml-0.5 tablet:ml-6 " onClick={handelImage}>
-                  <div className=" flex items-center">
-                    <RiImageAddFill className="text-[#006EB9] text-lg" />
+                <form onSubmit={(e) => handleCreatePost(e)}>
+                  <div className="h-[22%] mt-2 ml-0.5 tablet:ml-6 w-full ">
+                    <textarea
+                      className="resize-none h-32 w-full tablet:w-full border px-6  pt-4"
+                      placeholder="Share what's going on your mind"
+                      name="questiontext"
+                      onChange={handleChange}
+                    />
                   </div>
-                  <p className="font-normal text-sm leading-5 text-[#006EB9]">
-                    Add Image
-                  </p>
-                </button>
+                  <div className="ml-0.5 tablet:ml-6 w-full ">
+                    <input
+                      className="h-[44px] w-full mt-4 border px-3 "
+                      placeholder="Course"
+                      name="courseid"
+                      onChange={handleChange}
+                    />
+                  </div>
+                  <div className="ml-0.5 tablet:ml-6 w-full ">
+                    <input
+                      className="h-[44px] w-full mt-4 border px-3"
+                      placeholder="Subject"
+                      name="subjectid"
+                      onChange={handleChange}
+                    ></input>
+                  </div>
+                  <div className="bg-[rgba(225,236,243,1)] mt-4 h-[48px] w-[154px] flex justify-center items-center gap-2 ml-0.5 tablet:ml-6 ">
+                    <div className=" flex items-center">
+                      <RiImageAddFill className="text-[#006EB9] text-lg" />
+                    </div>
+                    <p className="font-normal text-sm leading-5 text-[#006EB9]">
+                      Add Image
+                    </p>
+                  </div>
 
-                <div className="mt-10  bg-[rgba(0,110,185,1)]  h-[46px] w-[146px] ml-0.5 tablet:ml-[80%] mb-2">
-                  <p className=" font-[500] text-sm font-Poppins text-center text-white mt-2 ">
-                    Create Post
-                  </p>
-                </div>
+                  <button
+                    className="mt-10  bg-[rgba(0,110,185,1)] flex items-center justify-center h-[40px] w-[146px] tablet:ml-[80%] mb-2 cursor-pointer"
+                    type="submit"
+                  >
+                    <p className=" font-[500] text-sm font-Poppins text-center text-white ">
+                      Create Post
+                    </p>
+                  </button>
+                </form>
               </div>
             )}
           </div>
-          <div className=" flex flex-col flex-wrap w-full mt-10">
+          {/* <div className=" flex flex-col flex-wrap w-full mt-10">
             {data.map((item) => (
               <div
                 key={item.id}
@@ -302,6 +339,63 @@ const Forms = () => {
                     </div>
                   </div>
                   <div className=" flex items-center justify-center ml-0 tablet:ml-4 w-[8%] h-9 bg-[#006EB91A]">
+                    <BsBookmark className=' text-[#006EB9]'/>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div> */}
+          <div className=" flex flex-col flex-wrap w-full mt-10">
+            {postsLoading && (
+              <div className="flex items-center justify-center gap-2">
+                <p className="text-center font-normal text-xl">Loading....</p>
+                <CircularProgress size="1rem" />
+              </div>
+            )}
+            {forumPosts?.map((item) => (
+              <div
+                key={item.forumid}
+                className="flex flex-col tablet:flex-row mt-3 pr-2  border"
+              >
+                <div className=" mb:4 tablet:mb-24 mt-4 ml-4 w-[120%] tablet:w-[25%]">
+                  <img
+                    src={item.image ? item.image : './images/Rectangle 24.png'}
+                  />
+                </div>
+
+                <div className="tablet:ml-3 flex flex-row mt-4 w-full justify-around tablet:w-[70%]">
+                  <div className="flex flex-col ml-4 w-[70%] tablet:w-[90%]">
+                    <div>
+                      <div className="flex flex-row w-fit gap-10 text-sky-600	">
+                        <button className="bg-[#F0F9FF] w-fit rounded-full text-[rgba(0,110,185,1)]">
+                          {item.subject}
+                        </button>
+                        <button className="bg-[#F0F9FF] w-fit rounded-full">
+                          {item.subject}
+                        </button>
+                      </div>
+                    </div>
+
+                    <div className=" mr-3 w-[110%] tablet:w-[90%] h-fit flex  font-Poppins text-[rgba(44,39,36,0.75)] font-[400] text-sm mt-4 text-full text-justify	 ">
+                      {item.questiontext}
+                    </div>
+
+                    <div className=" mt-10 flex flex-col tablet:flex-row">
+                      <ul className=" text-[rgba(0,110,185,1)] font-[400] text-base font-Poppins">
+                        {item.askedby}
+                        <li className=" sm-text  mb-4">{item.posteddate}</li>
+                      </ul>
+                      <div className="flex">
+                        <p className="tablet:ml-5 -mt-2 tablet:mt-3 text-[rgba(0,110,185,1)] font-Poppins font-[400] text-xs">
+                          {item.views ? `${item.view} views` : '0 views'}
+                        </p>
+                        <p className="ml-4 tablet:ml-7 -mt-2 tablet:mt-3 text-[rgba(0,110,185,1)] font-Poppins font-[400] text-xs">
+                          {item.answers} comments
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                  <div className=" flex items-center justify-center ml-0 tablet:ml-4 w-[8%] h-9 bg-[#006EB91A]">
                     <BsBookmark className=" text-[#006EB9]" />
                   </div>
                 </div>
@@ -339,6 +433,7 @@ const Forms = () => {
 
                 <div className="flex flex-col  w-full mt-1">
                   <Link to="#">
+                    {' '}
                     <button className=" text-start">
                       <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins  ">
                         RBB 4th Level Course
@@ -350,6 +445,7 @@ const Forms = () => {
 
                 <div className="flex flex-col  w-full mt-1">
                   <Link to="#">
+                    {' '}
                     <button className=" text-start">
                       <p className="text-[rgba(0,110,185,1)] mt-2 font[500]  text-base font-Poppins ">
                         RBB 4th Level Course
