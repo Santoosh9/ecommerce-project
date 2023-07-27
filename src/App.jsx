@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="font-[Poppins]">
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home /> } />
         <Route path="/login" element={<Login/>} />
         <Route path="/register" element={<Register/>} />
         <Route path="/allcourse" element={<Allcourses />} />
