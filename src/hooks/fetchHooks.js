@@ -1,5 +1,5 @@
-import { async } from 'q';
-import axiosInstance from '../utils/axios';
+import axiosInstance from "../utils/axios";
+import { useQuery, useMutation } from "react-query";
 
 export const fetchAffairs = async () => {
   const response = await axiosInstance.get('/current-affairs');
@@ -18,13 +18,7 @@ export const fetchQuetions = async () => {
   return await response?.data.response;
 };
 
-export const addQuestion = async (payload) => {
-  const params = new URLSearchParams(payload);
-  const response = await axiosInstance.put('/questions', { params });
-  return response;
-};
-
-export const fetchAnswers = async () => {
-  const response = await axiosInstance.post('/answers');
-  return await response?.data.response;
-};
+export const fetchAnswers = async (forumid) => {
+    const response = await axiosInstance.post("/answers", forumid );
+    return await response?.data.response;
+}
