@@ -1,5 +1,5 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { useSelector } from 'react-redux/';
+import { useDispatch, useSelector } from 'react-redux/';
 import Home from './components/Home';
 import Login from './components/layout/Login';
 import Register from './components/layout/Register';
@@ -21,8 +21,21 @@ import PaymentFail from './components/payment/PaymentFail';
 import EditProfile from './profile/EditProfile';
 import ChangePawssword from './profile/ChangePassword';
 import {ProtectedRoute, PreventedRoute} from './Protected';
+import { useEffect } from 'react';
+import { getCurrentSession } from './store/auth';
 
 function App() {
+
+  const dispatch = useDispatch();
+
+  useEffect (() => {
+    console.log("useEffect")
+    const getCurrent = async() => {
+      const response = await dispatch(getCurrentSession(1)).unwrap();
+      console.log(response) 
+    }
+    getCurrent();
+  }, [])
 
   const user = useSelector((state) => state.auth.token);
   console.log(user);

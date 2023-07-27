@@ -9,7 +9,7 @@ import { eye } from 'react-icons-kit/feather/eye';
 import { CiFacebook } from 'react-icons/ci';
 import { FcGoogle } from 'react-icons/fc';
 import CircularProgress from '@mui/material/CircularProgress';
-import { loginUser } from '../../store/auth';
+import { getCurrentSession, loginUser } from '../../store/auth';
 import { useDispatch } from 'react-redux';
 import toast from 'react-hot-toast';
 

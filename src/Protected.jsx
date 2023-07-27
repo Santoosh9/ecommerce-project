@@ -19,10 +19,8 @@ import { useSelector } from 'react-redux/';
     const user = useSelector((state) => state.auth.token);
 
     if(user){
-      console.log("user")
       return <Navigate to="/mycourse"/>
     } else {
-      console.log(" no user")
       return children;
     }
   };

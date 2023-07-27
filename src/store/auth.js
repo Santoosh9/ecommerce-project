@@ -116,7 +116,8 @@ export const logoutUser = createAsyncThunk(
 export const getCurrentSession = createAsyncThunk(
   "getCurrentSession",
   async () => {
-    const accessToken = jsCookie.get(TOKEN_NAME);
+    const accessToken = JSON.parse(jsCookie.get(TOKEN_NAME));
+    console.log(accessToken);
 
     //
     if (accessToken) {
@@ -220,8 +221,11 @@ export const AuthSlice = createSlice({
 
     //
     builder.addCase(getCurrentSession.fulfilled, (state, action) => {
+      console.log(action.payload.data.accessToken);
       if (!state.token && action.payload.success && action.payload.data) {
-        state.token = action.payload.data.accessToken;
+        state.token = action.payload.data.accessToken.api_token;
+        state.user = action.payload.data.accessToken.name;
+        state.activeProfile = action.payload.data.accessToken.userid;
       }
     });
 
