@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useQuery } from 'react-query';
 import { RiImageAddFill } from 'react-icons/ri';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
@@ -12,6 +12,14 @@ import { TextField } from '@mui/material';
 const Forms = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  const [file, setFile] = useState([]);
+
+  const inputFile = useRef(null);
+
+  const handleChangeImage = (e) => {
+    setFile([...file, e.target.files[0]]);
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -156,7 +164,6 @@ const Forms = () => {
 
                 <div className="flex flex-col  w-full">
                   <Link to="#">
-                    {' '}
                     <button className=" text-start">
                       <p className="text-[rgba(0,110,185,1)] mt-2  font[500]  text-base font-Poppins ">
                         NEA
@@ -275,13 +282,26 @@ const Forms = () => {
                       onChange={handleChange}
                     ></input>
                   </div>
-                  <div className="bg-[rgba(225,236,243,1)] mt-4 h-[48px] w-[154px] flex justify-center items-center gap-2 ml-0.5 tablet:ml-6 ">
-                    <div className=" flex items-center">
-                      <RiImageAddFill className="text-[#006EB9] text-lg" />
-                    </div>
-                    <p className="font-normal text-sm leading-5 text-[#006EB9]">
-                      Add Image
-                    </p>
+
+                  <div className="flex flex-row gap-5">
+                    <button
+                      className="bg-[rgba(225,236,243,1)] mt-4 h-[48px] w-[154px] flex justify-center items-center gap-2 ml-0.5 tablet:ml-6"
+                      onClick={() => inputFile.current.click()}
+                    >
+                      <div className=" flex items-center">
+                        <RiImageAddFill className="text-[#006EB9] text-lg" />
+                      </div>
+                      <p className="font-normal text-sm leading-5 text-[#006EB9]">
+                        Add Image
+                      </p>
+                    </button>
+
+                    <input
+                      className=" hidden "
+                      type="file"
+                      onChange={handleChange}
+                      ref={inputFile}
+                    />
                   </div>
 
                   <button
