@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import Navbar from './layout/Navbar';
 import Card from '../Cards/Cards';
 import Footer from './layout/Footer';
@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
 
-  useEffect (() => {
+  useEffect(() => {
     window.scrollTo(0, 0);
   })
 
@@ -15,10 +15,10 @@ const Home = () => {
     <>
       <Navbar />
 
-      <div className="flex flex-col w-[100%]  ">
+      <div className="flex flex-col w-[100%]">
         <div className="flex flex-col-reverse laptop:flex-row  w-[100%]">
-          <div className="w-full laptop:w-[50%] bg-[rgba(0,110,185,1)] flex  ">
-            <div className=" w-full h-fit laptop:h-[332.72px] ml-12 laptop:ml-[134px]  flex flex-col mt-[122px]">
+          <div className="w-full laptop:w-[50%] bg-[rgba(0,110,185,1)] flex items-center justify-center">
+            <div className=" w-full h-fit laptop:h-[332.72px] ml-12 laptop:ml-[134px] flex flex-col">
               <div className="w-[90%]">
                 <p className="text-white  font-[500] font-Poppins  text-5xl h-fit mb-4">
                   Ignite your Learning Journey with SmartGK
@@ -41,7 +41,7 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="w-full laptop:w-[50%] z-[-1] ">
+          <div className="w-full laptop:w-[50%] z-[-1]">
             <div
               id="carouselExampleIndicators"
               className="carousel slide"
