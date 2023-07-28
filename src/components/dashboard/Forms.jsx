@@ -5,9 +5,8 @@ import { AiOutlineCloseCircle } from 'react-icons/ai';
 import { MdOutlineDelete, MdViewModule } from 'react-icons/md';
 import { BsBookmark } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import { fetchAnswers, fetchQuetions } from '../../hooks/fetchHooks';
+import { addAnswersData, addQuestionData, fetchAnswers, fetchQuetions } from '../../hooks/fetchHooks';
 import CircularProgress from '@mui/material/CircularProgress';
-import axiosInstance from '../../utils/axios';
 import { toast } from 'react-hot-toast';
 import { useSelector } from 'react-redux';
 
@@ -41,6 +40,8 @@ const Forms = () => {
     image: ''
   });
 
+  const [forumId, setForumId]=useState(null)
+
   const [answertext, setAnswerText] = useState('')
 
   const handleChange = (e) => {
@@ -57,7 +58,7 @@ const Forms = () => {
     e.preventDefault();
     setIsLoading(true);
     try {
-      const data = await axiosInstance.put("/questions", postData)
+      questionsMutation(postData);
       toast.success("Successfully added your post")
       setPostData({
         questiontext: "",
@@ -73,6 +74,16 @@ const Forms = () => {
   }
 
   const { isLoading: postsLoading, data: forumPosts, error, isError } = useQuery("posts", fetchQuetions)
+  const { isLoading: answersLoading, data: forumAnswer } = useQuery(
+    ["answers",forumId],
+    ()=>fetchAnswers(forumId),
+    {
+      refetchOnWindowFocus: false,
+      enabled: !!forumId
+    });
+
+  const { mutate:answersMutation } = addAnswersData()
+  const { mutate:questionsMutation } = addQuestionData();
 
   const [seeComments, setSeeComments] = useState([]);
 
@@ -87,25 +98,14 @@ const Forms = () => {
       }
     }
     setSeeComments(updatedseeComments);
-    getComments(forumid);
-  }
-
-  const [forumAnswer, setForumAnswer] = useState([]);
-
-  const getComments = async (forumid) => {
-    const data = await axiosInstance.post("/answers", { forumid })
-    setForumAnswer(data);
-    console.log("forum answer", data);
+    setForumId(forumid);
   }
 
   const handleAddAnswer = async (e, forumid) => {
     e.preventDefault();
-    const data = await axiosInstance.put("/answers", { forumid, answertext })
-    console.log("Answertext", data);
-    console.log("event", e);
-    console.log(answertext)
-    console.log(forumid)
-
+    const answerData = { forumid, answertext }
+    // const data = await axiosInstance.put("/answers", { forumid, answertext })
+    answersMutation(answerData);
   }
 
 
@@ -362,7 +362,7 @@ const Forms = () => {
                   <div className='mt-2 border-t px-5 py-2'>
                     <p className='text-lg font-medium text-left text-[rgba(0,110,185,1)] px-2'>{activeUser}</p>
                     <form
-                      className='flex flex-col tablet:flex-row gap-2'
+                      className='flex flex-col tablet:flex-row gap-2 mb-4'
                       onSubmit={(e) => handleAddAnswer(e, item.forumid)}
                     >
                       <input
@@ -376,7 +376,14 @@ const Forms = () => {
                         Add Answer
                       </button>
                     </form>
-                    {forumAnswer?.data?.response?.answers?.map((onecomment, index) => (
+                    {!item.answers &&
+                    <p className='px-2 py-2 text-[rgba(0,110,185,1)] text-left text-base italic'>Be the first to answer to this post.</p>}
+                    {answersLoading &&
+                      <div className='flex items-center justify-center gap-2'>
+                        <p className='text-center font-normal text-xl'>Loading....</p>
+                        <CircularProgress size="1rem" />
+                      </div>}
+                    {forumAnswer?.answers?.map((onecomment, index) => (
                       (item.forumid === onecomment.forumid) &&
                       <div className='flex flex-col gap-1 py-2 px-2'>
                         <div className='flex gap-2 justify-start items-start'>
