@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { RiImageAddFill } from 'react-icons/ri';
 import { AiOutlineCloseCircle } from 'react-icons/ai';
+import { BsDot } from 'react-icons/bs';
 import { MdOutlineDelete, MdViewModule } from 'react-icons/md';
 import { BsBookmark } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
@@ -14,6 +15,16 @@ const Forms = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [viewMode, setViewMode] = useState('All');
+  const [forumId, setForumId]=useState(null)
+  const [answertext, setAnswerText] = useState('')
+  const [openWindow, setOpenWindow] = useState(null)
+  const [postData, setPostData] = useState({
+    questiontext: '',
+    subjectid: '',
+    courseid: '',
+    image: ''
+  });
+
 
   const activeUser = useSelector((state) => state.auth.user);
 
@@ -32,17 +43,6 @@ const Forms = () => {
   const handleOpen = () => {
     setIsOpen(true);
   };
-
-  const [postData, setPostData] = useState({
-    questiontext: '',
-    subjectid: '',
-    courseid: '',
-    image: ''
-  });
-
-  const [forumId, setForumId]=useState(null)
-
-  const [answertext, setAnswerText] = useState('')
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -73,7 +73,8 @@ const Forms = () => {
     setIsLoading(false);
   }
 
-  const { isLoading: postsLoading, data: forumPosts, error, isError } = useQuery("posts", fetchQuetions)
+  const { isLoading: postsLoading, data: forumPosts, error, isError } = useQuery("posts",fetchQuetions)
+
   const { isLoading: answersLoading, data: forumAnswer } = useQuery(
     ["answers",forumId],
     ()=>fetchAnswers(forumId),
@@ -104,8 +105,12 @@ const Forms = () => {
   const handleAddAnswer = async (e, forumid) => {
     e.preventDefault();
     const answerData = { forumid, answertext }
-    // const data = await axiosInstance.put("/answers", { forumid, answertext })
-    answersMutation(answerData);
+    try{
+      answersMutation(answerData);
+      toast.success("Answer Added")
+    } catch(error) {
+      toast.error(error.message)
+    }
   }
 
 
@@ -331,14 +336,14 @@ const Forms = () => {
                         </div>
                       </div>
 
-                      <div className=" mr-3 w-[110%] tablet:w-[90%] h-fit flex  font-Poppins text-[rgba(44,39,36,0.75)] font-[400] text-sm mt-4 text-full text-justify	 ">
+                      <div className=" mr-3 w-[110%] tablet:w-[90%] h-fit flex  font-Poppins font-[400] text-base mt-4 text-full text-justify	 ">
                         {item.questiontext}
                       </div>
 
-                      <div className=" mt-10 flex flex-col tablet:flex-row">
+                      <div className=" mt-10 flex flex-col tablet:flex-row justify-between">
                         <ul className=" text-[rgba(0,110,185,1)] font-[400] text-base font-Poppins">
                           {item.askedby}
-                          <li className=" sm-text  mb-4">{item.posteddate}</li>
+                          <li className=" text-sm  mb-4 text-[rgba(44,39,36,0.75)]">{item.posteddate}</li>
                         </ul>
                         <div className="flex">
                           <p className="tablet:ml-5 -mt-2 tablet:mt-3 text-[rgba(0,110,185,1)] font-Poppins font-[400] text-xs cursor-pointer">
@@ -351,7 +356,7 @@ const Forms = () => {
                       </div>
                     </div>
                     <div className=" flex items-center justify-center ml-0 tablet:ml-4 w-[8%] h-9 bg-[#006EB91A]">
-                      <BsBookmark className=' text-[#006EB9]' />
+                      <BsBookmark className='text-[#006EB9]'/>
                     </div>
                     {/* <div className=" flex items-center justify-center ml-0 tablet:ml-4 w-[8%] h-9 bg-[#006EB91A]" onClick={() => handleDelete(item.forumid)} disabled={isLoading}>
                     <MdOutlineDelete className={isLoading? 'text-[rgba(177,181,195,1)] text-xl' :'text-[#006EB9] text-xl'}/>
@@ -360,9 +365,12 @@ const Forms = () => {
                 </div>
                 {seeComments[index] &&
                   <div className='mt-2 border-t px-5 py-2'>
-                    <p className='text-lg font-medium text-left text-[rgba(0,110,185,1)] px-2'>{activeUser}</p>
+                    <div className='flex h-11 justify-between'>
+                      <div className='w-[10%]'>
+                        <img src='./images/blankuser.png' alt="user" width='40px' className='rounded-full'/>
+                      </div>
                     <form
-                      className='flex flex-col tablet:flex-row gap-2 mb-4'
+                      className='flex flex-col tablet:flex-row gap-2 mb-4 w-[90%]'
                       onSubmit={(e) => handleAddAnswer(e, item.forumid)}
                     >
                       <input
@@ -376,8 +384,10 @@ const Forms = () => {
                         Add Answer
                       </button>
                     </form>
-                    {!item.answers &&
-                    <p className='px-2 py-2 text-[rgba(0,110,185,1)] text-left text-base italic'>Be the first to answer to this post.</p>}
+                    </div>
+                    {!item.answers ?
+                    <p className='px-2 py-2 text-[rgba(0,110,185,1)] text-left text-base italic'>Be the first to answer to this post.</p>:
+                    <p className='px-2 py-2 text-lg font-medium'>All Comments</p>}
                     {answersLoading &&
                       <div className='flex items-center justify-center gap-2'>
                         <p className='text-center font-normal text-xl'>Loading....</p>
@@ -387,10 +397,18 @@ const Forms = () => {
                       (item.forumid === onecomment.forumid) &&
                       <div className='flex flex-col gap-1 py-2 px-2'>
                         <div className='flex gap-2 justify-start items-start'>
-                          <p className="text-left font-medium text-[rgba(0,110,185,1)] text-base w-[20%]">{onecomment.name}</p>
-                          <p className='text-left font-normal text-base w-[80%] '>{onecomment.answertext}</p>
+                          <div className='w-[10%]'>
+                            <img src='./images/blankuser.png' width='40px' alt='user'/>
+                          </div>
+                          <div className='w-[90%] flex flex-col gap-2'>
+                            <div className='flex w-full gap-3 items-center'> 
+                              <p className="text-left font-medium text-[rgba(0,110,185,1)] text-base">{onecomment.name}</p>
+                              <BsDot className='text-[rgba(44,39,36,0.75)]'/>
+                              <p className='text-left font-normal text-sm text-[rgba(44,39,36,0.75)] '>{onecomment.posteddate}</p>
+                            </div>
+                            <p className='text-left font-normal text-base'>{onecomment.answertext}</p>
+                          </div>
                         </div>
-                        <p className='text-left font-normal text-sm px-1 text-[rgba(44,39,36,0.75)]'>{onecomment.posteddate}</p>
                       </div>
                     ))}
                   </div>
