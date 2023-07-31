@@ -5,7 +5,7 @@ import Footer from '../layout/Footer';
 import { Tab } from '@headlessui/react';
 import Mycourse from './Mycourse';
 import Exams from './Exams';
-import Forms from './Forms';
+import Forums from './Forms';
 
 const Dashbord = () => {
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -19,8 +19,8 @@ const Dashbord = () => {
       component: <Exams />,
     },
     {
-      title: 'Fourms',
-      component: <Forms />,
+      title: 'Forums',
+      component: <Forums />,
     },
   ];
   return (
@@ -52,11 +52,10 @@ const Dashbord = () => {
               <Tab as={Fragment} key={i + 1}>
                 {({ selected }) => (
                   <button
-                    className={`px-4 py-2 bg-white cursor-pointer focus:outline-none ${
-                      selected
+                    className={`px-4 py-2 bg-white cursor-pointer focus:outline-none ${selected
                         ? 'text-[#006EB9] border-b-2 border-b-[#006EB9]'
                         : ' text-gray-500'
-                    } `}
+                      } `}
                   >
                     {t?.title}
                   </button>

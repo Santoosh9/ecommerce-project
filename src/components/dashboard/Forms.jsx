@@ -1,51 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
-import { RiImageAddFill } from 'react-icons/ri';
-import { AiOutlineCloseCircle } from 'react-icons/ai';
-import { MdOutlineDelete, MdViewModule } from 'react-icons/md';
 import { BsBookmark } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import { addQuestionData, fetchQuetions } from '../../hooks/fetchHooks';
+import { fetchQuetions } from '../../hooks/fetchHooks';
 import CircularProgress from '@mui/material/CircularProgress';
-import { toast } from 'react-hot-toast';
-import { useSelector } from 'react-redux';
 import OpenPost from './OpenPost';
+import AddQuestion from './AddQuestion';
 
-const Forms = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+const Forums = () => {
   const [viewMode, setViewMode] = useState('All');
-  const [forumId, setForumId]=useState(null)
   const [openWindow, setOpenWindow] = useState(null);
-  const [postData, setPostData] = useState({
-    questiontext: '',
-    subjectid: '',
-    courseid: '',
-    image: ''
-  });
-
-
-  const activeUser = useSelector((state) => state.auth.user);
-
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (event.target.className === 'modal') {
-        setIsOpen(false);
-      }
-    };
-  }, []);
-
-  const handleClose = () => {
-    setIsOpen(false);
-  };
+  const [openQuestion, setOpenQuestion] = useState(null);
 
   const handleOpen = () => {
-    setIsOpen(true);
-  };
-
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setPostData({ ...postData, [name]: value });
+    setOpenQuestion(true);
   };
 
   const handleViewChange = (param) => {
@@ -53,35 +21,18 @@ const Forms = () => {
     console.log(viewMode);
   }
 
-  const handleCreatePost = async (e) => {
-    e.preventDefault();
-    setIsLoading(true);
-    try {
-      questionsMutation(postData);
-      toast.success("Successfully added your post")
-      setPostData({
-        questiontext: "",
-        subjectid: "",
-        courseid: "",
-        image: ""
-      });
-
-    } catch (error) {
-      toast.error(error.message);
-    }
-    setIsLoading(false);
-  }
-
-  const { isLoading: postsLoading, data: forumPosts, error, isError } = useQuery("posts",fetchQuetions)
-  const { mutate:questionsMutation } = addQuestionData();
+  const { isLoading: postsLoading, data: forumPosts, error, isError } = useQuery("posts", fetchQuetions)
 
   const handleOpenPost = (item) => {
     console.log("here", item);
     setOpenWindow(item);
   }
 
-  const handleClosePost = ()=> {
+  const handleClosePost = () => {
     setOpenWindow(null);
+  }
+  const handleCloseQuestion = () => {
+    setOpenQuestion(null);
   }
 
   return (
@@ -196,7 +147,6 @@ const Forms = () => {
 
         <div className="flex flex-col ml-6 laptop:ml-32 mt-10 w-[90%] laptop:w-[50%]">
           <div className=" w-full h-fit border px-2">
-            {!isOpen && (
               <div className=" flex flex-row items-center mt-3 py-2">
                 <img
                   className="flex items-center rounded-full w-10 h-10 ml-3"
@@ -209,73 +159,6 @@ const Forms = () => {
                   onClick={handleOpen}
                 />
               </div>
-            )}
-
-            {isOpen && (
-              <div className="flex flex-col w-[90%] h-fit mt-6 ml-6 ">
-                <div className="flex flex-row justify-between h-[40px]">
-                  <div className=" flex flex-row gap-4">
-                    <img
-                      className="rounded-full w-[100%] h-[100%] mb-6 ml-3"
-                      src="./images/me.jpg"
-                    />
-
-                    <p className=" text-[rgba(17,17,17,1)] font-[500]  font-Poppins text-base mt-2">
-                      Santosh
-                    </p>
-                  </div>
-
-                  <button onClick={handleClose}>
-                    <AiOutlineCloseCircle className="mt-3 text-lg" />
-                  </button>
-                </div>
-                <form onSubmit={(e) => handleCreatePost(e)}>
-                  <div className="h-[220px] mt-2 ml-0.5 tablet:ml-6">
-                    <input
-                      className=" flex flex-wrap h-[220px] w-[90%] tablet:w-full border px-6"
-                      placeholder="Share what going on your mind"
-                      name='questiontext'
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className="ml-0.5 tablet:ml-6 ">
-                    <input
-                      className="h-[44px] w-full mt-4 border px-3"
-                      placeholder="Course"
-                      name='courseid'
-                      onChange={handleChange}
-                    />
-                  </div>
-                  <div className="ml-0.5 tablet:ml-6 ">
-                    <input
-                      className="h-[44px] w-full mt-4 border px-3"
-                      placeholder="Subject"
-                      name='subjectid'
-                      onChange={handleChange}
-                    ></input>
-                  </div>
-                  <div className="bg-[rgba(225,236,243,1)] mt-4 h-[48px] w-[154px] flex justify-center items-center gap-2 ml-0.5 tablet:ml-6 ">
-                    <div className=" flex items-center">
-                      <RiImageAddFill className="text-[#006EB9] text-lg" />
-                    </div>
-                    <p className="font-normal text-sm leading-5 text-[#006EB9]">
-                      Add Image
-                    </p>
-                  </div>
-
-                  <button
-                    className={isLoading ?
-                      "mt-10  border-[rgba(177,181,195,1)] flex items-center justify-center h-[40px] w-[146px] tablet:ml-[80%] mb-2 cursor-pointer" :
-                      "mt-10  bg-[rgba(0,110,185,1)] flex items-center justify-center h-[40px] w-[146px] tablet:ml-[80%] mb-2 cursor-pointer"}
-                    type="submit"
-                    disabled={isLoading}>
-                    <p className=" font-[500] text-sm font-Poppins text-center text-white ">
-                      {isLoading ? <CircularProgress size="1rem" /> : <span>Create Post</span>}
-                    </p>
-                  </button>
-                </form>
-              </div>
-            )}
           </div>
           <div className=" flex flex-col flex-wrap w-full mt-10">
             {postsLoading &&
@@ -325,7 +208,7 @@ const Forms = () => {
                       </div>
                     </div>
                     <div className=" flex items-center justify-center ml-0 tablet:ml-4 w-[8%] h-9 bg-[#006EB91A]">
-                      <BsBookmark className='text-[#006EB9]'/>
+                      <BsBookmark className='text-[#006EB9]' />
                     </div>
                     {/* <div className=" flex items-center justify-center ml-0 tablet:ml-4 w-[8%] h-9 bg-[#006EB91A]" onClick={() => handleDelete(item.forumid)} disabled={isLoading}>
                     <MdOutlineDelete className={isLoading? 'text-[rgba(177,181,195,1)] text-xl' :'text-[#006EB9] text-xl'}/>
@@ -413,11 +296,13 @@ const Forms = () => {
             </div>
           </div>
         </div>
-        {openWindow && 
-          <OpenPost post={openWindow} handleClosePost= {handleClosePost}/>}
+        {openWindow &&
+          <OpenPost post={openWindow} handleClosePost={handleClosePost} />}
+        {openQuestion &&
+          <AddQuestion handleCloseQuestion={handleCloseQuestion} />}
       </div>
     </>
   );
 };
 
-export default Forms;
+export default Forums;
