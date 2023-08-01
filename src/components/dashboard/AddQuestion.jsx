@@ -1,9 +1,10 @@
-import React, { useState,useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { RiImageAddFill } from 'react-icons/ri';
 import { useSelector } from "react-redux";
 import { AiOutlineClose } from "react-icons/ai";
-import { addQuestionData } from '../../hooks/fetchHooks';
+import { addQuestionData, editQuestionData } from '../../hooks/fetchHooks';
 import { toast } from 'react-hot-toast';
+import { BsPostcardHeart } from "react-icons/bs";
 
 const AddQuestion = (props) => {
 
@@ -12,8 +13,23 @@ const AddQuestion = (props) => {
         questiontext: '',
         subjectid: '',
         courseid: '',
-        image: ''
+        image: '',
+        forumid: ''
     });
+
+    useEffect(() => {
+        if (props.editPost) {
+            const updatedPostData = {
+                ...postData,
+                questiontext: props.editPost.questiontext,
+                subjectid: props.editPost.subjectid,
+                courseid: props.editPost.courseid,
+                image: props.editPost.image,
+                forumid: props.editPost.forumid
+            };
+            setPostData(updatedPostData);
+        }
+    }, [])
 
     const inputFile = useRef("");
 
@@ -29,6 +45,7 @@ const AddQuestion = (props) => {
     };
 
     const { mutate: questionsMutation } = addQuestionData();
+    const { mutate: editMutation } = editQuestionData();
 
     const handleCreatePost = async (e) => {
         e.preventDefault();
@@ -36,6 +53,25 @@ const AddQuestion = (props) => {
         try {
             questionsMutation(postData);
             toast.success("Successfully added your post")
+            setPostData({
+                questiontext: "",
+                subjectid: "",
+                courseid: "",
+                image: ""
+            });
+            goBack();
+        } catch (error) {
+            toast.error(error.message);
+        }
+        setIsLoading(false);
+    }
+
+    const handleEditPost = async (e) => {
+        e.preventDefault();
+        setIsLoading(true);
+        try {
+            editMutation(postData);
+            toast.success("Successfully edited your post")
             setPostData({
                 questiontext: "",
                 subjectid: "",
@@ -64,12 +100,16 @@ const AddQuestion = (props) => {
                             </div>
                         </div>
                     </div>
-                    <form onSubmit={(e) => handleCreatePost(e)}>
+                    <form
+                        onSubmit={props.editPost ?
+                            (e) => handleEditPost(e, props.editPost.forumid) :
+                            (e) => handleCreatePost(e)}>
                         <div className="h-[220px] mt-2 tablet:">
                             <input
                                 className=" flex flex-wrap h-[220px] w-[90%] tablet:w-full border px-6"
                                 placeholder="Share what going on your mind"
                                 name='questiontext'
+                                value={postData.questiontext}
                                 onChange={handleChange}
                             />
                         </div>
@@ -78,6 +118,7 @@ const AddQuestion = (props) => {
                                 className="h-[44px] w-full mt-4 border px-3"
                                 placeholder="Course"
                                 name='courseid'
+                                value={postData.courseid}
                                 onChange={handleChange}
                             />
                         </div>
@@ -86,6 +127,7 @@ const AddQuestion = (props) => {
                                 className="h-[44px] w-full mt-4 border px-3"
                                 placeholder="Subject"
                                 name='subjectid'
+                                value={postData.subjectid}
                                 onChange={handleChange}
                             ></input>
                         </div>
@@ -96,26 +138,39 @@ const AddQuestion = (props) => {
                             <p className="font-normal text-sm leading-5 text-[#006EB9]">
                                 Add Image
                             </p>
-                            
+
                         </div>
                         <input
-                                className="hidden"
-                                name="image"
-                                type="file"
-                                onChange={handleChange}
-                                ref={inputFile}
+                            className="hidden"
+                            name="image"
+                            type="file"
+                            value={postData.image}
+                            onChange={handleChange}
+                            ref={inputFile}
                         />
-                        { inputFile ? <p>{inputFile.current.value}</p> : <p>No file chosen</p>}
-                        <button
-                            className={isLoading ?
-                                "mt-10  border-[rgba(177,181,195,1)] flex items-center justify-center h-[40px] w-[146px] ml-auto mr-0 mb-2 cursor-pointer" :
-                                "mt-10  bg-[rgba(0,110,185,1)] flex items-center justify-center h-[40px] w-[146px] ml-auto mr-0 mb-2 cursor-pointer"}
-                            type="submit"
-                            disabled={isLoading}>
-                            <p className=" font-[500] text-sm font-Poppins text-center text-white ">
-                                {isLoading ? <CircularProgress size="1rem" /> : <span>Create Post</span>}
-                            </p>
-                        </button>
+                        {inputFile ? <p>{inputFile.current.value}</p> : <p>No file chosen</p>}
+                        {props.editPost ?
+                            <button
+                                className={isLoading ?
+                                    "mt-10  border-[rgba(177,181,195,1)] flex items-center justify-center h-[40px] w-[146px] ml-auto mr-0 mb-2 cursor-pointer" :
+                                    "mt-10  bg-[rgba(0,110,185,1)] flex items-center justify-center h-[40px] w-[146px] ml-auto mr-0 mb-2 cursor-pointer"}
+                                type="submit"
+                                disabled={isLoading}>
+                                <p className=" font-[500] text-sm font-Poppins text-center text-white ">
+                                    {isLoading ? <CircularProgress size="1rem" /> : <span>Edit Post</span>}
+                                </p>
+                            </button> :
+                            <button
+                                className={isLoading ?
+                                    "mt-10  border-[rgba(177,181,195,1)] flex items-center justify-center h-[40px] w-[146px] ml-auto mr-0 mb-2 cursor-pointer" :
+                                    "mt-10  bg-[rgba(0,110,185,1)] flex items-center justify-center h-[40px] w-[146px] ml-auto mr-0 mb-2 cursor-pointer"}
+                                type="submit"
+                                disabled={isLoading}>
+                                <p className=" font-[500] text-sm font-Poppins text-center text-white ">
+                                    {isLoading ? <CircularProgress size="1rem" /> : <span>Create Post</span>}
+                                </p>
+                            </button>
+                        }
                     </form>
                 </div>
             </div>

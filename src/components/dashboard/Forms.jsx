@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { BsBookmark, BsFillBookmarkFill } from 'react-icons/bs';
-import { Link, useAsyncError } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { bookmarkQuestionData, deleteQuestionData, fetchQuetions } from '../../hooks/fetchHooks';
 import { MdOutlineDelete } from 'react-icons/md';
 import { FiEdit2 } from 'react-icons/fi'
@@ -14,7 +14,7 @@ const Forums = () => {
   const [viewMode, setViewMode] = useState('All');
   const [openWindow, setOpenWindow] = useState(null);
   const [openQuestion, setOpenQuestion] = useState(null);
-  const [bmLoading, setBmLoading] = useState(false);
+  const [editPost, setEditPost] = useState("");
 
   const handleOpen = () => {
     setOpenQuestion(true);
@@ -40,6 +40,7 @@ const Forums = () => {
   }
   const handleCloseQuestion = () => {
     setOpenQuestion(null);
+    setEditPost(null)
   }
 
   const handleDeletePost = async (forumid) => {
@@ -57,6 +58,10 @@ const Forums = () => {
     } catch (error) {
       toast.error(error.message)
     }
+  }
+
+  const handleEditPost = (item) => {
+    setEditPost(item);
   }
 
   return (
@@ -250,9 +255,9 @@ const Forums = () => {
                       <div className=" flex items-center justify-center w-full h-9 bg-[#006EB91A] cursor-pointer" onClick={() => handleDeletePost(item.forumid)}>
                         <MdOutlineDelete className='text-[#006EB9] text-xl' />
                       </div>
-                      {/* <div className=" flex items-center justify-center w-full h-9 bg-[#006EB91A]">
-                      <FiEdit2 className='text-[#006EB9] text-xl'/>
-                    </div> */}
+                      <div className=" flex items-center justify-center w-full h-9 bg-[#006EB91A] cursor-pointer" onClick={() => handleEditPost(item)}>
+                        <FiEdit2 className='text-[#006EB9] text-xl' />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -341,6 +346,8 @@ const Forums = () => {
           <OpenPost post={openWindow} handleClosePost={handleClosePost} />}
         {openQuestion &&
           <AddQuestion handleCloseQuestion={handleCloseQuestion} />}
+        {editPost &&
+          <AddQuestion handleCloseQuestion={handleCloseQuestion} editPost={editPost} />}
       </div>
     </>
   );
