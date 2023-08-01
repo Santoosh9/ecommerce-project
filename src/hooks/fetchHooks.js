@@ -1,3 +1,4 @@
+import { useMatch } from "react-router-dom";
 import axiosInstance from "../utils/axios";
 import { useMutation, useQueryClient } from "react-query";
 
@@ -26,7 +27,6 @@ export const fetchAnswers = async (forumid) => {
     return await response?.data.response;
 }
 
-
 //MUTATION CUSTOM HOOKS
 export const addAnswersData = () => {
     const queryClient = useQueryClient();
@@ -48,6 +48,16 @@ export const addQuestionData = () => {
     })
 }
 
+export const deleteQuestionData = () => {
+    const queryClient = useQueryClient();
+
+    return useMutation(deleteQuestion, {
+        onSuccess: () => {
+            queryClient.invalidateQueries("posts")
+        }
+    })
+}
+
 //MUTATION FUNCTIONS
 const addQuestion = (postData) => {
     return axiosInstance.put("/questions", postData)
@@ -56,4 +66,8 @@ const addQuestion = (postData) => {
 const addAnswers = (answerData) => {
     console.log(answerData);
     return axiosInstance.put("/answers", answerData)
+}
+
+const deleteQuestion = (forumid) => {
+    return axiosInstance.delete(`questions?forumid=${forumid}`)
 }
