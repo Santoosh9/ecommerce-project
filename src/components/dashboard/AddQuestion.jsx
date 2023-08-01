@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useRef, useEffect } from "react";
 import { RiImageAddFill } from 'react-icons/ri';
 import { useSelector } from "react-redux";
 import { AiOutlineClose } from "react-icons/ai";
@@ -14,6 +14,8 @@ const AddQuestion = (props) => {
         courseid: '',
         image: ''
     });
+
+    const inputFile = useRef("");
 
     const activeUser = useSelector((state) => state.auth.user);
 
@@ -87,15 +89,23 @@ const AddQuestion = (props) => {
                                 onChange={handleChange}
                             ></input>
                         </div>
-                        <div className="bg-[rgba(225,236,243,1)] mt-4 h-[48px] w-[154px] flex justify-center items-center gap-2  ">
+                        <div className="bg-[rgba(225,236,243,1)] mt-4 h-[48px] w-[154px] flex justify-center items-center gap-2 cursor-pointer" onClick={() => inputFile.current.click()}>
                             <div className=" flex items-center">
                                 <RiImageAddFill className="text-[#006EB9] text-lg" />
                             </div>
                             <p className="font-normal text-sm leading-5 text-[#006EB9]">
                                 Add Image
                             </p>
+                            
                         </div>
-
+                        <input
+                                className="hidden"
+                                name="image"
+                                type="file"
+                                onChange={handleChange}
+                                ref={inputFile}
+                        />
+                        { inputFile ? <p>{inputFile.current.value}</p> : <p>No file chosen</p>}
                         <button
                             className={isLoading ?
                                 "mt-10  border-[rgba(177,181,195,1)] flex items-center justify-center h-[40px] w-[146px] ml-auto mr-0 mb-2 cursor-pointer" :

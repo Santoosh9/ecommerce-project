@@ -3,6 +3,8 @@ import { useQuery } from 'react-query';
 import { BsBookmark } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 import { fetchQuetions } from '../../hooks/fetchHooks';
+import { MdOutlineDelete } from 'react-icons/md';
+import { FiEdit2 } from 'react-icons/fi'
 import CircularProgress from '@mui/material/CircularProgress';
 import OpenPost from './OpenPost';
 import AddQuestion from './AddQuestion';
@@ -146,73 +148,78 @@ const Forums = () => {
         </div>
 
         <div className="flex flex-col ml-6 laptop:ml-32 mt-10 w-[90%] laptop:w-[50%]">
-          <div className=" w-full h-fit border px-2">
-              <div className=" flex flex-row items-center mt-3 py-2">
-                <img
-                  className="flex items-center rounded-full w-10 h-10 ml-3"
-                  src="./images/me.jpg"
-                />
+          <div className=" w-full h-fit border px-2 py-3">
+            <div className=" flex flex-row items-center px-3 py-2">
+              <img
+                className="flex items-center rounded-full w-10 h-10"
+                src="./images/blankuser.png"
+              />
 
-                <input
-                  className="flex items-center h-11 w-full border-gray-300 border ml-3 px-3"
-                  placeholder="Share what going on your mind"
-                  onClick={handleOpen}
-                />
-              </div>
+              <input
+                className="flex items-center h-11 w-full border-gray-300 border ml-3 px-3"
+                placeholder="Share what going on your mind"
+                onClick={handleOpen}
+              />
+            </div>
           </div>
-          <div className=" flex flex-col flex-wrap w-full mt-10">
+          <div className=" flex flex-col flex-wrap w-full mt-6 gap-4">
             {postsLoading &&
               <div className='flex items-center justify-center gap-2'>
                 <p className='text-center font-normal text-xl'>Loading....</p>
                 <CircularProgress size="1rem" />
               </div>}
             {forumPosts?.map((item, index) => (
-              <div key={item.forumid} className='flex flex-col border mt-3' onClick={() => handleOpenPost(item)}>
-                <div
-                  className="flex flex-col tablet:flex-row mt-3 pr-2 "
-                >
-                  <div className=" mb:4 tablet:mb-24 mt-4 ml-4 w-[120%] tablet:w-[25%]">
+              <div key={item.forumid} className='flex flex-col border' onClick={() => handleOpenPost(item)}>
+                <div className="flex flex-col tablet:flex-row py-4 px-3 items-start justify-between gap-2">
+                  <div className=" w-[120%] tablet:w-[25%] ">
                     <img src={item.image ? item.image : './images/Rectangle 24.png'} />
                   </div>
 
-                  <div className="tablet:ml-3 flex flex-row mt-4 w-full justify-around tablet:w-[70%]">
-                    <div className="flex flex-col ml-4 w-[70%] tablet:w-[90%]">
+                  <div className="tablet:ml-3 flex flex-row w-full justify-around tablet:w-[70%]">
+                    <div className="flex flex-col w-[70%] tablet:w-[90%] gap-3">
                       <div>
                         <div className="flex flex-row w-fit gap-2.5">
                           <button className="bg-[#F0F9FF] w-fit rounded-full text-[rgba(0,110,185,1)] px-2.5 py-1">
-                            {item.subject}
+                            {/* {item.subject} */}Loksewa
                           </button>
                           <button className="bg-[#F0F9FF] w-fit rounded-full text-[rgba(0,110,185,1)] px-2.5 py-1">
-                            {item.subject}
+                            {/* {item.subject} */}RBB
                           </button>
                         </div>
                       </div>
 
-                      <div className=" mr-3 w-[110%] tablet:w-[90%] h-fit flex font-Poppins font-[400] text-sm mt-4 text-full text-[#2C2724BF] text-justify	 ">
-                        {item.questiontext}
+                      <div className=" mr-3 w-[110%] tablet:w-[90%] h-fit flex font-Poppins font-[400] text-sm text-full text-[#2C2724BF] text-justify cursor-text ">
+                      {item.questiontext.length > 200
+                        ? <p>{item.questiontext.substring(0, 200)} <span className='text-[rgba(0,110,185,1)] cursor-pointer'>read more...</span> </p>
+                        : item.questiontext
+                      }
                       </div>
-
-                      <div className=" mt-10 flex flex-col tablet:flex-row justify-between">
-                        <ul className=" text-[rgba(0,110,185,1)] font-[400] text-sm font-Poppins">
+                      <div className=" flex flex-col tablet:flex-row justify-between items-center">
+                        <div className=" flex flex-col text-[rgba(0,110,185,1)] font-[400] text-sm font-Poppins pr-3 border-r border-r-[#E1ECF3]">
                           {item.askedby}
-                          <li className=" text-xs  mb-4 text-[rgba(44,39,36,0.75)]">{item.posteddate}</li>
-                        </ul>
-                        <div className="flex">
-                          <p className="tablet:ml-5 -mt-2 tablet:mt-3 text-[rgba(0,110,185,1)] font-Poppins font-[400] text-xs cursor-pointer">
+                          <div className=" text-xs  text-[rgba(44,39,36,0.75)]">{item.posteddate}</div>
+                        </div>
+                        <div className="flex justify-around gap-2 px-2 items-center">
+                          <p className=" text-[rgba(0,110,185,1)] font-Poppins font-[400] text-xs cursor-pointer">
                             {item.views ? `${item.views} views` : "0 views"}
                           </p>
-                          <p className="ml-4 tablet:ml-7 -mt-2 tablet:mt-3 text-[rgba(0,110,185,1)] font-Poppins font-[400] text-xs cursor-pointer" >
+                          <p className=" text-[rgba(0,110,185,1)] font-Poppins font-[400] text-xs cursor-pointer" >
                             {item.answers ? `${item.answers} comments` : "0 comments"}
                           </p>
                         </div>
                       </div>
                     </div>
-                    <div className=" flex items-center justify-center ml-0 tablet:ml-4 w-[8%] h-9 bg-[#006EB91A]">
+                    <div className='w-[8%] flex flex-col gap-2'>
+                    <div className=" flex items-center justify-center w-full h-9 bg-[#006EB91A]">
                       <BsBookmark className='text-[#006EB9]' />
                     </div>
-                    {/* <div className=" flex items-center justify-center ml-0 tablet:ml-4 w-[8%] h-9 bg-[#006EB91A]" onClick={() => handleDelete(item.forumid)} disabled={isLoading}>
-                    <MdOutlineDelete className={isLoading? 'text-[rgba(177,181,195,1)] text-xl' :'text-[#006EB9] text-xl'}/>
-                  </div> */}
+                    {/* <div className=" flex items-center justify-center w-full h-9 bg-[#006EB91A]">
+                      <MdOutlineDelete className='text-[#006EB9] text-xl'/>
+                    </div>
+                    <div className=" flex items-center justify-center w-full h-9 bg-[#006EB91A]">
+                      <FiEdit2 className='text-[#006EB9] text-xl'/>
+                    </div> */}
+                  </div>
                   </div>
                 </div>
               </div>

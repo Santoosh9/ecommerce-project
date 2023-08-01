@@ -25,6 +25,7 @@ const OpenPost = (props) => {
         try {
             answersMutation(answerData);
             toast.success("Answer Added")
+            setAnswerText('')
         } catch (error) {
             toast.error(error.message)
         }
@@ -35,16 +36,16 @@ const OpenPost = (props) => {
     }
 
     return (
-        <div className="flex px-3 fixed top-0 left-0 w-[100vw] h-[100vh] bg-[#0000007A] z-9999">
-            <div className="w-[60%] h-[90%] border bg-white m-auto mt-auto rounded-lg p-3 overflow-y-auto">
+        <div className="flex fixed top-0 left-0 w-[100vw] h-[100vh] bg-[#0000007A] z-9999">
+            <div className="w-full h-full tablet:w-[60%] tablet:h-[90%] border bg-white m-auto mt-auto rounded-lg p-3 overflow-y-auto">
                 <div className=" flex flex-col gap-4 w-full h-fit">
-                    <div className="flex w-full h-10 justify-between items-center">
-                        <div className="flex flex-col tablet:flex-row gap-5 w-fit items-center">
-                            <div className="flex w-full h-full gap-4">
+                    <div className="flex w-full h-fit justify-between items-center">
+                        <div className="flex flex-col tablet:flex-row gap-5  w-fit items-center">
+                            <div className="flex flex-col tablet:flex-row w-full h-full gap-2 tablet:gap-4">
                                 <div className="flex w-fit h-full gap-3 items-center">
                                     <img src='./images/blankuser.png' alt="user" width='40px' className='rounded-full' />
                                     <div className="w-fit h-full">
-                                        <p className="font-normal text-sm text-[#006EB9] leading-5">{props.post.askedby}</p>
+                                        <p className="font-normal text-sm text-[#006EB9] leading-5">Ram Prasad</p>
                                         <p className="font-normal text-[10px] leading-5 text-[#2C2724BF]">{props.post.posteddate}</p>
                                     </div>
                                 </div>
@@ -76,7 +77,7 @@ const OpenPost = (props) => {
                         <p className="font-normal text-sm leading-5 text-[#2C2724BF]">{props.post.questiontext}</p>
                     </div>
                 </div>
-                <div className=" flex w-full h-20 border-t border-t-[#E1ECF3] mt-8 items-end">
+                <div className=" flex w-full h-20 border-t border-t-[#E1ECF3] mt-8 mb-2 items-end">
                     <div className="flex w-full m-auto h-11">
                         <div className='flex w-full h-full justify-between'>
                             <div className='flex items-center'>
@@ -87,11 +88,11 @@ const OpenPost = (props) => {
                                 onSubmit={(e) => handleAddAnswer(e, props.post.forumid)}
                             >
                                 <input
-                                    className='w-2/3 h-11 px-4 py-1 text-left border-2 rounded-full'
+                                    className='w-full tablet:w-2/3 h-11 px-4 py-1 text-left border-2 rounded-full'
                                     placeholder='Add your answer'
                                     onChange={(e) => setAnswerText(e.target.value)} />
                                 <button
-                                    className='w-1/3 h-11 px-2 py-2 bg-[rgba(0,110,185,1)] text-white flex items-center justify-center rounded-full'
+                                    className='w-2/3 tablet:w-1/3 h-11 px-2 py-2 bg-[rgba(0,110,185,1)] text-white flex items-center justify-center rounded-full'
                                     type='submit'
                                 >
                                     Add Answer
@@ -110,15 +111,15 @@ const OpenPost = (props) => {
                     </div>}
                 {forumAnswer?.answers?.map((onecomment, index) => (
                     (props.post.forumid === onecomment.forumid) &&
-                    <div className='flex flex-col gap-1 py-2 px-2'>
+                    <div key={index} className='flex flex-col gap-1 py-2 px-2'>
                         <div className='flex gap-3 justify-start items-start'>
                             <div className=''>
                                 <img src='./images/blankuser.png' width='40px' alt='user' />
                             </div>
                             <div className='w-[90%] flex flex-col gap-2'>
-                                <div className='flex w-full gap-1.5 items-center'>
+                                <div className='flex flex-col tablet:flex-row w-full gap-1.5 items-start tablet:items-center'>
                                     <p className="text-left font-medium text-[rgba(0,110,185,1)] text-base">{onecomment.name}</p>
-                                    <BsDot className='text-[rgba(44,39,36,0.75)]' />
+                                    <BsDot className='text-[rgba(44,39,36,0.75)] hidden tablet:block' />
                                     <p className='text-left font-normal text-xs text-[rgba(44,39,36,0.75)] '>{onecomment.posteddate}</p>
                                 </div>
                                 <p className='text-left font-normal text-sm text-[#2C2724BF]'>{onecomment.answertext}</p>
