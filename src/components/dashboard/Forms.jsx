@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
-import { BsBookmark } from 'react-icons/bs';
+import { BsBookmark, BsFillBookmarkFill } from 'react-icons/bs';
 import { Link, useAsyncError } from 'react-router-dom';
-import { deleteQuestionData, fetchQuetions } from '../../hooks/fetchHooks';
+import { bookmarkQuestionData, deleteQuestionData, fetchQuetions } from '../../hooks/fetchHooks';
 import { MdOutlineDelete } from 'react-icons/md';
 import { FiEdit2 } from 'react-icons/fi'
 import CircularProgress from '@mui/material/CircularProgress';
@@ -14,6 +14,7 @@ const Forums = () => {
   const [viewMode, setViewMode] = useState('All');
   const [openWindow, setOpenWindow] = useState(null);
   const [openQuestion, setOpenQuestion] = useState(null);
+  const [bmLoading, setBmLoading] = useState(false);
 
   const handleOpen = () => {
     setOpenQuestion(true);
@@ -26,7 +27,8 @@ const Forums = () => {
 
   const { isLoading: postsLoading, data: forumPosts, error, isError } = useQuery("posts", fetchQuetions)
 
-  const {mutate: deletePost} = deleteQuestionData();
+  const { mutate: deletePost } = deleteQuestionData();
+  const { mutate: bookmarkPost, isLoading: bookmarkLoading } = bookmarkQuestionData();
 
   const handleOpenPost = (item) => {
     console.log("here", item);
@@ -44,7 +46,15 @@ const Forums = () => {
     try {
       deletePost(forumid);
       toast.success("Post Deleted")
-    } catch(error) {
+    } catch (error) {
+      toast.error(error.message)
+    }
+  }
+
+  const handleBookMarkPost = async (forumid) => {
+    try {
+      bookmarkPost(forumid);
+    } catch (error) {
       toast.error(error.message)
     }
   }
@@ -227,13 +237,20 @@ const Forums = () => {
                       </div>
                     </div>
                     <div className='w-[8%] flex flex-col gap-2'>
-                      <div className=" flex items-center justify-center w-full h-9 bg-[#006EB91A]">
-                        <BsBookmark className='text-[#006EB9]' />
+                      <div className=" flex items-center justify-center w-full h-9 bg-[#006EB91A] cursor-pointer" onClick={() => handleBookMarkPost(item.forumid)}>
+                        {
+                          bookmarkLoading ? <CircularProgress size="1rem" /> :
+                            <>
+                              {(item.isbookmarked === '1') ?
+                                <BsFillBookmarkFill className='text-[#006EB9]' /> :
+                                <BsBookmark className='text-[#006EB9]' />}
+                            </>
+                        }
                       </div>
                       <div className=" flex items-center justify-center w-full h-9 bg-[#006EB91A] cursor-pointer" onClick={() => handleDeletePost(item.forumid)}>
-                      <MdOutlineDelete className='text-[#006EB9] text-xl'/>
-                    </div>
-                    {/* <div className=" flex items-center justify-center w-full h-9 bg-[#006EB91A]">
+                        <MdOutlineDelete className='text-[#006EB9] text-xl' />
+                      </div>
+                      {/* <div className=" flex items-center justify-center w-full h-9 bg-[#006EB91A]">
                       <FiEdit2 className='text-[#006EB9] text-xl'/>
                     </div> */}
                     </div>

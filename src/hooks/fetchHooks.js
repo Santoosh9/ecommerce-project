@@ -23,7 +23,7 @@ export const fetchQuetions = async () => {
 
 export const fetchAnswers = async (forumid) => {
     console.log(forumid);
-    const response = await axiosInstance.post("/answers", {forumid} );
+    const response = await axiosInstance.post("/answers", { forumid });
     return await response?.data.response;
 }
 
@@ -42,6 +42,16 @@ export const addQuestionData = () => {
     const queryClient = useQueryClient();
 
     return useMutation(addQuestion, {
+        onSuccess: () => {
+            queryClient.invalidateQueries("posts")
+        }
+    })
+}
+
+export const bookmarkQuestionData = () => {
+    const queryClient = useQueryClient();
+
+    return useMutation(bookmarkQuestion, {
         onSuccess: () => {
             queryClient.invalidateQueries("posts")
         }
@@ -70,4 +80,8 @@ const addAnswers = (answerData) => {
 
 const deleteQuestion = (forumid) => {
     return axiosInstance.delete(`questions?forumid=${forumid}`)
+}
+
+export const bookmarkQuestion = async (forumid) => {
+    return axiosInstance.post(`/bookmark?forumid=${forumid}`)
 }
