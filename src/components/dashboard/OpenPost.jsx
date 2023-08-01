@@ -102,8 +102,8 @@ const OpenPost = (props) => {
                     </div>
                 </div>
                 {!props.post.answers ?
-                    <p className='px-2 py-2 text-[rgba(0,110,185,1)] text-left text-base italic'>Be the first to answer to this post.</p> :
-                    <p className='px-2 py-2 text-lg font-medium'>All Comments</p>}
+                    <p className='px-2 py-2 text-[rgba(0,110,185,1)] text-left text-base italic mt-4 tablet:mt-0'>Be the first to answer to this post.</p> :
+                    <p className='px-2 py-2 text-lg font-medium mt-4 tablet:mt-0'>All Comments</p>}
                 {answersLoading &&
                     <div className='flex items-center justify-center gap-2'>
                         <p className='text-center font-normal text-xl'>Loading....</p>

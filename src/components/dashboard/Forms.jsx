@@ -194,12 +194,12 @@ const Forums = () => {
                         : item.questiontext
                       }
                       </div>
-                      <div className=" flex flex-col tablet:flex-row justify-between items-center">
-                        <div className=" flex flex-col text-[rgba(0,110,185,1)] font-[400] text-sm font-Poppins pr-3 border-r border-r-[#E1ECF3]">
+                      <div className=" flex flex-col tablet:flex-row justify-between items-start tablet:items-center gap-2">
+                        <div className=" flex flex-col text-[rgba(0,110,185,1)] font-[400] text-sm font-Poppins pr-3 border-r border-r-[#E1ECF3] gap-1">
                           {item.askedby}
                           <div className=" text-xs  text-[rgba(44,39,36,0.75)]">{item.posteddate}</div>
                         </div>
-                        <div className="flex justify-around gap-2 px-2 items-center">
+                        <div className="flex gap-2">
                           <p className=" text-[rgba(0,110,185,1)] font-Poppins font-[400] text-xs cursor-pointer">
                             {item.views ? `${item.views} views` : "0 views"}
                           </p>
