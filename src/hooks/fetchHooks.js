@@ -26,6 +26,18 @@ export const fetchQuetions = async () => {
     return await response?.data.response;
 }
 
+//Fetch Bookmarked Questions
+export const fetchBookmarked = async () => {
+    const response = await axiosInstance.post("/questions?type=bookmark")
+    return await response?.data.response;
+}
+
+//Fetch own Questions
+export const fetchMyQuestions = async () => {
+    const response = await axiosInstance.post("/questions?type=myques")
+    return await response?.data.response;
+}
+
 export const fetchAnswers = async (forumid) => {
     console.log(forumid);
     const response = await axiosInstance.post("/answers", { forumid });
@@ -38,7 +50,7 @@ export const addAnswersData = () => {
 
     return useMutation(addAnswers, {
         onSuccess: () => {
-            queryClient.invalidateQueries("answers", "posts");
+            queryClient.invalidateQueries(["answers", "posts"]);
         }
     })
 }
@@ -48,7 +60,7 @@ export const deleteAnswersData = () => {
 
     return useMutation(deleteAnswer, {
         onSuccess: () => {
-            queryClient.invalidateQueries("answers", "posts")
+            queryClient.invalidateQueries(["answers", "posts"])
         }
     })
 }
@@ -79,6 +91,9 @@ export const bookmarkQuestionData = () => {
     return useMutation(bookmarkQuestion, {
         onSuccess: () => {
             queryClient.invalidateQueries("posts")
+            queryClient.invalidateQueries("bookmarked")
+            queryClient.invalidateQueries("myposts")
+
         }
     })
 }

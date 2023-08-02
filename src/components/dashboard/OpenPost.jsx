@@ -90,7 +90,7 @@ const OpenPost = (props) => {
                 </div>
                 <div className=" flex w-full h-20 border-t border-t-[#E1ECF3] mt-8 mb-2 items-end">
                     <div className="flex w-full m-auto h-11">
-                        <div className='flex w-full h-full justify-between'>
+                        <div className='flex w-full h-full justify-evenly'>
                             <div className='flex items-center'>
                                 <img src='./images/blankuser.png' alt="user" width='40px' className='rounded-full' />
                             </div>
@@ -99,11 +99,11 @@ const OpenPost = (props) => {
                                 onSubmit={(e) => handleAddAnswer(e, props.post.forumid)}
                             >
                                 <input
-                                    className='w-full tablet:w-2/3 h-11 px-4 py-1 text-left border-2 rounded-full'
+                                    className='w-full tablet:w-2/3 h-11 px-4 py-1 text-left border-2 rounded'
                                     placeholder='Add your answer'
                                     onChange={(e) => setAnswerText(e.target.value)} />
                                 <button
-                                    className='w-2/3 tablet:w-1/3 h-11 px-2 py-2 bg-[rgba(0,110,185,1)] text-white flex items-center justify-center rounded-full'
+                                    className='w-2/3 tablet:w-1/3 h-11 px-2 py-2 bg-[rgba(0,110,185,1)] text-white flex items-center justify-center rounded'
                                     type='submit'
                                 >
                                     Add Answer

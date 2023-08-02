@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { BsBookmark, BsFillBookmarkFill } from 'react-icons/bs';
 import { Link } from 'react-router-dom';
-import { bookmarkQuestionData, deleteQuestionData, fetchQuetions } from '../../hooks/fetchHooks';
+import { bookmarkQuestionData, deleteQuestionData, fetchBookmarked, fetchMyQuestions, fetchQuetions } from '../../hooks/fetchHooks';
 import { MdOutlineDelete } from 'react-icons/md';
 import { FiEdit2 } from 'react-icons/fi'
 import { BsThreeDotsVertical } from 'react-icons/bs'
@@ -27,7 +27,47 @@ const Forums = () => {
     console.log(viewMode);
   }
 
-  const { isLoading: postsLoading, data: forumPosts, error, isError } = useQuery("posts", fetchQuetions)
+  const [displayPosts, setDisplayPosts] = useState({
+    isLoading: '',
+    data: [],
+    error: '',
+    isError: ''
+  })
+
+  const { isLoading: postsLoading, data: forumPosts, error: postError, isError: isPostError } = useQuery("posts", fetchQuetions)
+  const { isLoading: bookmarkedPostsLoading, data: bookmarkedPosts, error: bookmarkedError, isError: isBookmarkedPostError } = useQuery("bookmarked", fetchBookmarked)
+  const { isLoading: myPostsLoading, data: myPosts, error: myPostError, isError: ismyPostError } = useQuery("mypost", fetchMyQuestions)
+
+
+  useEffect(() => {
+    let updatedDisplayPosts = []
+    if (viewMode === "All") {
+      updatedDisplayPosts = {
+        ...displayPosts,
+        isLoading: postsLoading,
+        data: forumPosts,
+        error: postError,
+        isError: isPostError,
+      };
+    } else if (viewMode === "bookmarked") {
+      updatedDisplayPosts = {
+        ...displayPosts,
+        isLoading: bookmarkedPostsLoading,
+        data: bookmarkedPosts,
+        error: bookmarkedError,
+        isError: isBookmarkedPostError,
+      };
+    } else if (viewMode === "me") {
+      updatedDisplayPosts = {
+        ...displayPosts,
+        isLoading: myPostsLoading,
+        data: myPosts,
+        error: myPostError,
+        isError: ismyPostError,
+      };
+    }
+    setDisplayPosts(updatedDisplayPosts)
+  }, [viewMode, forumPosts, bookmarkedPosts, myPosts])
 
   const { mutate: deletePost } = deleteQuestionData();
   const { mutate: bookmarkPost, isLoading: bookmarkLoading } = bookmarkQuestionData();
@@ -84,7 +124,7 @@ const Forums = () => {
       <div className="flex flex-col laptop:flex-row mb-10 justify-evenly w-full">
         <div className="flex flex-col h-fit w-full laptop:w-[18%] px-2">
           <div className="h-fit w-full flex flex-col border  mt-10 px-2 py-2 gap-4">
-            <div className={viewMode === "All" ? "flex p-1 cursor-pointer bg-[rgba(244,246,248,1)] items-center" : "flex p-1 items-center"} onClick={() => handleViewChange("All")}>
+            <div className={viewMode === "All" ? "flex p-1 cursor-pointer bg-[rgba(244,246,248,1)] items-center" : "flex p-1 items-center cursor-pointer"} onClick={() => handleViewChange("All")}>
               <img src="./images/ic1.png" />
               <div className="ml-3 ">
                 <p className=" text-[rgba(63,67,84,1)] font[500]  font-Poppins  text-base  text-start">
@@ -103,13 +143,13 @@ const Forums = () => {
               </div>
             </div>
 
-            <div className={viewMode === "comments" ? "flex p-1 cursor-pointer bg-[rgba(244,246,248,1)] items-center" : "flex p-1 cursor-pointer items-center"} onClick={() => handleViewChange("comments")}>
+            <div className={viewMode === "bookmarked" ? "flex p-1 cursor-pointer bg-[rgba(244,246,248,1)] items-center" : "flex p-1 cursor-pointer items-center"} onClick={() => handleViewChange("bookmarked")}>
               <img src="./images/ic3.png" />
               <div className="ml-3">
                 <p className=" text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins  text-start">
-                  Commented by me
+                  Bookmarked
                 </p>
-                <p className="sm-text ">Show posts posted by me</p>
+                <p className="sm-text ">Show posts bookmarked by me</p>
               </div>
             </div>
           </div>
@@ -205,17 +245,19 @@ const Forums = () => {
             </div>
           </div>
           <div className=" flex flex-col flex-wrap w-full mt-6 gap-4">
-            {postsLoading &&
+            {displayPosts.isLoading &&
               <div className='flex items-center justify-center gap-2'>
                 <p className='text-center font-normal text-xl text-[#006EB9]'>Loading....</p>
                 <CircularProgress size="1rem" />
               </div>}
-            {isError &&
+            {displayPosts.isError &&
               <p className='font-medium text-lg text-red-400 text-center'>
-                {error.message}
+                {displayPosts.error.message}
               </p>
             }
-            {forumPosts?.map((item, index) => (
+            {!(displayPosts.data) &&
+              <p className='text-center text-lg text-[#006EB9] font-medium leading-6'>No posts to show</p>}
+            {displayPosts.data?.map((item, index) => (
               <div key={item.forumid} className='flex flex-col border'>
                 <div className="flex flex-col tablet:flex-row py-4 px-3 items-start justify-between gap-2">
                   <div className=" w-[120%] tablet:w-[25%]" onClick={() => handleOpenPost(item)}>
@@ -282,27 +324,6 @@ const Forums = () => {
                         </div>
                       </div>
                     </div>
-                    {/* <div className='flex  items-ce'>
-                      <div className=" flex items-center justify-center w-full h-9 bg-[#006EB91A] cursor-pointer" onClick={() => handleBookMarkPost(item.forumid)}>
-                        {
-                          bookmarkLoading ? <CircularProgress size="1rem" /> :
-                            <>
-                              {(item.isbookmarked === '1') ?
-                                <BsFillBookmarkFill className='text-[#006EB9]' /> :
-                                <BsBookmark className='text-[#006EB9]' />}
-                            </>
-                        }
-                      </div>
-                      <div>
-                      <BsThreeDotsVertical className='text-[#006EB9]'/>
-                      </div>
-                      {/* <div className=" flex items-center justify-center w-full h-9 bg-[#006EB91A] cursor-pointer" onClick={() => handleDeletePost(item.forumid)}>
-                        <MdOutlineDelete className='text-[#006EB9] text-xl' />
-                      </div>
-                      <div className=" flex items-center justify-center w-full h-9 bg-[#006EB91A] cursor-pointer" onClick={() => handleEditPost(item)}>
-                        <FiEdit2 className='text-[#006EB9] text-xl' />
-                      </div> */}
-                    {/* </div> */}
                   </div>
                 </div>
               </div>
