@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { RiImageAddFill } from 'react-icons/ri';
 import { useSelector } from "react-redux";
 import { AiOutlineClose } from "react-icons/ai";
-import { addQuestionData, editQuestionData, fetchSubjects } from '../../hooks/fetchHooks';
+import { addQuestionData, editQuestionData, fetchCourses, fetchSubjects } from '../../hooks/fetchHooks';
 import { toast } from 'react-hot-toast';
 import { useQuery } from "react-query";
 
@@ -31,7 +31,11 @@ const AddQuestion = (props) => {
         }
     }, [])
 
-    const { data: subjects } = useQuery("subjects", fetchSubjects);
+    const { data: courses } = useQuery("courses", fetchCourses);
+    const { data: subjects } = useQuery(
+        ["subjects", postData.courseid], 
+        () => fetchSubjects(postData.courseid)
+    );
 
     const inputFile = useRef("");
 
@@ -123,9 +127,9 @@ const AddQuestion = (props) => {
                                 onChange={handleChange}
                             >
                                 <option value={postData.courseid}>Course</option>
-                                {subjects?.map((subject) => (
-                                    <option value={subject.subjectid} label={subject.subjectname}>
-                                        {subject.subjectName}
+                                {courses?.map((course) => (
+                                    <option value={course.courseid} label={course.coursename}>
+                                        {course.courseName}
                                     </option>
                                 ))}
                             </select>

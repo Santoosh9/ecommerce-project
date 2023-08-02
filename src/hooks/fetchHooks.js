@@ -15,8 +15,13 @@ export const fetchNotifications = async () => {
     return await response?.data.response;
 }
 
-export const fetchSubjects = async () => {
-    const response = await axiosInstance.get("/subjects")
+export const fetchCourses = async () => {
+    const response = await axiosInstance.get("/courses")
+    return await response?.data.response;
+}
+
+export const fetchSubjects = async (courseid) => {
+    const response = await axiosInstance.get(`/subjects?courseid=${courseid}`)
     return await response?.data.response;
 }
 

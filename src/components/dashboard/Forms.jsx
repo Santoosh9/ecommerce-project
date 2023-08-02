@@ -255,7 +255,7 @@ const Forums = () => {
                 {displayPosts.error.message}
               </p>
             }
-            {!(displayPosts.data) &&
+            {(!(displayPosts.isLoading) && !(displayPosts.data)) &&
               <p className='text-center text-lg text-[#006EB9] font-medium leading-6'>No posts to show</p>}
             {displayPosts.data?.map((item, index) => (
               <div key={item.forumid} className='flex flex-col border'>
