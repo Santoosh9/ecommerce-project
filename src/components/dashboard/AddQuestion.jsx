@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 import { AiOutlineClose } from "react-icons/ai";
 import { addQuestionData, editQuestionData, fetchSubjects } from '../../hooks/fetchHooks';
 import { toast } from 'react-hot-toast';
-// import Select from 'react-select';
 import { useQuery } from "react-query";
 
 const AddQuestion = (props) => {
@@ -32,29 +31,7 @@ const AddQuestion = (props) => {
         }
     }, [])
 
-    const { isLoading: subjectsLoading, data: subjects, error, isError } = useQuery("subjects", fetchSubjects);
-
-    let subjectArray = [
-        { value: '1', label: 'Test subject2' },
-        { value: '2', label: 'Test subject2' },
-        { value: '3', label: 'ब्यबस्थापन, गणित तथा सेवा सम्बन्धि' },
-    ];
-
-    // if (subjects){
-    //     console.log(subjects)
-    //     subjectArray = subjects.map((subject) => ({
-    //         value: subject.subjectid,
-    //         label: subject.subjectName
-    //     }));
-    //     console.log(subjectArray)
-    // }
-
-
-    const options = [
-        { value: 'chocolate', label: 'Chocolate' },
-        { value: 'strawberry', label: 'Strawberry' },
-        { value: 'vanilla', label: 'Vanilla' },
-    ];
+    const { data: subjects } = useQuery("subjects", fetchSubjects);
 
     const inputFile = useRef("");
 
@@ -130,8 +107,8 @@ const AddQuestion = (props) => {
                             (e) => handleEditPost(e, props.editPost.forumid) :
                             (e) => handleCreatePost(e)}>
                         <div className="h-[220px] mt-2 tablet:">
-                            <input
-                                className=" flex flex-wrap h-[220px] w-[90%] tablet:w-full border px-6"
+                            <textarea
+                                className=" flex flex-wrap h-[220px] w-[90%] tablet:w-full border p-6"
                                 placeholder="Share what going on your mind"
                                 name='questiontext'
                                 value={postData.questiontext}
