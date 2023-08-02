@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { bookmarkQuestionData, deleteQuestionData, fetchQuetions } from '../../hooks/fetchHooks';
 import { MdOutlineDelete } from 'react-icons/md';
 import { FiEdit2 } from 'react-icons/fi'
+import { BsThreeDotsVertical } from 'react-icons/bs'
 import CircularProgress from '@mui/material/CircularProgress';
 import OpenPost from './OpenPost';
 import AddQuestion from './AddQuestion';
@@ -12,6 +13,7 @@ import { toast } from 'react-hot-toast';
 
 const Forums = () => {
   const [viewMode, setViewMode] = useState('All');
+  const [toggle, setToggle] = useState([]);
   const [openWindow, setOpenWindow] = useState(null);
   const [openQuestion, setOpenQuestion] = useState(null);
   const [editPost, setEditPost] = useState("");
@@ -50,6 +52,19 @@ const Forums = () => {
     } catch (error) {
       toast.error(error.message)
     }
+  }
+
+  const toggleView = (index) => {
+    const updatedToggle = [...toggle]
+    for (let i = 0; i <= toggle.length; i++) {
+      if (i === index) {
+        updatedToggle[i] = !updatedToggle[i];
+      }
+      else {
+        updatedToggle[i] = false;
+      }
+    }
+    setToggle(updatedToggle);
   }
 
   const handleBookMarkPost = async (forumid) => {
@@ -208,8 +223,8 @@ const Forums = () => {
                   </div>
 
                   <div className="tablet:ml-3 flex flex-row w-full justify-around tablet:w-[70%]">
-                    <div className="flex flex-col w-[70%] tablet:w-[90%] gap-3" onClick={() => handleOpenPost(item)}>
-                      <div>
+                    <div className="flex flex-col w-[70%] tablet:w-[90%] gap-3">
+                      <div className='flex justify-between items-center'>
                         <div className="flex flex-row w-fit gap-2.5">
                           <button className="bg-[#F0F9FF] w-fit rounded-full text-[rgba(0,110,185,1)] px-2.5 py-1">
                             {item.subject}
@@ -218,15 +233,41 @@ const Forums = () => {
                             {item.subject}
                           </button>
                         </div>
+                        <div className='flex justify-between items-center gap-1 relative'>
+                          <div className=" flex items-center justify-center w-8 h-9 bg-[#006EB91A] cursor-pointer" onClick={() => handleBookMarkPost(item.forumid)}>
+                            {
+                              bookmarkLoading ? <CircularProgress size="1rem" /> :
+                                <>
+                                  {(item.isbookmarked === '1') ?
+                                    <BsFillBookmarkFill className='text-[#006EB9]' /> :
+                                    <BsBookmark className='text-[#006EB9]' />}
+                                </>
+                            }
+                          </div>
+
+                          <BsThreeDotsVertical className='text-xl text-[#006EB9] cursor-pointer' onClick={() => toggleView(index)} />
+                          {toggle[index] &&
+                            <div className='border border-[#E1ECF3] h-[78px] w-36 absolute top-10 -left-20 bg-white z-999 cursor-pointer rounded'>
+                              <div className='flex items-center justify-start w-full h-1/2 p-2 gap-2 hover:bg-[#E1ECF3]' onClick={() => handleEditPost(item)}>
+                                <FiEdit2 className='text-[#006EB9]' />
+                                <p className='text-sm'>Edit Post</p>
+                              </div>
+                              <div className='flex items-center justify-start w-full h-1/2 p-2 gap-2 hover:bg-[#E1ECF3]' onClick={() => handleDeletePost(item.forumid)}>
+                                <MdOutlineDelete className='text-[#FE2D0F] text-xl' />
+                                <p className='text-sm'> Delete Post</p>
+                              </div>
+                            </div>
+                          }
+                        </div>
                       </div>
 
-                      <div className=" mr-3 w-[110%] tablet:w-[90%] h-fit flex font-Poppins font-[400] text-sm text-full text-[#2C2724BF] text-justify cursor-text ">
+                      <div className=" mr-3 w-[110%] tablet:w-full h-fit flex font-Poppins font-[400] text-sm text-full text-[#2C2724BF] text-justify cursor-text " onClick={() => handleOpenPost(item)}>
                         {item.questiontext.length > 200
                           ? <p>{item.questiontext.substring(0, 200)} <span className='text-[rgba(0,110,185,1)] cursor-pointer'>read more...</span> </p>
                           : item.questiontext
                         }
                       </div>
-                      <div className=" flex flex-col tablet:flex-row justify-between items-start tablet:items-center gap-2">
+                      <div className=" flex flex-col tablet:flex-row justify-between items-start tablet:items-center gap-2" onClick={() => handleOpenPost(item)}>
                         <div className=" flex flex-col text-[rgba(0,110,185,1)] font-[400] text-sm font-Poppins pr-3 border-r border-r-[#E1ECF3] gap-1">
                           {item.askedby}
                           <div className=" text-xs  text-[rgba(44,39,36,0.75)]">{item.posteddate}</div>
@@ -241,7 +282,7 @@ const Forums = () => {
                         </div>
                       </div>
                     </div>
-                    <div className='w-[8%] flex flex-col gap-2'>
+                    {/* <div className='flex  items-ce'>
                       <div className=" flex items-center justify-center w-full h-9 bg-[#006EB91A] cursor-pointer" onClick={() => handleBookMarkPost(item.forumid)}>
                         {
                           bookmarkLoading ? <CircularProgress size="1rem" /> :
@@ -252,13 +293,16 @@ const Forums = () => {
                             </>
                         }
                       </div>
-                      <div className=" flex items-center justify-center w-full h-9 bg-[#006EB91A] cursor-pointer" onClick={() => handleDeletePost(item.forumid)}>
+                      <div>
+                      <BsThreeDotsVertical className='text-[#006EB9]'/>
+                      </div>
+                      {/* <div className=" flex items-center justify-center w-full h-9 bg-[#006EB91A] cursor-pointer" onClick={() => handleDeletePost(item.forumid)}>
                         <MdOutlineDelete className='text-[#006EB9] text-xl' />
                       </div>
                       <div className=" flex items-center justify-center w-full h-9 bg-[#006EB91A] cursor-pointer" onClick={() => handleEditPost(item)}>
                         <FiEdit2 className='text-[#006EB9] text-xl' />
-                      </div>
-                    </div>
+                      </div> */}
+                    {/* </div> */}
                   </div>
                 </div>
               </div>
