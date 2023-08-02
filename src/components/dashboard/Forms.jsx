@@ -212,10 +212,10 @@ const Forums = () => {
                       <div>
                         <div className="flex flex-row w-fit gap-2.5">
                           <button className="bg-[#F0F9FF] w-fit rounded-full text-[rgba(0,110,185,1)] px-2.5 py-1">
-                            {/* {item.subject} */}Loksewa
+                            {item.subject}
                           </button>
                           <button className="bg-[#F0F9FF] w-fit rounded-full text-[rgba(0,110,185,1)] px-2.5 py-1">
-                            {/* {item.subject} */}RBB
+                            {item.subject}
                           </button>
                         </div>
                       </div>

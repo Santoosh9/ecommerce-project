@@ -43,6 +43,16 @@ export const addAnswersData = () => {
     })
 }
 
+export const deleteAnswersData = () => {
+    const queryClient = useQueryClient();
+
+    return useMutation(deleteAnswer, {
+        onSuccess: () => {
+            queryClient.invalidateQueries("answers", "posts")
+        }
+    })
+}
+
 export const addQuestionData = () => {
     const queryClient = useQueryClient();
 
@@ -93,6 +103,10 @@ const addAnswers = (answerData) => {
     return axiosInstance.put("/answers", answerData)
 }
 
+const deleteAnswer = (answerid) => {
+    return axiosInstance.delete(`/answers?answerid=${answerid}`)
+}
+
 const deleteQuestion = (forumid) => {
     return axiosInstance.delete(`questions?forumid=${forumid}`)
 }
@@ -105,4 +119,3 @@ const editQuestion = async (postData) => {
     console.log(postData)
     return axiosInstance.patch(`/questions?questiontext=${postData.questiontext}&forumid=${postData.forumid}`)
 }
-

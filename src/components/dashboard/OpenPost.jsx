@@ -3,10 +3,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { BsDot } from 'react-icons/bs';
 import { SlClose } from 'react-icons/sl';
 import { useQuery } from "react-query";
-import { fetchAnswers } from "../../hooks/fetchHooks";
-import { addAnswersData } from "../../hooks/fetchHooks";
+import { deleteAnswersData, fetchAnswers, addAnswersData } from "../../hooks/fetchHooks";
 import { toast } from 'react-hot-toast';
-
+import { MdOutlineDelete } from 'react-icons/md';
 
 const OpenPost = (props) => {
 
@@ -18,6 +17,7 @@ const OpenPost = (props) => {
     );
 
     const { mutate: answersMutation } = addAnswersData();
+    const { mutate: deleteAnswer } = deleteAnswersData();
 
     const handleAddAnswer = async (e, forumid) => {
         e.preventDefault();
@@ -26,6 +26,17 @@ const OpenPost = (props) => {
             answersMutation(answerData);
             toast.success("Answer Added")
             setAnswerText('')
+        } catch (error) {
+            toast.error(error.message)
+        }
+    }
+
+    const handleDeleteAnswer = async (e, answerid) => {
+        e.preventDefault();
+        console.log(answerid)
+        try {
+            deleteAnswer(answerid);
+            toast.success("Answer Deleted")
         } catch (error) {
             toast.error(error.message)
         }
@@ -121,6 +132,7 @@ const OpenPost = (props) => {
                                     <p className="text-left font-medium text-[rgba(0,110,185,1)] text-base">{onecomment.name}</p>
                                     <BsDot className='text-[rgba(44,39,36,0.75)] hidden tablet:block' />
                                     <p className='text-left font-normal text-xs text-[rgba(44,39,36,0.75)] '>{onecomment.posteddate}</p>
+                                    <MdOutlineDelete className="text-red-600 flex items-center cursor-pointer" onClick={(e) => handleDeleteAnswer(e, onecomment.answerid)} />
                                 </div>
                                 <p className='text-left font-normal text-sm text-[#2C2724BF]'>{onecomment.answertext}</p>
                             </div>
