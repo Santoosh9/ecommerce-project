@@ -2,9 +2,10 @@ import React, { useState, useRef, useEffect } from "react";
 import { RiImageAddFill } from 'react-icons/ri';
 import { useSelector } from "react-redux";
 import { AiOutlineClose } from "react-icons/ai";
-import { addQuestionData, editQuestionData } from '../../hooks/fetchHooks';
+import { addQuestionData, editQuestionData, fetchSubjects } from '../../hooks/fetchHooks';
 import { toast } from 'react-hot-toast';
-import { BsPostcardHeart } from "react-icons/bs";
+// import Select from 'react-select';
+import { useQuery } from "react-query";
 
 const AddQuestion = (props) => {
 
@@ -30,6 +31,30 @@ const AddQuestion = (props) => {
             setPostData(updatedPostData);
         }
     }, [])
+
+    const { isLoading: subjectsLoading, data: subjects, error, isError } = useQuery("subjects", fetchSubjects);
+
+    let subjectArray = [
+        { value: '1', label: 'Test subject2' },
+        { value: '2', label: 'Test subject2' },
+        { value: '3', label: 'ब्यबस्थापन, गणित तथा सेवा सम्बन्धि' },
+    ];
+
+    // if (subjects){
+    //     console.log(subjects)
+    //     subjectArray = subjects.map((subject) => ({
+    //         value: subject.subjectid,
+    //         label: subject.subjectName
+    //     }));
+    //     console.log(subjectArray)
+    // }
+
+
+    const options = [
+        { value: 'chocolate', label: 'Chocolate' },
+        { value: 'strawberry', label: 'Strawberry' },
+        { value: 'vanilla', label: 'Vanilla' },
+    ];
 
     const inputFile = useRef("");
 
@@ -114,22 +139,34 @@ const AddQuestion = (props) => {
                             />
                         </div>
                         <div className=" ">
-                            <input
-                                className="h-[44px] w-full mt-4 border px-3"
-                                placeholder="Course"
+                            <select
+                                className="w-full h-11 mt-4 px-2 border rounded-md  text-gray-500"
+                                id="courseSelect"
                                 name='courseid'
-                                value={postData.courseid}
                                 onChange={handleChange}
-                            />
+                            >
+                                <option value={postData.courseid}>Course</option>
+                                {subjects?.map((subject) => (
+                                    <option value={subject.subjectid} label={subject.subjectname}>
+                                        {subject.subjectName}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
                         <div className="">
-                            <input
-                                className="h-[44px] w-full mt-4 border px-3"
-                                placeholder="Subject"
-                                name='subjectid'
-                                value={postData.subjectid}
+                            <select
+                                className="w-full h-11 mt-4 px-2 border rounded-md  text-gray-500"
+                                id="subjectSelect"
+                                name="subjectid"
                                 onChange={handleChange}
-                            ></input>
+                            >
+                                <option value={postData.subjectid}>Subject</option>
+                                {subjects?.map((subject) => (
+                                    <option value={subject.subjectid} label={subject.subjectname}>
+                                        {subject.subjectName}
+                                    </option>
+                                ))}
+                            </select>
                         </div>
                         <div className="bg-[rgba(225,236,243,1)] mt-4 h-[48px] w-[154px] flex justify-center items-center gap-2 cursor-pointer" onClick={() => inputFile.current.click()}>
                             <div className=" flex items-center">

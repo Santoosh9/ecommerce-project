@@ -45,7 +45,7 @@ const OpenPost = (props) => {
                                 <div className="flex w-fit h-full gap-3 items-center">
                                     <img src='./images/blankuser.png' alt="user" width='40px' className='rounded-full' />
                                     <div className="w-fit h-full">
-                                        <p className="font-normal text-sm text-[#006EB9] leading-5">Ram Prasad</p>
+                                        <p className="font-normal text-sm text-[#006EB9] leading-5">{props.post.askedby}</p>
                                         <p className="font-normal text-[10px] leading-5 text-[#2C2724BF]">{props.post.posteddate}</p>
                                     </div>
                                 </div>

@@ -66,11 +66,11 @@ const Forums = () => {
 
   return (
     <>
-      <div className="flex flex-col laptop:flex-row mb-10 justify-around w-full">
+      <div className="flex flex-col laptop:flex-row mb-10 justify-evenly w-full">
         <div className="flex flex-col h-fit w-full laptop:w-[18%] px-2">
           <div className="h-fit w-full flex flex-col border  mt-10 px-2 py-2 gap-4">
-            <div className={viewMode === "All" ? "flex p-1 cursor-pointer bg-[rgba(244,246,248,1)]" : "flex p-1 cursor-pointer"} onClick={() => handleViewChange("All")}>
-              <img className="h-[50%] mt-3" src="./images/ic1.png" />
+            <div className={viewMode === "All" ? "flex p-1 cursor-pointer bg-[rgba(244,246,248,1)] items-center" : "flex p-1 items-center"} onClick={() => handleViewChange("All")}>
+              <img src="./images/ic1.png" />
               <div className="ml-3 ">
                 <p className=" text-[rgba(63,67,84,1)] font[500]  font-Poppins  text-base  text-start">
                   ALL
@@ -78,8 +78,8 @@ const Forums = () => {
                 <p className=" sm-text">Show all post</p>
               </div>
             </div>
-            <div className={viewMode === "me" ? "flex p-1 cursor-pointer bg-[rgba(244,246,248,1)]" : "flex p-1 cursor-pointer"} onClick={() => handleViewChange("me")}>
-              <img className="h-[50%] mt-3" src="./images/ic2.png" />
+            <div className={viewMode === "me" ? "flex p-1 cursor-pointer bg-[rgba(244,246,248,1)] items-center" : "flex p-1 cursor-pointer items-center"} onClick={() => handleViewChange("me")}>
+              <img className="h-[50%]" src="./images/ic2.png" />
               <div className="ml-3">
                 <p className=" text-[rgba(63,67,84,1)] font[500] font-Poppins text-base text-start ">
                   Posted by me
@@ -88,8 +88,8 @@ const Forums = () => {
               </div>
             </div>
 
-            <div className={viewMode === "comments" ? "flex p-1 cursor-pointer bg-[rgba(244,246,248,1)]" : "flex p-1 cursor-pointer"} onClick={() => handleViewChange("comments")}>
-              <img className="h-[50%] mt-3" src="./images/ic3.png" />
+            <div className={viewMode === "comments" ? "flex p-1 cursor-pointer bg-[rgba(244,246,248,1)] items-center" : "flex p-1 cursor-pointer items-center"} onClick={() => handleViewChange("comments")}>
+              <img src="./images/ic3.png" />
               <div className="ml-3">
                 <p className=" text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins  text-start">
                   Commented by me

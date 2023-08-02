@@ -15,6 +15,11 @@ export const fetchNotifications = async () => {
     return await response?.data.response;
 }
 
+export const fetchSubjects = async () => {
+    const response = await axiosInstance.get("/subjects")
+    return await response?.data.response;
+}
+
 //Forum
 export const fetchQuetions = async () => {
     const response = await axiosInstance.post("/questions");
@@ -33,7 +38,7 @@ export const addAnswersData = () => {
 
     return useMutation(addAnswers, {
         onSuccess: () => {
-            queryClient.invalidateQueries("answers");
+            queryClient.invalidateQueries("answers", "posts");
         }
     })
 }
