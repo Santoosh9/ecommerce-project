@@ -17,7 +17,7 @@ const OpenPost = (props) => {
 
     const toggleView = (id) => {
         setMenuId(prevId => {
-            if (menuId === id) return null;
+            if (prevId === id) return null;
             return id
         })
     }
@@ -94,9 +94,6 @@ const OpenPost = (props) => {
                             <div className="flex items-center justify-center w-fit h-full rounded-2xl px-2.5 py-1 gap-2.5 bg-[#F0F9FF]">
                                 <p className="font-normal text-center text-[#006EB9] leading-[13.5px] text-sm ">{props.post.subject}</p>
                             </div>
-                            {/* <div className="flex items-center justify-between w-fit h-full rounded-2xl px-2.5 py-1 gap-2.5 bg-[#F0F9FF]">
-                                <p className="font-normal text-center text-[#006EB9] leading-[13.5px] text-xs ">subjectName</p>
-                            </div> */}
                         </div>
                         <p className="font-normal text-sm leading-5 text-[#2C2724BF]">{props.post.questiontext}</p>
                     </div>
@@ -111,8 +108,8 @@ const OpenPost = (props) => {
                                 className='flex flex-col tablet:flex-row gap-2 mb-4 w-[90%]'
                                 onSubmit={(e) => handleAddAnswer(e, props.post.forumid)}
                             >
-                                <input
-                                    className='w-full tablet:w-2/3 h-11 px-4 py-1 text-left border-2 rounded'
+                                <textarea
+                                    className='flex items-center w-full tablet:w-2/3 h-11 px-2 py-1 text-left border-2 rounded'
                                     placeholder='Add your answer'
                                     onChange={(e) => setAnswerText(e.target.value)} />
                                 <button
@@ -152,11 +149,11 @@ const OpenPost = (props) => {
                                             <BsThreeDotsVertical className="text-[#006EB9] flex items-center cursor-pointer" onClick={() => toggleView(onecomment.answerid)} />
                                             {onecomment.answerid === menuId &&
                                                 <div className='border border-[#E1ECF3] h-[78px] w-44 absolute right-4 top-0 bg-white z-999 cursor-pointer rounded'>
-                                                    <div className='flex items-center justify-start w-full h-1/2 p-2 gap-2 hover:bg-[#E1ECF3]' onClick={() => handleEditPost(item)}>
+                                                    <div className='flex items-center justify-start w-full h-1/2 p-2 gap-2 hover:bg-[#E1ECF3]'>
                                                         <FiEdit2 className='text-[#006EB9]' />
                                                         <p className='text-sm'>Edit Comment</p>
                                                     </div>
-                                                    <div className='flex items-center justify-start w-full h-1/2 p-2 gap-2 hover:bg-[#E1ECF3]' onClick={() => handleDeletePost(item.forumid)}>
+                                                    <div className='flex items-center justify-start w-full h-1/2 p-2 gap-2 hover:bg-[#E1ECF3]' onClick={(e) => handleDeleteAnswer(e, onecomment.answerid)}>
                                                         <MdOutlineDelete className='text-[#FE2D0F] text-xl' />
                                                         <p className='text-sm'> Delete Comment</p>
                                                     </div>

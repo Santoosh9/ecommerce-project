@@ -55,7 +55,8 @@ export const addAnswersData = () => {
 
     return useMutation(addAnswers, {
         onSuccess: () => {
-            queryClient.invalidateQueries(["answers", "posts"]);
+            queryClient.invalidateQueries("answers")
+            queryClient.invalidateQueries("posts")
         }
     })
 }
@@ -65,7 +66,8 @@ export const deleteAnswersData = () => {
 
     return useMutation(deleteAnswer, {
         onSuccess: () => {
-            queryClient.invalidateQueries(["answers", "posts"])
+            queryClient.invalidateQueries("answers")
+            queryClient.invalidateQueries("posts")
         }
     })
 }
@@ -108,6 +110,7 @@ export const deleteQuestionData = () => {
 
     return useMutation(deleteQuestion, {
         onSuccess: () => {
+            queryClient.invalidateQueries("answers")
             queryClient.invalidateQueries("posts")
         }
     })
