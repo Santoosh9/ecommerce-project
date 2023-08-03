@@ -11,10 +11,11 @@ import CircularProgress from '@mui/material/CircularProgress';
 import OpenPost from './OpenPost';
 import AddQuestion from './AddQuestion';
 import { toast } from 'react-hot-toast';
+import { useSelector } from 'react-redux';
 
 const Forums = () => {
   const [viewMode, setViewMode] = useState('All');
-  const [toggle, setToggle] = useState([]);
+  const [menuId, setMenuId] = useState(null);
   const [openWindow, setOpenWindow] = useState(null);
   const [openQuestion, setOpenQuestion] = useState(null);
   const [editPost, setEditPost] = useState("");
@@ -38,7 +39,6 @@ const Forums = () => {
   const { isLoading: postsLoading, data: forumPosts, error: postError, isError: isPostError } = useQuery("posts", fetchQuetions)
   const { isLoading: bookmarkedPostsLoading, data: bookmarkedPosts, error: bookmarkedError, isError: isBookmarkedPostError } = useQuery("bookmarked", fetchBookmarked)
   const { isLoading: myPostsLoading, data: myPosts, error: myPostError, isError: ismyPostError } = useQuery("mypost", fetchMyQuestions)
-
 
   useEffect(() => {
     let updatedDisplayPosts = []
@@ -95,17 +95,14 @@ const Forums = () => {
     }
   }
 
-  const toggleView = (index) => {
-    const updatedToggle = [...toggle]
-    for (let i = 0; i <= toggle.length; i++) {
-      if (i === index) {
-        updatedToggle[i] = !updatedToggle[i];
-      }
-      else {
-        updatedToggle[i] = false;
-      }
-    }
-    setToggle(updatedToggle);
+  const user = useSelector((state) => state.auth.user);
+
+  const toggleView = (id) => {
+    setMenuId(prevId => {
+      if (prevId === id) return null;
+      return id
+    })
+    console.log(menuId)
   }
 
   const handleBookMarkPost = async (forumid) => {
@@ -145,7 +142,7 @@ const Forums = () => {
             </div>
             <div className={viewMode === "commented" ? "flex p-1 cursor-pointer bg-[rgba(244,246,248,1)] items-center" : "flex p-1 cursor-pointer items-center"} onClick={() => handleViewChange("commented")}>
               <div className='flex items-center justify-center w-7 h-7 rounded bg-[#F4F6F8]'>
-                <TbMessageStar className='text-[#EEA956]'/>
+                <TbMessageStar className='text-[#EEA956]' />
               </div>
               <div className="ml-3">
                 <p className=" text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins  text-start">
@@ -156,7 +153,7 @@ const Forums = () => {
             </div>
             <div className={viewMode === "bookmarked" ? "flex p-1 cursor-pointer bg-[rgba(244,246,248,1)] items-center" : "flex p-1 cursor-pointer items-center"} onClick={() => handleViewChange("bookmarked")}>
               <div className='flex items-center justify-center w-7 h-7 rounded bg-[#F4F6F8]'>
-                <BsFillBookmarkFill className='text-[#008CEC]'/>
+                <BsFillBookmarkFill className='text-[#008CEC]' />
               </div>
               <div className="ml-3">
                 <p className=" text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins  text-start">
@@ -281,12 +278,9 @@ const Forums = () => {
                     <div className="flex flex-col w-[70%] tablet:w-[90%] gap-3">
                       <div className='flex justify-between items-center'>
                         <div className="flex flex-row w-fit gap-2.5">
-                          <button className="bg-[#F0F9FF] w-fit rounded-full text-[rgba(0,110,185,1)] px-2.5 py-1">
-                            {item.subject}
-                          </button>
-                          <button className="bg-[#F0F9FF] w-fit rounded-full text-[rgba(0,110,185,1)] px-2.5 py-1">
-                            {item.subject}
-                          </button>
+                          <div className="bg-[#F0F9FF] w-fit rounded-full text-[rgba(0,110,185,1)] px-2.5 py-1">
+                            {/* {courseName} CourseName */} <p className='text-center text-sm font-normal'>{item.subject.substring(0, 40)}</p>
+                          </div>
                         </div>
                         <div className='flex justify-between items-center gap-1 relative'>
                           <div className=" flex items-center justify-center w-8 h-9 bg-[#006EB91A] cursor-pointer" onClick={() => handleBookMarkPost(item.forumid)}>
@@ -299,22 +293,22 @@ const Forums = () => {
                                 </>
                             }
                           </div>
-                          {viewMode === "me" &&
-                          <>
-                            <BsThreeDotsVertical className='text-xl text-[#006EB9] cursor-pointer' onClick={() => toggleView(index)} />
-                            {toggle[index] &&
-                              <div className='border border-[#E1ECF3] h-[78px] w-36 absolute top-10 -left-20 bg-white z-999 cursor-pointer rounded'>
-                                <div className='flex items-center justify-start w-full h-1/2 p-2 gap-2 hover:bg-[#E1ECF3]' onClick={() => handleEditPost(item)}>
-                                  <FiEdit2 className='text-[#006EB9]' />
-                                  <p className='text-sm'>Edit Post</p>
+                          {user === item.askedby &&
+                            <>
+                              <BsThreeDotsVertical className='text-xl text-[#006EB9] cursor-pointer' onClick={() => toggleView(item.forumid)} />
+                              {item.forumid === menuId &&
+                                <div className='border border-[#E1ECF3] h-[78px] w-36 absolute top-10 -left-20 bg-white z-999 cursor-pointer rounded'>
+                                  <div className='flex items-center justify-start w-full h-1/2 p-2 gap-2 hover:bg-[#E1ECF3]' onClick={() => handleEditPost(item)}>
+                                    <FiEdit2 className='text-[#006EB9]' />
+                                    <p className='text-sm'>Edit Post</p>
+                                  </div>
+                                  <div className='flex items-center justify-start w-full h-1/2 p-2 gap-2 hover:bg-[#E1ECF3]' onClick={() => handleDeletePost(item.forumid)}>
+                                    <MdOutlineDelete className='text-[#FE2D0F] text-xl' />
+                                    <p className='text-sm'> Delete Post</p>
+                                  </div>
                                 </div>
-                                <div className='flex items-center justify-start w-full h-1/2 p-2 gap-2 hover:bg-[#E1ECF3]' onClick={() => handleDeletePost(item.forumid)}>
-                                  <MdOutlineDelete className='text-[#FE2D0F] text-xl' />
-                                  <p className='text-sm'> Delete Post</p>
-                                </div>
-                              </div>
-                            }
-                          </>
+                              }
+                            </>
                           }
                         </div>
                       </div>

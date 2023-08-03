@@ -1,15 +1,28 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import CircularProgress from '@mui/material/CircularProgress';
 import { BsDot } from 'react-icons/bs';
+import { BsThreeDotsVertical } from 'react-icons/bs'
 import { SlClose } from 'react-icons/sl';
 import { useQuery } from "react-query";
 import { deleteAnswersData, fetchAnswers, addAnswersData } from "../../hooks/fetchHooks";
 import { toast } from 'react-hot-toast';
 import { MdOutlineDelete } from 'react-icons/md';
+import { FiEdit2 } from 'react-icons/fi'
 
 const OpenPost = (props) => {
 
     const [answertext, setAnswerText] = useState('')
+    const [menuId, setMenuId] = useState('')
+
+    const toggleView = (id) => {
+        setMenuId(prevId => {
+            if (menuId === id) return null;
+            return id
+        })
+    }
+
+    const user = useSelector((state) => state.auth.user);
 
     const { isLoading: answersLoading, data: forumAnswer } = useQuery(
         ["answers", props.post.forumid],
@@ -77,13 +90,13 @@ const OpenPost = (props) => {
                         <img src={props.post.image ? props.post.image : './images/Rectangle 24.png'} width='100%' />
                     </div>
                     <div className="flex flex-col w-full h-fit gap-2.5">
-                        <div className=" flex items-center  w-28 h-[22px] gap-2.5">
+                        <div className=" flex items-center w-fit h-[22px] gap-2.5">
                             <div className="flex items-center justify-center w-fit h-full rounded-2xl px-2.5 py-1 gap-2.5 bg-[#F0F9FF]">
-                                <p className="font-normal text-center text-[#006EB9] leading-[13.5px] text-xs ">{props.post.subject}</p>
+                                <p className="font-normal text-center text-[#006EB9] leading-[13.5px] text-sm ">{props.post.subject}</p>
                             </div>
-                            <div className="flex items-center justify-between w-fit h-full rounded-2xl px-2.5 py-1 gap-2.5 bg-[#F0F9FF]">
-                                <p className="font-normal text-center text-[#006EB9] leading-[13.5px] text-xs ">{props.post.subject}</p>
-                            </div>
+                            {/* <div className="flex items-center justify-between w-fit h-full rounded-2xl px-2.5 py-1 gap-2.5 bg-[#F0F9FF]">
+                                <p className="font-normal text-center text-[#006EB9] leading-[13.5px] text-xs ">subjectName</p>
+                            </div> */}
                         </div>
                         <p className="font-normal text-sm leading-5 text-[#2C2724BF]">{props.post.questiontext}</p>
                     </div>
@@ -128,11 +141,29 @@ const OpenPost = (props) => {
                                 <img src='./images/blankuser.png' width='40px' alt='user' />
                             </div>
                             <div className='w-[90%] flex flex-col gap-2'>
-                                <div className='flex flex-col tablet:flex-row w-full gap-1.5 items-start tablet:items-center'>
-                                    <p className="text-left font-medium text-[rgba(0,110,185,1)] text-base">{onecomment.name}</p>
-                                    <BsDot className='text-[rgba(44,39,36,0.75)] hidden tablet:block' />
-                                    <p className='text-left font-normal text-xs text-[rgba(44,39,36,0.75)] '>{onecomment.posteddate}</p>
-                                    <MdOutlineDelete className="text-red-600 flex items-center cursor-pointer" onClick={(e) => handleDeleteAnswer(e, onecomment.answerid)} />
+                                <div className='flex w-full gap-1.5 items-center justify-between '>
+                                    <div className="flex flex-col tablet:flex-row items-start tablet:items-center gap-1.5">
+                                        <p className="text-left font-medium text-[rgba(0,110,185,1)] text-base">{onecomment.name}</p>
+                                        <BsDot className='text-[rgba(44,39,36,0.75)] hidden tablet:block' />
+                                        <p className='text-left font-normal text-xs text-[rgba(44,39,36,0.75)] '>{onecomment.posteddate}</p>
+                                    </div>
+                                    {user === onecomment.name &&
+                                        <div className="relative">
+                                            <BsThreeDotsVertical className="text-[#006EB9] flex items-center cursor-pointer" onClick={() => toggleView(onecomment.answerid)} />
+                                            {onecomment.answerid === menuId &&
+                                                <div className='border border-[#E1ECF3] h-[78px] w-44 absolute right-4 top-0 bg-white z-999 cursor-pointer rounded'>
+                                                    <div className='flex items-center justify-start w-full h-1/2 p-2 gap-2 hover:bg-[#E1ECF3]' onClick={() => handleEditPost(item)}>
+                                                        <FiEdit2 className='text-[#006EB9]' />
+                                                        <p className='text-sm'>Edit Comment</p>
+                                                    </div>
+                                                    <div className='flex items-center justify-start w-full h-1/2 p-2 gap-2 hover:bg-[#E1ECF3]' onClick={() => handleDeletePost(item.forumid)}>
+                                                        <MdOutlineDelete className='text-[#FE2D0F] text-xl' />
+                                                        <p className='text-sm'> Delete Comment</p>
+                                                    </div>
+                                                </div>
+                                            }
+                                        </div>
+                                    }
                                 </div>
                                 <p className='text-left font-normal text-sm text-[#2C2724BF]'>{onecomment.answertext}</p>
                             </div>
