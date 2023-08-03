@@ -155,23 +155,19 @@ const Description = (props) => {
 
     // const {isLoading, data:chapters, isError, error} = useQuery("chapters", fetchChapters)
 
-    const [toggle, setToggle] = useState([]);
+    const [menuId, setMenuId] = useState(null);
 
     const tabChange = (data) => {
         props.handleTabChange(data);
     }
     
-    const toggleView = (index) => {
-        const updatedToggle = [...toggle]
-        for (let i=0; i<=toggle.length; i++) {
-          if (i===index) {
-            updatedToggle[i] = !updatedToggle[i];
-          }
-          else {
-            updatedToggle[i] = false;
-          }
-        }
-        setToggle(updatedToggle);
+    const toggleView = (id)=>{
+        console.log(id)
+        setMenuId(prevId => {
+          if(prevId === id) return null;
+          return id
+        })
+        console.log(menuId)
       }
 
     return (
@@ -289,9 +285,9 @@ const Description = (props) => {
                     <div className="w-full h-fit">
                         { chapters.map ((chapter, chapterIndex) => (
                             <div className="w-full min-h-[98px] border bg-[#FAFAFA] border-[#E1ECF3]">
-                            <div className="flex items-center w-full laptop:w-[90%] h-6 mt-8 ml-1 laptop:ml-10 gap-4 cursor-pointer " onClick={() => toggleView(chapterIndex)}>
+                            <div className="flex items-center w-full laptop:w-[90%] h-6 mt-8 ml-1 laptop:ml-10 gap-4 cursor-pointer " onClick={() => toggleView(chapter.id)}>
                                 <div className="w-5 h-5 flex items-center" >
-                                    { toggle[chapterIndex] ?
+                                    { chapter.id === menuId ?
                                     <FaAngleUp/> :
                                     <FaAngleDown/>}
                                 </div>
@@ -321,7 +317,7 @@ const Description = (props) => {
                                     </div>
                                 </div>
                             </div>
-                            {toggle[chapterIndex] && 
+                            {chapter.id === menuId && 
                                 <div className="w-full h-fit border-t border-t-[#E1ECF3] bg-white  mt-8">
                                     {chapter.subchapters.map((subchapter, index) => (
                                         <Link to="/learning/video">

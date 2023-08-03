@@ -12,7 +12,7 @@ import { useQuery } from "react-query";
 
 const Sidenav = ( props ) => {
 
-    const [toggle, setToggle] = useState([]);
+    const [menuId, setMenuId] = useState(null);
     console.log(props.subChapter);
     
     const hideSideNav = () => {
@@ -217,18 +217,14 @@ const Sidenav = ( props ) => {
     // }
 
     // const {isLoading, data:chapters, isError, error} = useQuery("chapters", fetchChapters);
-      
-    const toggleView = (index) => {
-        const updatedToggle = [...toggle]
-        for (let i=0; i<=toggle.length; i++) {
-          if (i===index) {
-            updatedToggle[i] = !updatedToggle[i];
-          }
-          else {
-            updatedToggle[i] = false;
-          }
-        }
-        setToggle(updatedToggle);
+
+    const toggleView = (id)=>{
+        console.log(id)
+        setMenuId(prevId => {
+          if(prevId === id) return null;
+          return id
+        })
+        console.log(menuId)
       }
 
     const handleSelect = ( chapterIndex, subChapterIndex ) => {
@@ -282,15 +278,15 @@ const Sidenav = ( props ) => {
                             </div>
                             <div className="w-5 h-5 cursor-pointer">
                                 <div>
-                                    { toggle[chapterIndex] ?
-                                    <FaAngleUp onClick= {() => toggleView(chapterIndex)}/> :
-                                    <FaAngleDown onClick= {() => toggleView(chapterIndex)}/>
+                                    { chapter.id === menuId ?
+                                    <FaAngleUp onClick= {() => toggleView(chapter.id)}/> :
+                                    <FaAngleDown onClick= {() => toggleView(chapter.id)}/>
                                     }                            
                                 </div>
                             </div>
                         </div>
                         
-                    { toggle[chapterIndex] &&
+                    { chapter.id === menuId &&
                     <div>
                         {chapter.subchapters.map((subchapter, subChapterIndex) => (
                             <div className= { props.subChapter === subChapterIndex && props.chapter === chapterIndex ? "w-full h-24 py-4 pr-2 pl-0.5 bg-[#E1ECF3]" : "w-full h-24 py-4 pr-2 pl-0.5 hover:bg-[#E1ECF3]"} onClick={() => handleSelect(chapterIndex, subChapterIndex)}>

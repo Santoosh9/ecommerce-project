@@ -211,6 +211,9 @@ export const AuthSlice = createSlice({
       state.token = payloadAttributes?.response.api_token;
       state.user = payloadAttributes?.response.name;
       state.activeProfile = payloadAttributes?.response.userid;
+        // state.token = "7LWmtfyeFGadn6npD01ZZ0zzDggGZEZu4Yl2c6wYaNSkTM6oBV3mLltOkzsu";
+        // state.user = "John Doe";
+        // state.activeProfile = 1;
     });
 
     //
@@ -225,7 +228,7 @@ export const AuthSlice = createSlice({
       if (!state.token && action.payload.success && action.payload.data) {
         state.token = action.payload.data.accessToken.api_token;
         state.user = action.payload.data.accessToken.name;
-        state.activeProfile = action.payload.data.accessToken.userid;
+        state.activeProfile = action.payload.data.accessToken.userid;        
       }
     });
 
