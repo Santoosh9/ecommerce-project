@@ -18,27 +18,36 @@ const UserNav = () => {
   const [clicked, setClicked] = useState(false);
   const [notification, setNotification] = useState(false)
   const [showMenu, setShowMenu] = useState(false);
+  const [menuId, setMenuId]=useState(null)
 
-  const handleOpen = (index) => {
-    console.log(index, 'clicked')
+  const toggleView = (id)=>{
+    console.log(id)
+    setMenuId(prevId => {
+      if(prevId === id) return null;
+      return id
+    })
+    console.log(menuId)
+  }
+
+
+  const handleOpen = (index, id) => {
+    console.log(index, id, 'clicked')
     if (index === 'subject') {
-      setOpen(!open);
+      toggleView(id);
       setNotification(false);
       setClicked(false);
     } else if (index === "notification") {
-      setOpen(false);
+      setMenuId(null);
       setNotification(!notification);
       setClicked(false);
       setShowMenu(false)
-      setToggle(new Array(toggle.length).fill(false))
     } else if (index === "user") {
-      setOpen(false);
+      setMenuId(null);
       setNotification(false);
       setClicked(!clicked);
       setShowMenu(false)
-      setToggle(new Array(toggle.length).fill(false))
     } else if (index === "menu") {
-      setOpen(false);
+      setMenuId(null);
       setOpen1(false);
       setOpen2(false);
       setNotification(false);
@@ -48,7 +57,7 @@ const UserNav = () => {
   }
 
   const menu = [
-    {
+    {id:1,
       title: 'लोकसेवा (संघ र प्रदेश‌‍‍‌)',
       submenu: [
         {
@@ -63,6 +72,7 @@ const UserNav = () => {
       ]
     },
     {
+      id:2,
       title: 'बैंकिङ तयारी',
       submenu: [
         {
@@ -77,6 +87,7 @@ const UserNav = () => {
       ]
     },
     {
+      id:3,
       title: 'संस्थान तयारी',
       submenu: [
         {
@@ -113,10 +124,7 @@ const UserNav = () => {
     };
   }, []);
 
-  const [toggle, setToggle] = useState([]);
-  
   const user = useSelector((state) => state.auth.user);
-  console.log(user);
   let newName = '';
 
   if(user) {
@@ -133,19 +141,6 @@ const UserNav = () => {
     }
   }
 
-  const toggleView = (index) => {
-    const updatedToggle = [...toggle]
-    for (let i=0; i<=toggle.length; i++) {
-      if (i===index) {
-        updatedToggle[i] = !updatedToggle[i];
-      }
-      else {
-        updatedToggle[i] = false;
-      }
-    }
-    setToggle(updatedToggle);
-  }
-
   return (
     <>
       <div className="flex flex-row h-auto  w-full  border-[1.5px]  justify-around font-Poppins  items-center  ">
@@ -160,20 +155,20 @@ const UserNav = () => {
         </div>
         <div className="hidden laptop:flex flex-row justify-around   gap-[20px]  font-Poppins font-[400]">
           {menu?.map((onemenu, menuIndex) => (
-          <div>
+          <div onClick={() => handleOpen("subject", onemenu.id)}>
             <button
               className="flex flex-row relative items-center gap-1"
-              onClick={() => handleOpen("subject")}
             >
-              <p onClick= {() => toggleView(menuIndex)}>{onemenu.title}</p>
+              <p >{onemenu.title}</p>
               <div>
-                { toggle[menuIndex] ?
-                  <BsChevronUp onClick= {() => toggleView(menuIndex)}/> :
-                  <BsChevronDown onClick= {() => toggleView(menuIndex)}/>
+                { onemenu.id === menuId ?
+                  <BsChevronUp /> :
+                  <BsChevronDown />
                 }
               </div>
               <Link to='/learning'>
-              {toggle[menuIndex] && 
+              {/* {toggle[menuIndex] &&  */}
+              {onemenu.id === menuId && 
                 <div className=" w-40 py-2 mt-2 rounded-lg shadow-xl absolute left-0 -bottom-32 bg-white">
                 {onemenu.submenu?.map((onesubmenu, subMenuIndex) => (
                   <div className="flex w-full items-center px-3 py-2 text-sm hover:bg-gray-100">

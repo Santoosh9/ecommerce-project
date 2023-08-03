@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery } from 'react-query';
 import { BsBookmark, BsFillBookmarkFill } from 'react-icons/bs';
+import { TbMessageStar } from "react-icons/tb";
 import { Link } from 'react-router-dom';
 import { bookmarkQuestionData, deleteQuestionData, fetchBookmarked, fetchMyQuestions, fetchQuetions } from '../../hooks/fetchHooks';
 import { MdOutlineDelete } from 'react-icons/md';
@@ -122,7 +123,7 @@ const Forums = () => {
   return (
     <>
       <div className="flex flex-col laptop:flex-row mb-10 justify-evenly w-full">
-        <div className="flex flex-col h-fit w-full laptop:w-[18%] px-2">
+        <div className="flex flex-col h-fit w-full laptop:w-[20%] px-2">
           <div className="h-fit w-full flex flex-col border  mt-10 px-2 py-2 gap-4">
             <div className={viewMode === "All" ? "flex p-1 cursor-pointer bg-[rgba(244,246,248,1)] items-center" : "flex p-1 items-center cursor-pointer"} onClick={() => handleViewChange("All")}>
               <img src="./images/ic1.png" />
@@ -142,14 +143,26 @@ const Forums = () => {
                 <p className=" sm-text">Show posts posted by me</p>
               </div>
             </div>
-
+            <div className={viewMode === "commented" ? "flex p-1 cursor-pointer bg-[rgba(244,246,248,1)] items-center" : "flex p-1 cursor-pointer items-center"} onClick={() => handleViewChange("commented")}>
+              <div className='flex items-center justify-center w-7 h-7 rounded bg-[#F4F6F8]'>
+                <TbMessageStar className='text-[#EEA956]'/>
+              </div>
+              <div className="ml-3">
+                <p className=" text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins  text-start">
+                  Commented by me
+                </p>
+                <p className="sm-text ">Show posts commented by me</p>
+              </div>
+            </div>
             <div className={viewMode === "bookmarked" ? "flex p-1 cursor-pointer bg-[rgba(244,246,248,1)] items-center" : "flex p-1 cursor-pointer items-center"} onClick={() => handleViewChange("bookmarked")}>
-              <img src="./images/ic3.png" />
+              <div className='flex items-center justify-center w-7 h-7 rounded bg-[#F4F6F8]'>
+                <BsFillBookmarkFill className='text-[#008CEC]'/>
+              </div>
               <div className="ml-3">
                 <p className=" text-[rgba(63,67,84,1)] font[500]  text-base font-Poppins  text-start">
                   Bookmarked
                 </p>
-                <p className="sm-text ">Show posts bookmarked by me</p>
+                <p className="sm-text ">Show bookmarked posts</p>
               </div>
             </div>
           </div>
@@ -286,19 +299,22 @@ const Forums = () => {
                                 </>
                             }
                           </div>
-
-                          <BsThreeDotsVertical className='text-xl text-[#006EB9] cursor-pointer' onClick={() => toggleView(index)} />
-                          {toggle[index] &&
-                            <div className='border border-[#E1ECF3] h-[78px] w-36 absolute top-10 -left-20 bg-white z-999 cursor-pointer rounded'>
-                              <div className='flex items-center justify-start w-full h-1/2 p-2 gap-2 hover:bg-[#E1ECF3]' onClick={() => handleEditPost(item)}>
-                                <FiEdit2 className='text-[#006EB9]' />
-                                <p className='text-sm'>Edit Post</p>
+                          {viewMode === "me" &&
+                          <>
+                            <BsThreeDotsVertical className='text-xl text-[#006EB9] cursor-pointer' onClick={() => toggleView(index)} />
+                            {toggle[index] &&
+                              <div className='border border-[#E1ECF3] h-[78px] w-36 absolute top-10 -left-20 bg-white z-999 cursor-pointer rounded'>
+                                <div className='flex items-center justify-start w-full h-1/2 p-2 gap-2 hover:bg-[#E1ECF3]' onClick={() => handleEditPost(item)}>
+                                  <FiEdit2 className='text-[#006EB9]' />
+                                  <p className='text-sm'>Edit Post</p>
+                                </div>
+                                <div className='flex items-center justify-start w-full h-1/2 p-2 gap-2 hover:bg-[#E1ECF3]' onClick={() => handleDeletePost(item.forumid)}>
+                                  <MdOutlineDelete className='text-[#FE2D0F] text-xl' />
+                                  <p className='text-sm'> Delete Post</p>
+                                </div>
                               </div>
-                              <div className='flex items-center justify-start w-full h-1/2 p-2 gap-2 hover:bg-[#E1ECF3]' onClick={() => handleDeletePost(item.forumid)}>
-                                <MdOutlineDelete className='text-[#FE2D0F] text-xl' />
-                                <p className='text-sm'> Delete Post</p>
-                              </div>
-                            </div>
+                            }
+                          </>
                           }
                         </div>
                       </div>
