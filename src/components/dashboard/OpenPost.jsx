@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import CircularProgress from '@mui/material/CircularProgress';
 import { BsDot } from 'react-icons/bs';
@@ -10,8 +10,6 @@ import { toast } from 'react-hot-toast';
 import { MdOutlineDelete } from 'react-icons/md';
 import { FiEdit2 } from 'react-icons/fi'
 import AddAnswer from "./AddAnswer";
-import { ImCancelCircle } from "react-icons/im";
-
 
 const OpenPost = (props) => {
 
@@ -113,7 +111,7 @@ const OpenPost = (props) => {
                         <p className="font-normal text-sm leading-5 text-[#2C2724BF]">{props.post.questiontext}</p>
                     </div>
                 </div>
-                <AddAnswer editComment={editComment} forumid={props.post.forumid} handleCancel={handleCancel} />
+                <AddAnswer editComment={editComment} forumid={props.post.forumid} handleCancel={handleCancel}/>
                 {!props.post.answers ?
                     <p className='px-2 py-2 text-[rgba(0,110,185,1)] text-left text-base italic mt-4 tablet:mt-0'>Be the first to answer to this post.</p> :
                     <p className='px-2 py-2 text-lg font-medium mt-4 tablet:mt-0'>All Comments</p>}

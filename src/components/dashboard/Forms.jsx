@@ -76,6 +76,7 @@ const Forums = () => {
   const handleOpenPost = (item) => {
     console.log("here", item);
     setOpenWindow(item);
+    setMenuId(null);
   }
 
   const handleClosePost = () => {

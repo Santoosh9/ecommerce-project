@@ -10,6 +10,8 @@ const AddAnswer = (props) => {
         answerid: ''
     })
 
+    const addAnswerRef = useRef(null);
+
     useEffect(() => {
         if (props.editComment) {
             const updatedEditData = {
@@ -18,6 +20,11 @@ const AddAnswer = (props) => {
                 answerid: props.editComment.answerid,
             };
             setEditData(updatedEditData);
+
+            addAnswerRef.current.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center', 
+              });
         }
     }, [props])
 
@@ -71,7 +78,7 @@ const AddAnswer = (props) => {
     }
 
     return (
-        <div className=" flex w-full h-20 border-t border-t-[#E1ECF3] mt-8 mb-2 items-end">
+        <div className=" flex w-full h-20 border-t border-t-[#E1ECF3] mt-8 mb-2 items-end" ref={addAnswerRef}>
                     <div className="flex w-full m-auto h-11">
                         <div className='flex w-full h-full justify-evenly'>
                             <div className='flex items-center'>
