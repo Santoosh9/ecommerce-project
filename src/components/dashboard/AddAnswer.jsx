@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { addAnswersData, editAnswerData } from "../../hooks/fetchHooks";
+import { ImCancelCircle } from "react-icons/im";
+import { toast } from "react-hot-toast";
 
 const AddAnswer = (props) => {
 
@@ -17,7 +19,7 @@ const AddAnswer = (props) => {
             };
             setEditData(updatedEditData);
         }
-    }, [props.editComment])
+    }, [props])
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -34,11 +36,13 @@ const AddAnswer = (props) => {
         const answerData = { forumid, answertext }
         try {
             answersMutation(answerData);
-            toast.success("Answer Added")
-            setEditData({...editData,
+            const resetEditData = {
+                ...editData,
                 answertext: '',
-                answerid : ''
-            })
+                answerid: '',
+            };
+            setEditData(resetEditData);
+            toast.success("Answer Added")
         } catch (error) {
             toast.error(error.message)
         }
@@ -48,9 +52,22 @@ const AddAnswer = (props) => {
         e.preventDefault();
         try {
             editAnswerMutation(editData);
+            toast.success("Successfully Edited")
+            handleCancel();
         } catch (error) {
             toast.error(error.message)
         }
+    }
+
+    const handleCancel = () => {
+        console.log('here')
+        const resetEditData = {
+            ...editData,
+            answertext: '',
+            answerid: '',
+        };
+        setEditData(resetEditData);
+        props.handleCancel();
     }
 
     return (
@@ -79,6 +96,11 @@ const AddAnswer = (props) => {
                                    {props.editComment? <p>Edit Answer</p> : <p>Add Answer</p> }
                                 </button>
                             </form>
+                            {props.editComment && 
+                                <div className="cursor-pointer">
+                                    <ImCancelCircle onClick={handleCancel} />
+                                </div>
+                            }
                         </div>
                     </div>
                 </div>
