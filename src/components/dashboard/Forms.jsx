@@ -74,7 +74,6 @@ const Forums = () => {
   const { mutate: bookmarkPost, isLoading: bookmarkLoading } = bookmarkQuestionData();
 
   const handleOpenPost = (item) => {
-    console.log("here", item);
     setOpenWindow(item);
     setMenuId(null);
   }
@@ -104,7 +103,6 @@ const Forums = () => {
       if (prevId === id) return null;
       return id
     })
-    console.log(menuId)
   }
 
   const handleBookMarkPost = async (forumid) => {

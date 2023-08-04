@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux/';
   export const ProtectedRoute = ({children}) => {
 
     const user = useSelector((state) => state.auth.token);
-    console.log(user)
 
     if(user){
       return children;

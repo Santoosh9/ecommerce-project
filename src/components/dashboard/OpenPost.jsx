@@ -13,9 +13,10 @@ import AddAnswer from "./AddAnswer";
 
 const OpenPost = (props) => {
 
-    const [answertext, setAnswerText] = useState('')
     const [menuId, setMenuId] = useState('')
     const [editComment, setEditComment] = useState()
+
+    const showAnswerRef = useRef(null)
 
     const toggleView = (id) => {
         setMenuId(prevId => {
@@ -31,20 +32,7 @@ const OpenPost = (props) => {
         () => fetchAnswers(props.post.forumid),
     );
 
-    // const { mutate: answersMutation } = addAnswersData();
     const { mutate: deleteAnswer } = deleteAnswersData();
-
-    // const handleAddAnswer = async (e, forumid) => {
-    //     e.preventDefault();
-    //     const answerData = { forumid, answertext }
-    //     try {
-    //         answersMutation(answerData);
-    //         toast.success("Answer Added")
-    //         setAnswerText('')
-    //     } catch (error) {
-    //         toast.error(error.message)
-    //     }
-    // }
 
     const handleDeleteAnswer = async (e, answerid) => {
         setMenuId(null)
@@ -70,6 +58,15 @@ const OpenPost = (props) => {
     const handleCancel = () => {
         setEditComment()
         console.log(editComment)
+    }
+
+    const getNewAnswer = (answerid) => {
+        console.log(answerid)
+        const viewNode = showAnswerRef.current.querySelector(`[data-index="${answerid}"]`)
+        viewNode.scrollIntoView({
+            behavior:'smooth',
+            inline:'center'
+        })
     }
 
     return (
@@ -111,7 +108,7 @@ const OpenPost = (props) => {
                         <p className="font-normal text-sm leading-5 text-[#2C2724BF]">{props.post.questiontext}</p>
                     </div>
                 </div>
-                <AddAnswer editComment={editComment} forumid={props.post.forumid} handleCancel={handleCancel}/>
+                <AddAnswer editComment={editComment} forumid={props.post.forumid} handleCancel={handleCancel} getNewAnswer = {getNewAnswer}/>
                 {!props.post.answers ?
                     <p className='px-2 py-2 text-[rgba(0,110,185,1)] text-left text-base italic mt-4 tablet:mt-0'>Be the first to answer to this post.</p> :
                     <p className='px-2 py-2 text-lg font-medium mt-4 tablet:mt-0'>All Comments</p>}
@@ -120,9 +117,10 @@ const OpenPost = (props) => {
                         <p className='text-center font-normal text-xl'>Loading....</p>
                         <CircularProgress size="1rem" />
                     </div>}
+                    <div ref={showAnswerRef}>
                 {forumAnswer?.answers?.map((onecomment, index) => (
                     (props.post.forumid === onecomment.forumid) &&
-                    <div key={index} className='flex flex-col gap-1 py-2 px-2'>
+                    <div key={index} className='flex flex-col gap-1 py-2 px-2' data-index={onecomment.answerid}>
                         <div className='flex gap-3 justify-start items-start'>
                             <div className=''>
                                 <img src='./images/blankuser.png' width='40px' alt='user' />
@@ -157,6 +155,7 @@ const OpenPost = (props) => {
                         </div>
                     </div>
                 ))}
+                </div>
             </div>
         </div>
     )

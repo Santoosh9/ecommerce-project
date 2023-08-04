@@ -155,7 +155,7 @@ const UserNav = () => {
         </div>
         <div className="hidden laptop:flex flex-row justify-around   gap-[20px]  font-Poppins font-[400]">
           {menu?.map((onemenu, menuIndex) => (
-          <div onClick={() => handleOpen("subject", onemenu.id)}>
+          <div onClick={() => handleOpen("subject", onemenu.id)} key={menuIndex}>
             <button
               className="flex flex-row relative items-center gap-1"
             >

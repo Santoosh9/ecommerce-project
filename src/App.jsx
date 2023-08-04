@@ -29,16 +29,13 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect (() => {
-    console.log("useEffect")
     const getCurrent = async() => {
       const response = await dispatch(getCurrentSession(1)).unwrap();
-      console.log(response) 
     }
     getCurrent();
   }, [])
 
   const user = useSelector((state) => state.auth.token);
-  console.log(user);
 
   return (
     <div className="font-[Poppins]">

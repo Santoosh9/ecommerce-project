@@ -1,4 +1,3 @@
-import { useMatch } from "react-router-dom";
 import axiosInstance from "../utils/axios";
 import { useMutation, useQueryClient } from "react-query";
 
@@ -6,7 +5,6 @@ import { useMutation, useQueryClient } from "react-query";
 //FETCH QUERIES
 export const fetchAffairs = async () => {
     const response = await axiosInstance.get("/current-affairs")
-    console.log(response.data.response);
     return await response?.data.response;
 }
 
@@ -44,7 +42,6 @@ export const fetchMyQuestions = async () => {
 }
 
 export const fetchAnswers = async (forumid) => {
-    console.log(forumid);
     const response = await axiosInstance.post("/answers", { forumid });
     return await response?.data.response;
 }
@@ -135,7 +132,6 @@ const addQuestion = (postData) => {
 }
 
 const addAnswers = (answerData) => {
-    console.log(answerData);
     return axiosInstance.put("/answers", answerData)
 }
 
@@ -152,7 +148,6 @@ const bookmarkQuestion = async (forumid) => {
 }
 
 const editQuestion = async (postData) => {
-    console.log(postData)
     return axiosInstance.patch('/questions', postData)
 }
 

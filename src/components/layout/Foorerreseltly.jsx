@@ -19,57 +19,57 @@ const FooetRecently = () => {
         <div className="">
           <ul className=" font-[400] font-Poppins text-base">
             <p className=" font-[500]  font-Poppins  text-lg mt-2"> Support</p>
-            <li class="mb-4 mt-3">
+            <li className="mb-4 mt-3">
               <a href="#">Disclaimer Privacy</a>
             </li>
-            <li class="mb-4">
-              <a href="#" class="hover:underline">
+            <li className="mb-4">
+              <a href="#" className="hover:underline">
                 Policy Legal & Copyright
               </a>
             </li>
-            <li class="mb-4">
+            <li className="mb-4">
               <a href="#">Terms & Condition</a>
             </li>
-            <li class="mb-4">
+            <li className="mb-4">
               <a href="#">Contact Us</a>
             </li>
           </ul>
         </div>
         <div className="">
-          <ul class="font-[400] font-Poppins text-base">
+          <ul className="font-[400] font-Poppins text-base">
             <p className=" font-[500]  font-Poppins  text-lg mt-2"> Courses</p>
-            <li class="mb-4 mt-3">
-              <a href="#" class="hover:underline">
+            <li className="mb-4 mt-3">
+              <a href="#" className="hover:underline">
                 लोकसेवा (संघ र प्रदेश‌‍‍‌)
               </a>
             </li>
-            <li class="mb-4">
-              <a href="#" class="hover:underline">
+            <li className="mb-4">
+              <a href="#" className="hover:underline">
                 बैंकिङ तयारी
               </a>
             </li>
-            <li class="mb-4">
-              <a href="#" class="hover:underline">
+            <li className="mb-4">
+              <a href="#" className="hover:underline">
                 संस्थान तयारी कक्षा
               </a>
             </li>
           </ul>
         </div>
         <div className="">
-          <ul class="font-[400] font-Poppins text-base">
+          <ul className="font-[400] font-Poppins text-base">
             <p className=" font-[500]  font-Poppins  text-lg mt-2 "> Contact</p>
-            <li class="mb-4  mt-3 ">
+            <li className="mb-4  mt-3 ">
               <a href="#" className="hover:underline flex flex-row">
                 98671000189
               </a>
             </li>
-            <li class="mb-4">
+            <li className="mb-4">
               <a href="#" className="hover:underline flex flex-row">
                 9809800327
               </a>
             </li>
 
-            <li class="mb-4">
+            <li className="mb-4">
               <a href="#" className="hover:underline flex flex-row ">
                 9800098000
               </a>
