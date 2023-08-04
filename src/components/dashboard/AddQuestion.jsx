@@ -33,7 +33,7 @@ const AddQuestion = (props) => {
 
     const { data: courses } = useQuery("courses", fetchCourses);
     const { data: subjects } = useQuery(
-        ["subjects", postData.courseid], 
+        ["subjects", postData.courseid],
         () => fetchSubjects(postData.courseid)
     );
 
@@ -119,36 +119,40 @@ const AddQuestion = (props) => {
                                 onChange={handleChange}
                             />
                         </div>
-                        <div className=" ">
-                            <select
-                                className="w-full h-11 mt-4 px-2 border rounded-md  text-gray-500"
-                                id="courseSelect"
-                                name='courseid'
-                                onChange={handleChange}
-                            >
-                                <option value={postData.courseid}>Course</option>
-                                {courses?.map((course) => (
-                                    <option value={course.courseid} label={course.coursename}>
-                                        {course.courseName}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <div className="">
-                            <select
-                                className="w-full h-11 mt-4 px-2 border rounded-md  text-gray-500"
-                                id="subjectSelect"
-                                name="subjectid"
-                                onChange={handleChange}
-                            >
-                                <option value={postData.subjectid}>Subject</option>
-                                {subjects?.map((subject) => (
-                                    <option value={subject.subjectid} label={subject.subjectname}>
-                                        {subject.subjectName}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
+                        {props.editPost ?
+                            <div className=" m-2 p-2.5 bg-[#F0F9FF] text-[#006EB9] w-fit rounded-full border border-[#006EB9]">
+                                <p className="text-base font-medium leading-5">{props.editPost.subject}</p>
+                            </div>
+                            :
+                            <>
+                                <select
+                                    className="w-full h-11 mt-4 px-2 border rounded-md  text-gray-500"
+                                    id="courseSelect"
+                                    name='courseid'
+                                    onChange={handleChange}
+                                >
+                                    <option value={postData.courseid}>Course</option>
+                                    {courses?.map((course) => (
+                                        <option value={course.courseid} label={course.coursename}>
+                                            {course.courseName}
+                                        </option>
+                                    ))}
+                                </select>
+                                <select
+                                    className="w-full h-11 mt-4 px-2 border rounded-md  text-gray-500"
+                                    id="subjectSelect"
+                                    name="subjectid"
+                                    onChange={handleChange}
+                                >
+                                    <option value={postData.subjectid}>Subject</option>
+                                    {subjects?.map((subject) => (
+                                        <option value={subject.subjectid} label={subject.subjectname}>
+                                            {subject.subjectName}
+                                        </option>
+                                    ))}
+                                </select>
+                            </>
+                        }
                         <div className="bg-[rgba(225,236,243,1)] mt-4 h-[48px] w-[154px] flex justify-center items-center gap-2 cursor-pointer" onClick={() => inputFile.current.click()}>
                             <div className=" flex items-center">
                                 <RiImageAddFill className="text-[#006EB9] text-lg" />

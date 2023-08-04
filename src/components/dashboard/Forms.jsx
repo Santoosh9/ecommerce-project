@@ -38,7 +38,7 @@ const Forums = () => {
 
   const { isLoading: postsLoading, data: forumPosts, error: postError, isError: isPostError } = useQuery("posts", fetchQuetions)
   const { isLoading: bookmarkedPostsLoading, data: bookmarkedPosts, error: bookmarkedError, isError: isBookmarkedPostError } = useQuery("bookmarked", fetchBookmarked)
-  const { isLoading: myPostsLoading, data: myPosts, error: myPostError, isError: ismyPostError } = useQuery("mypost", fetchMyQuestions)
+  const { isLoading: myPostsLoading, data: myPosts, error: myPostError, isError: ismyPostError } = useQuery("myposts", fetchMyQuestions)
 
   useEffect(() => {
     let updatedDisplayPosts = []
@@ -87,6 +87,7 @@ const Forums = () => {
   }
 
   const handleDeletePost = async (forumid) => {
+    setMenuId(null);
     try {
       deletePost(forumid);
       toast.success("Post Deleted")
@@ -114,6 +115,7 @@ const Forums = () => {
   }
 
   const handleEditPost = (item) => {
+    setMenuId(null);
     setEditPost(item);
   }
 
@@ -278,7 +280,7 @@ const Forums = () => {
                     <div className="flex flex-col w-[70%] tablet:w-[90%] gap-3">
                       <div className='flex justify-between items-center'>
                         <div className="flex flex-row w-fit gap-2.5">
-                          <div className="bg-[#F0F9FF] w-fit rounded-full text-[rgba(0,110,185,1)] px-2.5 py-1">
+                          <div className="bg-[#F0F9FF] w-fit rounded-full text-[#006EB9] px-2.5 py-1">
                             {/* {courseName} CourseName */} <p className='text-center text-sm font-normal'>{item.subject.substring(0, 40)}</p>
                           </div>
                         </div>

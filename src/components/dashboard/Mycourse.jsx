@@ -1,24 +1,7 @@
 import React from 'react';
-
 import { TbCircleCaretRight } from 'react-icons/tb';
 import { CiClock2 } from 'react-icons/ci';
-
 import { FiArrowRight } from 'react-icons/fi';
-
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Typography,
-  Button,
-} from '@material-tailwind/react';
-
-import {
-  BsFillClockFill,
-  BsFillPlayCircleFill,
-  BsArrowRightShort,
-} from 'react-icons/bs';
 import { Link } from 'react-router-dom';
 
 const Mycourse = () => {
@@ -185,46 +168,47 @@ const Mycourse = () => {
         <div className="flex flex-row w-full ">
           <div className=" flex flex-row flex-wrap  justify-center items-center gap-10  ">
             {data.map((item) => (
-              <Card
+              <div
                 key={item.id}
-                className="mt-6 w-[282px] h-[381px]  border  shadow-none bg-[rgba(255,255,255,1)]"
+                className="mt-6 w-[282px] h-[381px]  border rounded-md  shadow-none bg-[rgba(255,255,255,1)]"
               >
                 <div
-                  className="h-[177px] border bg-cover w-[282px] ml-0"
+                  className="h-[177px] border bg-cover w-[282px] ml-0 relative rounded-md"
                   style={{ backgroundImage: `url(${item.image})` }}
                 >
-                  <div className="h-[27px] w-[106px]  mt-[149px]  bg-[rgba(0,110,185,1)] font-Poppins text-white text-center ">
+
+                  <div className="h-[27px] w-[106px] bg-[rgba(0,110,185,1)] font-Poppins text-white text-center absolute left-0 bottom-0">
                     {item.price}
                   </div>
                 </div>
 
-                <CardBody className=" ml-3">
-                  <div className="flex flex-row gap-5 mt-4 font-Poppins text-sm  font-light text-[rgba(44,39,36,0.75)] ">
-                    <p className="flex flex-row">
-                      <CiClock2 className=" mt-[3px] mr-2 " />
+                <div className="flex flex-col p-3 gap-2">
+                  <div className="flex flex-row gap-5 font-Poppins text-sm  font-light text-[rgba(44,39,36,0.75)] ">
+                    <p className="flex flex-row items-center justify-start gap-2">
+                      <CiClock2 />
                       {item.hour}
                     </p>
-                    <p className="flex flex-row ">
-                      <TbCircleCaretRight className=" mt-[3px] mr-2" />
+                    <p className="flex flex-row items-center justify-start gap-2 ">
+                      <TbCircleCaretRight />
                       {item.video}
                     </p>
                   </div>
-                  <Typography className="mb-2   font-[500] font-Poppins text-[rgba(17,17,17,1)]">
+                  <div className="font-[500] font-Poppins text-[rgba(17,17,17,1)]">
                     {item.title}
-                  </Typography>
-                  <Typography className=" text-sm font-Poppins text-[rgba(44,39,36,0.75)]">
+                  </div>
+                  <div className=" text-sm font-Poppins text-[rgba(44,39,36,0.75)]">
                     {item.description}
-                  </Typography>
-                </CardBody>
-                <CardFooter className="pt-0 ml-3">
+                  </div>
+                </div>
+                <div className="flex p-3">
                   <Link to='/learning'>
-                  <p className="flex flex-row font-Poppins mt-2 font-[20px] text-[rgba(0,110,185,1)]">
-                    {item.engroll}
-                    <FiArrowRight className="mt-1.5 ml-1" />
-                  </p>
+                    <p className="flex flex-row items-center gap-1 font-Poppins font-[20px] text-[rgba(0,110,185,1)]">
+                      {item.engroll}
+                      <FiArrowRight />
+                    </p>
                   </Link>
-                </CardFooter>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -240,46 +224,48 @@ const Mycourse = () => {
         <div className="flex flex-row w-full  justify-center items-center ">
           <div className=" flex flex-row flex-wrap gap-10 ml-5 justify-center ">
             {data1.map((item) => (
-              <Card
+              <div
                 key={item.id}
-                className="mt-6 w-[282px] h-[381px]  border  mb-20 shadow-none bg-[rgba(255,255,255,1)]"
+                className="mt-6 w-[282px] h-fit  border-1  mb-20 shadow-none bg-[rgba(255,255,255,1)] rounded-md"
               >
                 <div
-                  className="h-[177px] border bg-cover w-[282px] ml-0"
+                  className="h-[177px] border bg-cover w-[282px] ml-0 relative"
                   style={{ backgroundImage: `url(${item.image})` }}
                 >
-                  <div className="h-[27px] w-[106px]  mt-[149px]  bg-[rgba(0,110,185,1)] font-Poppins text-white">
+                  <div className="flex h-[27px] w-[106px] bg-[rgba(0,110,185,1)] font-Poppins text-white absolute left-0 bottom-0 items-center px-2">
                     {item.price}
                   </div>
                 </div>
 
-                <CardBody className=" ml-3">
-                  <div className="flex flex-row gap-5 mt-4 font-Poppins text-sm  font-light text-[rgba(44,39,36,0.75)] ">
-                    <p className="flex flex-row">
-                      <CiClock2 className=" mt-[3px] mr-2 " />
+                <div className='flex flex-col gap-3 p-3'>
+                  <div className="flex flex-row gap-4 font-Poppins text-sm  font-light text-[rgba(44,39,36,0.75)] ">
+                    <p className="flex flex-row items-center gap-2">
+                      <CiClock2 />
                       {item.hour}
                     </p>
-                    <p className="flex flex-row ">
-                      <TbCircleCaretRight className=" mt-[3px] mr-2" />
+                    <p className="flex flex-row items-center gap-2">
+                      <TbCircleCaretRight />
                       {item.video}
                     </p>
                   </div>
-                  <Typography className="mb-2   font-[500] font-Poppins text-[rgba(17,17,17,1)]">
-                    {item.title}
-                  </Typography>
-                  <Typography className=" text-sm font-Poppins text-[rgba(44,39,36,0.75)]">
-                    {item.description}
-                  </Typography>
-                </CardBody>
-                <CardFooter className="pt-0 ml-3">
+                  <div className='flex flex-col gap-2'>
+                    <div className="font-[500] font-Poppins text-[rgba(17,17,17,1)]">
+                      {item.title}
+                    </div>
+                    <div className=" text-sm font-Poppins text-[rgba(44,39,36,0.75)]">
+                      {item.description}
+                    </div>
+                  </div>
+                </div>
+                <div className='p-3'>
                   <Link to="/learning">
-                  <p className="flex flex-row font-Poppins mt-2 font-[20px] text-[rgba(0,110,185,1)]">
-                    {item.engroll}
-                    <FiArrowRight className="mt-1.5 ml-1" />
-                  </p>
+                    <p className="flex items-center gap-1 font-Poppins font-[20px] text-[rgba(0,110,185,1)]">
+                      {item.engroll}
+                      <FiArrowRight />
+                    </p>
                   </Link>
-                </CardFooter>
-              </Card>
+                </div>
+              </div>
             ))}
           </div>
         </div>

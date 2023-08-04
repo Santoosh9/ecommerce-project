@@ -47,6 +47,7 @@ const OpenPost = (props) => {
     // }
 
     const handleDeleteAnswer = async (e, answerid) => {
+        setMenuId(null)
         e.preventDefault();
         console.log(answerid)
         try {
@@ -62,6 +63,7 @@ const OpenPost = (props) => {
     }
 
     const handleEditAnswer = (editComment) => {
+        setMenuId(null)
         setEditComment(editComment)
     }
 
