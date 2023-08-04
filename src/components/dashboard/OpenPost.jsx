@@ -9,11 +9,13 @@ import { deleteAnswersData, fetchAnswers, addAnswersData } from "../../hooks/fet
 import { toast } from 'react-hot-toast';
 import { MdOutlineDelete } from 'react-icons/md';
 import { FiEdit2 } from 'react-icons/fi'
+import AddAnswer from "./AddAnswer";
 
 const OpenPost = (props) => {
 
     const [answertext, setAnswerText] = useState('')
     const [menuId, setMenuId] = useState('')
+    const [editComment, setEditComment] = useState()
 
     const toggleView = (id) => {
         setMenuId(prevId => {
@@ -29,20 +31,20 @@ const OpenPost = (props) => {
         () => fetchAnswers(props.post.forumid),
     );
 
-    const { mutate: answersMutation } = addAnswersData();
+    // const { mutate: answersMutation } = addAnswersData();
     const { mutate: deleteAnswer } = deleteAnswersData();
 
-    const handleAddAnswer = async (e, forumid) => {
-        e.preventDefault();
-        const answerData = { forumid, answertext }
-        try {
-            answersMutation(answerData);
-            toast.success("Answer Added")
-            setAnswerText('')
-        } catch (error) {
-            toast.error(error.message)
-        }
-    }
+    // const handleAddAnswer = async (e, forumid) => {
+    //     e.preventDefault();
+    //     const answerData = { forumid, answertext }
+    //     try {
+    //         answersMutation(answerData);
+    //         toast.success("Answer Added")
+    //         setAnswerText('')
+    //     } catch (error) {
+    //         toast.error(error.message)
+    //     }
+    // }
 
     const handleDeleteAnswer = async (e, answerid) => {
         e.preventDefault();
@@ -57,6 +59,10 @@ const OpenPost = (props) => {
 
     const goBack = () => {
         props.handleClosePost();
+    }
+
+    const handleEditAnswer = (editComment) => {
+        setEditComment(editComment)
     }
 
     return (
@@ -98,7 +104,7 @@ const OpenPost = (props) => {
                         <p className="font-normal text-sm leading-5 text-[#2C2724BF]">{props.post.questiontext}</p>
                     </div>
                 </div>
-                <div className=" flex w-full h-20 border-t border-t-[#E1ECF3] mt-8 mb-2 items-end">
+                {/* <div className=" flex w-full h-20 border-t border-t-[#E1ECF3] mt-8 mb-2 items-end">
                     <div className="flex w-full m-auto h-11">
                         <div className='flex w-full h-full justify-evenly'>
                             <div className='flex items-center'>
@@ -121,7 +127,8 @@ const OpenPost = (props) => {
                             </form>
                         </div>
                     </div>
-                </div>
+                </div> */}
+                <AddAnswer editComment={editComment} forumid={props.post.forumid} />
                 {!props.post.answers ?
                     <p className='px-2 py-2 text-[rgba(0,110,185,1)] text-left text-base italic mt-4 tablet:mt-0'>Be the first to answer to this post.</p> :
                     <p className='px-2 py-2 text-lg font-medium mt-4 tablet:mt-0'>All Comments</p>}
@@ -149,7 +156,7 @@ const OpenPost = (props) => {
                                             <BsThreeDotsVertical className="text-[#006EB9] flex items-center cursor-pointer" onClick={() => toggleView(onecomment.answerid)} />
                                             {onecomment.answerid === menuId &&
                                                 <div className='border border-[#E1ECF3] h-[78px] w-44 absolute right-4 top-0 bg-white z-999 cursor-pointer rounded'>
-                                                    <div className='flex items-center justify-start w-full h-1/2 p-2 gap-2 hover:bg-[#E1ECF3]'>
+                                                    <div className='flex items-center justify-start w-full h-1/2 p-2 gap-2 hover:bg-[#E1ECF3]' onClick={() => handleEditAnswer(onecomment)}>
                                                         <FiEdit2 className='text-[#006EB9]' />
                                                         <p className='text-sm'>Edit Comment</p>
                                                     </div>

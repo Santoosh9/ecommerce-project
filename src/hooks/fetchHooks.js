@@ -72,6 +72,17 @@ export const deleteAnswersData = () => {
     })
 }
 
+export const editAnswerData = () => {
+    const queryClient = useQueryClient();
+    
+    return useMutation(editAnswer, {
+        onSuccess: () => {
+            queryClient.invalidateQueries("answers")
+            queryClient.invalidateQueries("posts")
+        }
+    })
+}
+
 export const addQuestionData = () => {
     const queryClient = useQueryClient();
 
@@ -141,4 +152,8 @@ const bookmarkQuestion = async (forumid) => {
 const editQuestion = async (postData) => {
     console.log(postData)
     return axiosInstance.patch(`/questions?questiontext=${postData.questiontext}&forumid=${postData.forumid}`)
+}
+
+const editAnswer = async (answerData) => {
+    return axiosInstance.patch(`/answers?answerid=${answerData.answerid}&answertext=${answerData.answertext}`)
 }
