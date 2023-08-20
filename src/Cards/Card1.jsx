@@ -118,7 +118,7 @@ const Card1 = () => {
   return (
     <>
       <div className="flex flex-row   w-[100%] ">
-        <div className=" flex flex-row flex-wrap  justify-center items-center  gap-10  ">
+        <div className=" flex flex-row flex-wrap  justify-center items-center  gap-10 ">
           {data.map((item) => (
             <Card
               key={item.id}

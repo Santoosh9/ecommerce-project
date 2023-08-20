@@ -11,6 +11,8 @@ export default {
 
       'laptop': '1280px',
       // => @media (min-width: 1280px) { ... }
+
+      'big-screen':'1570px'
     },
     extend: {
       margin: {
